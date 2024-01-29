@@ -1,1 +1,1 @@
-# projekto_pelinimi_TBA
+# projekti_pelinimi_TBA

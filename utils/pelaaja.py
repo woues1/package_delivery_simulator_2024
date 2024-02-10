@@ -1,21 +1,25 @@
-from data.sql_db_connect import get_db_connection
+from data.sql_db_connect import sql_search
 
-connection = get_db_connection()
-cursor = connection.cursor()
 
-cursor.execute("SELECT screen_name, co2_budget, location FROM game where screen_name = 'ilkka'")
-result = cursor.fetchall()
-cursor.close()
-connection.close()
-
-class pelaaja:
+class Pelaaja:
     def __init__(self, nimi, pisteet, location):
         self.nimi = nimi
         self.pisteet = pisteet
         self.location = location
 
 
-for i in result:
-    pelaaja = pelaaja(i[0],i[1],i[2])
+def kayttaja_haku():
+    result = sql_search(f"SELECT screen_name, co2_budget, location "
+                        f"FROM game "
+                        f"where screen_name = 'ilkka'")
+    return result
 
-print(pelaaja.nimi, pelaaja.pisteet, pelaaja.location)
+
+def olio_luonti():
+    res = kayttaja_haku()
+    for i in res:
+        pelaaja = Pelaaja(i[0], i[1], i[2])
+        print(pelaaja.nimi, pelaaja.pisteet, pelaaja.location)
+    return pelaaja
+
+asd = olio_luonti()

@@ -1,5 +1,5 @@
 import keyboard
-
+from utils.valikko import valikko
 
 
 
@@ -18,7 +18,8 @@ keys = [
     "4",
     "q",
     "e",
-    "f"
+    "f",
+    "esc"
 ]
 
 def kbdCallback(e):
@@ -27,6 +28,8 @@ def kbdCallback(e):
         if key == keyboard.normalize_name(e.name):
             print(f"{key} was pressed")
             found = True
+            if key == "esc":
+                valikko()
             # work your magic
 
     if found == True:

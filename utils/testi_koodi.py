@@ -38,6 +38,7 @@ def sql_haku_omat_tiedot(screen_name):
                       =  ===(_________D""")
 
     print(f"""
+    Omat Tiedot :
     Airport: {airport_print}"
     Country: {c_name_print}"
     Co2 budget: {co2_budget_print}"

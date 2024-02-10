@@ -1,11 +1,14 @@
 import keyboard
 import utils.pelilauta
 import utils.pelaaja
+from utils.ohjaus import kbdCallback
 
+#alemmassa kommentissa esimerkki
+#keyboard.on_press(kbdCallback(keyboard.wait()))
 
 def main():
     while True:
-        valinta = keyboard.KeyboardEvent
+        valinta = keyboard.on_press(kbdCallback(keyboard.wait()))
         if valinta == 1:
             print("valitsit tehtävän 1: (tehtävä 1 tiedot)")
         elif valinta == 2:

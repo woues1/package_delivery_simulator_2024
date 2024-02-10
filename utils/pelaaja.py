@@ -18,8 +18,8 @@ def kayttaja_haku():
 def olio_luonti():
     res = kayttaja_haku()
     for i in res:
-        pelaaja = Pelaaja(i[0], i[1], i[2])
-        print(pelaaja.nimi, pelaaja.pisteet, pelaaja.location)
-    return pelaaja
+        return Pelaaja(i[0], i[1], i[2])
 
-asd = olio_luonti()
+
+pelaaja = olio_luonti()
+print(pelaaja.nimi, pelaaja.location, pelaaja.pisteet)

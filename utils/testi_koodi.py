@@ -2,7 +2,7 @@
 
 
 def sql_haku_omat_tiedot(screen_name):
-    from Modules.SQL_DEFAULT_SEARCH import hae
+    from utils.testi_generic_search import hae
     def sql_haku_a_name(screen_name):
         airport_name = f"SELECT a.name FROM airport a JOIN game g ON a.ident = g.location WHERE g.screen_name = '{screen_name}'; "#<-----Käyttäjänimi haku to do list!!
         tulos_airport_name = hae(airport_name)
@@ -19,13 +19,13 @@ def sql_haku_omat_tiedot(screen_name):
         co2_consumed = f"SELECT g.co2_consumed FROM game g WHERE g.screen_name= '{screen_name}';"#<-----Käyttäjänimi haku to do list!!
         tulos_co2_consumed = hae(co2_consumed);
         return tulos_co2_consumed[0]
-
+#def location
 #def sql_haku_g_money(screen_name): #XD g_money
 
-    airport_print = (sql_haku_a_name("Ilkka"))#<-----Käyttäjänimi haku to do list!!
+    airport_print = (sql_haku_a_name(f"Ilkka"))#<-----Käyttäjänimi haku to do list!!
     c_name_print = sql_haku_c_name("Ilkka")#<-----Käyttäjänimi haku to do list!!
-    co2_budget_print=sql_haku_g_co2_budget("Ilkka")#<-----Käyttäjänimi haku to do list!!
-    co2_consumed_print=sql_haku_g_co2_consumed("Ilkka")#<-----Käyttäjänimi haku to do list!!
+    co2_budget_print = sql_haku_g_co2_budget("Ilkka")#<-----Käyttäjänimi haku to do list!!
+    co2_consumed_print = sql_haku_g_co2_consumed("Ilkka")#<-----Käyttäjänimi haku to do list!!
 
     print("""
              ______

@@ -8,6 +8,11 @@ class Pelaaja:
         self.location = location
 
 
+# Päivittää käyttäjän pistemäärän.
+    def suoritus_piste_lisays(self, pisteet, piste_kerroin):
+        self.pisteet = self.pisteet + pisteet * piste_kerroin
+
+
 def kayttaja_haku():
     result = sql_search(f"SELECT screen_name, co2_budget, location "
                         f"FROM game "
@@ -21,5 +26,13 @@ def olio_luonti():
         return Pelaaja(i[0], i[1], i[2])
 
 
-pelaaja = olio_luonti()
-print(pelaaja.nimi, pelaaja.location, pelaaja.pisteet)
+pelaaja_instanssi = olio_luonti()
+
+
+# pelaaja_instanssin tietojen haku
+print(f"\n{pelaaja_instanssi.nimi} {pelaaja_instanssi.location} {pelaaja_instanssi.pisteet}")
+
+# Käyttää olioa pisteiden lisäämiseen pelaaja_instanssille
+pelaaja_instanssi.suoritus_piste_lisays(1000, 1.2)
+
+print(f"\npäivitettyjen pisteiden määrä: {pelaaja_instanssi.pisteet}")

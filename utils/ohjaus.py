@@ -32,10 +32,4 @@ def kbdCallback(e):
                 valikko()
             # work your magic
 
-    if found == True:
-        if e.name == "left":
-            if keyboard.is_pressed("4"):
-                print("4 & left arrow were pressed together!")
-                # work your magic
-
 keyboard.on_press(kbdCallback)

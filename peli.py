@@ -1,6 +1,4 @@
 import keyboard
-import utils.pelilauta
-import utils.pelaaja
 from utils.ohjaus import kbdCallback
 
 #alemmassa kommentissa esimerkki

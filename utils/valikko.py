@@ -14,21 +14,24 @@ def valikko():
     from utils.pelaaja import kayttaja_haku
     import keyboard
     import sys
+    from utils.pelilauta import art_new_game,art_exit_game,art_gane_paused
     from utils.ohjaus import kbdCallback
-    printtaus = kayttaja_haku()#<----plaayer class
-    print(printtaus)
-    print("""
-    1. Uusi peli
-    2. Lopeta peli""")
+    printtaus = kayttaja_haku()#def omat tiedot
+    print(printtaus)            #print("""
+    art_gane_paused()
+    art_new_game()       #1. Uusi peli
+    art_exit_game()      #2. Lopeta peli""")
     while True:
         event = keyboard.read_event(suppress=True)
         if event.event_type == keyboard.KEY_DOWN:
             pressed_key = event.name
-            if pressed_key("1"):
+            if pressed_key == "1":
                 print("uusi peli")#<----No clue mitetn tää pitäs tehä
-            elif pressed_key("2"):
+            elif pressed_key == "2":
                 print("Lopetetaan peli...")
                 #update.db
                 sys.exit()
-            elif pressed_key("esc"):
+            elif pressed_key == "esc":
+                print("Main")
                 break
+

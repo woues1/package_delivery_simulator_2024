@@ -7,6 +7,7 @@ pelaaja = olio_luonti()
 print(pelaaja.pisteet) = print(self."")
 """
 
+
 # pelaajan tiedot
 class Pelaaja:
     def __init__(self, nimi, pisteet, location):
@@ -25,8 +26,8 @@ class Pelaaja:
 
 def kayttaja_haku():
     tulos = sql_search(f"SELECT screen_name, co2_budget, location "
-                        f"FROM game "
-                        f"where screen_name = 'ilkka'")
+                       f"FROM game "
+                       f"where screen_name = 'ilkka'")
     return tulos
 
 

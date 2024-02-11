@@ -1,7 +1,10 @@
 import keyboard
 import numpy as np
 from data.sql_db_connect import sql_search
-from utils.pelaaja import Pelaaja
+from utils.pelaaja import olio_luonti
+
+
+pelaaja = olio_luonti()
 
 
 def luo_tehtava():

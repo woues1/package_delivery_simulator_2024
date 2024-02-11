@@ -1,5 +1,10 @@
 from data.sql_db_connect import sql_search
 
+# COPY PASTE PELAAJA
+"""
+from utils.pelaaja import olio_luonti
+pelaaja = olio_luonti()
+"""
 
 # pelaajan tiedot
 class Pelaaja:
@@ -28,4 +33,5 @@ def kayttaja_haku():
 def olio_luonti():
     res = kayttaja_haku()
     for i in res:
-        return Pelaaja(i[0], i[1], i[2])
+        asd = Pelaaja(i[0], i[1], i[2])
+        return asd

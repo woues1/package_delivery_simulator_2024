@@ -4,6 +4,7 @@ from data.sql_db_connect import sql_search
 """
 from utils.pelaaja import olio_luonti
 pelaaja = olio_luonti()
+print(pelaaja.pisteet) = print(self."")
 """
 
 # pelaajan tiedot

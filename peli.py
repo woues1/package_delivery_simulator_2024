@@ -3,10 +3,7 @@ from utils.pelaaja import Pelaaja, kayttaja_haku, olio_luonti
 # import utils.pelilauta
 from utils.ohjaus import kbdCallback
 from data.Tehtävät import luo_tehtava, valitse_tehtava, tulosta_tehtava
-from utils.pelilauta import title_screen, kartta
-
-max_pisteet = 10000
-pisteet = 10000
+from utils.pelilauta import art_kartta,art_title_screen
 
 
 def main():

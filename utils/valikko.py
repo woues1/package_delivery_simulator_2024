@@ -11,13 +11,13 @@ def valikko():
 """
 
 def valikko():
-    from utils.pelaaja import kayttaja_haku
+    from utils.pelaaja import olio_luonti
+    pelaaja = olio_luonti()
     import keyboard
     import sys
     from utils.pelilauta import art_new_game,art_exit_game,art_gane_paused
     from utils.ohjaus import kbdCallback
-    printtaus = kayttaja_haku()#def omat tiedot
-    print(printtaus)            #print("""
+    print(pelaaja.pisteet,pelaaja.nimi,pelaaja.location)
     art_gane_paused()
     art_new_game()       #1. Uusi peli
     art_exit_game()      #2. Lopeta peli""")

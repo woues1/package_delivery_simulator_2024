@@ -19,8 +19,8 @@ class Pelaaja:
     def paivita_tehtava_aktiivinen(self, is_active):
         self.tehtava_aktiivinen = is_active
 
-    def paivita_pisteet(self, pisteet, p_maara, kerroin):
-        self.pisteet = pisteet + p_maara * kerroin
+    def paivita_pisteet(self, pisteet, piste_maara, kerroin):
+        self.pisteet = pisteet + piste_maara * kerroin
 
 
 def kayttaja_haku():

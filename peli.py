@@ -1,23 +1,30 @@
 import keyboard
-# import utils.pelaaja
+from utils.pelaaja import Pelaaja, kayttaja_haku, olio_luonti
 # import utils.pelilauta
 from utils.ohjaus import kbdCallback
+from data.Tehtävät import luo_tehtava, valitse_tehtava, tulosta_tehtava
 
-# alemmassa kommentissa esimerkki
-# keyboard.on_press(kbdCallback(keyboard.wait()))
+
+max_pisteet = 10000
+pisteet = 10000
+
 
 def main():
+    kayttaja_haku()
+    pelaaja = olio_luonti()
     while True:
-        for i in range(3):
-            print(f"Tehtävä {i}: {luo_tehtävä()}\n")
-        keyboard.on_press(kbdCallback(keyboard.wait()))
 
-    # tähän kohtaan voi laittaa if target location == player location
-    # Suoritetaan tehtävän palautus
+        if pelaaja.tehtava_aktiivinen:
+            pass
 
-    # päivitetään "pelaaja olioon"
+        else:
+            tehtavat = luo_tehtava()
+            tulosta_tehtava(tehtavat)
+            valitse_tehtava(tehtavat, pelaaja)
 
-    # ESC keypress löytyy ohjaus kansiosta ja valikko löytyy kansiosta "valikko"
+        if pisteet > max_pisteet:
+            quit()
+
 
 if __name__ == '__main__':
     main()

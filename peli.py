@@ -1,13 +1,12 @@
 import keyboard
-from utils.pelaaja import Pelaaja, kayttaja_haku, olio_luonti
+from utils.pelaaja import olio_luonti
 # import utils.pelilauta
 from utils.ohjaus import kbdCallback
 from data.Tehtävät import luo_tehtava, valitse_tehtava, tulosta_tehtava
-from utils.pelilauta import art_kartta,art_title_screen
+from utils.pelilauta import art_kartta, art_title_screen
 
 
 def main():
-    kayttaja_haku()
     pelaaja = olio_luonti()
     while True:
 
@@ -18,9 +17,6 @@ def main():
             tehtavat = luo_tehtava()
             tulosta_tehtava(tehtavat)
             valitse_tehtava(tehtavat, pelaaja)
-
-        if pisteet > max_pisteet:
-            quit()
 
 
 if __name__ == '__main__':

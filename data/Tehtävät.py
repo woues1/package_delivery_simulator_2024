@@ -17,6 +17,16 @@ def luo_tehtava():
     return tehtavat
 
 
+# DEF PISTEENMÄÄRITYS()
+# print(Pelaaja.pisteet)
+# KERROIN = 0
+# SIJAINTI TIEDO = DB HAKU
+# TYPE, GOAL.NAAME, COUNRTY
+# IF TYPE HELIPORT KERRROIN = +3
+# IF  GOAAL.NAME CLOUDS 0.7 RAHAA
+# IF ETÄISYYS YLI 300 KM 3
+# ÅIVITA_PSITEET(KERROIN)
+
 def tulosta_tehtava(tehtavat):
     tehtava_numero = 1
     for i in tehtavat:

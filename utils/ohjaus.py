@@ -2,7 +2,6 @@ import keyboard
 from utils.valikko import valikko
 
 
-
 keys = [
     "down",
     "up",
@@ -23,11 +22,8 @@ keys = [
 ]
 
 def kbdCallback(e):
-    found = False
     for key in keys:
         if key == keyboard.normalize_name(e.name):
-            print(f"{key} was pressed")
-            found = True
             if key == "esc":
                 valikko()
                 continue

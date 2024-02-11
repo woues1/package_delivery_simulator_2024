@@ -1,0 +1,35 @@
+import keyboard
+import numpy as np
+from data.sql_db_connect import sql_search
+from utils.pelaaja import Pelaaja
+
+
+
+def luo_tehtava():
+    tulos = sql_search(f"SELECT airport.ident, airport.name FROM airport WHERE iso_country = 'FI'")
+    lentokenttien_maara = len(tulos)
+    tehtavat = []
+    for _ in range(3):
+        sijainti = np.random.randint(0, lentokenttien_maara-1)
+        tehtavat.append(tulos[sijainti])
+    return tehtavat
+
+
+def tulosta_tehtava(tehtavat):
+    tehtava_numero = 1
+    for i in tehtavat:
+        print(f"\nToimita paketti lentokentälle: {i[1]} (paina {tehtava_numero})")
+        tehtava_numero += 1
+
+
+def valitse_tehtava(tehtavat, pelaaja):
+    while True:
+        event = keyboard.read_event(suppress=True)
+        if event.event_type == keyboard.KEY_DOWN:
+            pressed_key = event.name
+            if pressed_key in ['1', '2', '3']:
+                key = int(pressed_key)
+                pelaaja.paivita_tehtava_aktiivinen(True)
+                return print(tehtavat[key])
+            else:
+                print("Invalid input. Please press 1, 2, or 3.")

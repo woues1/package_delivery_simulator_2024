@@ -4,7 +4,6 @@ from data.sql_db_connect import sql_search
 from utils.pelaaja import Pelaaja
 
 
-
 def luo_tehtava():
     tulos = sql_search(f"SELECT airport.ident, airport.name FROM airport WHERE iso_country = 'FI'")
     lentokenttien_maara = len(tulos)

@@ -8,6 +8,7 @@ def get_db_connection() -> mysql.connector.connect:
         'user': 'root',
         'password': 'root',
         'database': 'flight_game',
+        'autocommit': True
     }
 
     # Establish a connection

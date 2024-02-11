@@ -30,6 +30,7 @@ def kbdCallback(e):
             found = True
             if key == "esc":
                 valikko()
+                continue
             # work your magic
 
 keyboard.on_press(kbdCallback)

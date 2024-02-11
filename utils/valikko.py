@@ -11,17 +11,24 @@ def valikko():
 """
 
 def valikko():
-    from utils.testi_koodi import sql_haku_omat_tiedot
+    from utils.pelaaja import kayttaja_haku
     import keyboard
     import sys
     from utils.ohjaus import kbdCallback
-    sql_haku_omat_tiedot("Ilkka")#<----plaayer class
+    printtaus = kayttaja_haku()#<----plaayer class
+    print(printtaus)
     print("""
     1. Uusi peli
     2. Lopeta peli""")
     while True:
-        if keyboard.is_pressed("1"):
-            print("uusi peli")#<----No clue mitetn tää pitäs tehä
-        elif keyboard.is_pressed("2"):
-            print("Lopetetaan peli...")
-            sys.exit()
+        event = keyboard.read_event(suppress=True)
+        if event.event_type == keyboard.KEY_DOWN:
+            pressed_key = event.name
+            if pressed_key("1"):
+                print("uusi peli")#<----No clue mitetn tää pitäs tehä
+            elif pressed_key("2"):
+                print("Lopetetaan peli...")
+                #update.db
+                sys.exit()
+            elif pressed_key("esc"):
+                break

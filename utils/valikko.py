@@ -20,17 +20,15 @@ def valikko(pelaaja):
     art_new_game()       #1. Uusi peli
     art_exit_game()      #2. Lopeta peli""")
     while True:
-        event = keyboard.read_event(suppress=True)
-        if event.event_type == keyboard.KEY_DOWN:
-            pressed_key = event.name
-            if pressed_key == "1":
-                #update.db
-                print("uusi peli")#<----No clue mitetn tää pitäs tehä
-            elif pressed_key == "2":
-                print("Lopetetaan peli...")
-                #update.db
-                sys.exit()
-            elif pressed_key == "esc":
-                print("Main")
-                break
+        valinta = input("Valitse... ")
+        if valinta == "1":
+            #update.db
+            print("uusi peli")#<----No clue mitetn tää pitäs tehä
+        elif valinta== "2":
+            print("Lopetetaan peli...")
+            #update.db
+            sys.exit()
+        elif valinta == "esc":
+            print("Main")
+            break
 

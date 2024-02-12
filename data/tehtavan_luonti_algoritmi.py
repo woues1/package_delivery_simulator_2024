@@ -30,8 +30,8 @@ def kerroin_maaarittaj(location):
     print(distance_to_location)#poista
     co2_consumed = distance_to_location // 10 #co2_budget-co2_consumed=new co2 budget , 1 co2 == 10km
     print(co2_consumed)#poista
-    if distance_to_location < 500:
-        kerroin += 1
+    if distance_to_location < 500: #if distance > 500
+        kerroin += 1 #kerroin =+2
     elif distance_to_location >500 and distance_to_location <1000:
         kerroin += 2
     elif distance_to_location > 1000 and distance_to_location <2000:
@@ -44,6 +44,6 @@ def kerroin_maaarittaj(location):
         kerroin += 16
     print(kerroin)
 
-    #if distance > 500
-    #kerroin =+2
+
+
 kerroin_maaarittaj(location)

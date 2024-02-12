@@ -27,6 +27,10 @@ class Pelaaja:
     def paivita_pisteet(self, piste_maara, kerroin):
         self.pisteet += piste_maara * kerroin
 
+    def paivita_sijainti(self, location):
+        self.location = location
+
+
 def kayttaja_haku():
     tulos = sql_search(f"SELECT screen_name, co2_budget, location "
                        f"FROM game "

@@ -36,7 +36,7 @@ class Pelaaja:
 
 
 def kayttaja_haku():
-    tulos = sql_search(f"SELECT screen_name, co2_consumed, location, co2_budjetti "
+    tulos = sql_search(f"SELECT screen_name, co2_consumed, location, co2_budget "
                        f"FROM game "
                        f"WHERE screen_name = 'ilkka'")
     return tulos

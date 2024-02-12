@@ -26,6 +26,7 @@ def valikko():
         if event.event_type == keyboard.KEY_DOWN:
             pressed_key = event.name
             if pressed_key == "1":
+                #update.db
                 print("uusi peli")#<----No clue mitetn tää pitäs tehä
             elif pressed_key == "2":
                 print("Lopetetaan peli...")

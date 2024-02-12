@@ -12,3 +12,7 @@ def sql_db_lookup_airport_info(location):#location on airport.ident
     locations_search = f"SELECT c.name, a.type, a.continent FROM country AS c JOIN airport AS a ON c.iso_country = a.iso_country WHERE a.ident = '{location}';"
     tulos_locations = sql_search(locations_search)
     return tulos_locations
+def sql_db_lookup_lat_long(location):
+    locations_search = f"SELECT a.latitude_deg, a.longitude_deg FROM airport a WHERE a.ident = '{location}';"
+    tulos_locations = sql_search(locations_search)
+    return tulos_locations

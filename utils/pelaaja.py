@@ -44,5 +44,5 @@ def kayttaja_haku():
 def olio_luonti():
     res = kayttaja_haku()
     for i in res:
-        pelaaja = Pelaaja(i[0], i[1], i[2])
+        pelaaja = Pelaaja(i[0], i[1], i[2], i[3])
         return pelaaja

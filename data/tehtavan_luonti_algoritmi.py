@@ -21,8 +21,7 @@ def generate_delivery_location():
 location = generate_delivery_location()
 print(location)
 
-def kerroin_maaarittaj(location):
-    kerroin = 0
+def co2_consumed_distance(location):
     current_location = sql_db_lookup_lat_long(pelaaja.location)
     destintion = sql_db_lookup_lat_long(location)
     print(current_location, destintion)#poista
@@ -30,20 +29,27 @@ def kerroin_maaarittaj(location):
     print(distance_to_location)#poista
     co2_consumed = distance_to_location // 10 #co2_budget-co2_consumed=new co2 budget , 1 co2 == 10km
     print(co2_consumed)#poista
-    if distance_to_location < 500: #if distance > 500
+    return co2_consumed
+
+co2_consumed_distance(location)
+def kerroin_maarittaja(co2_consumed):
+    kerroin = 0
+    if co2_consumed < 50: #if distance > 500
         kerroin += 1 #kerroin =+2
-    elif distance_to_location >500 and distance_to_location <1000:
+    elif co2_consumed >100 and co2_consumed <200:
         kerroin += 2
-    elif distance_to_location > 1000 and distance_to_location <2000:
+    elif co2_consumed > 200 and co2_consumed<400:
         kerroin += 4
-    elif distance_to_location > 2000 and distance_to_location <4000:
+    elif co2_consumed > 400 and co2_consumed <800:
         kerroin += 8
-    elif distance_to_location > 4000:
+    elif co2_consumed > 800:
         kerroin += 16
     else:
         kerroin += 16
-    print(kerroin)
+    print(kerroin)#poista
+    return kerroin
+
+kerroin_maarittaja(co2_consumed_distance(location))
 
 
 
-kerroin_maaarittaj(location)

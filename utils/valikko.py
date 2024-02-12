@@ -28,7 +28,7 @@ def valikko(pelaaja):
             print("Lopetetaan peli...")
             #update.db
             sys.exit()
-        elif valinta == "esc":
+        elif valinta == "3":
             print("Main")
             break
 

@@ -1,5 +1,5 @@
 import random
-from data.sql_db_update import sql_db_lookup_locations
+from data.sql_db_update import sql_db_lookup_locations, sql_db_lookup_airport_info
 from utils.pelaaja import olio_luonti
 pelaaja = olio_luonti()
 
@@ -18,5 +18,14 @@ def generate_delivery_location():
         return None
 
 
-locaation=generate_delivery_location()
-print(locaation)
+location=generate_delivery_location()
+print(location)
+
+def kerroin_maaarittaj(location):
+    airport_location_info = sql_db_lookup_airport_info(location)
+    a_continent = airport_location_info[0]
+    a_type = airport_location_info[0]
+    a_country = airport_location_info[0]
+    print(a_continent, a_type, a_country)
+
+kerroin_maaarittaj(location)

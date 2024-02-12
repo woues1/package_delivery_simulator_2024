@@ -25,11 +25,11 @@ def kerroin_maaarittaj(location):
     kerroin = 0
     current_location = sql_db_lookup_lat_long(pelaaja.location)
     destintion = sql_db_lookup_lat_long(location)
-    print(current_location, destintion)
+    print(current_location, destintion)#poista
     distance_to_location = distance.distance(current_location, destintion).km
-    print(distance_to_location)
+    print(distance_to_location)#poista
     co2_consumed = distance_to_location // 10
-    print(co2_consumed)
+    print(co2_consumed)#poista
     return co2_consumed
     #co2_budget-co2_consumed=new co2 budget
     #1 co2 == 10km

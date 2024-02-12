@@ -12,12 +12,13 @@ print(pelaaja.pisteet) = print(self."")
 class Pelaaja:
     _instance = None
 
-    def __new__(cls, nimi, pisteet, location):
+    def __new__(cls, nimi, pisteet, location, co2_budjetti):
         if cls._instance is None:
             cls._instance = super(Pelaaja, cls).__new__(cls)
             cls._instance.nimi = nimi
             cls._instance.pisteet = pisteet
             cls._instance.location = location
+            cls._instance.co2_budjetti = co2_budjetti
             cls._instance.tehtava_aktiivinen = False
         return cls._instance
 
@@ -27,12 +28,15 @@ class Pelaaja:
     def paivita_pisteet(self, piste_maara, kerroin):
         self.pisteet += piste_maara * kerroin
 
+    def paivita_co2_budjetti(self, co2_consumed):
+        self.co2_budjetti = self.co2_budjetti - co2_consumed
+
     def paivita_sijainti(self, location):
         self.location = location
 
 
 def kayttaja_haku():
-    tulos = sql_search(f"SELECT screen_name, co2_budget, location "
+    tulos = sql_search(f"SELECT screen_name, co2_consumed, location, co2_budjetti "
                        f"FROM game "
                        f"WHERE screen_name = 'ilkka'")
     return tulos

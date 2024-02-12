@@ -28,11 +28,22 @@ def kerroin_maaarittaj(location):
     print(current_location, destintion)#poista
     distance_to_location = distance.distance(current_location, destintion).km
     print(distance_to_location)#poista
-    co2_consumed = distance_to_location // 10
+    co2_consumed = distance_to_location // 10 #co2_budget-co2_consumed=new co2 budget , 1 co2 == 10km
     print(co2_consumed)#poista
-    return co2_consumed
-    #co2_budget-co2_consumed=new co2 budget
-    #1 co2 == 10km
+    if distance_to_location < 500:
+        kerroin += 1
+    elif distance_to_location >500 and distance_to_location <1000:
+        kerroin += 2
+    elif distance_to_location > 1000 and distance_to_location <2000:
+        kerroin += 4
+    elif distance_to_location > 2000 and distance_to_location <4000:
+        kerroin += 8
+    elif distance_to_location > 4000:
+        kerroin += 16
+    else:
+        kerroin += 16
+    print(kerroin)
+
     #if distance > 500
     #kerroin =+2
 kerroin_maaarittaj(location)

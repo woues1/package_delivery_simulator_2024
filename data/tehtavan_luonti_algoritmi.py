@@ -26,5 +26,7 @@ def kerroin_maaarittaj(location):
     destintion = sql_db_lookup_lat_long(location)
     print(current_location, destintion)
     print(distance.distance(current_location, destintion))
-
+    #co2_budget-co2_consumed=new co2 budget
+    #if distance > 500
+    #kerroin =+2
 kerroin_maaarittaj(location)

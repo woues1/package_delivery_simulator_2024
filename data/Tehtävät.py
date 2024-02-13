@@ -2,13 +2,12 @@ from data.sql_db_connect import sql_search
 from data.tehtavan_luonti_algoritmi import *
 
 
-def luo_tehtava():
-    location = generate_delivery_location()
-    co2_consumed = co2_consumed_distance(location)
+def luo_tehtava(pelaaja):
+    location = generate_delivery_location(pelaaja)
+    co2_consumed = co2_consumed_distance(location, pelaaja)
     kerroin = kerroin_maarittaja(co2_consumed)
     lista = [location, co2_consumed, kerroin]
     return lista
-
 
 
 # DEF PISTEENMÄÄRITYS()

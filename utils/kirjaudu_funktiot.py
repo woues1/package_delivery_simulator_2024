@@ -29,6 +29,8 @@ def kirjaudu_sisaan():
 
 def uusi_peli():
     print("Uusi peli...")
+    screen_name = str(input("Käyttäjätunnus: ?"))
+    player_password = str(input("Salasana: ?"))
     return
 
 

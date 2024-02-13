@@ -11,7 +11,7 @@ def kirjaudu_sisaan():#pitää päästä ulos jotenkin jos ei ole kayttjaa
     Kirjaudu sisään
     Käyttäjänimi: 
     """)
-    screen_name = str(input(""))
+    screen_name = str(input(""))#not case sensitive
     print("""
     Salasna:
     """)

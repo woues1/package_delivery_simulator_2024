@@ -18,6 +18,7 @@ def main_menu():
             exit_game()
         else:
             print(f"Error: false input {valinta}")
-            main_menu()
+            valinta = input("")
+            continue
 
 

@@ -8,6 +8,13 @@ print(pelaaja.pisteet) = print(self."")
 """
 
 
+class Tehtava:
+    def __init__(self, location, co2_consumed, multiplier):
+        self.location = location
+        self.co2_consumed = co2_consumed
+        self.multiplier = multiplier
+
+
 # pelaajan tiedot
 class Pelaaja:
     _instance = None
@@ -20,6 +27,7 @@ class Pelaaja:
             cls._instance.location = location
             cls._instance.co2_budjetti = co2_budjetti
             cls._instance.tehtava_aktiivinen = False
+            cls._instance.current_tehtava = None
         return cls._instance
 
     def paivita_tehtava_aktiivinen(self, is_active):
@@ -34,10 +42,18 @@ class Pelaaja:
     def paivita_sijainti(self, location):
         self.location = location
 
+    def suorita_tehtava(self):
+        if self.tehtava_aktiivinen and self.current_tehtava:
+            self.paivita_pisteet(10, self.current_tehtava.multiplier)
+            self.paivita_co2_budjetti(self.current_tehtava.co2_consumed)
+            self.paivita_tehtava_aktiivinen(False)
+            self.current_tehtava = None
+
 
 def kayttaja_haku(id):
     tulos = sql_db_lookup_kayttaja_tiedot(id)
     return tulos
+
 
 def olio_luonti(id):
     res = kayttaja_haku(id)

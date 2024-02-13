@@ -36,12 +36,10 @@ def tulosta_tehtava(tehtavat):
 
 def valitse_tehtava(tehtavat, pelaaja):
     while True:
-        event = keyboard.read_event(suppress=True)
-        if event.event_type == keyboard.KEY_DOWN:
-            pressed_key = event.name
-            if pressed_key in ['1', '2', '3']:
-                key = int(pressed_key)
-                pelaaja.paivita_tehtava_aktiivinen(True)
-                return print(tehtavat[key])
-            else:
-                print("Invalid input. Please press 1, 2, or 3.")
+        pressed_key = input("valitse (1) (2) (3)")
+        if pressed_key in ['1', '2', '3']:
+            pressed_key = int(pressed_key)
+            pelaaja.paivita_tehtava_aktiivinen(True)
+            return print(tehtavat[pressed_key])
+        else:
+            print("Invalid input. Please press 1, 2, or 3.")

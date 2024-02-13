@@ -1,23 +1,9 @@
-import keyboard
-from utils.pelaaja import olio_luonti
-# import utils.pelilauta
-from data.Tehtävät import luo_tehtava, valitse_tehtava, tulosta_tehtava
-from utils.pelilauta import art_kartta, art_title_screen
-
+from utils.kirjaudu import main_menu
 def main():
-    # kirjaudu()
-    pelaaja = olio_luonti()
-    # alku_menu()
-    while True:
+    moi = main_menu()
+    for i in range(10):
+        print(moi)
 
-        if pelaaja.tehtava_aktiivinen:
-            # Valitse_lentokohde()
-            continue
-
-        else:
-            tehtavat = luo_tehtava()
-            tulosta_tehtava(tehtavat)
-            valitse_tehtava(tehtavat, pelaaja)
 
 
 if __name__ == '__main__':

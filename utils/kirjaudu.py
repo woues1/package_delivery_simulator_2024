@@ -9,8 +9,7 @@ def main_menu():
             tulos = kirjaudu_sisaan()
             if tulos != []:
                 #Tässä pelaaaja kirjautuu sisään ja break takas main scriptiin (pitääkö tää paluttaa mitään)? esim. g.id
-                print(tulos)#game_id
-                break
+                return tulos
         elif valinta == "2":
             uusi_peli()
         elif valinta == "3":
@@ -20,4 +19,3 @@ def main_menu():
             main_menu()
 
 
-main_menu()#poista

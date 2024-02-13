@@ -1,20 +1,14 @@
-import keyboard
-import numpy as np
 from data.sql_db_connect import sql_search
-from utils.pelaaja import olio_luonti
-
-
-pelaaja = olio_luonti()
+from data.tehtavan_luonti_algoritmi import *
 
 
 def luo_tehtava():
-    tulos = sql_search(f"SELECT airport.ident, airport.name FROM airport WHERE iso_country = 'FI'")
-    lentokenttien_maara = len(tulos)
-    tehtavat = []
-    for _ in range(3):
-        sijainti = np.random.randint(0, lentokenttien_maara-1)
-        tehtavat.append(tulos[sijainti])
-    return tehtavat
+    location = generate_delivery_location()
+    co2_consumed = co2_consumed_distance(location)
+    kerroin = kerroin_maarittaja(co2_consumed)
+    lista = [location, co2_consumed, kerroin]
+    return lista
+
 
 
 # DEF PISTEENMÄÄRITYS()
@@ -40,6 +34,6 @@ def valitse_tehtava(tehtavat, pelaaja):
         if pressed_key in ['1', '2', '3']:
             pressed_key = int(pressed_key)
             pelaaja.paivita_tehtava_aktiivinen(True)
-            return print(tehtavat[pressed_key])
+            return
         else:
             print("Invalid input. Please press 1, 2, or 3.")

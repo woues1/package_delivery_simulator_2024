@@ -1,9 +1,8 @@
 from utils.kirjaudu import main_menu
-def main():
-    moi = main_menu()
-    for i in range(10):
-        print(moi)
 
+def main():
+    pelaaja = main_menu()
+    print(pelaaja.nimi)
 
 
 if __name__ == '__main__':

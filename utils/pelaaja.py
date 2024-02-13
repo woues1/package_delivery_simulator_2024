@@ -35,12 +35,12 @@ class Pelaaja:
         self.location = location
 
 
-def kayttaja_haku(screen_name, salasana):
-    tulos = sql_db_lookup_kayttaja_tiedot(screen_name, salasana)
+def kayttaja_haku(id):
+    tulos = sql_db_lookup_kayttaja_tiedot(id)
     return tulos
 
-def olio_luonti():
-    res = kayttaja_haku()
+def olio_luonti(id):
+    res = kayttaja_haku(id)
     for i in res:
         pelaaja = Pelaaja(i[0], i[1], i[2], i[3])
         return pelaaja

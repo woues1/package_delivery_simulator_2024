@@ -18,7 +18,7 @@ def sql_db_lookup_log_in(screen_name):#player_password
     locations_search = f"SELECT g.id FROM game g WHERE g.screen_name = '{screen_name}';" # AND g.password = '{password_player}'
     game_id = sql_search(locations_search)
     return game_id
-def sql_db_update_new_game(screen_name, player_password):
+def sql_db_update_new_game(screen_name, player_password): #HUOM!!!!älä kutsu tätä, ei valmis
     update_query =  (f"INSERT INTO game (co2_consumed, co2_budget, screen_name, location, password)" #<--Password ei vielä lisätty DB
                      f"VALUES (0, 10000, '{screen_name}','EFHK', '{player_password}');")             #<---- Default starting location EFHK(Helsinki Vantaa)
     tulos = sql_search(update_query)

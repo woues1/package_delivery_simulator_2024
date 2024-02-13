@@ -1,9 +1,8 @@
-from utils.pelilauta import art_title_screen, art_exit_game
 from utils.kirjaudu_funktiot import kirjaudu_sisaan, uusi_peli, exit_game
-def main_menu():
-    art_title_screen()
-    valinta = input("")
 
+
+def main_menu():
+    valinta = input("")
     while True:
         if valinta == "1":
             tulos = kirjaudu_sisaan()
@@ -18,9 +17,8 @@ def main_menu():
         elif valinta == "3":
             exit_game()
         else:
-            print(f"Error: false input{valinta}")
-            continue
-
+            print(f"Error: false input {valinta}")
+            main_menu()
 
 
 main_menu()

@@ -19,12 +19,12 @@ def kirjaudu_sisaan():
     game_id = sql_db_lookup_log_in(screen_name)# atm palauttaa game_id, en oo viel suunitellu miten se tarkistaa oikeuden
     print(game_id) #<<----- Poista
     if game_id != []:
-        print("Tervetulo...")
-        return True
+        # db_tietojen haku
+        print("Tervetuloa...")
+        return game_id
     else:
-        # dp_tietojen haky
         print("Wrong username or password...")
-        return False
+        return game_id
 
 
 def uusi_peli():

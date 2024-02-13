@@ -6,7 +6,7 @@ from utils.pelilauta import art_exit_game
 
 
 
-def kirjaudu_sisaan():
+def kirjaudu_sisaan():#pitää päästä ulos jotenkin jos ei ole kayttjaa
     print("""
     Kirjaudu sisään
     Käyttäjänimi: 

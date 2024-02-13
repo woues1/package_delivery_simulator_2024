@@ -1,7 +1,8 @@
 from utils.kirjaudu_funktiot import kirjaudu_sisaan, uusi_peli, exit_game
-
+from utils.pelilauta import art_title_screen
 
 def main_menu():
+    art_title_screen()
     valinta = input("")
     while True:
         if valinta == "1":
@@ -10,8 +11,6 @@ def main_menu():
                 #Tässä pelaaaja kirjautuu sisään ja break takas main scriptiin (pitääkö tää paluttaa mitään)? esim. g.id
                 print(tulos)#game_id
                 break
-            else:
-                main_menu() # tää ehkä pitää muuttaa paulautuvaan komenttoon niinku kirjaudu_sisaan
         elif valinta == "2":
             uusi_peli()
         elif valinta == "3":

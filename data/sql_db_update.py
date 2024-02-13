@@ -10,11 +10,11 @@ def sql_db_lookup_airport_info(location):#location on airport.ident
     locations_search = f"SELECT c.name, a.type, a.continent FROM country AS c JOIN airport AS a ON c.iso_country = a.iso_country WHERE a.ident = '{location}';"
     tulos_locations = sql_search(locations_search)
     return tulos_locations
-def sql_db_lookup_lat_long(location):
+def sql_db_lookup_lat_long(location):#location on airport.ident
     locations_search = f"SELECT a.latitude_deg, a.longitude_deg FROM airport a WHERE a.ident = '{location}';"
     tulos_locations = sql_search(locations_search)
     return tulos_locations
-def sql_db_lookup_log_in(screen_name):#player_password
+def sql_db_lookup_log_in(screen_name):#(player_password) ei ole vielä
     locations_search = f"SELECT g.id FROM game g WHERE g.screen_name = '{screen_name}';" # AND g.password = '{password_player}'
     game_id = sql_search(locations_search)
     return game_id

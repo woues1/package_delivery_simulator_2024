@@ -1,5 +1,5 @@
 from data.sql_db_connect import sql_search
-
+from data.sql_db_update import *
 # COPY PASTE PELAAJA
 """
 from utils.pelaaja import olio_luonti
@@ -35,10 +35,8 @@ class Pelaaja:
         self.location = location
 
 
-def kayttaja_haku():
-    tulos = sql_search(f"SELECT screen_name, co2_consumed, location, co2_budget "
-                       f"FROM game "
-                       f"WHERE screen_name = 'ilkka'")
+def kayttaja_haku(screen_name, salasana):
+    tulos = sql_db_lookup_kayttaja_tiedot(screen_name, salasana)
     return tulos
 
 def olio_luonti():

@@ -1,4 +1,4 @@
-from data.sql_db_update import sql_db_lookup_log_in
+from data.sql_db_update import sql_db_lookup_log_in, sql_db_update_new_game
 import sys
 from utils.pelilauta import art_exit_game
 
@@ -31,6 +31,7 @@ def uusi_peli():
     print("Uusi peli...")
     screen_name = str(input("Käyttäjätunnus: ?"))
     player_password = str(input("Salasana: ?"))
+    # sql_db_update_new_game(screen_name, player_password) <--- On loutu, mutta puuttuu toimminnallisuus.
     return
 
 

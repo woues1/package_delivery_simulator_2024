@@ -7,6 +7,11 @@ pelaaja = olio_luonti()
 print(pelaaja.pisteet) = print(self."")
 """
 
+# tehtava1 = Tehtava(location="Location1", co2_consumed=5, multiplier=2) <-- näin luodaan tehtävä
+
+# pelaaja.current_tehtava = tehtava1 <-- tällä annetaan pelaajalle tehtävä
+
+# pelaaja.suorita_tehtava() <-- tällä komennolla pelaaja suorittaa tehtävän
 
 class Tehtava:
     def __init__(self, location, co2_consumed, multiplier):
@@ -44,6 +49,7 @@ class Pelaaja:
 
     def suorita_tehtava(self):
         if self.tehtava_aktiivinen and self.current_tehtava:
+            self.paivita_sijainti(self.current_tehtava.location)
             self.paivita_pisteet(10, self.current_tehtava.multiplier)
             self.paivita_co2_budjetti(self.current_tehtava.co2_consumed)
             self.paivita_tehtava_aktiivinen(False)

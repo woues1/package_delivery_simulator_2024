@@ -16,3 +16,7 @@ def sql_db_lookup_lat_long(location):
     locations_search = f"SELECT a.latitude_deg, a.longitude_deg FROM airport a WHERE a.ident = '{location}';"
     tulos_locations = sql_search(locations_search)
     return tulos_locations
+def sql_db_lookup_log_in(screen_name):#player_password
+    locations_search = f"SELECT g.id FROM game g WHERE g.screen_name = '{screen_name}';" # AND g.password = '{password_player}'
+    game_id = sql_search(locations_search)
+    return game_id

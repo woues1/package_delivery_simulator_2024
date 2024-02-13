@@ -1,0 +1,37 @@
+from data.sql_db_update import sql_db_lookup_log_in
+import sys
+from utils.pelilauta import art_exit_game
+
+
+
+
+
+def kirjaudu_sisaan():
+    print("""
+    Kirjaudu sisään: \n 
+    Käyttäjänimi: \n
+    """)
+    screen_name = str(input(""))
+    print("""
+    Salasna:\n
+    """)
+    password_player = str(input(""))#password_player, alempaan hakuun
+    game_id = sql_db_lookup_log_in(screen_name)# atm palauttaa game_id, en oo viel suunitellu miten se tarkistaa oikeuden
+    print(game_id) #<<----- Poista
+    if game_id != []:
+        print("Tervetulo...")
+        return True
+    else:
+        # dp_tietojen haky
+        print("Wrong username or password...")
+        return False
+
+
+def uusi_peli():
+    print("Uusi peli...")
+    return
+
+
+def exit_game():
+    art_exit_game()
+    sys.exit()

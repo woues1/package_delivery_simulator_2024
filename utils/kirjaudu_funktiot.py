@@ -8,12 +8,12 @@ from utils.pelilauta import art_exit_game
 
 def kirjaudu_sisaan():
     print("""
-    Kirjaudu sisään: \n 
-    Käyttäjänimi: \n
+    Kirjaudu sisään
+    Käyttäjänimi: 
     """)
     screen_name = str(input(""))
     print("""
-    Salasna:\n
+    Salasna:
     """)
     password_player = str(input(""))#password_player, alempaan hakuun
     game_id = sql_db_lookup_log_in(screen_name)# atm palauttaa game_id, en oo viel suunitellu miten se tarkistaa oikeuden

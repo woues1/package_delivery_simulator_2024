@@ -16,15 +16,15 @@ def kirjaudu_sisaan():
     Salasna:
     """)
     password_player = str(input(""))#password_player, alempaan hakuun
-    game_id = sql_db_lookup_log_in(screen_name)# atm palauttaa game_id, en oo viel suunitellu miten se tarkistaa oikeuden
-    print(game_id) #<<----- Poista
-    if game_id != []:
+    user_id = sql_db_lookup_log_in(screen_name)# atm palauttaa game_id, en oo viel suunitellu miten se tarkistaa oikeuden
+    print(user_id) #<<----- Poista
+    if user_id != []:
         # db_tietojen haku
         print("Tervetuloa...")
-        return game_id
+        return user_id
     else:
         print("Wrong username or password...")
-        return game_id
+        return user_id
 
 
 def uusi_peli():

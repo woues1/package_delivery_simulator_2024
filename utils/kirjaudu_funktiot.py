@@ -16,8 +16,7 @@ def kirjaudu_sisaan():
     Salasna:
     """)
     password_player = str(input(""))#password_player, alempaan hakuun
-    user_id = sql_db_lookup_log_in(screen_name)# atm palauttaa game_id, en oo viel suunitellu miten se tarkistaa oikeuden
-    print(user_id) #<<----- Poista
+    user_id = sql_db_lookup_log_in(screen_name,password_player)# atm palauttaa game_id, en oo viel suunitellu miten se tarkistaa oikeuden
     if user_id != []:
         # db_tietojen haku
         print("Tervetuloa...")

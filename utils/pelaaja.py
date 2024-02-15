@@ -47,11 +47,16 @@ class Pelaaja:
     def paivita_sijainti(self, location):
         self.location = location
 
+    def aseta_tehtava(self, tehtava):
+        if not self.tehtava_aktiivinen:
+            self.current_tehtava = tehtava
+            self.paivita_tehtava_aktiivinen(True)
+
     def suorita_tehtava(self):
         if self.tehtava_aktiivinen and self.current_tehtava:
             self.paivita_sijainti(self.current_tehtava.location)
             self.paivita_pisteet(10, self.current_tehtava.multiplier)
-            self.paivita_co2_budjetti(self.current_tehtava.co2_consumed)
+            self.paivita_co2_kulutettu(self.current_tehtava.co2_consumed)
             self.paivita_tehtava_aktiivinen(False)
             self.current_tehtava = None
 

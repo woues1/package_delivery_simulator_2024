@@ -11,12 +11,12 @@ def kirjaudu_sisaan():#pitää päästä ulos jotenkin jos ei ole kayttjaa
     Kirjaudu sisään
     Käyttäjänimi: 
     """)
-    screen_name = str(input(""))#not case sensitive
+    screen_name = str(input(""))
     print("""
     Salasna:
     """)
-    player_password = str(input(""))#password_player, alempaan hakuun
-    user_id = sql_db_lookup_log_in(screen_name,player_password)# atm palauttaa game_id, en oo viel suunitellu miten se tarkistaa oikeuden
+    player_password = str(input(""))
+    user_id = sql_db_lookup_log_in(screen_name,player_password)
     if user_id != []:
         # db_tietojen haku
         print("Tervetuloa...")

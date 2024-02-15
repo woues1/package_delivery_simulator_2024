@@ -17,7 +17,7 @@ def kirjaudu_sisaan():#pitää päästä ulos jotenkin jos ei ole kayttjaa
     print("""
     Salasna:
     """)
-    player_password = str(input(""))
+    player_password = str(input(""))# how to make input star?
     user_id = sql_db_lookup_log_in(screen_name,player_password)
     if user_id != []:
         # db_tietojen haku

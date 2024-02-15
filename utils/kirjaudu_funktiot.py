@@ -1,4 +1,4 @@
-from data.sql_db_update import sql_db_lookup_log_in, sql_db_update_new_game
+from data.sql_db_update import sql_db_lookup_log_in, sql_db_update_new_game, sql_db_lookup_screen_names_money
 import sys
 from utils.pelilauta import art_exit_game
 
@@ -39,3 +39,23 @@ def uusi_peli():
 def exit_game():
     art_exit_game()
     sys.exit()
+
+#game.ids
+#game.money
+def leaderboard_menu():
+    while True:
+        results = sql_db_lookup_screen_names_money()
+        sorted_results = sorted(results, key=lambda x: x[1], reverse=True)
+        print(f"""
++------------------------------------------+
+|               Leaderboaard               |
++------------------------------------------+
+   Name:        Co2 Consumed
+    """)
+        for index, (name, money) in enumerate(sorted_results, start=1):
+            print(f"| {index}. {name:10} | {money:10} |")
+        print("Input back to get back...")
+        valinta = str(input(""))
+        if valinta == "back":
+            return "back"
+

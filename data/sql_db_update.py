@@ -33,3 +33,7 @@ def starting_location():
     locations = sql_db_lookup_locations()
     delivery_location = random.choice(locations)[0]
     return delivery_location
+
+def sql_db_lookup_screen_names_money():
+    tulos = sql_search(f"SELECT screen_name,co2_consumed FROM game;")
+    return tulos

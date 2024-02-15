@@ -8,10 +8,12 @@ from utils.pelilauta import art_exit_game
 
 def kirjaudu_sisaan():#pitää päästä ulos jotenkin jos ei ole kayttjaa
     print("""
-    Kirjaudu sisään
+    Kirjaudu sisään (kirjoita 'back' jos haluat takaisin)
     Käyttäjänimi: 
     """)
     screen_name = str(input(""))
+    if screen_name == "back":
+        return "back"
     print("""
     Salasna:
     """)

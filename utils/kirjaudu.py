@@ -8,6 +8,10 @@ def main_menu():
     while True:
         if valinta == "1":
             tulos = kirjaudu_sisaan()
+            if tulos == "back":
+                art_title_screen()
+                valinta = input("")
+                continue
             if tulos != []:
                 #Tässä pelaaaja kirjautuu sisään ja break takas main scriptiin (pitääkö tää paluttaa mitään)? esim. g.id
                 pelaaja = olio_luonti(tulos[0][0])

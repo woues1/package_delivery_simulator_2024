@@ -84,3 +84,14 @@ def art_exit_game():
 |_____/_/\_\_|\__|_|_| |_|\__, | (_) (_) (_)
                           |___/                 
     """)
+def art_omat_tiedot():
+    return print("""
+    +---------------------+
+    |     Omat tiedot     |
+    +---------------------+
+    |       Country       |
+    |       airport       |
+    | Co2_consumed/budget |
+    |        Money        |
+    +---------------------+
+    """)

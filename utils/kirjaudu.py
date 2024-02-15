@@ -17,7 +17,9 @@ def main_menu():
                 pelaaja = olio_luonti(tulos[0][0])
                 return pelaaja
         elif valinta == "2":
-            uusi_peli()
+            tulos = uusi_peli()
+            pelaaja = olio_luonti(tulos[0][0])
+            return pelaaja
         elif valinta == "3":
             exit_game()
         else:

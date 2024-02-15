@@ -40,3 +40,5 @@ def kerroin_maarittaja(co2_consumed):
     else:
         kerroin += 16
     return kerroin
+
+#Tänne vois lisää vielä miteen goal data vaikuttais kertoimeen

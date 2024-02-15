@@ -24,7 +24,7 @@ def sql_db_lookup_kayttaja_tiedot(id):
     return tulos
 def sql_db_update_new_game(screen_name, player_password): #HUOM!!!!älä kutsu tätä, ei valmis
     update_query =  (f"INSERT INTO game (co2_consumed, co2_budget, location, screen_name, password) "
-                     f"VALUES (0, 10000, '{starting_location()}','{screen_name}' '{player_password}');")             #<---- Default starting location EFHK(Helsinki Vantaa),
+                     f"VALUES (0, 10000, 'EFHK', '{screen_name}', '{player_password}');")             #<---- Default starting location EFHK(Helsinki Vantaa),
     tulos = sql_search(update_query)                                                                 #Voi käyttää samaaa tehtavan generointii ett saais RNG starting location.
     return tulos
 

@@ -32,7 +32,7 @@ def uusi_peli():
     print("Uusi peli...")
     screen_name = str(input("Käyttäjätunnus: ?"))
     player_password = str(input("Salasana: ?"))
-    # sql_db_update_new_game(screen_name, player_password) <--- On loutu, mutta puuttuu toimminnallisuus.
+    sql_db_update_new_game(screen_name, player_password) #<--- On loutu, mutta puuttuu toimminnallisuus.
     return #game.id
 
 

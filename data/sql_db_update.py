@@ -25,7 +25,7 @@ def sql_db_lookup_kayttaja_tiedot(id):
 def sql_db_update_new_game(screen_name, player_password): #HUOM!!!!älä kutsu tätä, ei valmis
     update_query =  (f"INSERT INTO game (co2_consumed, co2_budget, location, screen_name, password) "
                      f"VALUES (0, 10000, 'EFHK', '{screen_name}', '{player_password}');")             #<---- Default starting location EFHK(Helsinki Vantaa),
-    sql_search(update_query)
+    sql_search(update_query) #Game ID poistaminen jää haahuilee uudet game id tulee isomalla numerolla vaikka vanhat olis poistettu
     tulos = sql_db_lookup_log_in(screen_name, player_password)
     return tulos
 

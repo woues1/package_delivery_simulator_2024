@@ -1,6 +1,7 @@
 from utils.kirjaudu import main_menu
 from data.Tehtävät import *
 from utils.pelaaja import *
+from utils.valikko import valikko
 
 
 def main():
@@ -24,16 +25,18 @@ def main():
         +---------------------+ 
         |     Omat tiedot     |  
         +---------------------+ 
-        |       Country       |                                       
-        |       airport       |                                      
-        |      {pelaaja.co2_consumed}/10000     |                                 
-        |        Money        | 
+               Country                                              
+                {pelaaja.location}                                  
+              {pelaaja.co2_consumed}/10000                                      
+                Money         
         +---------------------+ 
         """)
-
-    tehtava = Tehtava(t1[0],t1[1],t1[2])
-    pelaaja.aseta_tehtava(tehtava)
-    pelaaja.suorita_tehtava()
+    valintaa = input("Valitse : 1.Vallikko, 2.Valitse tehtävä , 3.Siirry  ")
+    if valintaa == "1":
+        valikko(pelaaja)
+    #tehtava = Tehtava(t1[0],t1[1],t1[2])
+    #pelaaja.aseta_tehtava(tehtava)
+    #pelaaja.suorita_tehtava()
 
 
 

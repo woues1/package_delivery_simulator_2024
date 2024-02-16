@@ -9,18 +9,20 @@ def valikko():
     print("LOPETA PELI(nappi)")
 
 """
-
+from utils.pelaaja import olio_luonti
 def valikko(pelaaja):
-    from utils.pelaaja import olio_luonti
-    import keyboard
     import sys
-    from utils.pelilauta import art_new_game,art_exit_game,art_gane_paused
     print(pelaaja.pisteet,pelaaja.nimi,pelaaja.location)
-    art_gane_paused()
-    art_new_game()       #1. Uusi peli
-    art_exit_game()      #2. Lopeta peli""")
     while True:
-        valinta = input("Valitse... ")
+        valinta = input("""
+        +--------------------+
+        Valitse
+        +--------------------+
+        1. Uusi peli...
+        2. Tallenna ja poistu
+        3. Takaisin...
+        +--------------------+
+        """)
         if valinta == "1":
             #update.db
             print("uusi peli")#<----No clue mitetn tää pitäs tehä
@@ -30,5 +32,5 @@ def valikko(pelaaja):
             sys.exit()
         elif valinta == "3":
             print("Main")
-            break
+            return valikko(pelaaja)
 

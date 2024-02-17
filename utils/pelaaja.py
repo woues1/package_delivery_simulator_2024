@@ -1,4 +1,3 @@
-from data.sql_db_connect import sql_search
 from data.sql_db_update import *
 # COPY PASTE PELAAJA
 """
@@ -22,18 +21,13 @@ class Tehtava:
 
 # pelaajan tiedot
 class Pelaaja:
-    _instance = None
-
-    def __new__(cls, nimi, pisteet, location, co2_consumed):
-        if cls._instance is None:
-            cls._instance = super(Pelaaja, cls).__new__(cls)
-            cls._instance.nimi = nimi
-            cls._instance.pisteet = pisteet
-            cls._instance.location = location
-            cls._instance.co2_consumed = co2_consumed
-            cls._instance.tehtava_aktiivinen = False
-            cls._instance.current_tehtava = None
-        return cls._instance
+    def __init__(self, nimi, pisteet, location, co2_consumed):
+        self.nimi = nimi
+        self.pisteet = pisteet
+        self.location = location
+        self.co2_consumed = co2_consumed
+        self.tehtava_aktiivinen = False
+        self.current_tehtava = None
 
     def paivita_tehtava_aktiivinen(self, is_active):
         self.tehtava_aktiivinen = is_active

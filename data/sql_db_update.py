@@ -23,15 +23,15 @@ def sql_db_lookup_kayttaja_tiedot(id):
                        f"WHERE id='{id}'")
     return tulos
 def sql_db_update_new_game(screen_name, player_password): #HUOM!!!!älä kutsu tätä, ei valmis
-    from data.sql_db_update import sql_db_lookup_starting_location
-    starting_location = sql_db_lookup_starting_location()
+    from data.sql_db_update import sql_db_lookup_random_location
+    starting_location = sql_db_lookup_random_location()
     update_query =  (f"INSERT INTO game (co2_consumed, co2_budget, location, screen_name, password) "
                      f"VALUES (0, 10000, '{starting_location}', '{screen_name}', '{player_password}');")             #<---- Default starting location EFHK(Helsinki Vantaa),
     sql_search(update_query) #Game ID poistaminen jää haahuilee uudet game id tulee isomalla numerolla vaikka vanhat olis poistettu
     tulos = sql_db_lookup_log_in(screen_name, player_password)
     return tulos
 
-def sql_db_lookup_starting_location():
+def sql_db_lookup_random_location():
     locations = sql_db_lookup_locations()
     delivery_location = random.choice(locations)[0]
     return delivery_location

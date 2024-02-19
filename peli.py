@@ -27,7 +27,7 @@ def main():
         +---------------------+ 
                Country                                              
                 {pelaaja.location}                                  
-              {pelaaja.co2_consumed}/10000                                      
+            {pelaaja.co2_consumed}/10000                                      
                 {pelaaja.pisteet}         
         +---------------------+ 
         """)

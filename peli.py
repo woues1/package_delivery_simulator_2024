@@ -28,10 +28,10 @@ def main():
                Country                                              
                 {pelaaja.location}                                  
               {pelaaja.co2_consumed}/10000                                      
-                Money         
+                {pelaaja.pisteet}         
         +---------------------+ 
         """)
-    valintaa = input("Valitse : 1.Vallikko, 2.Valitse tehtävä , 3.Siirry  ")
+    valintaa = input("Valitse : 1.Vallikko, 2.Valitse tehtävä , 3.Siirry  ")#4.Kauppa? Vois käyttää raha saada permanent buffs, esim. Co2 consumed halved, pelaaja.pisteet doubler, Co2 Budget doubler.
     if valintaa == "1":
         valikko(pelaaja)
     #tehtava = Tehtava(t1[0],t1[1],t1[2])

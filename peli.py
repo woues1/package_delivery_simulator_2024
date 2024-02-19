@@ -2,7 +2,7 @@ from utils.kirjaudu import main_menu
 from data.Tehtävät import *
 from utils.pelaaja import *
 from utils.valikko import valikko
-
+from utils.kauppa_valikko import *1
 
 def main():
     jatka = True#Lisätty while loop että valikko toiminnallisuus toimii, en tiiä ootko samaaa mieltä tästä
@@ -36,7 +36,7 @@ def main():
         | {pelaaja.pisteet}         
         +---------------------++---------------------++---------------------+ 
         """)
-        valinta = input("Valitse : 1.Valikko, 2.Valitse tehtävä , 3.Siirry  ")#4.Kauppa? Vois käyttää raha saada permanent buffs, esim. Co2 consumed halved, pelaaja.pisteet doubler, Co2 Budget doubler.
+        valinta = input("Valitse : 1.Valikko, 2.Valitse tehtävä , 3.Siirry , 4. Kauppa  ")#4.Kauppa? Vois käyttää raha saada permanent buffs, esim. Co2 consumed halved, pelaaja.pisteet doubler, Co2 Budget doubler.
         if valinta == "1":
             valikko(pelaaja)
             continue
@@ -51,7 +51,10 @@ def main():
             else:
                 print(f"{tehtava} ei ole valinta.")
         if valinta == "3":
-            pelaaja.suorita_tehtava()
+            pelaaja.suorita_tehtava()#Tämä ei toimi atm
+        if valinta == "4":
+            kauppa_valikko(pelaaja)
+            continue
         else:
             print(f"{valinta} ei ole valinta")
 

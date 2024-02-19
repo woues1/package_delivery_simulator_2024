@@ -2,7 +2,7 @@ from utils.kirjaudu import main_menu
 from data.Tehtävät import *
 from utils.pelaaja import *
 from utils.valikko import valikko
-from utils.kauppa_valikko import *1
+from utils.kauppa_valikko import *
 
 def main():
     jatka = True#Lisätty while loop että valikko toiminnallisuus toimii, en tiiä ootko samaaa mieltä tästä

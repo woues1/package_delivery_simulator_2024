@@ -22,7 +22,7 @@ def main():
         print(*lista[0])
         print(f"""
         +------------------------------------------+
-        |Tehtävät(Airport, Co2 Consumed, kerroin)  |
+        | Tehtävät(Airport, Co2 Consumed, kerroin) |
         +------------------------------------------+
         1.{t1}
         2.{t2} 
@@ -34,7 +34,7 @@ def main():
         | {player_location_print[0][0]}                                             
         | {pelaaja.co2_consumed}/10000                                      
         | {pelaaja.pisteet}         
-        +---------------------+ 
+        +---------------------++---------------------++---------------------+ 
         """)
         valinta = input("Valitse : 1.Valikko, 2.Valitse tehtävä , 3.Siirry  ")#4.Kauppa? Vois käyttää raha saada permanent buffs, esim. Co2 consumed halved, pelaaja.pisteet doubler, Co2 Budget doubler.
         if valinta == "1":

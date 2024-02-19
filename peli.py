@@ -41,17 +41,20 @@ def main():
             valikko(pelaaja)
             continue
         if valinta == "2":
+            tehtava1 = Tehtava(t1[0], t1[1], t1[2])
+            tehtava2 = Tehtava(t2[0], t2[1], t2[2])
+            tehtava3 = Tehtava(t3[0], t3[1], t3[2])
             tehtava = input("Valitse tehtävä (1, 2, 3): ")
             if tehtava == "1":
-                pelaaja.aseta_tehtava(t1)
+                pelaaja.aseta_tehtava(tehtava1)
             elif tehtava == "2":
-                pelaaja.aseta_tehtava(t2)
+                pelaaja.aseta_tehtava(tehtava2)
             elif tehtava == "3":
-                pelaaja.aseta_tehtava(t3)
+                pelaaja.aseta_tehtava(tehtava3)
             else:
                 print(f"{tehtava} ei ole valinta.")
         if valinta == "3":
-            pelaaja.suorita_tehtava()#Tämä ei toimi atm
+            pelaaja.suorita_tehtava()
         if valinta == "4":
             kauppa_valikko(pelaaja)
             continue

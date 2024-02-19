@@ -39,3 +39,10 @@ def starting_location():
 def sql_db_lookup_screen_names_money():
     tulos = sql_search(f"SELECT screen_name,co2_consumed FROM game;")
     return tulos
+
+def sql_db_lookup_location_name(pelaaja_location):
+    tulos = sql_search(f"SELECT a.name FROM airport a WHERE a.ident = '{pelaaja_location}';")
+    return tulos
+def sql_db_lookup_country_name(pelaaja_location):
+    tulos = sql_search(f"SELECT c.name FROM country AS c JOIN airport AS a ON c.iso_country = a.iso_country WHERE a.ident = '{pelaaja_location}';")
+    return tulos

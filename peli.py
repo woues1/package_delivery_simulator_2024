@@ -5,7 +5,7 @@ from utils.valikko import valikko
 from utils.kauppa_valikko import *
 
 def main():
-    jatka = True#Lisätty while loop että valikko toiminnallisuus toimii, en tiiä ootko samaaa mieltä tästä
+    jatka = True #Lisätty while loop että valikko toiminnallisuus toimii, en tiiä ootko samaaa mieltä tästä
     pelaaja = main_menu()
     while jatka:
 
@@ -16,7 +16,7 @@ def main():
         t1 = luo_tehtava(pelaaja)
         t2 = luo_tehtava(pelaaja)
         t3 = luo_tehtava(pelaaja)
-        lista = [t1,t2,t3]#näihin pitäs vaihtaa airport.name mielummin kun airport.id
+        lista = [t1,t2,t3] #näihin pitäs vaihtaa airport.name mielummin kun airport.id
         player_location_print = sql_db_lookup_location_name(pelaaja.location)
         player_country_print = sql_db_lookup_country_name(pelaaja.location)
         t1_location = sql_db_lookup_location_name(t1[0])
@@ -34,7 +34,7 @@ def main():
         2.{t2} {t2_location[0][0]}, {t2_country[0][0]}
         3.{t3} {t3_location[0][0]}, {t3_country[0][0]}
         +---------------------++---------------------++---------------------+ 
-        |     Omat tiedot     |  Aktiivinen tehtava : {pelaaja.current_tehtava}
+        |     Omat tiedot     |  Aktiivinen tehtava : {pelaaja.tehtava_aktiivinen}
         +---------------------++---------------------++---------------------+ 
         | {player_country_print[0][0]} 
         | {player_location_print[0][0]}                                             
@@ -70,7 +70,6 @@ def main():
     #tehtava = Tehtava(t1[0],t1[1],t1[2])
     #pelaaja.aseta_tehtava(tehtava)
     #pelaaja.suorita_tehtava()
-
 
 
 if __name__ == '__main__':

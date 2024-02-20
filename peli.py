@@ -19,14 +19,20 @@ def main():
         lista = [t1,t2,t3]#näihin pitäs vaihtaa airport.name mielummin kun airport.id
         player_location_print = sql_db_lookup_location_name(pelaaja.location)
         player_country_print = sql_db_lookup_country_name(pelaaja.location)
+        t1_location = sql_db_lookup_location_name(t1[0])
+        t2_location = sql_db_lookup_location_name(t2[0])
+        t3_location = sql_db_lookup_location_name(t3[0])
+        t1_country = sql_db_lookup_country_name(t1[0])
+        t2_country = sql_db_lookup_country_name(t2[0])
+        t3_country = sql_db_lookup_country_name(t3[0])
         print(*lista[0])
         print(f"""
         +------------------------------------------+
         | Tehtävät(Airport, Co2 Consumed, kerroin) |
         +------------------------------------------+
-        1.{t1}
-        2.{t2} 
-        3.{t3} 
+        1.{t1} {t1_location[0][0]}, {t1_country[0][0]}
+        2.{t2} {t2_location[0][0]}, {t2_country[0][0]}
+        3.{t3} {t3_location[0][0]}, {t3_country[0][0]}
         +---------------------++---------------------++---------------------+ 
         |     Omat tiedot     |  Aktiivinen tehtava : {pelaaja.current_tehtava}
         +---------------------++---------------------++---------------------+ 

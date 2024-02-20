@@ -13,7 +13,6 @@ def main_menu():
                 valinta = input("")
                 continue
             if tulos != []:
-                #Tässä pelaaaja kirjautuu sisään ja break takas main scriptiin (pitääkö tää paluttaa mitään)? esim. g.id
                 pelaaja = olio_luonti(tulos[0][0])
                 return pelaaja
         elif valinta == "2":

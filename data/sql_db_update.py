@@ -48,8 +48,8 @@ def sql_db_lookup_country_name(pelaaja_location):
     return tulos
 
 def sql_db_update_exit_game(screen_name, player_co2_consumed,player_location):
-    update_query = (f"UPDATE game "#money
-                    f"SET co2_consumed ='{player_co2_consumed}', location ='{player_location}'"
+    update_query = (f"UPDATE game "
+                    f"SET co2_consumed ='{player_co2_consumed}', location ='{player_location}'"#money
                     f"WHERE game.screen_name = '{screen_name}';")
     sql_search(update_query)
     return None

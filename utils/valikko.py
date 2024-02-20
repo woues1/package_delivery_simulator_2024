@@ -24,8 +24,7 @@ def valikko(pelaaja):
         +--------------------+
         """)
         if valinta == "1":
-            #update.db
-            print("uusi peli")#<----No clue mitetn tää pitäs tehä
+            print("Uusi peli...")
             screen_name = input("Käyttäjänimi: ")
             player_password = input("Salasana : ")
             pelaaja = sql_db_update_new_game(screen_name, player_password)
@@ -35,6 +34,5 @@ def valikko(pelaaja):
             sql_db_update_exit_game(pelaaja.nimi, pelaaja.co2_consumed, pelaaja.location)
             sys.exit()
         elif valinta == "3":
-            print("Main")
             return pelaaja
 

@@ -10,7 +10,7 @@ def valikko():
 
 """
 import sys
-from data.sql_db_update import sql_db_update_new_game
+from data.sql_db_update import *
 def valikko(pelaaja):
 
     while True:
@@ -32,7 +32,7 @@ def valikko(pelaaja):
             return pelaaja
         elif valinta== "2":
             print("Lopetetaan peli...")
-            #update.db, tarviiks täs olla mitään?
+            sql_db_update_exit_game(pelaaja.nimi, pelaaja.co2_consumed, pelaaja.location)
             sys.exit()
         elif valinta == "3":
             print("Main")

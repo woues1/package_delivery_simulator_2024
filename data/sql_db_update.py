@@ -46,3 +46,10 @@ def sql_db_lookup_location_name(pelaaja_location):
 def sql_db_lookup_country_name(pelaaja_location):
     tulos = sql_search(f"SELECT c.name FROM country AS c JOIN airport AS a ON c.iso_country = a.iso_country WHERE a.ident = '{pelaaja_location}';")
     return tulos
+
+def sql_db_update_exit_game(screen_name, player_co2_consumed,player_location):
+    update_query = (f"UPDATE game "#money
+                    f"SET co2_consumed ='{player_co2_consumed}', location ='{player_location}'"
+                    f"WHERE game.screen_name = '{screen_name}';")
+    sql_search(update_query)
+    return None

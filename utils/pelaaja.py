@@ -27,7 +27,11 @@ class Pelaaja:
         self.location = location
         self.co2_consumed = co2_consumed
         self.tehtava_aktiivinen = False
-        self.current_tehtava = None
+        self.current_tehtava = []
+        self.Tehtavat = []
+
+    def hae_kaikki_tehtavat(self):
+        return self.Tehtavat
 
     def paivita_tehtava_aktiivinen(self, is_active):
         self.tehtava_aktiivinen = is_active
@@ -41,10 +45,23 @@ class Pelaaja:
     def paivita_sijainti(self, location):
         self.location = location
 
+    def lisaa_tehtava(self, tehtava):
+        self.Tehtavat.append(tehtava)
+
     def aseta_tehtava(self, tehtava):
         if not self.tehtava_aktiivinen:
             self.current_tehtava = tehtava
             self.paivita_tehtava_aktiivinen(True)
+
+    def hae_current_tehtava_tiedot(self):
+        if self.current_tehtava:
+            location = sql_db_lookup_country_name(self.current_tehtava.location)
+            return {
+                'location': location[0][0],
+                'Tehtävän co2 kulutus': self.current_tehtava.co2_consumed,
+            }
+        else:
+            return "Tehtavaa ei ole valittu"
 
     def suorita_tehtava(self):
         if self.tehtava_aktiivinen and self.current_tehtava:

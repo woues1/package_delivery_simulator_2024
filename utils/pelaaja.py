@@ -13,11 +13,11 @@ print(pelaaja.pisteet) = print(self."")
 # pelaaja.suorita_tehtava() <-- tällä komennolla pelaaja suorittaa tehtävän
 
 class Tehtava:
-    def __init__(self, location, co2_consumed, multiplier, pisteet):#Lisätty pisteet VE
+    def __init__(self, location, co2_consumed, multiplier, piste_maara):#Lisätty pisteet VE
         self.location = location
         self.co2_consumed = co2_consumed
         self.multiplier = multiplier
-        self.piste_maara = pisteet#lisätty VE
+        self.piste_maara = piste_maara#lisätty VE
 
 
 # pelaajan tiedot

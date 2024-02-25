@@ -31,6 +31,7 @@ def kauppa_valikko(pelaaja):
                 if valinta == "y":
                     print(f"Ostit {item1.name}, Co2 päästösi on nytten tuplasti vähemmän")
                     pelaaja.lisaa_item(item1.attribute)
+                    item1.purchase()
                     #return jotenki co2_päästö 0.5 kertaa
                     #update.db
                     continue
@@ -41,6 +42,7 @@ def kauppa_valikko(pelaaja):
                 valinta = input("")
                 if valinta == "y":
                     print(f"Ostit {item2.name}, Co2 budjettisi on tuplasti isompi")
+                    pelaaja.lisaa_item(item2.attribute)
                     item2.purchase()
                     # return jotenki co2_budget == 20000
                     # update.db
@@ -53,6 +55,7 @@ def kauppa_valikko(pelaaja):
                 if valinta == "y":
                     print(f"Ostit {item3.name}, saat tuplsi ennemänn rahaa")
                     item3.purchase()
+                    pelaaja.lisaa_item(item3.attribute)
                     # return jotenki pelaaja.pisteet *2
                     # update.db
                     continue

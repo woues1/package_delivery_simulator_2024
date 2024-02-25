@@ -18,7 +18,7 @@ def sql_db_lookup_log_in(screen_name, player_password):
     user_id = sql_search(locations_search)
     return user_id
 def sql_db_lookup_kayttaja_tiedot(id):
-    tulos = sql_search(f"SELECT screen_name, co2_consumed, location, co2_consumed "
+    tulos = sql_search(f"SELECT screen_name, co2_consumed, location, co2_consumed, co2_budget "
                        f"FROM game "
                        f"WHERE id='{id}'")
     return tulos

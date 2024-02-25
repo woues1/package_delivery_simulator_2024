@@ -22,7 +22,7 @@ class Tehtava:
 
 # pelaajan tiedot
 class Pelaaja:
-    def __init__(self, nimi, pisteet, location, co2_consumed):
+    def __init__(self, nimi, pisteet, location, co2_consumed, co2_budget):
         self.nimi = nimi
         self.pisteet = pisteet
         self.location = location
@@ -31,6 +31,7 @@ class Pelaaja:
         self.current_tehtava = []
         self.Tehtavat = []
         self.Items = []
+        self.co2_budget = co2_budget
 
     def hae_kaikki_tehtavat(self):
         return self.Tehtavat
@@ -84,7 +85,7 @@ def kayttaja_haku(id):
 def olio_luonti(id):
     res = kayttaja_haku(id)
     for i in res:
-        pelaaja = Pelaaja(i[0], i[1], i[2], i[3])
+        pelaaja = Pelaaja(i[0], i[1], i[2], i[3], i[4])
         return pelaaja
 
 

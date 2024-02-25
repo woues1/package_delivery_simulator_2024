@@ -39,7 +39,7 @@ def main():
         +---------------------++---------------------++---------------------+ 
         | {player_country_print[0][0]} 
         | {player_location_print[0][0]}                                             
-        | {pelaaja.co2_consumed}/10000                                      
+        | {pelaaja.co2_consumed}/{pelaaja.co2_budget}                                      
         | {pelaaja.pisteet}         
         +---------------------++---------------------++---------------------+ 
         """)

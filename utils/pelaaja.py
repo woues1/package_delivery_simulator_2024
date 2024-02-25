@@ -13,10 +13,11 @@ print(pelaaja.pisteet) = print(self."")
 # pelaaja.suorita_tehtava() <-- tällä komennolla pelaaja suorittaa tehtävän
 
 class Tehtava:
-    def __init__(self, location, co2_consumed, multiplier):
+    def __init__(self, location, co2_consumed, multiplier, pisteet):#Lisätty pisteet VE
         self.location = location
         self.co2_consumed = co2_consumed
         self.multiplier = multiplier
+        self.piste_maara = pisteet#lisätty VE
 
 
 # pelaajan tiedot
@@ -66,7 +67,7 @@ class Pelaaja:
     def suorita_tehtava(self):
         if self.tehtava_aktiivinen and self.current_tehtava:
             self.paivita_sijainti(self.current_tehtava.location)
-            self.paivita_pisteet(10, self.current_tehtava.multiplier)#Voisiko tähän lisätä esim. if self.current_tehtava.location = joku_continent piste_maara olis eri?
+            self.paivita_pisteet(self.current_tehtava.piste_maara, self.current_tehtava.multiplier)#Lisätty psite_maara VE
             self.paivita_co2_kulutettu(self.current_tehtava.co2_consumed)
             self.paivita_tehtava_aktiivinen(False)
             self.current_tehtava = None

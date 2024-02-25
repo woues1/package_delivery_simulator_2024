@@ -53,3 +53,7 @@ def sql_db_update_exit_game(screen_name, player_co2_consumed,player_location):
                     f"WHERE game.screen_name = '{screen_name}';")
     sql_search(update_query)
     return None
+
+def sql_db_lookup_continent_in_location(location):
+    tulos = sql_search(f"SELECT a.continent FROM airport a WHERE a.ident = '{location}'; ")
+    return tulos

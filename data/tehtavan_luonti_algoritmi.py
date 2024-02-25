@@ -1,6 +1,6 @@
 import random
 from geopy import distance
-from data.sql_db_update import sql_db_lookup_locations, sql_db_lookup_lat_long
+from data.sql_db_update import *
 from utils.pelaaja import olio_luonti
 
 
@@ -42,3 +42,21 @@ def kerroin_maarittaja(co2_consumed):
     return kerroin
 
 #Tänne vois lisää vielä miteen goal data vaikuttais kertoimeen
+#piste_maarittaja()
+
+def piste_maarittaja(location):
+    continent = sql_db_lookup_continent_in_location(location)
+    if continent[0] == "EU":
+        return 10
+    elif continent[0][0] == "AF":
+        return 40
+    elif continent[0][0] == "AS":
+        return 30
+    elif continent[0][0] == "NA":
+        return 10
+    elif continent[0][0] == "OC":
+        return 50
+    elif continent[0][0] == "SA":
+        return 40
+    else:
+        return 60

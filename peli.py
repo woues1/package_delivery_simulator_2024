@@ -12,6 +12,7 @@ def main():
         print(pelaaja.nimi)
 
     # toimiva tehtävän luonti
+        #Easy vs hard mode, näkyy co2 consumed vs ei näy
 
         t1 = luo_tehtava(pelaaja)
         t2 = luo_tehtava(pelaaja)
@@ -47,9 +48,9 @@ def main():
             valikko(pelaaja)
             continue
         if valinta == "2":
-            tehtava1 = Tehtava(t1[0], t1[1], t1[2])
-            tehtava2 = Tehtava(t2[0], t2[1], t2[2])
-            tehtava3 = Tehtava(t3[0], t3[1], t3[2])
+            tehtava1 = Tehtava(t1[0], t1[1], t1[2], t1[3])
+            tehtava2 = Tehtava(t2[0], t2[1], t2[2], t2[3])
+            tehtava3 = Tehtava(t3[0], t3[1], t3[2], t3[3])
             tehtava = input("Valitse tehtävä (1, 2, 3): ")
             if tehtava == "1":
                 pelaaja.aseta_tehtava(tehtava1)

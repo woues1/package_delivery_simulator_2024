@@ -30,6 +30,7 @@ class Pelaaja:
         self.tehtava_aktiivinen = False
         self.current_tehtava = []
         self.Tehtavat = []
+        self.Items = []
 
     def hae_kaikki_tehtavat(self):
         return self.Tehtavat
@@ -48,6 +49,8 @@ class Pelaaja:
 
     def lisaa_tehtava(self, tehtava):
         self.Tehtavat.append(tehtava)
+    def lisaa_item(self, items):
+        self.Items.append(items)
 
     def aseta_tehtava(self, tehtava):
         if not self.tehtava_aktiivinen:

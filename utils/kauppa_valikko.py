@@ -30,7 +30,7 @@ def kauppa_valikko(pelaaja):
                 valinta = input("")
                 if valinta == "y":
                     print(f"Ostit {item1.name}, Co2 päästösi on nytten tuplasti vähemmän")
-                    item1.purchase()
+                    pelaaja.lisaa_item(item1.attribute)
                     #return jotenki co2_päästö 0.5 kertaa
                     #update.db
                     continue

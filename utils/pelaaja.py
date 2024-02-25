@@ -37,8 +37,8 @@ class Pelaaja:
     def paivita_tehtava_aktiivinen(self, is_active):
         self.tehtava_aktiivinen = is_active
 
-    def paivita_pisteet(self, piste_maara, kerroin):
-        self.pisteet += piste_maara * kerroin
+    def paivita_pisteet(self, piste_maara, multiplier):# en tiiä oliks käyny suomennos vika ku oli kerroinn eikä multiplier
+        self.pisteet += piste_maara * multiplier
 
     def paivita_co2_kulutettu(self, co2_consumed):
         self.co2_consumed += co2_consumed

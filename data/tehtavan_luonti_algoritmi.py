@@ -46,7 +46,7 @@ def kerroin_maarittaja(co2_consumed):
 
 def piste_maarittaja(location):
     continent = sql_db_lookup_continent_in_location(location)
-    if continent[0] == "EU":
+    if continent[0][0] == "EU":
         return 10
     elif continent[0][0] == "AF":
         return 40

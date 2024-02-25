@@ -83,3 +83,18 @@ def olio_luonti(id):
     for i in res:
         pelaaja = Pelaaja(i[0], i[1], i[2], i[3])
         return pelaaja
+
+
+class Item:
+    def __init__(self, name, price, attribute):
+        self.name = name
+        self.price = price
+        self.attribute = attribute
+        self.purchased = False
+
+    def purchase(self):
+        self.purchased = True
+
+    def disply_info(self):
+        purchased_status = "X" if self.purchased else ""
+        return purchased_status

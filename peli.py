@@ -9,7 +9,7 @@ def main():
     pelaaja = main_menu()
     while jatka:
 
-        print(pelaaja.nimi)
+
 
     # toimiva tehtävän luonti
         #Easy vs hard mode, näkyy co2 consumed vs ei näy
@@ -26,7 +26,6 @@ def main():
         t1_country = sql_db_lookup_country_name(t1[0])
         t2_country = sql_db_lookup_country_name(t2[0])
         t3_country = sql_db_lookup_country_name(t3[0])
-        print(*lista[0])
         print(f"""
         +------------------------------------------+
         | Tehtävät(Airport, Co2 Consumed, kerroin) |
@@ -65,8 +64,7 @@ def main():
         if valinta == "4":
             kauppa_valikko(pelaaja)
             continue
-        else:
-            print(f"{valinta} ei ole valinta")
+
 
     #tehtava = Tehtava(t1[0],t1[1],t1[2])
     #pelaaja.aseta_tehtava(tehtava)

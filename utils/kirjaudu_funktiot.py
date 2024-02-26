@@ -48,9 +48,9 @@ def leaderboard_menu():
         sorted_results = sorted(results, key=lambda x: x[1], reverse=True)
         print(f"""
 +------------------------------------------+
-|               Leaderboaard               |
+|               Leaderboard               |
 +------------------------------------------+
-   Name:        Co2 Consumed
+   Name:        Pisteet
     """)
         for index, (name, money) in enumerate(sorted_results, start=1):
             print(f"| {index}. {name:10} | {money:10} |")

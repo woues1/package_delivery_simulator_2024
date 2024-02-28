@@ -9,7 +9,7 @@ def main():
     pelaaja = main_menu()
     while jatka:
 
-
+#
 
     # toimiva tehtävän luonti
         #Easy vs hard mode, näkyy co2 consumed vs ei näy

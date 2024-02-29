@@ -1,3 +1,5 @@
+import sys
+
 from utils.kirjaudu import main_menu
 from data.Tehtävät import *
 from utils.pelaaja import *
@@ -17,7 +19,7 @@ def main():
         t1 = luo_tehtava(pelaaja)
         t2 = luo_tehtava(pelaaja)
         t3 = luo_tehtava(pelaaja)
-        lista = [t1,t2,t3] #näihin pitäs vaihtaa airport.name mielummin kun airport.id
+        #lista = [t1,t2,t3] #näihin pitäs vaihtaa airport.name mielummin kun airport.id
         player_location_print = sql_db_lookup_location_name(pelaaja.location)
         player_country_print = sql_db_lookup_country_name(pelaaja.location)
         t1_location = sql_db_lookup_location_name(t1[0])
@@ -64,6 +66,13 @@ def main():
         if valinta == "4":
             kauppa_valikko(pelaaja)
             continue
+
+        if pelaaja.co2_consumed >= pelaaja.co2_budget:
+            print(f"Game Over")
+            sql_db_update_leaderboard(pelaaja.nimi, pelaaja.pisteet)
+            sql_db_update_new_game(pelaaja.nimi, pelaaja.salasana)
+            sys.exit()
+
 
 
     #tehtava = Tehtava(t1[0],t1[1],t1[2])

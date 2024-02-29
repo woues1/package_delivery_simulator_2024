@@ -19,11 +19,16 @@ class Tehtava:
         self.multiplier = multiplier
         self.piste_maara = piste_maara#lisätty VE
 
+    def lookup_country(self):
+        country = sql_db_lookup_country_name(self.location)
+        return country
+
 
 # pelaajan tiedot
 class Pelaaja:
-    def __init__(self, nimi, pisteet, location, co2_consumed, co2_budget):
+    def __init__(self, nimi, salasana, pisteet, location, co2_consumed, co2_budget):
         self.nimi = nimi
+        self.salasana = salasana
         self.pisteet = pisteet
         self.location = location
         self.co2_consumed = co2_consumed
@@ -50,6 +55,7 @@ class Pelaaja:
 
     def lisaa_tehtava(self, tehtava):
         self.Tehtavat.append(tehtava)
+
     def lisaa_item(self, items):
         self.Items.append(items)
 
@@ -85,13 +91,13 @@ def kayttaja_haku(id):
 def olio_luonti(id):
     res = kayttaja_haku(id)
     for i in res:
-        pelaaja = Pelaaja(i[0], i[1], i[2], i[3], i[4])
+        pelaaja = Pelaaja(i[0], i[1], i[2], i[3], i[4], i[5])
         return pelaaja
 
 
 class Item:
     def __init__(self, name, price, attribute):
-        self.name = name
+        self.name = name    
         self.price = price
         self.attribute = attribute
         self.purchased = False

@@ -58,4 +58,6 @@ def leaderboard_menu():
         valinta = str(input(""))
         if valinta == "back":
             return "back"
+        else:
+            continue
 

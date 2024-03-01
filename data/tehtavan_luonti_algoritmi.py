@@ -3,6 +3,13 @@ from geopy import distance
 from data.sql_db_update import *
 from utils.pelaaja import olio_luonti
 
+def luo_tehtava(pelaaja):
+    location = generate_delivery_location(pelaaja)
+    co2_consumed = co2_consumed_distance(location, pelaaja)
+    kerroin = kerroin_maarittaja(co2_consumed)
+    pisteeet = piste_maarittaja(location)
+    lista = [location, co2_consumed, kerroin, pisteeet]
+    return lista
 
 def generate_delivery_location(pelaaja):
     current_location = pelaaja.location

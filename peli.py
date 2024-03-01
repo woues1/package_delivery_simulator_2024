@@ -1,6 +1,6 @@
 import sys
 from utils.kirjaudu import main_menu
-from data.Tehtävät import *
+from data.tehtavan_luonti_algoritmi import luo_tehtava
 from utils.pelaaja import *
 from utils.valikko import valikko
 from utils.kauppa_valikko import *

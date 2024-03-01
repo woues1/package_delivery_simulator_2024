@@ -63,16 +63,17 @@ class Pelaaja:
         if not self.tehtava_aktiivinen:
             self.current_tehtava = tehtava
             self.paivita_tehtava_aktiivinen(True)
+        if self.current_tehtava:
+            self.current_tehtava = []
+            self.current_tehtava = tehtava
+            self.paivita_tehtava_aktiivinen(True)
 
     def hae_current_tehtava_tiedot(self):
         if self.current_tehtava:
             location = sql_db_lookup_country_name(self.current_tehtava.location)
-            return {
-                'location': location[0][0],
-                'Tehtävän co2 kulutus': self.current_tehtava.co2_consumed,
-            }
+            return f"location: {location[0][0]} | Tehtävän_co2_kulutus: {self.current_tehtava.co2_consumed}"
         else:
-            return "Tehtavaa ei ole valittu"
+            return "Tehtävää ei ole valittu"
 
     def suorita_tehtava(self):
         if self.tehtava_aktiivinen and self.current_tehtava:

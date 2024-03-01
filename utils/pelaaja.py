@@ -37,18 +37,17 @@ class Pelaaja:
         self.Tehtavat = []
         self.Items = []
         self.co2_budget = co2_budget
-
-    def hae_kaikki_tehtavat(self):
-        return self.Tehtavat
+        self.co2_kerroin = 1.0
+        self.piste_kerroin = 1.0
 
     def paivita_tehtava_aktiivinen(self, is_active):
         self.tehtava_aktiivinen = is_active
 
-    def paivita_pisteet(self, piste_maara, multiplier):# en tiiä oliks käyny suomennos vika ku oli kerroinn eikä multiplier
-        self.pisteet += piste_maara * multiplier
+    def paivita_pisteet(self, piste_maara, tehtava_kerroin):
+        self.pisteet += piste_maara * (tehtava_kerroin * self.piste_kerroin)
 
     def paivita_co2_kulutettu(self, co2_consumed):
-        self.co2_consumed += co2_consumed
+        self.co2_consumed += co2_consumed * self.co2_kerroin
 
     def paivita_sijainti(self, location):
         self.location = location
@@ -58,6 +57,13 @@ class Pelaaja:
 
     def lisaa_item(self, items):
         self.Items.append(items)
+
+    def add_item(self, item):
+        self.items.append(item)
+        if item.attribute == "Hybridi mersu":
+            self.co2_kerroin *= item.attribute_value
+        elif item.attribute == "point_multiplier":
+            self.piste_kerroin *= item.attribute_value
 
     def aseta_tehtava(self, tehtava):
         if not self.tehtava_aktiivinen:
@@ -71,14 +77,14 @@ class Pelaaja:
     def hae_current_tehtava_tiedot(self):
         if self.current_tehtava:
             location = sql_db_lookup_country_name(self.current_tehtava.location)
-            return f"location: {location[0][0]} | Tehtävän_co2_kulutus: {self.current_tehtava.co2_consumed}"
+            return f"Maa: {location[0][0]} | Co2 kulutus: {self.current_tehtava.co2_consumed}"
         else:
             return "Tehtävää ei ole valittu"
 
     def suorita_tehtava(self):
         if self.tehtava_aktiivinen and self.current_tehtava:
             self.paivita_sijainti(self.current_tehtava.location)
-            self.paivita_pisteet(self.current_tehtava.piste_maara, self.current_tehtava.multiplier)#Lisätty psite_maara VE
+            self.paivita_pisteet(self.current_tehtava.piste_maara, self.current_tehtava.multiplier) # Lisätty psite_maara VE
             self.paivita_co2_kulutettu(self.current_tehtava.co2_consumed)
             self.paivita_tehtava_aktiivinen(False)
             self.current_tehtava = None

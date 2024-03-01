@@ -46,7 +46,7 @@ def main():
         """)
         valinta = input("Valitse : 1.Valikko, 2.Valitse tehtävä , 3.Siirry , 4. Kauppa  ")#4.Kauppa? Vois käyttää raha saada permanent buffs, esim. Co2 consumed halved, pelaaja.pisteet doubler, Co2 Budget doubler.
         if valinta == "1":
-            valikko(pelaaja)
+            pelaaja = valikko(pelaaja)
             continue
         if valinta == "2":
             tehtava1 = Tehtava(t1[0], t1[1], t1[2], t1[3])
@@ -70,7 +70,7 @@ def main():
         if pelaaja.co2_consumed >= pelaaja.co2_budget:
             print(f"Game Over")
             sql_db_update_leaderboard(pelaaja.nimi, pelaaja.pisteet)
-            sql_db_update_new_game(pelaaja.nimi, pelaaja.salasana)
+            sql_db_update_reset_game(pelaaja.nimi, pelaaja.salasana)
             sys.exit()
 
 

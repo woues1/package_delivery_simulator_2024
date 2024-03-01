@@ -15,7 +15,7 @@ def kauppa_valikko(pelaaja):
         2.Poistu
         """)
         valinta = input("")
-        if valinta == "1":# Pitäs olla tarkistukseet löytyykö tiettyä unlockaausta.
+        if valinta == "1":  # Pitäs olla tarkistukseet löytyykö tiettyä unlockaausta.
             print(f"""
             +---------------------++---------------------++---------------------+ 
               Tuote                     Hinta                  Ostettu
@@ -32,8 +32,8 @@ def kauppa_valikko(pelaaja):
                     print(f"Ostit {item1.name}, Co2 päästösi on nytten tuplasti vähemmän")
                     pelaaja.lisaa_item(item1.attribute)
                     item1.purchase()
-                    #return jotenki co2_päästö 0.5 kertaa
-                    #update.db
+                    # return jotenki co2_päästö 0.5 kertaa
+                    # update.db
                     continue
                 elif valinta == "n":
                     continue

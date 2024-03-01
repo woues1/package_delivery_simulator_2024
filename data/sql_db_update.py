@@ -76,6 +76,14 @@ def sql_db_update_new_game(screen_name, player_password): #HUOM!!!!älä kutsu t
     return tulos
 
 
+def sql_db_update_reset_game(pelaaja_nimi, pelaaja_salasana):
+    starting_location = sql_db_lookup_random_location()
+    update_query = (f"UPDATE game "
+                    f"SET co2_consumed = 0, co2_budget = 10000, pisteet = 0, location = '{starting_location}'"
+                    f"WHERE screen_name = '{pelaaja_nimi}' AND password = '{pelaaja_salasana}';")
+    sql_search(update_query)
+
+
 def sql_db_update_leaderboard(nimi, pelaajan_pisteet):
     update_query = (f"INSERT INTO leaderboard (name, pisteet)"
                     f"VALUES ('{nimi}', {pelaajan_pisteet})")

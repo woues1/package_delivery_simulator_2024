@@ -1,4 +1,4 @@
-
+from utils.pelaaja import olio_luonti
 """
 def valikko():
     print("MAIN MENU PLACEHOLDER")
@@ -24,10 +24,10 @@ def valikko(pelaaja):
         +--------------------+
         """)
         if valinta == "1":
-            print("Uusi peli...")
-            screen_name = input("Käyttäjänimi: ")
-            player_password = input("Salasana : ")
-            pelaaja = sql_db_update_new_game(screen_name, player_password)
+            print("Aloitetaan uusi peli...")
+            sql_db_update_reset_game(pelaaja.nimi, pelaaja.salasana)
+            id = sql_db_lookup_log_in(pelaaja.nimi, pelaaja.salasana)
+            pelaaja = olio_luonti(id[0][0])
             return pelaaja
         elif valinta== "2":
             print("Lopetetaan peli...")

@@ -2,6 +2,7 @@ from utils.kirjaudu_funktiot import kirjaudu_sisaan, uusi_peli, exit_game, leade
 from utils.pelilauta import art_title_screen
 from utils.pelaaja import olio_luonti
 
+
 def main_menu():
     art_title_screen()
     valinta = input("")
@@ -30,5 +31,3 @@ def main_menu():
             print(f"Error: false input {valinta}")
             valinta = input("")
             continue
-
-

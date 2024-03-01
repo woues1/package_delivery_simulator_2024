@@ -20,7 +20,6 @@ def luo_tehtava(pelaaja):
 # IF  GOAAL.NAME CLOUDS 0.7 RAHAA
 # IF ETÄISYYS YLI 300 KM 3
 # ÅIVITA_PSITEET(KERROIN)
-
 def tulosta_tehtava(tehtavat):
     tehtava_numero = 1
     for i in tehtavat:

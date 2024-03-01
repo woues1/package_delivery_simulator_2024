@@ -44,7 +44,6 @@ def kerroin_maarittaja(co2_consumed):
 
 # Tänne vois lisää vielä miteen goal data vaikuttais kertoimeen
 # piste_maarittaja()
-
 def piste_maarittaja(location):
     continent = sql_db_lookup_continent_in_location(location)
     if continent[0][0] == "EU":

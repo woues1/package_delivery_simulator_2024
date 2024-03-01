@@ -5,6 +5,8 @@ def kauppa_valikko(pelaaja):
     item1 = Item("Hybridi mersu", 2000, 0.5)
     item2 = Item("Päästö hujattu volkkari", 4000, 20000)
     item3 = Item("Rahan tuplaus kone", 8000, 2)
+
+    
     jatka = True
     while jatka:
         print("""
@@ -37,6 +39,8 @@ def kauppa_valikko(pelaaja):
                     continue
                 elif valinta == "n":
                     continue
+
+
             elif valinta == "2":
                 print(f"Haluatko ostaaa {item2.name}?: y/n")
                 valinta = input("")
@@ -49,6 +53,8 @@ def kauppa_valikko(pelaaja):
                     continue
                 elif valinta == "n":
                     continue
+
+
             elif valinta == "3":
                 print(f"Haluatko ostaaa {item3.name}?: y/n")
                 valinta = input("")
@@ -61,5 +67,7 @@ def kauppa_valikko(pelaaja):
                     continue
                 elif valinta == "n":
                     continue
+
+
         elif valinta == "2":
             return jatka == False

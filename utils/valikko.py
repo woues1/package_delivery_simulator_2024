@@ -1,4 +1,6 @@
 from utils.pelaaja import olio_luonti
+import sys
+from data.sql_db_update import *
 """
 def valikko():
     print("MAIN MENU PLACEHOLDER")
@@ -9,11 +11,11 @@ def valikko():
     print("LOPETA PELI(nappi)")
 
 """
-import sys
-from data.sql_db_update import *
-def valikko(pelaaja):
 
+
+def valikko(pelaaja):
     while True:
+
         valinta = input("""
         +--------------------+
         Valitse
@@ -29,10 +31,14 @@ def valikko(pelaaja):
             id = sql_db_lookup_log_in(pelaaja.nimi, pelaaja.salasana)
             pelaaja = olio_luonti(id[0][0])
             return pelaaja
+
+
         elif valinta== "2":
             print("Lopetetaan peli...")
             sql_db_update_exit_game(pelaaja.nimi, pelaaja.co2_consumed, pelaaja.location, pelaaja.pisteet)
             sys.exit()
+
+
         elif valinta == "3":
             return pelaaja
 

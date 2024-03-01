@@ -1,6 +1,4 @@
 from data.sql_db_update import *
-# COPY PASTE PELAAJA
-
 
 # tehtava1 = Tehtava(location="Location1", co2_consumed=5, multiplier=2) <-- näin luodaan tehtävä
 

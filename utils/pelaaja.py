@@ -1,10 +1,6 @@
 from data.sql_db_update import *
 # COPY PASTE PELAAJA
-"""
-from utils.pelaaja import olio_luonti
-pelaaja = olio_luonti()
-print(pelaaja.pisteet) = print(self."")
-"""
+
 
 # tehtava1 = Tehtava(location="Location1", co2_consumed=5, multiplier=2) <-- näin luodaan tehtävä
 
@@ -76,7 +72,7 @@ class Pelaaja:
 
     def hae_current_tehtava_tiedot(self):
         if self.current_tehtava:
-            location = sql_db_lookup_country_name(self.current_tehtava.location)
+            location = sql_db_lookup_location_name(self.current_tehtava.location)
             return f"Maa: {location[0][0]} | Co2 kulutus: {self.current_tehtava.co2_consumed}"
         else:
             return "Tehtävää ei ole valittu"

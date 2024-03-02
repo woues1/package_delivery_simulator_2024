@@ -42,7 +42,7 @@ class Pelaaja:
         self.Items.append(items)
 
     def add_item(self, item):
-        self.items.append(item)
+        self.Items.append(item)
         if item.name == "Hybridi mersu":
             self.co2_kerroin *= item.attribute_value
         elif item.name == "point_multiplier":
@@ -57,13 +57,6 @@ class Pelaaja:
             self.current_tehtava = tehtava
             self.paivita_tehtava_aktiivinen(True)
 
-    def hae_current_tehtava_tiedot(self):
-        if self.current_tehtava:
-            location = sql_db_lookup_location_name(self.current_tehtava.location)
-            return f"Maa: {location[0][0]} | Co2 kulutus: {self.current_tehtava.co2_consumed}"
-        else:
-            return "Tehtävää ei ole valittu"
-
     def suorita_tehtava(self):
         if self.tehtava_aktiivinen and self.current_tehtava:
             self.paivita_sijainti(self.current_tehtava.location)
@@ -72,6 +65,19 @@ class Pelaaja:
             self.paivita_tehtava_aktiivinen(False)
             self.current_tehtava = None
 
+    def hae_current_tehtava_tiedot(self):
+        if self.current_tehtava:
+            location = sql_db_lookup_location_name(self.current_tehtava.location)
+            return f"Maa: {location[0][0]} | Co2 kulutus: {self.current_tehtava.co2_consumed}"
+        else:
+            return "Tehtävää ei ole valittu"
+
+    def hae_pelaaja_Maa(self):
+        player_country = sql_db_lookup_country_name(self.location)
+        return f"Maa: {player_country[0][0]}"
+    def hae_pelaaja_lentokentta(self):
+        player_location_print = sql_db_lookup_location_name(self.location)
+        return f"Lentokenttä: {player_location_print[0][0]}"
 
 def kayttaja_haku(id):
     tulos = sql_db_lookup_kayttaja_tiedot(id)

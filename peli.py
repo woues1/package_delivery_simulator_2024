@@ -14,21 +14,11 @@ def main():
     while jatka:
         # toimiva tehtävän luonti
         #Easy vs hard mode, näkyy co2 consumed vs ei näy
-
         # Tehtävän luonti/ylikirjoitus
         if pelaaja.tehtava_aktiivinen == False:
             t1 = luo_tehtava(pelaaja)
             t2 = luo_tehtava(pelaaja)
             t3 = luo_tehtava(pelaaja)
-            #lista = [t1,t2,t3] #näihin pitäs vaihtaa airport.name mielummin kun airport.id
-            player_location_print = sql_db_lookup_location_name(pelaaja.location)
-            player_country_print = sql_db_lookup_country_name(pelaaja.location)
-            #t1_location = sql_db_lookup_location_name(t1[0])
-            #t2_location = sql_db_lookup_location_name(t2[0])
-            #t3_location = sql_db_lookup_location_name(t3[0])
-            #t1_country = sql_db_lookup_country_name(t1[0])
-            #t2_country = sql_db_lookup_country_name(t2[0])
-            #t3_country = sql_db_lookup_country_name(t3[0])
 
 
         print(f"""
@@ -41,8 +31,8 @@ def main():
         +---------------------++---------------------++---------------------+ 
         |     Omat tiedot     |  Aktiivinen tehtava: {pelaaja.hae_current_tehtava_tiedot()}
         +---------------------++---------------------++---------------------+ 
-        | {player_country_print[0][0]} 
-        | {player_location_print[0][0]}                                             
+        | {pelaaja.hae_pelaaja_Maa()} 
+        | {pelaaja.hae_pelaaja_lentokentta()}                                          
         | {pelaaja.co2_consumed}/{pelaaja.co2_budget}                                      
         | {pelaaja.pisteet}         
         +---------------------++---------------------++---------------------+ 

@@ -67,7 +67,7 @@ def sql_db_update_exit_game(screen_name, player_co2_consumed,player_location, pl
 
 
 def sql_db_update_new_game(screen_name, player_password): #HUOM!!!!älä kutsu tätä, ei valmis
-    from data.sql_db_update import sql_db_lookup_random_location
+    from data.sql_db_query import sql_db_lookup_random_location
     starting_location = sql_db_lookup_random_location()
     update_query =  (f"INSERT INTO game (co2_consumed, co2_budget, location, screen_name, password, pisteet) "
                      f"VALUES (0, 10000, '{starting_location}', '{screen_name}', '{player_password}', 0);")             #<---- Default starting location EFHK(Helsinki Vantaa),

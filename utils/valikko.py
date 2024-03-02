@@ -1,6 +1,6 @@
 from utils.pelaaja import olio_luonti
 import sys
-from data.sql_db_update import *
+from data.sql_db_query import *
 """
 def valikko():
     print("MAIN MENU PLACEHOLDER")

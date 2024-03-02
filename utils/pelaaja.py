@@ -1,4 +1,4 @@
-from data.sql_db_update import *
+from data.sql_db_query import *
 
 # tehtava1 = Tehtava(location="Location1", co2_consumed=5, multiplier=2) <-- näin luodaan tehtävä
 

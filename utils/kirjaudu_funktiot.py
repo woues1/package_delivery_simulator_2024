@@ -1,4 +1,4 @@
-from data.sql_db_update import sql_db_lookup_log_in, sql_db_update_new_game, sql_db_lookup_screen_names_money
+from data.sql_db_query import sql_db_lookup_log_in, sql_db_update_new_game, sql_db_lookup_screen_names_money
 import sys
 from utils.pelilauta import art_exit_game
 
@@ -6,7 +6,7 @@ from utils.pelilauta import art_exit_game
 
 
 
-def kirjaudu_sisaan():#pitää päästä ulos jotenkin jos ei ole kayttjaa
+def kirjaudu_sisaan():# pitää päästä ulos jotenkin jos ei ole kayttjaa
     print("""
     Kirjaudu sisään (kirjoita 'back' jos haluat takaisin)
     Käyttäjänimi: 

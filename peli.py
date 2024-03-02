@@ -1,5 +1,5 @@
 import sys
-from utils.kirjaudu import main_menu
+from utils.Main_menu import main_menu
 from data.tehtavan_luonti_algoritmi import luo_tehtava
 from utils.pelaaja import *
 from utils.valikko import valikko

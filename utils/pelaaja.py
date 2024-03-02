@@ -6,17 +6,6 @@ from data.sql_db_query import *
 
 # pelaaja.suorita_tehtava() <-- tällä komennolla pelaaja suorittaa tehtävän
 
-class Tehtava:
-    def __init__(self, location, co2_consumed, multiplier, piste_maara):#Lisätty pisteet VE
-        self.location = location
-        self.co2_consumed = co2_consumed
-        self.multiplier = multiplier
-        self.piste_maara = piste_maara#lisätty VE
-
-    def lookup_country(self):
-        country = sql_db_lookup_country_name(self.location)
-        return country
-
 
 # pelaajan tiedot
 class Pelaaja:
@@ -54,9 +43,9 @@ class Pelaaja:
 
     def add_item(self, item):
         self.items.append(item)
-        if item.attribute == "Hybridi mersu":
+        if item.name == "Hybridi mersu":
             self.co2_kerroin *= item.attribute_value
-        elif item.attribute == "point_multiplier":
+        elif item.name == "point_multiplier":
             self.piste_kerroin *= item.attribute_value
 
     def aseta_tehtava(self, tehtava):
@@ -109,3 +98,30 @@ class Item:
     def disply_info(self):
         purchased_status = "X" if self.purchased else ""
         return purchased_status
+
+
+class Tehtava:
+    def __init__(self, location, co2_consumed, multiplier, piste_maara):#Lisätty pisteet VE
+        self.location = location
+        self.co2_consumed = co2_consumed
+        self.multiplier = multiplier
+        self.piste_maara = piste_maara #lisätty VE
+
+    def lookup_country(self):
+        country = sql_db_lookup_country_name(self.location)
+        return country[0][0]
+
+    def lookup_airport(self):
+        airport = sql_db_lookup_location_name(self.location)
+        return airport[0][0]
+
+    def lookup_pisteet(self):
+        return self.piste_maara
+
+    def lookup_co2_consumed(self):
+        co2_info = self.co2_consumed
+        return co2_info
+
+    def lookup_kerroin(self):
+        kerroin_info = self.multiplier
+        return kerroin_info

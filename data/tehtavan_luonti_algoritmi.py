@@ -1,15 +1,18 @@
 import random
 from geopy import distance
 from data.sql_db_query import *
-from utils.pelaaja import olio_luonti
+from utils.pelaaja import olio_luonti, Tehtava
+
 
 def luo_tehtava(pelaaja):
     location = generate_delivery_location(pelaaja)
     co2_consumed = co2_consumed_distance(location, pelaaja)
     kerroin = kerroin_maarittaja(co2_consumed)
     pisteeet = piste_maarittaja(location)
-    lista = [location, co2_consumed, kerroin, pisteeet]
-    return lista
+    tehtava = Tehtava(location, co2_consumed, kerroin, pisteeet)
+
+    return tehtava
+
 
 def generate_delivery_location(pelaaja):
     current_location = pelaaja.location

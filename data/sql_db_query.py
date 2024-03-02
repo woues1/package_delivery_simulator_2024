@@ -84,7 +84,6 @@ def sql_db_update_exit_game(screen_name, player_co2_consumed, player_location, p
 
 
 def sql_db_update_new_game(screen_name, player_password): #HUOM!!!!älä kutsu tätä, ei valmis
-    from data.sql_db_query import sql_db_lookup_random_location
     starting_location = sql_db_lookup_random_location()
     update_query =  (f"INSERT INTO game (co2_consumed, co2_budget, location, screen_name, password, pisteet) "
                      f"VALUES (0, 10000, '{starting_location}', '{screen_name}', '{player_password}', 0);")             #<---- Default starting location EFHK(Helsinki Vantaa),
@@ -109,9 +108,14 @@ def sql_db_update_purchased_items(item_id, player_id):
 
 # <<RESET GAME VALUE's>>
 
-def sql_db_reset_game(pelaaja_nimi, pelaaja_salasana):
+def sql_db_reset_game(pelaaja_id):
     starting_location = sql_db_lookup_random_location()
-    update_query = (f"UPDATE game "
+    reset_game = (f"UPDATE game "
                     f"SET co2_consumed = 0, co2_budget = 10000, pisteet = 0, location = '{starting_location}'"
-                    f"WHERE screen_name = '{pelaaja_nimi}' AND password = '{pelaaja_salasana}';")
-    sql_Execute_Query(update_query)
+                    f"WHERE id = {pelaaja_id};")
+    sql_Execute_Query(reset_game)
+
+    reset_items = (f"UPDATE PlayerItem "
+        f"SET purchased = 0 "
+        f"WHERE player_id = {pelaaja_id};")
+    sql_Execute_Query(reset_items)

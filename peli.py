@@ -9,13 +9,18 @@ from utils.kauppa_valikko import *
 def main():
     jatka = True #Lisätty while loop että valikko toiminnallisuus toimii, en tiiä ootko samaaa mieltä tästä
     pelaaja = main_menu()
+    items = [Item(*item) for item in sql_db_lookup_items(pelaaja.id)]
+    for item in items:
+        if item.purchased:
+            pelaaja.add_item(item)
 
+    # If you still need references to item1, item2, and item3
+    item1, item2, item3 = items[:3]
 
     while jatka:
         # toimiva tehtävän luonti
         # Easy vs hard mode, näkyy co2 consumed vs ei näy
         # Tehtävän luonti/ylikirjoitus
-
         # Tarkistaa onko tehtävä aktiivista tehtävää
         # ja onko yksi tehtävä suoritettu ennen uusien tehtävien luomista
 
@@ -71,14 +76,14 @@ def main():
 
         # Tuo esiin kauppa näkymän
         if valinta == "4":
-            kauppa_valikko(pelaaja)
+            kauppa_valikko(pelaaja, item1, item2, item3)
 
 
         # Tarkistaa onko pelaaja ylittänyt budjetin
         if pelaaja.co2_consumed >= pelaaja.co2_budget:
             print(f"Game Over")
             sql_db_update_leaderboard(pelaaja.nimi, pelaaja.pisteet)
-            sql_db_reset_game(pelaaja.nimi, pelaaja.id)
+            sql_db_reset_game(pelaaja.id)
             sys.exit()
 
 

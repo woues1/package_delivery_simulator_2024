@@ -2,13 +2,8 @@ from utils.pelaaja import Item
 from data.sql_db_query import sql_db_lookup_items
 
 
-def kauppa_valikko(pelaaja):
+def kauppa_valikko(pelaaja, item1, item2, item3):
 
-    items = sql_db_lookup_items(pelaaja.id)
-    print(items)
-    item1 = Item(items[0][0], items[0][1], items[0][2], items[0][3], items[0][4])
-    item2 = Item(items[1][0], items[1][1], items[1][2], items[1][3], items[1][4])
-    item3 = Item(items[2][0], items[2][1], items[2][2], items[2][3], items[2][4])
 
     jatka = True
     while jatka:
@@ -34,11 +29,14 @@ def kauppa_valikko(pelaaja):
                 print(f"Haluatko ostaaa {item1.name}?: y/n")
                 valinta = input("")
                 if valinta == "y":
-                    print(f"Ostit {item1.name}, Co2 päästösi on nytten tuplasti vähemmän")
-                    item1.purchase(pelaaja.id)
-                    pelaaja.add_item(item1)
-                    # return jotenki co2_päästö 0.5 kertaa
-                    # update.db
+                    if item1.purchase(pelaaja):
+                        print(f"Ostit {item1.name}, Co2 päästösi on nytten tuplasti vähemmän")
+                        item1.purchase(pelaaja)
+                        pelaaja.add_item(item1)
+                    else:
+                        print("Ei tarpeeksi pisteitä")
+                        # return jotenki co2_päästö 0.5 kertaa
+                        # update.db
                     continue
                 elif valinta == "n":
                     continue
@@ -48,9 +46,11 @@ def kauppa_valikko(pelaaja):
                 print(f"Haluatko ostaaa {item2.name}?: y/n")
                 valinta = input("")
                 if valinta == "y":
-                    print(f"Ostit {item2.name}, Co2 budjettisi on tuplasti isompi")
-                    item2.purchase(pelaaja.id)
-                    pelaaja.add_item(item2)
+                    if item2.purchase(pelaaja):
+                        print(f"Ostit {item2.name}, Co2 budjettisi on tuplasti isompi")
+                        pelaaja.add_item(item2)
+                    else:
+                        print("Ei tarpeeksi pisteitä")
                     # return jotenki co2_budget == 20000
                     # update.db
                     continue
@@ -62,9 +62,11 @@ def kauppa_valikko(pelaaja):
                 print(f"Haluatko ostaaa {item3.name}?: y/n")
                 valinta = input("")
                 if valinta == "y":
-                    print(f"Ostit {item3.name}, saat tuplsi ennemänn rahaa")
-                    item3.purchase(pelaaja.id)
-                    pelaaja.add_item(item3)
+                    if item3.purchase(pelaaja):
+                        print(f"Ostit {item3.name}, saat tuplsi ennemänn rahaa")
+                        pelaaja.add_item(item3)
+                    else:
+                        print("Ei tarpeeksi pisteitä")
                     # return jotenki pelaaja.pisteet *2
                     # update.db
                     continue

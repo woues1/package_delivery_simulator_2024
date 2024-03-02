@@ -23,6 +23,8 @@ class Pelaaja:
         self.co2_kerroin = 1.0
         self.piste_kerroin = 1.0
 
+    def osta_esine(self, price):
+        self.pisteet -= price
     def paivita_tehtava_aktiivinen(self, is_active):
         self.tehtava_aktiivinen = is_active
 
@@ -100,9 +102,14 @@ class Item:
         self.attribute = attribute
         self.purchased = purchased
 
-    def purchase(self, pelaaja_id):
-        sql_db_update_purchased_items(self.id, pelaaja_id)
-        self.purchased = True
+    def purchase(self, pelaaja):
+        if pelaaja.pisteet >= self.price:
+            pelaaja.osta_esine(self.price)
+            sql_db_update_purchased_items(self.id, pelaaja.id)
+            self.purchased = True
+            return True
+        else:
+            return False
 
     def disply_info(self):
         purchased_status = "[X]" if self.purchased else "[ ]"

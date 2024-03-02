@@ -32,12 +32,10 @@ def valikko(pelaaja):
             pelaaja = olio_luonti(id[0][0])
             return pelaaja
 
-
         elif valinta== "2":
             print("Lopetetaan peli...")
             sql_db_update_exit_game(pelaaja.nimi, pelaaja.co2_consumed, pelaaja.location, pelaaja.pisteet)
             sys.exit()
-
 
         elif valinta == "3":
             return pelaaja

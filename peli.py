@@ -10,12 +10,11 @@ def main():
     jatka = True #Lisätty while loop että valikko toiminnallisuus toimii, en tiiä ootko samaaa mieltä tästä
     pelaaja = main_menu()
 
-
     while jatka:
         # toimiva tehtävän luonti
         #Easy vs hard mode, näkyy co2 consumed vs ei näy
         # Tehtävän luonti/ylikirjoitus
-        if pelaaja.tehtava_aktiivinen == False:
+        if pelaaja.tehtava_aktiivinen == False and Tehtava.instance_count < 3:
             t1 = luo_tehtava(pelaaja)
             t2 = luo_tehtava(pelaaja)
             t3 = luo_tehtava(pelaaja)
@@ -25,9 +24,9 @@ def main():
         +------------------------------------------+
         | Tehtävät(Co2 Consumed, Kerroin, Pisteet) |
         +------------------------------------------+
-        1. co2: {t1.lookup_co2_consumed()}  K: {t1.lookup_kerroin()}  P: {t1.lookup_pisteet()}   {t1.lookup_airport()}, {t1.lookup_country()}
-        2. co2: {t2.lookup_co2_consumed()}  K: {t3.lookup_kerroin()}  P: {t2.lookup_pisteet()}   {t2.lookup_airport()}, {t2.lookup_country()}
-        3. co2: {t3.lookup_co2_consumed()}  K: {t3.lookup_kerroin()}  P: {t3.lookup_pisteet()}   {t3.lookup_airport()}, {t3.lookup_country()}
+        1. co2: {t1.lookup_co2_consumed()}  K: {t1.lookup_kerroin()}  P: {t1.lookup_pisteet()} | {t1.lookup_airport()}, {t1.lookup_country()}
+        2. co2: {t2.lookup_co2_consumed()}  K: {t3.lookup_kerroin()}  P: {t2.lookup_pisteet()} | {t2.lookup_airport()}, {t2.lookup_country()}
+        3. co2: {t3.lookup_co2_consumed()}  K: {t3.lookup_kerroin()}  P: {t3.lookup_pisteet()} | {t3.lookup_airport()}, {t3.lookup_country()}
         +---------------------++---------------------++---------------------+ 
         |     Omat tiedot     |  Aktiivinen tehtava: {pelaaja.hae_current_tehtava_tiedot()}
         +---------------------++---------------------++---------------------+ 
@@ -61,7 +60,9 @@ def main():
 
         # aktiivisen tehtävän suoritus
         if valinta == "3":
-            pelaaja.suorita_tehtava()
+            if pelaaja.current_tehtava:
+                pelaaja.suorita_tehtava()
+                Tehtava.instance_count -= 1
 
         # Tuo esiin kauppa näkymän
         if valinta == "4":

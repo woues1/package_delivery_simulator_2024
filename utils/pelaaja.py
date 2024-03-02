@@ -107,11 +107,13 @@ class Item:
 
 
 class Tehtava:
+    instance_count = 0
     def __init__(self, location, co2_consumed, multiplier, piste_maara):#Lisätty pisteet VE
         self.location = location
         self.co2_consumed = co2_consumed
         self.multiplier = multiplier
         self.piste_maara = piste_maara #lisätty VE
+        Tehtava.instance_count += 1
 
     def lookup_country(self):
         country = sql_db_lookup_country_name(self.location)

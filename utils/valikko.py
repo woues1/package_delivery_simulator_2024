@@ -27,8 +27,8 @@ def valikko(pelaaja):
         """)
         if valinta == "1":
             print("Aloitetaan uusi peli...")
-            sql_db_update_reset_game(pelaaja.nimi, pelaaja.salasana)
-            id = sql_db_lookup_log_in(pelaaja.nimi, pelaaja.salasana)
+            sql_db_reset_game(pelaaja.nimi, pelaaja.id)
+            id = sql_db_lookup_log_in(pelaaja.nimi, pelaaja.id)
             pelaaja = olio_luonti(id[0][0])
             return pelaaja
 

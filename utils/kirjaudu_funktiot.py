@@ -1,7 +1,7 @@
-from data.sql_db_query import sql_db_lookup_log_in, sql_db_update_new_game, sql_db_lookup_screen_names_money
+from data.sql_db_query import sql_db_lookup_log_in, sql_db_update_new_game, sql_db_lookup_screen_names_pisteet, sql_db_lookup_items
 import sys
 from utils.pelilauta import art_exit_game
-
+from utils.pelaaja import Item
 
 
 
@@ -18,9 +18,8 @@ def kirjaudu_sisaan():# pitää päästä ulos jotenkin jos ei ole kayttjaa
     Salasna:
     """)
     player_password = str(input(""))# how to make input star?
-    user_id = sql_db_lookup_log_in(screen_name,player_password)
+    user_id = sql_db_lookup_log_in(screen_name, player_password)
     if user_id != []:
-        # db_tietojen haku
         print("Tervetuloa...")
         return user_id
     else:
@@ -44,7 +43,7 @@ def exit_game():
 #game.money
 def leaderboard_menu():
     while True:
-        results = sql_db_lookup_screen_names_money()
+        results = sql_db_lookup_screen_names_pisteet()
         sorted_results = sorted(results, key=lambda x: x[1], reverse=True)
         print(f"""
 +------------------------------------------+

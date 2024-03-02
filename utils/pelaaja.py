@@ -9,9 +9,9 @@ from data.sql_db_query import *
 
 # pelaajan tiedot
 class Pelaaja:
-    def __init__(self, nimi, salasana, pisteet, location, co2_consumed, co2_budget):
+    def __init__(self, nimi, id, pisteet, location, co2_consumed, co2_budget):
         self.nimi = nimi
-        self.salasana = salasana
+        self.id = id
         self.pisteet = pisteet
         self.location = location
         self.co2_consumed = co2_consumed
@@ -27,10 +27,10 @@ class Pelaaja:
         self.tehtava_aktiivinen = is_active
 
     def paivita_pisteet(self, piste_maara, tehtava_kerroin):
-        self.pisteet += piste_maara * (tehtava_kerroin * self.piste_kerroin)
+        self.pisteet += piste_maara * (tehtava_kerroin * int(self.piste_kerroin))
 
     def paivita_co2_kulutettu(self, co2_consumed):
-        self.co2_consumed += co2_consumed * self.co2_kerroin
+        self.co2_consumed = self.co2_consumed + (float(co2_consumed) * float(self.co2_kerroin))
 
     def paivita_sijainti(self, location):
         self.location = location
@@ -38,15 +38,15 @@ class Pelaaja:
     def lisaa_tehtava(self, tehtava):
         self.Tehtavat.append(tehtava)
 
-    def lisaa_item(self, items):
-        self.Items.append(items)
-
     def add_item(self, item):
         self.Items.append(item)
+        print(item.attribute_info())
         if item.name == "Hybridi mersu":
-            self.co2_kerroin *= item.attribute_value
-        elif item.name == "point_multiplier":
-            self.piste_kerroin *= item.attribute_value
+            self.co2_kerroin = item.attribute_info()
+        elif item.name == "rahan tuplaus kone":
+            self.piste_kerroin = item.attribute_info()
+        elif item.name == "Päästö hujattu volkkari":
+            self.co2_budget = item.attribute_info()
 
     def aseta_tehtava(self, tehtava):
         if not self.tehtava_aktiivinen:
@@ -75,6 +75,7 @@ class Pelaaja:
     def hae_pelaaja_Maa(self):
         player_country = sql_db_lookup_country_name(self.location)
         return f"Maa: {player_country[0][0]}"
+
     def hae_pelaaja_lentokentta(self):
         player_location_print = sql_db_lookup_location_name(self.location)
         return f"Lentokenttä: {player_location_print[0][0]}"
@@ -92,18 +93,23 @@ def olio_luonti(id):
 
 
 class Item:
-    def __init__(self, name, price, attribute):
+    def __init__(self, id, name, price, attribute, purchased):
+        self.id = id
         self.name = name    
         self.price = price
         self.attribute = attribute
-        self.purchased = False
+        self.purchased = purchased
 
-    def purchase(self):
+    def purchase(self, pelaaja_id):
+        sql_db_update_purchased_items(self.id, pelaaja_id)
         self.purchased = True
 
     def disply_info(self):
-        purchased_status = "X" if self.purchased else ""
+        purchased_status = "[X]" if self.purchased else "[ ]"
         return purchased_status
+
+    def attribute_info(self):
+        return self.attribute
 
 
 class Tehtava:

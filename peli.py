@@ -10,10 +10,15 @@ def main():
     jatka = True #Lisätty while loop että valikko toiminnallisuus toimii, en tiiä ootko samaaa mieltä tästä
     pelaaja = main_menu()
 
+
     while jatka:
         # toimiva tehtävän luonti
-        #Easy vs hard mode, näkyy co2 consumed vs ei näy
+        # Easy vs hard mode, näkyy co2 consumed vs ei näy
         # Tehtävän luonti/ylikirjoitus
+
+        # Tarkistaa onko tehtävä aktiivista tehtävää
+        # ja onko yksi tehtävä suoritettu ennen uusien tehtävien luomista
+
         if pelaaja.tehtava_aktiivinen == False and Tehtava.instance_count < 3:
             t1 = luo_tehtava(pelaaja)
             t2 = luo_tehtava(pelaaja)
@@ -67,14 +72,13 @@ def main():
         # Tuo esiin kauppa näkymän
         if valinta == "4":
             kauppa_valikko(pelaaja)
-            continue
 
 
         # Tarkistaa onko pelaaja ylittänyt budjetin
         if pelaaja.co2_consumed >= pelaaja.co2_budget:
             print(f"Game Over")
             sql_db_update_leaderboard(pelaaja.nimi, pelaaja.pisteet)
-            sql_db_update_reset_game(pelaaja.nimi, pelaaja.salasana)
+            sql_db_reset_game(pelaaja.nimi, pelaaja.id)
             sys.exit()
 
 

@@ -15,7 +15,7 @@ def get_db_connection() -> mysql.connector.connect:
     return mysql.connector.connect(**db_config)
 
 
-def sql_search(sql):
+def sql_Execute_Query(sql):
     connection = get_db_connection()
     cursor = connection.cursor()
     cursor.execute(sql)

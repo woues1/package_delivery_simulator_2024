@@ -105,7 +105,10 @@ def sql_db_update_purchased_items(item_id, player_id):
              )
     sql_Execute_Query(query)
 
-
+def sql_db_update_new_player_items(id):
+    sql_Execute_Query(f"INSERT INTO PlayerItem(player_id, item_id, purchased) VALUES({id}, 1, FALSE);")
+    sql_Execute_Query(f"INSERT INTO PlayerItem(player_id, item_id, purchased) VALUES({id}, 2, FALSE);")
+    sql_Execute_Query(f"INSERT INTO PlayerItem(player_id, item_id, purchased) VALUES({id}, 3, FALSE);")
 # <<RESET GAME VALUE's>>
 
 def sql_db_reset_game(pelaaja_id):

@@ -1,4 +1,4 @@
-from data.sql_db_query import sql_db_lookup_log_in, sql_db_update_new_game, sql_db_lookup_screen_names_pisteet, sql_db_lookup_items
+from data.sql_db_query import sql_db_lookup_log_in, sql_db_update_new_game, sql_db_lookup_screen_names_pisteet, sql_db_update_new_player_items
 import sys
 from utils.pelilauta import art_exit_game
 from utils.pelaaja import Item
@@ -32,6 +32,7 @@ def uusi_peli():
     screen_name = str(input("Käyttäjätunnus: ?"))
     player_password = str(input("Salasana: ?"))
     user_id = sql_db_update_new_game(screen_name, player_password) #<--- On loutu, mutta puuttuu toimminnallisuus.
+    sql_db_update_new_player_items(user_id[0][0])
     return user_id
 
 

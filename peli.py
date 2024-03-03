@@ -9,22 +9,27 @@ from utils.kauppa_valikko import *
 def main():
     jatka = True #Lisätty while loop että valikko toiminnallisuus toimii, en tiiä ootko samaaa mieltä tästä
     pelaaja = main_menu()
+
+    # hakee kaikki esineet, ja tarkistaa onko pelaaja ostanut kyseisen esineen
+    # ostetut esineet lisätään pelaajalle heti pelin alussa
     items = [Item(*item) for item in sql_db_lookup_items(pelaaja.id)]
     for item in items:
         if item.purchased:
             pelaaja.add_item(item)
 
-    # If you still need references to item1, item2, and item3
+    # käytetään item olioden kauppaan viemiseen
     item1, item2, item3 = items[:3]
 
+
     while jatka:
-        # toimiva tehtävän luonti
         # Easy vs hard mode, näkyy co2 consumed vs ei näy
         # Tehtävän luonti/ylikirjoitus
+
         # Tarkistaa onko tehtävä aktiivista tehtävää
         # ja onko yksi tehtävä suoritettu ennen uusien tehtävien luomista
-
         if pelaaja.tehtava_aktiivinen == False and Tehtava.instance_count < 3:
+
+            # Tehtävän luonti/ylikirjoitus
             t1 = luo_tehtava(pelaaja)
             t2 = luo_tehtava(pelaaja)
             t3 = luo_tehtava(pelaaja)

@@ -4,7 +4,6 @@ from data.sql_db_connect import sql_Execute_Query
 
 
 # <<LOOKUP QUERY's>>
-
 def sql_db_lookup_items(player_id):
     items_search = (
         f"SELECT id, name, price, attribute, purchased "
@@ -14,6 +13,7 @@ def sql_db_lookup_items(player_id):
     )
     query_res = sql_Execute_Query(items_search)
     return query_res
+
 
 def sql_db_lookup_locations():#etsii kaikki airport.ident arvot
     locations_search = f"SELECT a.ident FROM airport a;"
@@ -73,8 +73,6 @@ def sql_db_lookup_continent_in_location(location):
 
 
 # <<UPDATE QUERY's>>
-
-
 def sql_db_update_exit_game(screen_name, player_co2_consumed, player_location, player_pisteet):
     update_query = (f"UPDATE game "
                     f"SET co2_consumed ='{player_co2_consumed}', location ='{player_location}', pisteet = '{player_pisteet}'"#money
@@ -105,12 +103,14 @@ def sql_db_update_purchased_items(item_id, player_id):
              )
     sql_Execute_Query(query)
 
+
 def sql_db_update_new_player_items(id):
     sql_Execute_Query(f"INSERT INTO PlayerItem(player_id, item_id, purchased) VALUES({id}, 1, FALSE);")
     sql_Execute_Query(f"INSERT INTO PlayerItem(player_id, item_id, purchased) VALUES({id}, 2, FALSE);")
     sql_Execute_Query(f"INSERT INTO PlayerItem(player_id, item_id, purchased) VALUES({id}, 3, FALSE);")
-# <<RESET GAME VALUE's>>
 
+
+# <<RESET GAME VALUE's>>
 def sql_db_reset_game(pelaaja_id):
     starting_location = sql_db_lookup_random_location()
     reset_game = (f"UPDATE game "

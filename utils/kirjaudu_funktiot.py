@@ -40,8 +40,9 @@ def exit_game():
     art_exit_game()
     sys.exit()
 
+
 #game.ids
-#game.money
+#game.pisteet
 def leaderboard_menu():
     while True:
         results = sql_db_lookup_screen_names_pisteet()

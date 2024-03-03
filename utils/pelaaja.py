@@ -82,6 +82,7 @@ class Pelaaja:
         player_location_print = sql_db_lookup_location_name(self.location)
         return f"Lentokenttä: {player_location_print[0][0]}"
 
+
 def kayttaja_haku(id):
     tulos = sql_db_lookup_kayttaja_tiedot(id)
     return tulos

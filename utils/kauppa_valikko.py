@@ -22,7 +22,9 @@ def kauppa_valikko(pelaaja, item1, item2, item3):
             +---------------------++---------------------++---------------------+ 
              1. Hybridi mersu             2000                    {item1.disply_info()}
              2. Päästö hujattu volkkari   4000                    {item2.disply_info()}   
-             3. Rahan tuplaus kone        8000                    {item3.disply_info()}         
+             3. Rahan tuplaus kone        8000                    {item3.disply_info()}    
+             
+             kirjoita 'back' jos haluat takaisin     
             """)
             valinta = input("")
             if valinta == "1":

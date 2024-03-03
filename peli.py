@@ -71,8 +71,11 @@ def main():
         # aktiivisen tehtävän suoritus
         if valinta == "3":
             if pelaaja.current_tehtava:
+
+                # asettaa tehtävä countin 0, jotta voidaan aloittaa uusi kierros
+                # ilman "Tehtava.instance_count -= 3" count menee ylöspäin loputtomasti
+                Tehtava.instance_count -= 3
                 pelaaja.suorita_tehtava()
-                Tehtava.instance_count -= 1
 
         # Tuo esiin kauppa näkymän
         if valinta == "4":

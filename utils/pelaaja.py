@@ -83,18 +83,6 @@ class Pelaaja:
         return f"Lentokenttä: {player_location_print[0][0]}"
 
 
-def kayttaja_haku(id):
-    tulos = sql_db_lookup_kayttaja_tiedot(id)
-    return tulos
-
-
-def olio_luonti(id):
-    res = kayttaja_haku(id)
-    for i in res:
-        pelaaja = Pelaaja(i[0], i[1], i[2], i[3], i[4], i[5])
-        return pelaaja
-
-
 class Item:
     def __init__(self, id, name, price, attribute, purchased):
         self.id = id
@@ -147,3 +135,15 @@ class Tehtava:
     def lookup_kerroin(self):
         kerroin_info = self.multiplier
         return kerroin_info
+
+
+def kayttaja_haku(id):
+    tulos = sql_db_lookup_kayttaja_tiedot(id)
+    return tulos
+
+
+def olio_luonti(id):
+    res = kayttaja_haku(id)
+    for i in res:
+        pelaaja = Pelaaja(i[0], i[1], i[2], i[3], i[4], i[5])
+        return pelaaja

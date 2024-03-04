@@ -4,7 +4,7 @@ from data.tehtavan_luonti_algoritmi import luo_tehtava
 from utils.pelaaja import *
 from utils.valikko import valikko
 from utils.kauppa_valikko import *
-
+from utils.easter_eggs import *
 
 def main():
     jatka = True #Lisätty while loop että valikko toiminnallisuus toimii, en tiiä ootko samaaa mieltä tästä
@@ -33,6 +33,10 @@ def main():
             t1 = luo_tehtava(pelaaja)
             t2 = luo_tehtava(pelaaja)
             t3 = luo_tehtava(pelaaja)
+        if pelaaja.hae_pelaaja_Maa() == "Morocco":
+            operation_columbia(t1.lookup_airport())
+            t1.multiplier = 20
+
 
 
         print(f"""
@@ -45,7 +49,7 @@ def main():
         +---------------------++---------------------++---------------------+ 
         |     Omat tiedot     |  Aktiivinen tehtava: {pelaaja.hae_current_tehtava_tiedot()}
         +---------------------++---------------------++---------------------+ 
-        | {pelaaja.hae_pelaaja_Maa()} 
+        | Maa : {pelaaja.hae_pelaaja_Maa()} 
         | {pelaaja.hae_pelaaja_lentokentta()}                                          
         | {pelaaja.co2_consumed}/{pelaaja.co2_budget}                                      
         | {pelaaja.pisteet}         

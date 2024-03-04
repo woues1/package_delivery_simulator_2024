@@ -76,7 +76,7 @@ class Pelaaja:
 
     def hae_pelaaja_Maa(self):
         player_country = sql_db_lookup_country_name(self.location)
-        return f"Maa: {player_country[0][0]}"
+        return f"{player_country[0][0]}"
 
     def hae_pelaaja_lentokentta(self):
         player_location_print = sql_db_lookup_location_name(self.location)

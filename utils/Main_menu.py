@@ -23,8 +23,9 @@ def main_menu():
 
         elif valinta == "2":
             tulos = uusi_peli()
-            pelaaja = olio_luonti(tulos[0][0])
-            return pelaaja
+            if tulos != []:
+                pelaaja = olio_luonti(tulos[0][0])
+                return pelaaja
 
 
         elif valinta == "4":

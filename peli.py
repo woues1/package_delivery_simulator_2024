@@ -33,7 +33,7 @@ def main():
             t1 = luo_tehtava(pelaaja)
             t2 = luo_tehtava(pelaaja)
             t3 = luo_tehtava(pelaaja)
-        if pelaaja.hae_pelaaja_Maa() == "Morocco":
+        if pelaaja.hae_pelaaja_Maa() == "Columbia":
             operation_columbia(t1.lookup_airport())
             t1.multiplier = 20
 

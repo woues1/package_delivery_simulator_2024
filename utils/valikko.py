@@ -26,9 +26,11 @@ def valikko(pelaaja):
         +--------------------+
         """)
         if valinta == "1":
-            print("Aloitetaan uusi peli...")
-            sql_db_reset_game(pelaaja.id)
-            pelaaja = olio_luonti(pelaaja.id)
+            valinta_v = input("Oletko varma ? y/n :")
+            if valinta_v == "y":
+                print("Aloitetaan uusi peli...")
+                sql_db_reset_game(pelaaja.id)
+                pelaaja = olio_luonti(pelaaja.id)
             return pelaaja
 
         elif valinta== "2":

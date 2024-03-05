@@ -1,4 +1,4 @@
-from utils.kirjaudu_funktiot import kirjaudu_sisaan, uusi_peli, exit_game, leaderboard_menu
+from utils.kirjaudu_funktiot import *
 from utils.pelilauta import art_title_screen
 from utils.pelaaja import olio_luonti
 
@@ -24,6 +24,7 @@ def main_menu():
         elif valinta == "2":
             tulos = uusi_peli()
             if tulos != []:
+                tutorial()
                 pelaaja = olio_luonti(tulos[0][0])
                 return pelaaja
 

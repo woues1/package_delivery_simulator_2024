@@ -122,3 +122,9 @@ def sql_db_reset_game(pelaaja_id):
         f"SET purchased = 0 "
         f"WHERE player_id = {pelaaja_id};")
     sql_Execute_Query(reset_items)
+
+
+def sql_db_lookup_screen_names(screen_name):
+    tulos = (f"SELECT screen_name FROM game WHERE screen_name = '{screen_name}';")
+    tulos1 = sql_Execute_Query(tulos)
+    return tulos1

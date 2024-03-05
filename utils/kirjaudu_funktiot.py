@@ -1,4 +1,4 @@
-from data.sql_db_query import sql_db_lookup_log_in, sql_db_update_new_game, sql_db_lookup_screen_names_pisteet, sql_db_update_new_player_items
+from data.sql_db_query import *
 import sys
 from utils.pelilauta import art_exit_game
 import re
@@ -33,24 +33,29 @@ def kirjaudu_sisaan():
         return []
 
 
-def uusi_peli():
+def uusi_peli():# jos sama screen_name , antaa error
     print(f"luo käyttäjä...\n")
     screen_name = input("Käyttäjätunnus: ?")
-    if re.search(r'[\'\"]', screen_name):
-        print("\nEpäkelpo merkki käyttäjänimessä. Yritä uudelleen käyttämättä ' tai \".\n")
+    screen_names = sql_db_lookup_screen_names(screen_name)
+    if screen_names != []:
+        print("Käyttäjänimi on jo käytössä!")
         return []
     else:
-        player_password = input("Salasana: ?")
-        if re.search(r'[\'\"]', player_password):
-            print("\nEpäkelpo merkki salasanassa. Yritä uudelleen käyttämättä ' tai \".\n")
+        if re.search(r'[\'\"]', screen_name):
+            print("\nEpäkelpo merkki käyttäjänimessä. Yritä uudelleen käyttämättä ' tai \".\n")
             return []
         else:
-            user_id = sql_db_update_new_game(screen_name, player_password)  # <--- On loutu, mutta puuttuu toiminnallisuus.
-            if user_id:
-                sql_db_update_new_player_items(user_id[0][0])
-                return user_id
+            player_password = input("Salasana: ?")
+            if re.search(r'[\'\"]', player_password):
+                print("\nEpäkelpo merkki salasanassa. Yritä uudelleen käyttämättä ' tai \".\n")
+                return []
             else:
-                print("Virhe uuden pelin luonnissa. Yritä uudelleen")
+                user_id = sql_db_update_new_game(screen_name, player_password)  # <--- On loutu, mutta puuttuu toiminnallisuus.
+                if user_id:
+                    sql_db_update_new_player_items(user_id[0][0])
+                    return user_id
+                else:
+                    print("Virhe uuden pelin luonnissa. Yritä uudelleen")
 
 
 def exit_game():
@@ -79,3 +84,15 @@ def leaderboard_menu():
         else:
             continue
 
+
+
+def tutorial():
+    print(f"""
+    Tervetualoa Package Delivery Simulator 2024! Aloitat pelin satunnaisesta lentokentästä maailmalla.\n
+    Jokaisesta lentokenttästä löytyy kolme eri tehtävää kolmeen eri lentokenttään.\n
+    Sinun tehtävä on toimittaa paketteja ympäri maailmaa, ja kerätä niin paljon pisteitä kun mahdollista!\n
+    Mutta muista, sinulla on Co2 budjetti mitä pitää noudattaa. Kun olet käyttäny budjettisi kokonaisuudesaan.\n
+    Peli päättyy ja sinun pisteet kirjataan tulostaulukkoon.!\n
+    Kilpaile kavereittesi kanssa ja katso kuka saa eniten pisteitä!\n
+    Onnea matkaan!\n
+    """)

@@ -17,7 +17,7 @@ def kirjaudu_sisaan():
         return "back"
 
     print("""
-    Salasna:
+    Salasana:
     """)
     player_password = input("")  # how to make input star?
     if re.search(r'[\'\"]', player_password):
@@ -29,7 +29,7 @@ def kirjaudu_sisaan():
         print("Tervetuloa...")
         return user_id
     else:
-        print("Wrong username or password...")
+        print("Väärä käyttäjänimi tai salasana")
         return []
 
 
@@ -73,17 +73,16 @@ def leaderboard_menu():
 +------------------------------------------+
 |               Leaderboard               |
 +------------------------------------------+
-   Name:        Pisteet
+   Nimi:        Pisteet
     """)
         for index, (name, money) in enumerate(sorted_results, start=1):
             print(f"| {index}. {name:10} | {money:10} |")
-        print("Input back to get back...")
+        print("kirjoita back päästäksesi takaisin...")
         valinta = str(input(""))
         if valinta == "back":
             return "back"
         else:
             continue
-
 
 
 def tutorial():

@@ -1,4 +1,5 @@
 import sys
+import os
 from utils.Main_menu import main_menu
 from data.tehtavan_luonti_algoritmi import luo_tehtava
 from utils.pelaaja import *
@@ -6,16 +7,22 @@ from utils.valikko import valikko
 from utils.kauppa_valikko import *
 from utils.easter_eggs import *
 
+
+def clear_console():
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print("\033c", end="")
+
+
 def main():
     jatka = True #Lisätty while loop että valikko toiminnallisuus toimii, en tiiä ootko samaaa mieltä tästä
     pelaaja = main_menu()
 
-    # hakee kaikki esineet, ja tarkistaa onko pelaaja ostanut kyseisen esineen
-    # ostetut esineet lisätään pelaajalle heti pelin alussa
+
     items = [Item(*item) for item in sql_db_lookup_items(pelaaja.id)]
     for item in items:
         if item.purchased:
             pelaaja.add_item(item)
+
 
     # käytetään item olioden kauppaan viemiseen
     item1, item2, item3 = items[:3]
@@ -24,21 +31,21 @@ def main():
     while jatka:
         # Easy vs hard mode, näkyy co2 consumed vs ei näy
         # Tehtävän luonti/ylikirjoitus
-
         # Tarkistaa onko tehtävä aktiivista tehtävää
         # ja onko yksi tehtävä suoritettu ennen uusien tehtävien luomista
         if pelaaja.tehtava_aktiivinen == False and Tehtava.instance_count < 3:
-
             # Tehtävän luonti/ylikirjoitus
             t1 = luo_tehtava(pelaaja)
             t2 = luo_tehtava(pelaaja)
             t3 = luo_tehtava(pelaaja)
+
+
         if pelaaja.hae_pelaaja_Maa() == "Columbia":
             operation_columbia(t1.lookup_airport())
             t1.multiplier = 20
 
 
-
+        clear_console()
         print(f"""
         +------------------------------------------+
         | Tehtävät(Co2 Consumed, Kerroin, Pisteet) |
@@ -58,16 +65,18 @@ def main():
 
         valinta = input("Valitse : 1.Valikko, 2.Valitse tehtävä , 3.Siirry , 4. Kauppa  ")#4.Kauppa? Vois käyttää raha saada permanent buffs, esim. Co2 consumed halved, pelaaja.pisteet doubler, Co2 Budget doubler.
 
+
         # Pelaajan valinta logiikka
         if valinta == "1":
+            clear_console()
             pelaaja = valikko(pelaaja)
             continue
 
+
         # Tehtävän valinta
         if valinta == "2":
-
             tehtava = input("Valitse tehtävä (1, 2, 3): ")
-
+            clear_console()
             if tehtava == "1":
                 pelaaja.aseta_tehtava(t1)
             elif tehtava == "2":
@@ -77,22 +86,20 @@ def main():
             else:
                 print(f"{tehtava} ei ole valinta.")
 
-        # aktiivisen tehtävän suoritus
+
         if valinta == "3":
             if pelaaja.current_tehtava:
-
-                # asettaa tehtävä countin 0, jotta voidaan aloittaa uusi kierros
-                # ilman "Tehtava.instance_count -= 3" count menee ylöspäin loputtomasti
+                clear_console()
                 Tehtava.instance_count -= 3
                 pelaaja.suorita_tehtava()
 
-        # Tuo esiin kauppa näkymän
+
         if valinta == "4":
+            clear_console()
             kauppa_valikko(pelaaja, item1, item2, item3)
 
 
-        # Tarkistaa onko pelaaja ylittänyt budjetin
-        if pelaaja.co2_consumed >= pelaaja.co2_budget:
+        if int(pelaaja.co2_consumed) >= int(pelaaja.co2_budget):
             print(f"Game Over")
             sql_db_update_leaderboard(pelaaja.nimi, pelaaja.pisteet)
             sql_db_reset_game(pelaaja.id)

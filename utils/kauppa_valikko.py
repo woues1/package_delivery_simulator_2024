@@ -1,5 +1,11 @@
 from utils.pelaaja import Item
 from data.sql_db_query import sql_db_lookup_items
+import os
+
+
+def clear_console():
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print("\033c", end="")
 
 
 def kauppa_valikko(pelaaja, item1, item2, item3):
@@ -7,26 +13,29 @@ def kauppa_valikko(pelaaja, item1, item2, item3):
 
     jatka = True
     while jatka:
+        clear_console()
         print("""
         +---------------------++---------------------++---------------------+ 
-            Tervetuloa kauppaan!
+                                 Tervetuloa kauppaan!
         +---------------------++---------------------++---------------------+ 
-        1.Osta
-        2.Poistu
         """)
-        valinta = input("")
-        if valinta == "1":  # Pitäs olla tarkistukseet löytyykö tiettyä unlockaausta.
-            print(f"""
-            +---------------------++---------------------++---------------------+ 
-              Tuote                     Hinta                  Ostettu
-            +---------------------++---------------------++---------------------+ 
-             1. Hybridi mersu             2000                    {item1.disply_info()}
-             2. Päästö hujattu volkkari   4000                    {item2.disply_info()}   
-             3. Rahan tuplaus kone        8000                    {item3.disply_info()}    
+        print(f"""
+        +---------------------++---------------------++---------------------+ 
+          Tuote                     Hinta                  Ostettu
+        +---------------------++---------------------++---------------------+ 
+        1. Hybridi mersu             2000                    {item1.disply_info()}
+        2. Päästö hujattu volkkari   4000                    {item2.disply_info()}   
+        3. Rahan tuplaus kone        8000                    {item3.disply_info()}    
              
-             kirjoita 'back' jos haluat takaisin     
+        kirjoita 'back' jos haluat takaisin     
             """)
-            valinta = input("")
+
+
+        valinta = input("")
+
+        if valinta == "back":
+            return jatka == False
+        else:
             if valinta == "1":
                 print(f"Haluatko ostaaa {item1.name}?: y/n")
                 valinta = input("")
@@ -75,6 +84,3 @@ def kauppa_valikko(pelaaja, item1, item2, item3):
                 elif valinta == "n":
                     continue
 
-
-        elif valinta == "2":
-            return jatka == False

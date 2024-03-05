@@ -39,6 +39,6 @@ def main_menu():
             valinta = input("")
             continue
         else:
-            print(f"Error: false input {valinta}")
+            print(f"Epäkelpo syöte: {valinta}")
             valinta = input("")
             continue

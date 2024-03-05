@@ -92,11 +92,12 @@ class Item:
         self.purchased = purchased
 
     def purchase(self, pelaaja):
-        if pelaaja.pisteet >= self.price and self.purchased == 0:
-            pelaaja.osta_esine(self.price)
-            sql_db_update_purchased_items(self.id, pelaaja.id)
-            self.purchased = True
-            return True
+        if self.purchased == 0:
+            if pelaaja.pisteet >= self.price:
+                pelaaja.osta_esine(self.price)
+                sql_db_update_purchased_items(self.id, pelaaja.id)
+                self.purchased = True
+                return True
         else:
             return f"Olet jo ostanut esineen"
 

@@ -13,7 +13,6 @@ def kauppa_valikko(pelaaja, item1, item2, item3):
 
     jatka = True
     while jatka:
-        clear_console()
         print("""
         +---------------------++---------------------++---------------------+ 
                                  Tervetuloa kauppaan!
@@ -30,13 +29,14 @@ def kauppa_valikko(pelaaja, item1, item2, item3):
         kirjoita 'back' jos haluat takaisin     
             """)
 
-
+        valid_inputs = ['1', '2', '3']
         valinta = input("")
 
         if valinta == "back":
             return jatka == False
-        else:
+        elif valinta in valid_inputs:
             if valinta == "1":
+                clear_console()
                 print(f"Haluatko ostaaa {item1.name}?: y/n")
                 valinta = input("")
                 if valinta == "y":
@@ -54,7 +54,8 @@ def kauppa_valikko(pelaaja, item1, item2, item3):
 
 
             elif valinta == "2":
-                print(f"Haluatko ostaaa {item2.name}?: y/n")
+                clear_console()
+                print(f"Haluatko ostaa {item2.name}?: y/n")
                 valinta = input("")
                 if valinta == "y":
                     if item2.purchase(pelaaja):
@@ -70,6 +71,7 @@ def kauppa_valikko(pelaaja, item1, item2, item3):
 
 
             elif valinta == "3":
+                clear_console()
                 print(f"Haluatko ostaaa {item3.name}?: y/n")
                 valinta = input("")
                 if valinta == "y":
@@ -83,4 +85,5 @@ def kauppa_valikko(pelaaja, item1, item2, item3):
                     continue
                 elif valinta == "n":
                     continue
-
+        else:
+            clear_console()

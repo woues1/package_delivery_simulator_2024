@@ -1,5 +1,5 @@
 from utils.kirjaudu_funktiot import *
-from utils.pelilauta import art_title_screen
+from Assets.ASCII_art import art_title_screen
 from utils.pelaaja import initialize_player
 
 

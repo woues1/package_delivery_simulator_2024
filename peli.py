@@ -5,7 +5,7 @@ from utils.easter_eggs import *
 from utils.kauppa_valikko import *
 from utils.pelaaja import *
 from utils.valikko import valikko
-from utils.pelilauta import game_over
+from Assets.ASCII_art import game_over
 
 
 def clear_console():

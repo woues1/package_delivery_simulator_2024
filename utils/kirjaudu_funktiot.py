@@ -1,6 +1,6 @@
 from data.sql_db_query import *
 import sys
-from utils.pelilauta import art_exit_game
+from Assets.ASCII_art import art_exit_game
 import re
 
 

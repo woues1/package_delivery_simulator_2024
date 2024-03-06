@@ -14,19 +14,12 @@ def clear_console():
 
 
 def main():
-    jatka = True  # Lisätty while loop että valikko toiminnallisuus toimii, en tiiä ootko samaaa mieltä tästä
+    jatka = True
     pelaaja = main_menu()
     items = initialize_items(pelaaja)
-    # käytetään item olioden kauppaan viemiseen
-
 
     while jatka:
-        # Easy vs hard mode, näkyy co2 consumed vs ei näy
-        # Tehtävän luonti/ylikirjoitus
-        # Tarkistaa onko tehtävä aktiivista tehtävää
-        # ja onko yksi tehtävä suoritettu ennen uusien tehtävien luomista
         if pelaaja.tehtava_aktiivinen == False and Tehtava.instance_count < 3:
-            # Tehtävän luonti/ylikirjoitus
             t1 = luo_tehtava(pelaaja)
             t2 = luo_tehtava(pelaaja)
             t3 = luo_tehtava(pelaaja)

@@ -10,7 +10,6 @@ def luo_tehtava(pelaaja):
     kerroin = kerroin_maarittaja(co2_consumed)
     pisteeet = piste_maarittaja(location)
     tehtava = Tehtava(location, co2_consumed, kerroin, pisteeet)
-
     return tehtava
 
 

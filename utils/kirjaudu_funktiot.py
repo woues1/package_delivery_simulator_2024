@@ -33,7 +33,7 @@ def kirjaudu_sisaan():
         return []
 
 
-def uusi_peli():# jos sama screen_name , antaa error
+def uusi_peli():  # jos sama screen_name , antaa error
     print(f"luo käyttäjä...\n")
     screen_name = input("Käyttäjätunnus: ?")
     screen_names = sql_db_lookup_screen_names(screen_name)
@@ -50,7 +50,8 @@ def uusi_peli():# jos sama screen_name , antaa error
                 print("\nEpäkelpo merkki salasanassa. Yritä uudelleen käyttämättä ' tai \".\n")
                 return []
             else:
-                user_id = sql_db_update_new_game(screen_name, player_password)  # <--- On loutu, mutta puuttuu toiminnallisuus.
+                user_id = sql_db_update_new_game(screen_name,
+                                                 player_password)  # <--- On loutu, mutta puuttuu toiminnallisuus.
                 if user_id:
                     sql_db_update_new_player_items(user_id[0][0])
                     return user_id
@@ -63,8 +64,8 @@ def exit_game():
     sys.exit()
 
 
-#game.ids
-#game.pisteet
+# game.ids
+# game.pisteet
 def leaderboard_menu():
     while True:
         results = sql_db_lookup_screen_names_pisteet()

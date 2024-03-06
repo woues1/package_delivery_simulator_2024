@@ -9,8 +9,6 @@ def clear_console():
 
 
 def kauppa_valikko(pelaaja, item1, item2, item3):
-
-
     jatka = True
     while jatka:
         print("""
@@ -32,7 +30,7 @@ def kauppa_valikko(pelaaja, item1, item2, item3):
         valid_inputs = ['1', '2', '3']
         valinta = input("")
 
-        if valinta == "back":
+        if valinta.lower() == "back":
             return jatka == False
         elif valinta in valid_inputs:
             if valinta == "1":

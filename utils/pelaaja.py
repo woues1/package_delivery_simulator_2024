@@ -1,5 +1,6 @@
 from data.sql_db_query import *
 
+
 # tehtava1 = Tehtava(location="Location1", co2_consumed=5, multiplier=2) <-- näin luodaan tehtävä
 
 # pelaaja.current_tehtava = tehtava1 <-- tällä annetaan pelaajalle tehtävä
@@ -25,6 +26,7 @@ class Pelaaja:
 
     def osta_esine(self, price):
         self.pisteet -= price
+
     def paivita_tehtava_aktiivinen(self, is_active):
         self.tehtava_aktiivinen = is_active
 
@@ -62,7 +64,8 @@ class Pelaaja:
     def suorita_tehtava(self):
         if self.tehtava_aktiivinen and self.current_tehtava:
             self.paivita_sijainti(self.current_tehtava.location)
-            self.paivita_pisteet(self.current_tehtava.piste_maara, self.current_tehtava.multiplier) # Lisätty psite_maara VE
+            self.paivita_pisteet(self.current_tehtava.piste_maara,
+                                 self.current_tehtava.multiplier)  # Lisätty psite_maara VE
             self.paivita_co2_kulutettu(self.current_tehtava.co2_consumed)
             self.paivita_tehtava_aktiivinen(False)
             self.current_tehtava = None
@@ -86,7 +89,7 @@ class Pelaaja:
 class Item:
     def __init__(self, id, name, price, attribute, purchased):
         self.id = id
-        self.name = name    
+        self.name = name
         self.price = price
         self.attribute = attribute
         self.purchased = purchased
@@ -111,11 +114,12 @@ class Item:
 
 class Tehtava:
     instance_count = 0
-    def __init__(self, location, co2_consumed, multiplier, piste_maara):#Lisätty pisteet VE
+
+    def __init__(self, location, co2_consumed, multiplier, piste_maara):  # Lisätty pisteet VE
         self.location = location
         self.co2_consumed = co2_consumed
         self.multiplier = multiplier
-        self.piste_maara = piste_maara #lisätty VE
+        self.piste_maara = piste_maara  # lisätty VE
         Tehtava.instance_count += 1
 
     def lookup_country(self):

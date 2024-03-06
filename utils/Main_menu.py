@@ -7,7 +7,6 @@ def main_menu():
     art_title_screen()
     valinta = input("")
 
-
     while True:
 
         if valinta == "1":

@@ -1,6 +1,7 @@
 from utils.pelaaja import olio_luonti
 import sys
 from data.sql_db_query import *
+
 """
 def valikko():
     print("MAIN MENU PLACEHOLDER")
@@ -14,17 +15,17 @@ def valikko():
 
 
 def valikko(pelaaja):
+    valinta = input("""
+    +--------------------+
+    Valitse
+    +--------------------+
+    1. Uusi peli...
+    2. Tallenna ja poistu
+    3. Takaisin...
+    +--------------------+
+    """)
     while True:
 
-        valinta = input("""
-        +--------------------+
-        Valitse
-        +--------------------+
-        1. Uusi peli...
-        2. Tallenna ja poistu
-        3. Takaisin...
-        +--------------------+
-        """)
         if valinta == "1":
             valinta_v = input("Oletko varma ? y/n :")
             if valinta_v == "y":
@@ -33,7 +34,7 @@ def valikko(pelaaja):
                 pelaaja = olio_luonti(pelaaja.id)
             return pelaaja
 
-        elif valinta== "2":
+        elif valinta == "2":
             print("Lopetetaan peli...")
             sql_db_update_exit_game(pelaaja.nimi, pelaaja.co2_consumed, pelaaja.location, pelaaja.pisteet)
             sys.exit()
@@ -41,3 +42,4 @@ def valikko(pelaaja):
         elif valinta == "3":
             return pelaaja
 
+        valinta = input("    ")

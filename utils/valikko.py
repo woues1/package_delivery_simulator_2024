@@ -1,5 +1,6 @@
-from utils.pelaaja import initialize_player
+import time
 import sys
+from utils.pelaaja import initialize_player
 from data.sql_db_query import *
 
 """
@@ -38,7 +39,10 @@ def valikko(pelaaja, items):
 
         elif valinta == "2":
             print("Lopetetaan peli...")
+            time.sleep(1)
             sql_db_update_exit_game(pelaaja.nimi, pelaaja.co2_consumed, pelaaja.location, pelaaja.pisteet)
+            print("Tallennetaan tietoja")
+            time.sleep(1)
             sys.exit()
 
         elif valinta == "3":

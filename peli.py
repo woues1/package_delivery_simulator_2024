@@ -5,6 +5,7 @@ from utils.easter_eggs import *
 from utils.kauppa_valikko import *
 from utils.pelaaja import *
 from utils.valikko import valikko
+from utils.pelilauta import game_over
 
 
 def clear_console():
@@ -84,9 +85,11 @@ def main():
             kauppa_valikko(pelaaja, *items)
 
         if int(pelaaja.co2_consumed) >= int(pelaaja.co2_budget):
-            print(f"Game Over")
+            game_over()
             sql_db_update_leaderboard(pelaaja.nimi, pelaaja.pisteet)
             sql_db_reset_game(pelaaja.id)
+            print(f"\nLOPPU PISTEET: {pelaaja.pisteet}\n")
+            input("Paina mitä tahansa nappia lopettaaksesi")
             sys.exit()
 
 

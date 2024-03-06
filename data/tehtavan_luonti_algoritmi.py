@@ -1,4 +1,3 @@
-import random
 from geopy import distance
 from data.sql_db_query import *
 from utils.pelaaja import Tehtava
@@ -8,22 +7,18 @@ def luo_tehtava(pelaaja):
     location = generate_delivery_location(pelaaja)
     co2_consumed = co2_consumed_distance(location, pelaaja)
     kerroin = kerroin_maarittaja(co2_consumed)
-    pisteeet = piste_maarittaja(location)
-    tehtava = Tehtava(location, co2_consumed, kerroin, pisteeet)
+    pisteet = piste_maarittaja(location)
+    tehtava = Tehtava(location, co2_consumed, kerroin, pisteet)
     return tehtava
 
 
 def generate_delivery_location(pelaaja):
-    current_location = pelaaja.location
-    locations = sql_db_lookup_locations()
-    if locations:
-        delivery_location = random.choice(locations)[0]
-        if current_location == delivery_location:
-            generate_delivery_location()
+    while True:
+        delivery_location = sql_db_lookup_random_location()
+        if pelaaja.location == delivery_location:
+            continue
         else:
             return delivery_location
-    else:
-        return None
 
 
 def co2_consumed_distance(location, pelaaja):
@@ -51,8 +46,6 @@ def kerroin_maarittaja(co2_consumed):
     return kerroin
 
 
-# Tänne vois lisää vielä miteen goal data vaikuttais kertoimeen
-# piste_maarittaja()
 def piste_maarittaja(location):
     continent = sql_db_lookup_continent_in_location(location)
     if continent[0][0] == "EU":

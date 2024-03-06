@@ -69,14 +69,13 @@ def exit_game():
 def leaderboard_menu():
     while True:
         results = sql_db_lookup_screen_names_pisteet()
-        sorted_results = sorted(results, key=lambda x: x[1], reverse=True)
-        print(f"""
+        print("""
 +------------------------------------------+
 |               Leaderboard               |
 +------------------------------------------+
-   Nimi:        Pisteet
+   Nimi:        Pisteet:
     """)
-        for index, (name, money) in enumerate(sorted_results, start=1):
+        for index, (name, money) in enumerate(results, start=1):
             print(f"| {index}. {name:10} | {money:10} |")
         print("kirjoita back päästäksesi takaisin...")
         valinta = str(input(""))

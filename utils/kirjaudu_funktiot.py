@@ -1,7 +1,7 @@
-from data.sql_db_query import *
+import re
 import sys
 from Assets.ASCII_art import art_exit_game
-import re
+from data.sql_db_query import *
 
 
 def kirjaudu_sisaan():

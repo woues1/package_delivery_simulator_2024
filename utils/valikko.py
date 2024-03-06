@@ -3,17 +3,6 @@ import sys
 from utils.pelaaja import initialize_player
 from data.sql_db_query import *
 
-"""
-def valikko():
-    print("MAIN MENU PLACEHOLDER")
-    print("PELAAJAN TIEDOT(pisteet, co2 budjetti jne.)")
-
-    print("UUSI PELI (poistaa nykyisen pelitiedoston ja aloittaa uudestaan)")
-
-    print("LOPETA PELI(nappi)")
-
-"""
-
 
 def valikko(pelaaja, items):
     valinta = input("""
@@ -26,7 +15,6 @@ def valikko(pelaaja, items):
     +--------------------+
     """)
     while True:
-
         if valinta == "1":
             valinta_v = input("Oletko varma ? y/n: ")
             if valinta_v == "y":

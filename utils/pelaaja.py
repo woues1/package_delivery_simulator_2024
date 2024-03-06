@@ -101,6 +101,8 @@ class Item:
                 sql_db_update_purchased_items(self.id, pelaaja.id)
                 self.purchased = True
                 return True
+            else:
+                return f"Ei tarpeeksi pisteitä: {pelaaja.pisteet}/{self.price}"
         else:
             return f"Olet jo ostanut esineen"
 
@@ -110,7 +112,6 @@ class Item:
 
     def attribute_info(self):
         return self.attribute
-
 
 class Tehtava:
     instance_count = 0
@@ -147,8 +148,16 @@ def kayttaja_haku(id):
     return tulos
 
 
-def olio_luonti(id):
+def initialize_player(id):
     res = kayttaja_haku(id)
     for i in res:
         pelaaja = Pelaaja(i[0], i[1], i[2], i[3], i[4], i[5])
         return pelaaja
+
+
+def initialize_items(pelaaja):
+    items = [Item(*item) for item in sql_db_lookup_items(pelaaja.id)]
+    for item in items:
+        if item.purchased:
+            pelaaja.add_item(item)
+    return items

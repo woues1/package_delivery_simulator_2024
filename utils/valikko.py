@@ -1,4 +1,4 @@
-from utils.pelaaja import olio_luonti
+from utils.pelaaja import initialize_player
 import sys
 from data.sql_db_query import *
 
@@ -14,7 +14,7 @@ def valikko():
 """
 
 
-def valikko(pelaaja):
+def valikko(pelaaja, items):
     valinta = input("""
     +--------------------+
     Valitse
@@ -27,11 +27,13 @@ def valikko(pelaaja):
     while True:
 
         if valinta == "1":
-            valinta_v = input("Oletko varma ? y/n :")
+            valinta_v = input("Oletko varma ? y/n: ")
             if valinta_v == "y":
                 print("Aloitetaan uusi peli...")
                 sql_db_reset_game(pelaaja.id)
-                pelaaja = olio_luonti(pelaaja.id)
+                pelaaja = initialize_player(pelaaja.id)
+                for item in items:
+                    item.purchased = 0
             return pelaaja
 
         elif valinta == "2":

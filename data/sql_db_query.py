@@ -1,4 +1,3 @@
-# def sql_db_update_game_state():
 import random
 from data.sql_db_connect import sql_Execute_Query
 

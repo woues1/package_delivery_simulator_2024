@@ -19,7 +19,7 @@ def kirjaudu_sisaan():
     print("""
     Salasana:
     """)
-    player_password = input("")  # how to make input star?
+    player_password = input("")
     if re.search(r'[\'\"]', player_password):
         print("\nEpäkelpo merkki salasanassa. Yritä uudelleen käyttämättä ' tai \".\n")
         return []
@@ -40,23 +40,23 @@ def uusi_peli():  # jos sama screen_name , antaa error
     if screen_names != []:
         print("Käyttäjänimi on jo käytössä!")
         return []
+
+    if re.search(r'[\'\"]', screen_name):
+        print("\nEpäkelpo merkki käyttäjänimessä. Yritä uudelleen käyttämättä ' tai \".\n")
+        return []
+
+    player_password = input("Salasana: ?")
+    if re.search(r'[\'\"]', player_password):
+        print("\nEpäkelpo merkki salasanassa. Yritä uudelleen käyttämättä ' tai \".\n")
+        return []
+
+    user_id = sql_db_update_new_game(screen_name,
+                                     player_password)  # <--- On loutu, mutta puuttuu toiminnallisuus.
+    if user_id:
+        sql_db_update_new_player_items(user_id[0][0])
+        return user_id
     else:
-        if re.search(r'[\'\"]', screen_name):
-            print("\nEpäkelpo merkki käyttäjänimessä. Yritä uudelleen käyttämättä ' tai \".\n")
-            return []
-        else:
-            player_password = input("Salasana: ?")
-            if re.search(r'[\'\"]', player_password):
-                print("\nEpäkelpo merkki salasanassa. Yritä uudelleen käyttämättä ' tai \".\n")
-                return []
-            else:
-                user_id = sql_db_update_new_game(screen_name,
-                                                 player_password)  # <--- On loutu, mutta puuttuu toiminnallisuus.
-                if user_id:
-                    sql_db_update_new_player_items(user_id[0][0])
-                    return user_id
-                else:
-                    print("Virhe uuden pelin luonnissa. Yritä uudelleen")
+        print("Virhe uuden pelin luonnissa. Yritä uudelleen")
 
 
 def exit_game():

@@ -1,7 +1,7 @@
 import random
 from geopy import distance
 from data.sql_db_query import *
-from utils.pelaaja import olio_luonti, Tehtava
+from utils.pelaaja import Tehtava
 
 
 def luo_tehtava(pelaaja):

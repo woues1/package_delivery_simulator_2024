@@ -1,6 +1,6 @@
 from utils.kirjaudu_funktiot import *
 from utils.pelilauta import art_title_screen
-from utils.pelaaja import olio_luonti
+from utils.pelaaja import initialize_player
 
 
 def main_menu():
@@ -16,7 +16,7 @@ def main_menu():
                 valinta = input("")
                 continue
             if tulos != []:
-                pelaaja = olio_luonti(tulos[0][0])
+                pelaaja = initialize_player(tulos[0][0])
                 return pelaaja
 
 
@@ -24,7 +24,7 @@ def main_menu():
             tulos = uusi_peli()
             if tulos != []:
                 tutorial()
-                pelaaja = olio_luonti(tulos[0][0])
+                pelaaja = initialize_player(tulos[0][0])
                 return pelaaja
 
 

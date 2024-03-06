@@ -1,5 +1,3 @@
-from utils.pelaaja import Item
-from data.sql_db_query import sql_db_lookup_items
 import os
 
 
@@ -10,13 +8,15 @@ def clear_console():
 
 def kauppa_valikko(pelaaja, item1, item2, item3):
     jatka = True
+    message = " "*8
     while jatka:
+        clear_console()
         print("""
         +---------------------++---------------------++---------------------+ 
                                  Tervetuloa kauppaan!
         +---------------------++---------------------++---------------------+ 
         """)
-        print(f"""
+        print(f"""{message}
         +---------------------++---------------------++---------------------+ 
           Tuote                     Hinta                  Ostettu
         +---------------------++---------------------++---------------------+ 
@@ -26,7 +26,7 @@ def kauppa_valikko(pelaaja, item1, item2, item3):
              
         kirjoita 'back' jos haluat takaisin     
         """)
-
+        message = " "*8
         valid_inputs = ['1', '2', '3']
         valinta = input("")
 
@@ -38,11 +38,11 @@ def kauppa_valikko(pelaaja, item1, item2, item3):
                 valinta = input("")
                 if valinta == "y":
                     if item1.purchase(pelaaja) == True:
-                        print(f"Ostit {item1.name}, Co2 päästösi on nytten tuplasti vähemmän")
+                        message += f"Ostit {item1.name}, Co2 päästösi on nytten tuplasti vähemmän"
                         item1.purchase(pelaaja)
                         pelaaja.add_item(item1)
                     else:
-                        print(item1.purchase(pelaaja))
+                        message += f"{item1.purchase(pelaaja)}"
                     continue
                 elif valinta == "n":
                     continue
@@ -53,10 +53,10 @@ def kauppa_valikko(pelaaja, item1, item2, item3):
                 valinta = input("")
                 if valinta == "y":
                     if item2.purchase(pelaaja) == True:
-                        print(f"Ostit {item2.name}, Co2 budjettisi on tuplasti isompi")
+                        message += f"Ostit {item2.name}, Co2 budjettisi on tuplasti isompi"
                         pelaaja.add_item(item2)
                     else:
-                        print(item2.purchase(pelaaja))
+                        message += f"{item2.purchase(pelaaja)}"
                     continue
                 elif valinta == "n":
                     continue
@@ -67,10 +67,10 @@ def kauppa_valikko(pelaaja, item1, item2, item3):
                 valinta = input("")
                 if valinta == "y":
                     if item3.purchase(pelaaja) == True:
-                        print(f"Ostit {item3.name}, saat tuplasti ennemän rahaa")
+                        message += f"Ostit {item3.name}, saat tuplasti ennemän rahaa"
                         pelaaja.add_item(item3)
                     else:
-                        print(item3.purchase(pelaaja))
+                        message += f"{item3.purchase(pelaaja)}"
                     continue
                 elif valinta == "n":
                     continue

@@ -104,7 +104,7 @@ class Item:
             else:
                 return f"Ei tarpeeksi pisteitä: {pelaaja.pisteet}/{self.price}"
         else:
-            return f"Olet jo ostanut esineen"
+            return f"Olet jo ostanut esineen {self.name}"
 
     def disply_info(self):
         purchased_status = "[X]" if self.purchased else "[ ]"

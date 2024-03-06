@@ -35,6 +35,7 @@ def valikko(pelaaja, items):
                 pelaaja = initialize_player(pelaaja.id)
                 for item in items:
                     item.purchased = 0
+                time.sleep(1)
             return pelaaja
 
         elif valinta == "2":

@@ -15,14 +15,9 @@ def clear_console():
 def main():
     jatka = True  # Lisätty while loop että valikko toiminnallisuus toimii, en tiiä ootko samaaa mieltä tästä
     pelaaja = main_menu()
-
-    items = [Item(*item) for item in sql_db_lookup_items(pelaaja.id)]
-    for item in items:
-        if item.purchased:
-            pelaaja.add_item(item)
-
+    items = initialize_items(pelaaja)
     # käytetään item olioden kauppaan viemiseen
-    item1, item2, item3 = items[:3]
+
 
     while jatka:
         # Easy vs hard mode, näkyy co2 consumed vs ei näy
@@ -63,7 +58,7 @@ def main():
         # Pelaajan valinta logiikka
         if valinta == "1":
             clear_console()
-            pelaaja = valikko(pelaaja)
+            pelaaja = valikko(pelaaja, items)
             continue
 
         # Tehtävän valinta
@@ -86,7 +81,7 @@ def main():
 
         if valinta == "4":
             clear_console()
-            kauppa_valikko(pelaaja, item1, item2, item3)
+            kauppa_valikko(pelaaja, *items)
 
         if int(pelaaja.co2_consumed) >= int(pelaaja.co2_budget):
             print(f"Game Over")

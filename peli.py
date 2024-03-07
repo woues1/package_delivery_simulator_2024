@@ -6,7 +6,7 @@ from utils.kauppa_valikko import *
 from utils.pelaaja import *
 from utils.valikko import valikko
 from Assets.ASCII_art import game_over
-
+from utils.animaatio import *
 
 def clear_console():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -69,6 +69,7 @@ def main():
 
         if valinta == "3":
             if pelaaja.current_tehtava:
+                animate()
                 clear_console()
                 Tehtava.instance_count -= 3
                 pelaaja.suorita_tehtava()

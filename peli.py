@@ -1,4 +1,3 @@
-import sys
 from data.tehtavan_luonti_algoritmi import luo_tehtava
 from utils.Main_menu import main_menu
 from utils.easter_eggs import *
@@ -6,7 +5,7 @@ from utils.kauppa_valikko import *
 from utils.pelaaja import *
 from utils.valikko import valikko
 from Assets.ASCII_art import game_over
-from utils.animaatio import *
+from Assets.animaatio import *
 
 def clear_console():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -39,16 +38,15 @@ def main():
         +---------------------++---------------------++---------------------+ 
         |     Omat tiedot     |  Aktiivinen tehtava: {pelaaja.hae_current_tehtava_tiedot()}
         +---------------------++---------------------++---------------------+ 
-        | Maa : {pelaaja.hae_pelaaja_Maa()} 
-        | {pelaaja.hae_pelaaja_lentokentta()}                                          
+        | Maa: {pelaaja.hae_pelaaja_Maa()}
+        | Lentokenttä: {pelaaja.hae_pelaaja_lentokentta()}                                          
         | {pelaaja.co2_consumed}/{pelaaja.co2_budget}                                      
         | {pelaaja.pisteet}         
         +---------------------++---------------------++---------------------+ 
         """)
 
-        valinta = input(
-            "Valitse : 1.Valikko, 2.Valitse tehtävä , 3.Siirry , 4. Kauppa  ")  # 4.Kauppa? Vois käyttää raha saada permanent buffs, esim. Co2 consumed halved, pelaaja.pisteet doubler, Co2 Budget doubler.
-
+        print("Valitse : 1.Valikko, 2.Valitse tehtävä , 3.Siirry , 4. Kauppa  ")  # 4.Kauppa? Vois käyttää raha saada permanent buffs, esim. Co2 consumed halved, pelaaja.pisteet doubler, Co2 Budget doubler.
+        valinta = input("")
         # Pelaajan valinta logiikka
         if valinta == "1":
             clear_console()

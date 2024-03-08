@@ -83,7 +83,7 @@ class Pelaaja:
 
     def hae_pelaaja_lentokentta(self):
         player_location_print = sql_db_lookup_location_name(self.location)
-        return f"Lentokenttä: {player_location_print[0][0]}"
+        return f"{player_location_print[0][0]}"
 
 
 class Item:

@@ -7,6 +7,7 @@ from utils.valikko import valikko
 from Assets.ASCII_art import game_over
 from Assets.animaatio import *
 
+
 def clear_console():
     os.system('cls' if os.name == 'nt' else 'clear')
     print("\033c", end="")
@@ -45,7 +46,7 @@ def main():
         +---------------------++---------------------++---------------------+ 
         """)
 
-        print("Valitse : 1.Valikko, 2.Valitse tehtävä , 3.Siirry , 4. Kauppa  ")  # 4.Kauppa? Vois käyttää raha saada permanent buffs, esim. Co2 consumed halved, pelaaja.pisteet doubler, Co2 Budget doubler.
+        print("Valitse : 1.Valikko, 2.Valitse tehtävä, 3.Siirry, 4. Kauppa  ")  # 4.Kauppa? Vois käyttää raha saada permanent buffs, esim. Co2 consumed halved, pelaaja.pisteet doubler, Co2 Budget doubler.
         valinta = input("")
         # Pelaajan valinta logiikka
         if valinta == "1":
@@ -54,7 +55,7 @@ def main():
             continue
 
         # Tehtävän valinta
-        if valinta == "2":
+        elif valinta == "2":
             tehtava = input("Valitse tehtävä (1, 2, 3): ")
             if tehtava == "1":
                 pelaaja.aseta_tehtava(t1)
@@ -65,16 +66,17 @@ def main():
             else:
                 print(f"{tehtava} ei ole valinta.")
 
-        if valinta == "3":
+        elif valinta == "3":
             if pelaaja.current_tehtava:
                 animate()
                 clear_console()
                 Tehtava.instance_count -= 3
                 pelaaja.suorita_tehtava()
 
-        if valinta == "4":
+        elif valinta == "4":
             clear_console()
             kauppa_valikko(pelaaja, *items)
+
 
         if int(pelaaja.co2_consumed) >= int(pelaaja.co2_budget):
             game_over()

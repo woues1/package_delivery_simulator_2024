@@ -1,14 +1,9 @@
 from data.sql_db_query import *
 
-
 # tehtava1 = Tehtava(location="Location1", co2_consumed=5, multiplier=2) <-- näin luodaan tehtävä
-
-# pelaaja.current_tehtava = tehtava1 <-- tällä annetaan pelaajalle tehtävä
 
 # pelaaja.suorita_tehtava() <-- tällä komennolla pelaaja suorittaa tehtävän
 
-
-# pelaajan tiedot
 class Pelaaja:
     def __init__(self, nimi, id, pisteet, location, co2_consumed, co2_budget):
         self.nimi = nimi
@@ -38,9 +33,6 @@ class Pelaaja:
 
     def paivita_sijainti(self, location):
         self.location = location
-
-    def lisaa_tehtava(self, tehtava):
-        self.Tehtavat.append(tehtava)
 
     def add_item(self, item):
         self.Items.append(item)

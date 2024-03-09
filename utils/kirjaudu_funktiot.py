@@ -7,6 +7,7 @@ from data.sql_db_query import *
 def kirjaudu_sisaan():
     print("""
     Kirjaudu sisään (kirjoita 'back' jos haluat takaisin)
+    
     Käyttäjänimi: 
     """)
     screen_name = input("")
@@ -29,7 +30,8 @@ def kirjaudu_sisaan():
         print("Tervetuloa...")
         return user_id
     else:
-        print("Väärä käyttäjänimi tai salasana")
+        print("""
+    Väärä käyttäjänimi tai salasana""")
         return []
 
 

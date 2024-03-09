@@ -13,7 +13,6 @@ class Pelaaja:
         self.co2_consumed = co2_consumed
         self.tehtava_aktiivinen = False
         self.current_tehtava = []
-        self.Tehtavat = []
         self.Items = []
         self.co2_budget = co2_budget
         self.co2_kerroin = 1.0
@@ -26,7 +25,7 @@ class Pelaaja:
         self.tehtava_aktiivinen = is_active
 
     def paivita_pisteet(self, piste_maara, tehtava_kerroin):
-        self.pisteet += piste_maara * (tehtava_kerroin * int(self.piste_kerroin))
+        self.pisteet += piste_maara * (float(tehtava_kerroin) * float(self.piste_kerroin))
 
     def paivita_co2_kulutettu(self, co2_consumed):
         self.co2_consumed = self.co2_consumed + (float(co2_consumed) * float(self.co2_kerroin))
@@ -46,10 +45,6 @@ class Pelaaja:
 
     def aseta_tehtava(self, tehtava):
         if not self.tehtava_aktiivinen:
-            self.current_tehtava = tehtava
-            self.paivita_tehtava_aktiivinen(True)
-        if self.current_tehtava:
-            self.current_tehtava = []
             self.current_tehtava = tehtava
             self.paivita_tehtava_aktiivinen(True)
 

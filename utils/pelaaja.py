@@ -47,6 +47,9 @@ class Pelaaja:
         if not self.tehtava_aktiivinen:
             self.current_tehtava = tehtava
             self.paivita_tehtava_aktiivinen(True)
+        else:
+            self.current_tehtava = []
+            self.current_tehtava = tehtava
 
     def suorita_tehtava(self):
         if self.tehtava_aktiivinen and self.current_tehtava:

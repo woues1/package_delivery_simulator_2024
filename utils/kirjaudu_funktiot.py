@@ -38,13 +38,13 @@ def kirjaudu_sisaan():
 def uusi_peli():  # jos sama screen_name , antaa error
     print(f"luo käyttäjä...\n")
     screen_name = input("Käyttäjätunnus: ?")
+    if re.search(r'[\'\"]', screen_name):
+        print("\nEpäkelpo merkki käyttäjänimessä. Yritä uudelleen käyttämättä ' tai \".\n")
+        return []
+
     screen_names = sql_db_lookup_screen_names(screen_name)
     if screen_names != []:
         print("Käyttäjänimi on jo käytössä!")
-        return []
-
-    if re.search(r'[\'\"]', screen_name):
-        print("\nEpäkelpo merkki käyttäjänimessä. Yritä uudelleen käyttämättä ' tai \".\n")
         return []
 
     player_password = input("Salasana: ?")
@@ -93,7 +93,7 @@ def tutorial():
     Jokaisesta lentokenttästä löytyy kolme eri tehtävää kolmeen eri lentokenttään.\n
     Sinun tehtävä on toimittaa paketteja ympäri maailmaa, ja kerätä niin paljon pisteitä kun mahdollista!\n
     Mutta muista, sinulla on Co2 budjetti mitä pitää noudattaa. Kun olet käyttäny budjettisi kokonaisuudesaan.\n
-    Peli päättyy ja sinun pisteet kirjataan tulostaulukkoon.!\n
+    Peli päättyy ja sinun pisteet kirjataan tulostaulukkoon!\n
     Kilpaile kavereittesi kanssa ja katso kuka saa eniten pisteitä!\n
     Onnea matkaan!\n
     """)

@@ -78,7 +78,7 @@ def leaderboard_menu():
    Nimi:        Pisteet:
     """)
         for index, (name, money) in enumerate(results, start=1):
-            print(f"| {index}. {name:10} | {money:10} |")
+            print(f"| {index:3}. {name:10} | {money:10} |")
         print("kirjoita back päästäksesi takaisin...")
         valinta = str(input(""))
         if valinta == "back":

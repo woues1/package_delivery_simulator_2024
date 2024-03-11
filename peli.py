@@ -34,7 +34,7 @@ def main():
         | Tehtävät(Co2 Consumed, Kerroin, Pisteet) |
         +------------------------------------------+
         1. co2: {t1.lookup_co2_consumed()}  K: {t1.lookup_kerroin()}  P: {t1.lookup_pisteet()} | {t1.lookup_airport()}, {t1.lookup_country()}
-        2. co2: {t2.lookup_co2_consumed()}  K: {t3.lookup_kerroin()}  P: {t2.lookup_pisteet()} | {t2.lookup_airport()}, {t2.lookup_country()}
+        2. co2: {t2.lookup_co2_consumed()}  K: {t2.lookup_kerroin()}  P: {t2.lookup_pisteet()} | {t2.lookup_airport()}, {t2.lookup_country()}
         3. co2: {t3.lookup_co2_consumed()}  K: {t3.lookup_kerroin()}  P: {t3.lookup_pisteet()} | {t3.lookup_airport()}, {t3.lookup_country()}
         +---------------------++---------------------++---------------------+ 
         |     Omat tiedot     |  Aktiivinen tehtava: {pelaaja.hae_current_tehtava_tiedot()}

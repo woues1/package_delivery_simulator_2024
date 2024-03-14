@@ -52,7 +52,7 @@ def sql_db_lookup_random_location():
 
 
 def sql_db_lookup_screen_names_pisteet():
-    tulos = sql_Execute_Query(f"SELECT name, pisteet FROM leaderboard ORDER BY pisteet DESC LIMIT 10;")
+    tulos = sql_Execute_Query(f"SELECT name, pisteet FROM leaderboard ORDER BY pisteet DESC LIMIT 5;")
     return tulos
 
 

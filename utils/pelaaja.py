@@ -63,7 +63,7 @@ class Pelaaja:
     def hae_current_tehtava_tiedot(self):
         if self.current_tehtava:
             location = sql_db_lookup_location_name(self.current_tehtava.location)
-            return f"Lentokenttä: {location[0][0]} | Co2 kulutus: {self.current_tehtava.co2_consumed}"
+            return f"{location[0][0]} | Co2 kulutus: {self.current_tehtava.co2_consumed}"
         else:
             return "Tehtävää ei ole valittu"
 

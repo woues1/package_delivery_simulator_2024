@@ -6,23 +6,25 @@ from utils.pelaaja import *
 from utils.valikko import valikko
 from Assets.ASCII_art import game_over
 from Assets.animaatio import *
-
+import asyncio
 
 def clear_console():
     os.system('cls' if os.name == 'nt' else 'clear')
     print("\033c", end="")
 
 
-def main():
+async def main():
     jatka = True
     pelaaja = main_menu()
     items = initialize_items(pelaaja)
 
     while jatka:
         if pelaaja.tehtava_aktiivinen == False and Tehtava.instance_count < 3:
-            t1 = luo_tehtava(pelaaja)
-            t2 = luo_tehtava(pelaaja)
-            t3 = luo_tehtava(pelaaja)
+            tasks = []
+            for _ in range(3):
+                tasks.append(luo_tehtava(pelaaja))
+            created_tasks = await asyncio.gather(*tasks)
+            t1, t2, t3 = created_tasks
 
         if pelaaja.hae_pelaaja_Maa() == "Columbia":
             operation_columbia(t1.lookup_airport())
@@ -88,4 +90,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    asyncio.run(main())

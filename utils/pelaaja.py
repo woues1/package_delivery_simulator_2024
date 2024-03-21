@@ -141,7 +141,7 @@ def kayttaja_haku(id):
 def initialize_player(id):
     res = kayttaja_haku(id)
     for i in res:
-        pelaaja = Pelaaja(i[0], i[1], i[2], i[3], i[4], i[5])
+        pelaaja = Pelaaja(*(j for j in i))
         return pelaaja
 
 

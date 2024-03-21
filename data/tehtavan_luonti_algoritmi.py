@@ -1,18 +1,18 @@
 from geopy import distance
 from data.sql_db_query import *
 from utils.pelaaja import Tehtava
+import asyncio
 
-
-def luo_tehtava(pelaaja):
-    location = generate_delivery_location(pelaaja)
-    co2_consumed = co2_consumed_distance(location, pelaaja)
+async def luo_tehtava(pelaaja):
+    location = await generate_delivery_location(pelaaja)
+    co2_consumed = await co2_consumed_distance(location, pelaaja)
     kerroin = kerroin_maarittaja(co2_consumed)
     pisteet = piste_maarittaja(location)
     tehtava = Tehtava(location, co2_consumed, kerroin, pisteet)
     return tehtava
 
 
-def generate_delivery_location(pelaaja):
+async def generate_delivery_location(pelaaja):
     while True:
         delivery_location = sql_db_lookup_random_location()
         if pelaaja.location == delivery_location:
@@ -21,7 +21,7 @@ def generate_delivery_location(pelaaja):
             return delivery_location
 
 
-def co2_consumed_distance(location, pelaaja):
+async def co2_consumed_distance(location, pelaaja):
     current_location = sql_db_lookup_lat_long(pelaaja.location)
     destintion = sql_db_lookup_lat_long(location)
     distance_to_location = distance.distance(current_location, destintion).km

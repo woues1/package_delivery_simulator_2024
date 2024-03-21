@@ -38,7 +38,7 @@ class Pelaaja:
         print(item.attribute_info())
         if item.name == "Hybridi mersu":
             self.co2_kerroin = item.attribute_info()
-        elif item.name == "rahan tuplaus kone":
+        elif item.name == "Rahan tuplaus kone":
             self.piste_kerroin = item.attribute_info()
         elif item.name == "Päästö hujattu volkkari":
             self.co2_budget = item.attribute_info()

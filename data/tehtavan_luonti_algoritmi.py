@@ -2,25 +2,25 @@ from geopy import distance
 from data.sql_db_query import *
 from utils.pelaaja import Tehtava
 
-async def luo_tehtava(pelaaja):
-    location = await generate_delivery_location(pelaaja)
-    co2_consumed = await co2_consumed_distance(location, pelaaja)
+async def luo_tehtava(pelaaja_location):
+    location = await generate_delivery_location(pelaaja_location)
+    co2_consumed = await co2_consumed_distance(location, pelaaja_location)
     kerroin = kerroin_maarittaja(co2_consumed)
     pisteet = piste_maarittaja(location)
     return Tehtava(location, co2_consumed, kerroin, pisteet)
 
 
-async def generate_delivery_location(pelaaja):
+async def generate_delivery_location(curr_location):
     while True:
         delivery_location = sql_db_lookup_random_location()
-        if pelaaja.location == delivery_location:
+        if curr_location == delivery_location:
             continue
         else:
             return delivery_location
 
 
-async def co2_consumed_distance(location, pelaaja):
-    current_location = sql_db_lookup_lat_long(pelaaja.location)
+async def co2_consumed_distance(location, curr_location):
+    current_location = sql_db_lookup_lat_long(curr_location)
     destintion = sql_db_lookup_lat_long(location)
     distance_to_location = distance.distance(current_location, destintion).km
     co2_consumed = distance_to_location // 10  # co2_budget-co2_consumed=new co2 budget , 1 co2 == 10km

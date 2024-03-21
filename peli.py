@@ -22,7 +22,7 @@ async def main():
     while jatka:
         if pelaaja.tehtava_aktiivinen == False and Tehtava.instance_count < 3:
             tasks = [
-                asyncio.create_task(luo_tehtava(pelaaja)) for _ in range(3)
+                asyncio.create_task(luo_tehtava(pelaaja.location)) for _ in range(3)
             ]
             t1, t2, t3 = await asyncio.gather(*tasks)
 

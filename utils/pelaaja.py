@@ -6,17 +6,17 @@ from data.sql_db_query import *
 
 class Pelaaja:
     def __init__(self, nimi, id, pisteet, location, co2_consumed, co2_budget):
-        self.nimi = nimi
-        self.id = id
-        self.pisteet = pisteet
-        self.location = location
-        self.co2_consumed = co2_consumed
-        self.tehtava_aktiivinen = False
-        self.current_tehtava = []
-        self.Items = []
-        self.co2_budget = co2_budget
-        self.co2_kerroin = 1.0
-        self.piste_kerroin = 1.0
+        self.nimi: str = nimi
+        self.id: int = id
+        self.pisteet: int = pisteet
+        self.location: str = location
+        self.co2_consumed: int = co2_consumed
+        self.tehtava_aktiivinen: bool = False
+        self.current_tehtava: object = []
+        self.Items: object = []
+        self.co2_budget: int = co2_budget
+        self.co2_kerroin: float = 1.0
+        self.piste_kerroin: float = 1.0
 
     def osta_esine(self, price):
         self.pisteet -= price
@@ -78,11 +78,11 @@ class Pelaaja:
 
 class Item:
     def __init__(self, id, name, price, attribute, purchased):
-        self.id = id
-        self.name = name
-        self.price = price
-        self.attribute = attribute
-        self.purchased = purchased
+        self.id: int = id
+        self.name: str = name
+        self.price: int = price
+        self.attribute: float = attribute
+        self.purchased: bool = purchased
 
     def purchase(self, pelaaja):
         if self.purchased == 0:
@@ -107,10 +107,10 @@ class Tehtava:
     instance_count = 0
 
     def __init__(self, location, co2_consumed, multiplier, piste_maara):  # Lisätty pisteet VE
-        self.location = location
-        self.co2_consumed = co2_consumed
-        self.multiplier = multiplier
-        self.piste_maara = piste_maara  # lisätty VE
+        self.location: str = location
+        self.co2_consumed: int = co2_consumed
+        self.multiplier: int = multiplier
+        self.piste_maara: int = piste_maara  # lisätty VE
         Tehtava.instance_count += 1
 
     def lookup_country(self):

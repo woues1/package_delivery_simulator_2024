@@ -8,6 +8,7 @@ from Assets.ASCII_art import game_over
 from Assets.animaatio import *
 import asyncio
 
+
 def clear_console():
     os.system('cls' if os.name == 'nt' else 'clear')
     print("\033c", end="")

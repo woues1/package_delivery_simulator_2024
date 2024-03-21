@@ -1,15 +1,13 @@
 from geopy import distance
 from data.sql_db_query import *
 from utils.pelaaja import Tehtava
-import asyncio
 
 async def luo_tehtava(pelaaja):
     location = await generate_delivery_location(pelaaja)
     co2_consumed = await co2_consumed_distance(location, pelaaja)
     kerroin = kerroin_maarittaja(co2_consumed)
     pisteet = piste_maarittaja(location)
-    tehtava = Tehtava(location, co2_consumed, kerroin, pisteet)
-    return tehtava
+    return Tehtava(location, co2_consumed, kerroin, pisteet)
 
 
 async def generate_delivery_location(pelaaja):

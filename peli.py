@@ -20,11 +20,10 @@ async def main():
 
     while jatka:
         if pelaaja.tehtava_aktiivinen == False and Tehtava.instance_count < 3:
-            tasks = []
-            for _ in range(3):
-                tasks.append(luo_tehtava(pelaaja))
-            created_tasks = await asyncio.gather(*tasks)
-            t1, t2, t3 = created_tasks
+            tasks = [
+                asyncio.create_task(luo_tehtava(pelaaja)) for _ in range(3)
+            ]
+            t1, t2, t3 = await asyncio.gather(*tasks)
 
         if pelaaja.hae_pelaaja_Maa() == "Columbia":
             operation_columbia(t1.lookup_airport())

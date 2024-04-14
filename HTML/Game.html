@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="../Styling/Main_menu_styling.css">
+    <script src="../JS/displaytextures.js" defer></script>
 </head>
 <body>
 
   <div class="login-container">
       <div class="header">
-          <img src="../Assets/header.png" alt="Header">
+          <div id="header" class="texture"></div>
       </div>
       <div class="background_img">
-          <img src="../Assets/background_main.png" alt="background image">
+          <div id="background" class="texture"></div>
       </div>
       <form class="login-form" action="/action.js">
           <input type="text" id="fname" name="fname" placeholder="username" class="text">

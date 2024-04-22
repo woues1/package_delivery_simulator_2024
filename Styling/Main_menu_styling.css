@@ -48,7 +48,7 @@
     margin-top: 10px;
 }
 
-.login-form .login {
+#log_in_button {
     width: 200px;
     height: 65px;
     cursor: pointer;
@@ -58,11 +58,17 @@
     display: block;
 }
 
-.new_game{
-    overflow: hidden;
+#new_game_button{
+    width: 200px;
+    height: 65px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    display: block;
 }
 
-.leaderboard {
+#leaderboard_button {
     width: 400px;
     height: 60px;
     cursor: pointer;

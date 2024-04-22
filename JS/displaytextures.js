@@ -15,6 +15,9 @@ fetch('../Assets/textures.json')
 
   displayTexture('background', 'main_menu_background_corr.png');
   displayTexture('header', 'header_corr.png');
+  displayTexture('log_in_button', 'login_button.png' );
+  displayTexture('new_game_button','new_game_button.png');
+  displayTexture('leaderboard_button','leaderboard_button.png');
 });
 
 

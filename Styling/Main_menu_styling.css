@@ -80,6 +80,21 @@
     padding: 0px;
 }
 
+#leaderboard {
+    display: none;
+    transform: translate(-0%, -5%);
+    position: absolute;
+    z-index: 3;
+}
+
+#leaderboard_close {
+    display: none;
+    position: absolute;
+    z-index: 3;
+    cursor: pointer;
+    transform: translate(130%, 480%);
+}
+
 .texture {
     background-repeat: no-repeat;
     background-image: url('../Assets/textures.png');

@@ -1,3 +1,7 @@
+@font-face {
+    font-family: 'CustomFont';
+    src: url('../Assets/AniMeMatrix-MB_EN.ttf') format('truetype');
+}
 .login-container {
     position: relative;
     width: 800px;
@@ -86,20 +90,20 @@
     position: absolute;
     z-index: 3;
     text-align: center;
-    font-family: "Comic Sans MS";
+    font-family: "CustomFont";
     font-size: 18px;
-    padding-top: 100px;
-
 }
 p {
-    border: white;
+    color: white;
+    border: #98235c;
     border-style: solid;
     border-radius: 10px;
-    background: white;
+    background: #fc7991;
     width: 60%;
     height: auto;
-    padding: 3px;
-    transform: translate(35%, -50%);
+    padding: 10px;
+    transform: translate(32%,200%);
+    margin: 1px;
 }
 
 #leaderboard_close {

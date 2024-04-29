@@ -87,9 +87,19 @@
     z-index: 3;
     text-align: center;
     font-family: "Comic Sans MS";
-    font-size: 20px;
+    font-size: 18px;
     padding-top: 100px;
 
+}
+p {
+    border: white;
+    border-style: solid;
+    border-radius: 10px;
+    background: white;
+    width: 60%;
+    height: auto;
+    padding: 3px;
+    transform: translate(35%, -50%);
 }
 
 #leaderboard_close {

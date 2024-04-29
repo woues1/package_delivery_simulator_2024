@@ -37,8 +37,9 @@ $(document).ready(function(){
           leaderboard.innerHTML ='';
           values.forEach((value, index) =>{
               const placement = index + 1
-              const textNode = document.createTextNode(`${placement}. Name: ${value[0]}, Score: ${value[1]}`)
-              leaderboard.appendChild(textNode)
+              const p = document.createElement('p')
+              p.innerHTML = `${placement}. Name: ${value[0]}, Score: ${value[1]}`
+              leaderboard.appendChild(p)
               leaderboard.appendChild(document.createElement('br'))
           })
       })

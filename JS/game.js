@@ -30,6 +30,18 @@ $(document).ready(function(){
   $('#leaderboard_button').click(function(){
     $('#leaderboard').toggle();
     $('#leaderboard_close').toggle()
+      fetch('http://127.0.0.1:3000/leaderboard_info')
+      .then(response => response.json())
+      .then(values => {
+          const leaderboard = document.getElementById('leaderboard')
+          leaderboard.innerHTML ='';
+          values.forEach((value, index) =>{
+              const placement = index + 1
+              const textNode = document.createTextNode(`${placement}. Name: ${value[0]}, Score: ${value[1]}`)
+              leaderboard.appendChild(textNode)
+              leaderboard.appendChild(document.createElement('br'))
+          })
+      })
   });
 
   $('#leaderboard_close').click(function(){

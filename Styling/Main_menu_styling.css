@@ -85,6 +85,11 @@
     transform: translate(-0%, -5%);
     position: absolute;
     z-index: 3;
+    text-align: center;
+    font-family: "Comic Sans MS";
+    font-size: 20px;
+    padding-top: 100px;
+
 }
 
 #leaderboard_close {
@@ -94,6 +99,7 @@
     cursor: pointer;
     transform: translate(130%, 480%);
 }
+
 
 .texture {
     background-repeat: no-repeat;

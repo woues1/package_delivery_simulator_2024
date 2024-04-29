@@ -102,8 +102,8 @@ p {
     width: 60%;
     height: auto;
     padding: 10px;
-    transform: translate(32%,200%);
-    margin: 1px;
+    transform: translate(28%,200%);
+    margin: 10px;
 }
 
 #leaderboard_close {

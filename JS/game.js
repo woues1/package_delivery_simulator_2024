@@ -40,7 +40,6 @@ $(document).ready(function(){
               const p = document.createElement('p')
               p.innerHTML = `${placement}.${value[0]} || Score: ${value[1]}`
               leaderboard.appendChild(p)
-              leaderboard.appendChild(document.createElement('br'))
           })
       })
   });

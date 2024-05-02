@@ -1,5 +1,6 @@
 import re
 import sys
+import flask_end_tba
 from Assets.ASCII_art import art_exit_game
 from data.sql_db_query import *
 

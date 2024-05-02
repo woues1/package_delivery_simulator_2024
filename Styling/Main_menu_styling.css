@@ -60,6 +60,9 @@
     margin-bottom: 10px;
     margin-left: 5px;
     display: block;
+    border: none;
+    padding: 0;
+    cursor: pointer;
 }
 
 #new_game_button{
@@ -70,6 +73,9 @@
     margin-bottom: 10px;
     margin-left: 5px;
     display: block;
+    border: none;
+    padding: 0;
+    cursor: pointer;
 }
 
 #leaderboard_button {

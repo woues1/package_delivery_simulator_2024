@@ -5,7 +5,9 @@ const yrita = document.getElementById('yrita')
 let randomNumber = 0
 let x = 0
 let y = 0
+let z = 0
 let lockpick = false
+let userid = 1
 
 function lockpickingStart() {
     fetch('http://127.0.0.1:3000/random_number')
@@ -18,12 +20,12 @@ function lockpickingStart() {
 }
 
 right.addEventListener('click', function()  {
-    x += 5
+    x += 1
     document.getElementById('number').innerText = x
 })
 
 left.addEventListener('click', function() {
-    x -= 5
+    x -= 1
     document.getElementById('number').innerText = x
 })
 
@@ -34,29 +36,24 @@ yrita.addEventListener('click', function() {
             lockpick = data.value
         })
     if (lockpick == true) {
-        if (x <= randomNumber + 15 && x >= randomNumber - 15) {
-            document.getElementById('result').innerText = 'Onnistuit'
-            sendResult(true)
-        } else {
-            y++
-            document.getElementById('result').innerText = x < randomNumber ? 'Epaonnistuit yrita uudelleen, "kaanna enemman oikealle"' : 'Epaonnistuit yrita uudelleen, "kaanna enemman vasemmalle"'
-        }
-        if (y >= 5) {
-            document.getElementById('result').innerText = 'Tiirikka rikkoutui'
-            sendResult(false)
-        }
+        z = 15
     } else {
-        if (x <= randomNumber + 5 && x >= randomNumber - 5) {
-            document.getElementById('result').innerText = 'Onnistuit'
-            sendResult(true)
-        } else {
-            y++
-            document.getElementById('result').innerText = x < randomNumber ? 'Epaonnistuit yrita uudelleen, "kaanna enemman oikealle"' : 'Epaonnistuit yrita uudelleen, "kaanna enemman vasemmalle"'
+        z = 5
+    }
+    if (x <= randomNumber + z && x >= randomNumber - z) {
+        document.getElementById('result').innerText = 'Onnistuit'
+        sendResult(true)
+    } else if (x < randomNumber - z || x > randomNumber + z) {
+        y++
+        if (x < randomNumber) {
+            document.getElementById('result').innerText = 'Epaonnistuit yrita uudelleen, "kaanna enemman oikealle"'
+        } else if (x > randomNumber) {
+            document.getElementById('result').innerText = 'Epaonnistuit yrita uudelleen, "kaanna enemman vasemmalle"'
         }
-        if (y >= 5) {
-            document.getElementById('result').innerText = 'Tiirikka rikkoutui'
-            sendResult(false)
-        }
+    }
+    if (y >= 5) {
+        document.getElementById('result').innerText = 'Tiirikka rikkoutui'
+        sendResult(false)
     }
 })
 
@@ -67,5 +64,13 @@ function sendResult(success) {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({ success: success })
+    })
+    fetch(`http://127.0.0.1:3000/update_points/${userid}`, {
+    method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ success: success })
+
     })
 }

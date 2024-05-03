@@ -1,19 +1,16 @@
-
-document.getElementById('login-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the form from submitting normally
-
+document.getElementById('login_submit').addEventListener('submit', function() {
+    event.preventDefault();
     // Get the values from the form
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
-
-    // Create an object with the login data
+    // Create an object with username and password
     const loginData = {
         username: username,
         password: password
     };
 
-    // Send a POST request to the Flask endpoint
-    fetch('/login', {
+    // Send a POST request with JSON data to the Flask endpoint
+    fetch('http://127.0.0.1:3000/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -21,46 +18,18 @@ document.getElementById('login-form').addEventListener('submit', function(event)
         body: JSON.stringify(loginData)
     })
     .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
+        if (response.ok) {
+            // If the response is successful, display a message
+            alert('Login successful');
+        } else {
+            // If the response is not successful, handle the error
+            return response.json().then(data => {
+                alert(data.error);
+            });
         }
-        return response.json();
-    })
-    .then(data => {
-        // Handle the response from the server
-        console.log(data);
-        // Redirect or perform any other action based on the response
     })
     .catch(error => {
-        console.error('There was a problem with the fetch operation:', error);
+        console.error('Error:', error);
+        alert('An error occurred. Please try again later.');
     });
-});
-
-
-document.getElementById('log_in_button').addEventListener('click', function() {
-    // Get the values from the form
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-
-    // Create a hidden form element
-    const hiddenForm = document.createElement('form');
-    hiddenForm.method = 'post';
-    hiddenForm.action = '/login';
-
-    // Create hidden input fields for username and password
-    const usernameInput = document.createElement('input');
-    usernameInput.type = 'hidden';
-    usernameInput.name = 'username';
-    usernameInput.value = username;
-    hiddenForm.appendChild(usernameInput);
-
-    const passwordInput = document.createElement('input');
-    passwordInput.type = 'hidden';
-    passwordInput.name = 'password';
-    passwordInput.value = password;
-    hiddenForm.appendChild(passwordInput);
-
-    // Append the form to the document body and submit it
-    document.body.appendChild(hiddenForm);
-    hiddenForm.submit();
 });

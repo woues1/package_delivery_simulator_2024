@@ -52,7 +52,7 @@
     margin-top: 10px;
 }
 
-#log_in_button {
+#log_in_button, #login_submit {
     width: 200px;
     height: 65px;
     cursor: pointer;
@@ -63,21 +63,20 @@
     border: none;
     padding: 0;
     cursor: pointer;
+    border:0;
 }
 
 #new_game_button{
-    width: 200px;
-    height: 65px;
     cursor: pointer;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-left: 5px;
     display: block;
-    border: none;
     padding: 0;
-    cursor: pointer;
 }
-
+#login_submit {
+    background:transparent;
+}
 #leaderboard_button {
     width: 400px;
     height: 60px;
@@ -124,4 +123,5 @@ p {
 .texture {
     background-repeat: no-repeat;
     background-image: url('../Assets/textures.png');
+    display: block;
 }

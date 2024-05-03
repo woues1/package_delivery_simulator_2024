@@ -1,0 +1,28 @@
+{"frames": [
+
+{
+	"filename": "back_button.png",
+	"frame": {"x":0,"y":0,"w":241,"h":57},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":241,"h":57},
+	"sourceSize": {"w":241,"h":57}
+},
+{
+	"filename": "shop_menu_background.png",
+	"frame": {"x":0,"y":57,"w":800,"h":600},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":600},
+	"sourceSize": {"w":800,"h":600}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "shop_menu_textures.png",
+	"format": "RGBA8888",
+	"size": {"w":800,"h":657},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:45c4451a8a305c8492f06256134d957b:93234c166ba1e3455e5c3c838e71365f:465489bcf7fc26fa249d30a59818ecc1$"
+}
+}

@@ -246,6 +246,25 @@ p {
     cursor: pointer;
 }
 
+.store-container {
+    position: relative;
+    width: 800px;
+    height: 600px;
+    margin: 0 auto;
+    display: none;
+}
+
+#store_exit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-140%, 400%);
+    z-index: 2;
+    margin-left: 5px;
+    cursor: pointer;
+
+}
+
 .login-texture {
     background-repeat: no-repeat;
     background-image: url('../Assets/login_textures.png');
@@ -255,5 +274,11 @@ p {
 .main-menu-texture {
     background-repeat: no-repeat;
     background-image: url('../Assets/main_menu_textures.png');
+    display: block;
+}
+
+.shop-menu-texture {
+    background-repeat: no-repeat;
+    background-image: url('../Assets/shop_menu_textures.png');
     display: block;
 }

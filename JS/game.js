@@ -114,6 +114,21 @@ function showPauseMenu(){
 
 }
 
+function hidePauseMenu(){
+    $('.pause-menu-container').css("display","none")
+
+}
+
+function showStoreMenu(){
+    $('.store-container').css("display","block")
+
+}
+
+function hideStoreMenu(){
+    $('.store-container').css("display","none")
+
+}
+
 
 
 fetch('../Assets/main_menu_textures.json')
@@ -139,13 +154,46 @@ fetch('../Assets/main_menu_textures.json')
   displayTexture('exit_button', 'exit_game_button_blue.png');
 });
 
+
+
+// Pause menu
 $(document).ready(function(){
   $('#menu_button').click(function(){
     hideMainMenu()
     showPauseMenu()
   });
 
-  $('#pause_close').click(function(){
+  $('#resume_button').click(function(){
     showMainMenu()
+    hidePauseMenu()
+  });
+});
+
+
+
+
+fetch('../Assets/shop_menu_textures.json')
+  .then(response => response.json())
+  .then(data => {
+  textureData = data;
+
+  // Tässä yhdistyy html id ja kuva json tiedostosta esim. <div id="header" class="texture"></div>
+  // Nämä funktio kutsut on täällä juuri json datan hitaan lataamisen takia
+  displayTexture('store_background', 'shop_menu_background.png');
+  displayTexture('store_exit', 'back_button.png');
+});
+
+
+// Store menu
+
+$(document).ready(function(){
+  $('#store_button').click(function(){
+    hideMainMenu()
+    showStoreMenu()
+  });
+
+  $('#store_exit').click(function(){
+    showMainMenu()
+    hideStoreMenu()
   });
 });

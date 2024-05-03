@@ -178,6 +178,7 @@ p {
     transform: translate(-180%, -50%);
     z-index: 2;
     margin-left: 5px;
+    cursor: pointer;
 }
 
 #store_button {
@@ -187,6 +188,7 @@ p {
     transform: translate(-180%, 60%);
     z-index: 2;
     margin-left: 5px;
+    cursor: pointer;
 }
 
 #deliver_button {
@@ -202,6 +204,7 @@ p {
     position: absolute;
     transform: translate(68%, 103%);
     z-index: 2;
+    cursor: pointer;
 }
 
 .login-texture {

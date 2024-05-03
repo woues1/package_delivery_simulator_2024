@@ -145,7 +145,7 @@ p {
     position: absolute;
     top: 20%;
     left: 50%;
-    transform: translate(-52%, -12%);
+    transform: translate(-52%, -24%);
     z-index: 2;
     margin-left: 5px;
     scale: 95%;
@@ -155,7 +155,7 @@ p {
     position: absolute;
     top: 20%;
     left: 50%;
-    transform: translate(-52%, -37%);
+    transform: translate(-52%, -25%);
     z-index: 2;
     margin-left: 5px;
     scale: 95%;

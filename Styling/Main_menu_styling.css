@@ -208,6 +208,44 @@ p {
     cursor: pointer;
 }
 
+.pause-menu-container {
+    position: relative;
+    width: 800px;
+    height: 600px;
+    margin: 0 auto;
+    display: none;
+}
+
+#resume_button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-55%, -5%);
+    z-index: 2;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+#new_run {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-110%, -150%);
+    z-index: 2;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+#exit_button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(10%, -150%);
+    z-index: 2;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
 .login-texture {
     background-repeat: no-repeat;
     background-image: url('../Assets/login_textures.png');

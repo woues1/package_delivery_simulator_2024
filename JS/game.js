@@ -89,16 +89,31 @@ document.getElementById('login-form').addEventListener('submit', function(event)
     event.preventDefault();
 });
 
+// Login menu
 
 function hideLoginElements(){
     $('.login-container').css("display","none")
 
 }
 
+// Main menu
+
 function showMainMenu(){
     $('.game-container').css("display","block")
 
 }
+
+function hideMainMenu(){
+    $('.game-container').css("display","none")
+}
+
+// Pause menu
+
+function showPauseMenu(){
+    $('.pause-menu-container').css("display","block")
+
+}
+
 
 
 fetch('../Assets/main_menu_textures.json')
@@ -118,4 +133,19 @@ fetch('../Assets/main_menu_textures.json')
   displayTexture('player_location', 'money_co2_text_box.png');
   displayTexture('player_info', 'location_text_box.png');
   displayTexture('main_menu_background', 'main_menu.png');
+  displayTexture('pause_background', 'pause_menu_background.png');
+  displayTexture('resume_button', 'back_button.png');
+  displayTexture('new_run', 'new_game_button_blue.png');
+  displayTexture('exit_button', 'exit_game_button_blue.png');
+});
+
+$(document).ready(function(){
+  $('#menu_button').click(function(){
+    hideMainMenu()
+    showPauseMenu()
+  });
+
+  $('#pause_close').click(function(){
+    showMainMenu()
+  });
 });

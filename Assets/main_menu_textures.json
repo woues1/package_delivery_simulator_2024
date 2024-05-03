@@ -2,15 +2,23 @@
 
 {
 	"filename": "active_mission_box.png",
-	"frame": {"x":0,"y":84,"w":800,"h":600},
+	"frame": {"x":544,"y":80,"w":800,"h":600},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":600},
 	"sourceSize": {"w":800,"h":600}
 },
 {
+	"filename": "back_button.png",
+	"frame": {"x":381,"y":0,"w":241,"h":57},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":241,"h":57},
+	"sourceSize": {"w":241,"h":57}
+},
+{
 	"filename": "deliver_button.png",
-	"frame": {"x":604,"y":0,"w":381,"h":55},
+	"frame": {"x":0,"y":0,"w":381,"h":55},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":381,"h":55},
@@ -18,15 +26,23 @@
 },
 {
 	"filename": "exit_button.png",
-	"frame": {"x":364,"y":0,"w":240,"h":80},
+	"frame": {"x":1266,"y":0,"w":240,"h":80},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":240,"h":80},
 	"sourceSize": {"w":240,"h":80}
 },
 {
+	"filename": "exit_game_button_blue.png",
+	"frame": {"x":182,"y":80,"w":181,"h":92},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":181,"h":92},
+	"sourceSize": {"w":181,"h":92}
+},
+{
 	"filename": "location_text_box.png",
-	"frame": {"x":800,"y":84,"w":800,"h":600},
+	"frame": {"x":0,"y":680,"w":800,"h":600},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":600},
@@ -34,7 +50,7 @@
 },
 {
 	"filename": "main_menu.png",
-	"frame": {"x":0,"y":684,"w":800,"h":600},
+	"frame": {"x":800,"y":680,"w":800,"h":600},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":600},
@@ -42,7 +58,7 @@
 },
 {
 	"filename": "menu_button.png",
-	"frame": {"x":0,"y":0,"w":182,"h":74},
+	"frame": {"x":622,"y":0,"w":182,"h":74},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":182,"h":74},
@@ -50,7 +66,7 @@
 },
 {
 	"filename": "mission_select_box.png",
-	"frame": {"x":985,"y":0,"w":462,"h":75},
+	"frame": {"x":804,"y":0,"w":462,"h":75},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":462,"h":75},
@@ -58,7 +74,23 @@
 },
 {
 	"filename": "money_co2_text_box.png",
-	"frame": {"x":800,"y":684,"w":800,"h":600},
+	"frame": {"x":0,"y":1280,"w":800,"h":600},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":600},
+	"sourceSize": {"w":800,"h":600}
+},
+{
+	"filename": "new_game_button_blue.png",
+	"frame": {"x":363,"y":80,"w":181,"h":92},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":181,"h":92},
+	"sourceSize": {"w":181,"h":92}
+},
+{
+	"filename": "pause_menu_background.png",
+	"frame": {"x":800,"y":1280,"w":800,"h":600},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":600},
@@ -66,7 +98,7 @@
 },
 {
 	"filename": "store_button.png",
-	"frame": {"x":182,"y":0,"w":182,"h":84},
+	"frame": {"x":0,"y":80,"w":182,"h":84},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":182,"h":84},
@@ -77,8 +109,8 @@
 	"version": "1.0",
 	"image": "main_menu_textures.png",
 	"format": "RGBA8888",
-	"size": {"w":1600,"h":1284},
+	"size": {"w":1600,"h":1880},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:a7660d7ac7a525ce0845bb93ebbcac74:61a72cb01f4cb6e74c38a5823bc619bc:8e0d77704f2d3f15c95cd2c1c90a5cca$"
+	"smartupdate": "$TexturePacker:SmartUpdate:957b89d1fd7a39482da50a5ae2009967:5e7e6d2f774019e6433206248d2f3556:8e0d77704f2d3f15c95cd2c1c90a5cca$"
 }
 }

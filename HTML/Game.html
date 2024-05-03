@@ -4,24 +4,27 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="../Styling/Main_menu_styling.css">
+    <script src="../JS/game.js" defer></script>
+    <script type="text/javascript" src="../JS/jquery.min.js"></script>
 </head>
 <body>
-
   <div class="login-container">
       <div class="header">
-          <img src="../Assets/header.png" alt="Header">
+          <div id="header" class="texture"></div>
       </div>
       <div class="background_img">
-          <img src="../Assets/background_main.png" alt="background image">
+          <div id="background" class="texture"></div>
       </div>
       <form class="login-form" action="/action.js">
           <input type="text" id="fname" name="fname" placeholder="username" class="text">
           <input type="text" id="password" name="password" placeholder="password" class="text">
-          <input type="image" src="../Assets/login_button.png" value="Log in" class="login">
-          <input type="image" src="../Assets/New_game.png" value="New game" class="new_game">
+          <div id="log_in_button" class="texture"></div>
+          <div id="new_game_button" class="texture"></div>
       </form>
       <form>
-        <input type="image" src="../Assets/leaderboard_button.png" value="Leaderboard" class="leaderboard">
+          <div id="leaderboard_button" class="texture"></div>
+          <div id="leaderboard" class="texture"></div>
+          <div id="leaderboard_close" class="texture"></div>
       </form>
   </div>
 </body>

@@ -1,3 +1,7 @@
+@font-face {
+    font-family: 'CustomFont';
+    src: url('../Assets/AniMeMatrix-MB_EN.ttf') format('truetype');
+}
 .login-container {
     position: relative;
     width: 800px;
@@ -5,7 +9,7 @@
     margin: 0 auto;
 }
 
-.background_img img {
+#background {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -15,7 +19,7 @@
     border-radius: 5px;
 }
 
-.header img{
+#header {
     position: absolute;
     top: 20%;
     left: 50%;
@@ -36,7 +40,7 @@
     align-content: center;
 }
 
-.login-form, .text{
+.login-form .text{
     width: 150px;
     height: 30px;
     display: block;
@@ -48,8 +52,7 @@
     margin-top: 10px;
 }
 
-.login-form,
-.login {
+#log_in_button {
     width: 200px;
     height: 65px;
     cursor: pointer;
@@ -59,15 +62,17 @@
     display: block;
 }
 
-.new_game{
+#new_game_button{
     width: 200px;
     height: 65px;
+    cursor: pointer;
     margin-top: 10px;
     margin-bottom: 10px;
-    margin: auto;
+    margin-left: 5px;
+    display: block;
 }
 
-.leaderboard {
+#leaderboard_button {
     width: 400px;
     height: 60px;
     cursor: pointer;
@@ -77,4 +82,40 @@
     transform: translate(-30%, -10%);
     z-index: 2;
     padding: 0px;
+}
+
+#leaderboard {
+    display: none;
+    transform: translate(-0%, -5%);
+    position: absolute;
+    z-index: 3;
+    text-align: center;
+    font-family: "CustomFont";
+    font-size: 18px;
+}
+p {
+    color: white;
+    border: #98235c;
+    border-style: solid;
+    border-radius: 10px;
+    background: #fc7991;
+    width: 60%;
+    height: auto;
+    padding: 10px;
+    transform: translate(28%,200%);
+    margin: 10px;
+}
+
+#leaderboard_close {
+    display: none;
+    position: absolute;
+    z-index: 3;
+    cursor: pointer;
+    transform: translate(130%, 480%);
+}
+
+
+.texture {
+    background-repeat: no-repeat;
+    background-image: url('../Assets/textures.png');
 }

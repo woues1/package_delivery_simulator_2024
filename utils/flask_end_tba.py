@@ -15,14 +15,13 @@ def leaderboard_info():
 
 @app.route('/login', methods=['POST'])
 def login():
-    print('asd1')
-    login_data = request.json()
+    login_data = request.json
 
     username = login_data.get('username')
     password = login_data.get('password')
     user_id = sql_db_lookup_log_in(username, password)
-    print('asd2')
-    if user_id is not None:
+
+    if user_id != []:
         return flask.jsonify({'message': 'Login successful'})
     else:
         return flask.jsonify({'error': 'Invalid username or password'}), 401

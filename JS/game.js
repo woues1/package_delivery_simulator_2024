@@ -50,3 +50,36 @@ $(document).ready(function(){
   });
 });
 
+document.getElementById('login-form').addEventListener('submit', function(event) {
+
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    const loginData = {
+        username: username,
+        password: password
+    };
+    console.log(loginData)
+
+    fetch('http://127.0.0.1:3000/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(loginData)
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('Login successful');
+        } else {
+            return response.json().then(data => {
+                alert(data.error);
+            });
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again later.');
+    });
+    event.preventDefault();
+});

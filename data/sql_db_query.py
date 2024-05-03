@@ -34,8 +34,8 @@ def sql_db_lookup_lat_long(location):  # location on airport.ident
 
 
 def sql_db_lookup_log_in(screen_name, player_password):
-    locations_search = f"SELECT g.id FROM game g WHERE g.screen_name = '{screen_name}' AND g.password = '{player_password}';"
-    user_id = sql_Execute_Query(locations_search)
+    login_info = f"SELECT g.id FROM game g WHERE g.screen_name = '{screen_name}' AND g.password = '{player_password}';"
+    user_id = sql_Execute_Query(login_info)
     return user_id
 
 

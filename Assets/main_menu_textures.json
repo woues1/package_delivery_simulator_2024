@@ -1,0 +1,76 @@
+{"frames": [
+
+{
+	"filename": "active_mission_box.png",
+	"frame": {"x":0,"y":84,"w":800,"h":600},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":600},
+	"sourceSize": {"w":800,"h":600}
+},
+{
+	"filename": "deliver_button.png",
+	"frame": {"x":604,"y":0,"w":381,"h":55},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":381,"h":55},
+	"sourceSize": {"w":381,"h":55}
+},
+{
+	"filename": "exit_button.png",
+	"frame": {"x":364,"y":0,"w":240,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":240,"h":80},
+	"sourceSize": {"w":240,"h":80}
+},
+{
+	"filename": "location_text_box.png",
+	"frame": {"x":800,"y":84,"w":800,"h":600},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":600},
+	"sourceSize": {"w":800,"h":600}
+},
+{
+	"filename": "main_menu.png",
+	"frame": {"x":0,"y":684,"w":800,"h":600},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":600},
+	"sourceSize": {"w":800,"h":600}
+},
+{
+	"filename": "menu_button.png",
+	"frame": {"x":0,"y":0,"w":182,"h":74},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":182,"h":74},
+	"sourceSize": {"w":182,"h":74}
+},
+{
+	"filename": "money_co2_text_box.png",
+	"frame": {"x":800,"y":684,"w":800,"h":600},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":600},
+	"sourceSize": {"w":800,"h":600}
+},
+{
+	"filename": "store_button.png",
+	"frame": {"x":182,"y":0,"w":182,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":182,"h":84},
+	"sourceSize": {"w":182,"h":84}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "main_menu_textures.png",
+	"format": "RGBA8888",
+	"size": {"w":1600,"h":1284},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:8ab9535984945c72605a51ddda5bf8a6:908ba751dac7e5feaf716784c2d9e4fc:8e0d77704f2d3f15c95cd2c1c90a5cca$"
+}
+}

@@ -74,7 +74,8 @@ document.getElementById('login-form').addEventListener('submit', function(event)
     .then(response => {
         if (response.ok) {
             alert('Login successful');
-            hideloginelements();
+            hideLoginElements();
+            showMainMenu();
         } else {
             return response.json().then(data => {
                 alert(data.error);
@@ -89,13 +90,29 @@ document.getElementById('login-form').addEventListener('submit', function(event)
 });
 
 
-function hideloginelements(){
-    $('#leaderboard').css("display","none")
-    $('#leaderboard_close').css("display","none")
-    $('#login-form').css("display","none")
-    $('#log_in_button').css("display","none")
-    $('#new_game_button').css("display","none")
-    $('#leaderboard_button').css("display","none")
-    $('#header').css("display","none")
-    $('#background').css("display","none")
+function hideLoginElements(){
+    $('.login-container').css("display","none")
+
 }
+
+function showMainMenu(){
+    $('.game-container').css("display","block")
+
+}
+
+
+fetch('../Assets/main_menu_textures.json')
+  .then(response => response.json())
+  .then(data => {
+  textureData = data;
+
+  // Tässä yhdistyy html id ja kuva json tiedostosta esim. <div id="header" class="texture"></div>
+  // Nämä funktio kutsut on täällä juuri json datan hitaan lataamisen takia
+  displayTexture('deliver_button', 'deliver_button.png');
+  displayTexture('store_button', 'store_button.png');
+  displayTexture('menu_button', 'menu_button.png');
+  displayTexture('active_mission', 'active_mission_box.png');
+  displayTexture('player_location', 'money_co2_text_box.png');
+  displayTexture('player_info', 'location_text_box.png');
+  displayTexture('main_menu_background', 'main_menu.png');
+});

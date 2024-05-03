@@ -108,6 +108,9 @@ fetch('../Assets/main_menu_textures.json')
 
   // Tässä yhdistyy html id ja kuva json tiedostosta esim. <div id="header" class="texture"></div>
   // Nämä funktio kutsut on täällä juuri json datan hitaan lataamisen takia
+  displayTexture('mission3', 'mission_select_box.png');
+  displayTexture('mission2', 'mission_select_box.png');
+  displayTexture('mission1', 'mission_select_box.png');
   displayTexture('deliver_button', 'deliver_button.png');
   displayTexture('store_button', 'store_button.png');
   displayTexture('menu_button', 'menu_button.png');

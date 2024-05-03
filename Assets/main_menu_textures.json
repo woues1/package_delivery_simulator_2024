@@ -49,6 +49,14 @@
 	"sourceSize": {"w":182,"h":74}
 },
 {
+	"filename": "mission_select_box.png",
+	"frame": {"x":985,"y":0,"w":462,"h":75},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":462,"h":75},
+	"sourceSize": {"w":462,"h":75}
+},
+{
 	"filename": "money_co2_text_box.png",
 	"frame": {"x":800,"y":684,"w":800,"h":600},
 	"rotated": false,
@@ -71,6 +79,6 @@
 	"format": "RGBA8888",
 	"size": {"w":1600,"h":1284},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:65dc2faf0e44bf8949f102362c91461b:b481160478023a2d9a83e93957ca1a6d:8e0d77704f2d3f15c95cd2c1c90a5cca$"
+	"smartupdate": "$TexturePacker:SmartUpdate:a7660d7ac7a525ce0845bb93ebbcac74:61a72cb01f4cb6e74c38a5823bc619bc:8e0d77704f2d3f15c95cd2c1c90a5cca$"
 }
 }

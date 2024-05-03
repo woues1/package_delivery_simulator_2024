@@ -198,6 +198,12 @@ p {
     margin-left: 5px;
 }
 
+.mission-select-container {
+    position: absolute;
+    transform: translate(68%, 103%);
+    z-index: 2;
+}
+
 .login-texture {
     background-repeat: no-repeat;
     background-image: url('../Assets/login_textures.png');

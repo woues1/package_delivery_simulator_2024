@@ -17,6 +17,7 @@ class Pelaaja:
         self.co2_budget: int = co2_budget
         self.co2_kerroin: float = 1.0
         self.piste_kerroin: float = 1.0
+        self.tiirikka = 1
 
     def osta_esine(self, price):
         self.pisteet -= price
@@ -42,6 +43,8 @@ class Pelaaja:
             self.piste_kerroin = item.attribute_info()
         elif item.name == "Päästö hujattu volkkari":
             self.co2_budget = item.attribute_info()
+        elif item.name == "Tiirikka 2.0":
+            self.tiirikka = item.attribute_info()
 
     def aseta_tehtava(self, tehtava):
         if not self.tehtava_aktiivinen:

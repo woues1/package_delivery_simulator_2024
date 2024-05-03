@@ -13,6 +13,7 @@ def sql_db_lookup_items(player_id):
     query_res = sql_Execute_Query(items_search)
     return query_res
 
+print(sql_db_lookup_items("9"))
 
 def sql_db_lookup_locations():  # etsii kaikki airport.ident arvot
     locations_search = f"SELECT a.ident FROM airport a;"
@@ -109,6 +110,7 @@ def sql_db_update_new_player_items(id):
     sql_Execute_Query(f"INSERT INTO PlayerItem(player_id, item_id, purchased) VALUES({id}, 1, FALSE);")
     sql_Execute_Query(f"INSERT INTO PlayerItem(player_id, item_id, purchased) VALUES({id}, 2, FALSE);")
     sql_Execute_Query(f"INSERT INTO PlayerItem(player_id, item_id, purchased) VALUES({id}, 3, FALSE);")
+    sql_Execute_Query(f"INSERT INTO PlayerItem(player_id, item_id, purchased) VALUES({id}, 4, FALSE);")
 
 
 # <<RESET GAME VALUE's>>
@@ -129,3 +131,9 @@ def sql_db_lookup_screen_names(screen_name):
     tulos = (f"SELECT screen_name FROM game WHERE screen_name = '{screen_name}';")
     tulos1 = sql_Execute_Query(tulos)
     return tulos1
+
+def sql_db_update_pisteet(pelaaja_id, pisteet):
+    update_query = (f"UPDATE game "
+                    f"SET pisteet = pisteet + {pisteet} "
+                    f"WHERE id = '{pelaaja_id}';")
+    sql_Execute_Query(update_query)

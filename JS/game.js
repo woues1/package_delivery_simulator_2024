@@ -1,4 +1,4 @@
-fetch('../Assets/textures.json')
+fetch('../Assets/login_textures.json')
   .then(response => response.json())
   .then(data => {
   textureData = data;
@@ -25,6 +25,9 @@ function displayTexture(elementId, textureName){
     style.height = texture.frame.h + 'px';
     style.backgroundPosition = `-${texture.frame.x}px -${texture.frame.y}px`;
 }
+
+
+// Leaderboard data ja nappi.
 
 $(document).ready(function(){
   $('#leaderboard_button').click(function(){
@@ -71,6 +74,7 @@ document.getElementById('login-form').addEventListener('submit', function(event)
     .then(response => {
         if (response.ok) {
             alert('Login successful');
+            hideloginelements();
         } else {
             return response.json().then(data => {
                 alert(data.error);
@@ -83,3 +87,15 @@ document.getElementById('login-form').addEventListener('submit', function(event)
     });
     event.preventDefault();
 });
+
+
+function hideloginelements(){
+    $('#leaderboard').css("display","none")
+    $('#leaderboard_close').css("display","none")
+    $('#login-form').css("display","none")
+    $('#log_in_button').css("display","none")
+    $('#new_game_button').css("display","none")
+    $('#leaderboard_button').css("display","none")
+    $('#header').css("display","none")
+    $('#background').css("display","none")
+}

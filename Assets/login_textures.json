@@ -1,0 +1,68 @@
+{"frames": [
+
+{
+	"filename": "back_button.png",
+	"frame": {"x":480,"y":0,"w":300,"h":100},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":100},
+	"sourceSize": {"w":300,"h":100}
+},
+{
+	"filename": "header_corr.png",
+	"frame": {"x":0,"y":100,"w":300,"h":173},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":300,"h":173},
+	"sourceSize": {"w":300,"h":173}
+},
+{
+	"filename": "leaderboard_button.png",
+	"frame": {"x":300,"y":100,"w":400,"h":73},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":400,"h":73},
+	"sourceSize": {"w":400,"h":73}
+},
+{
+	"filename": "leaderboard_text_background.png",
+	"frame": {"x":0,"y":273,"w":800,"h":749},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":749},
+	"sourceSize": {"w":800,"h":749}
+},
+{
+	"filename": "login_button.png",
+	"frame": {"x":0,"y":0,"w":240,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":240,"h":80},
+	"sourceSize": {"w":240,"h":80}
+},
+{
+	"filename": "main_menu_background_corr.png",
+	"frame": {"x":0,"y":1022,"w":800,"h":600},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":600},
+	"sourceSize": {"w":800,"h":600}
+},
+{
+	"filename": "new_game_button.png",
+	"frame": {"x":240,"y":0,"w":240,"h":80},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":240,"h":80},
+	"sourceSize": {"w":240,"h":80}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "login_textures.png",
+	"format": "RGBA8888",
+	"size": {"w":800,"h":1622},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:eb6b57ff2d6446d9bc940a49986898dc:15da25e6f7e56b356e8f16f715a7289e:8ba7a23c8896665c83ea4e7f32a9a014$"
+}
+}

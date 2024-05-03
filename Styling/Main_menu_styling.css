@@ -120,8 +120,8 @@ p {
 }
 
 
-.texture {
+.login-texture {
     background-repeat: no-repeat;
-    background-image: url('../Assets/textures.png');
+    background-image: url('../Assets/login_textures.png');
     display: block;
 }

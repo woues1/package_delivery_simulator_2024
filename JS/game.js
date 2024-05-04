@@ -1,3 +1,7 @@
+'use strict';
+var textureData
+
+
 fetch('../Assets/login_textures.json')
   .then(response => response.json())
   .then(data => {
@@ -17,7 +21,6 @@ fetch('../Assets/login_textures.json')
 
 
 // Funktio joka piirtää näytölle kuvan, ja lisää niihin koon ja position.
-
 function displayTexture(elementId, textureName){
     const texture = textureData.frames.find(texture => texture.filename === textureName);
     const style = document.getElementById(elementId).style;
@@ -28,7 +31,6 @@ function displayTexture(elementId, textureName){
 
 
 // Leaderboard data ja nappi.
-
 $(document).ready(function(){
   $('#leaderboard_button').click(function(){
     $('#leaderboard').toggle();
@@ -46,12 +48,44 @@ $(document).ready(function(){
           })
       })
   });
-
   $('#leaderboard_close').click(function(){
     $('#leaderboard').hide();
     $('#leaderboard_close').hide()
   });
 });
+
+
+$(document).ready(function() {
+    $('.main-menu-texture').on('click', function() {
+        var missionId = $(this).attr('id');
+        var missionIndex = missionId.charAt(missionId.length - 1);
+
+        $.ajax({
+            url: 'http://127.0.0.1:3000/complete_mission',
+            type: 'GET',
+            data: { mission_index: missionIndex },
+            success: function(response) {
+                console.log('Mission Completed')
+            },
+            error: function(xhr, status, error) {
+                console.error("Error:", error);
+            }
+        });
+    });
+});
+
+
+function player_info() {
+      fetch('http://127.0.0.1:3000/player_info')
+      .then(response => response.json())
+      .then(values => {
+          let location = document.createElement('p')
+          location.innerHTML = `${values['location']}`
+          let p_info = document.getElementById('player_location')
+          p_info.appendChild(location)
+      })
+}
+
 
 document.getElementById('login-form').addEventListener('submit', function(event) {
 
@@ -76,6 +110,8 @@ document.getElementById('login-form').addEventListener('submit', function(event)
             alert('Login successful');
             hideLoginElements();
             showMainMenu();
+            player_info()
+            fetch('http://127.0.0.1:3000/get_missions')
         } else {
             return response.json().then(data => {
                 alert(data.error);
@@ -89,19 +125,20 @@ document.getElementById('login-form').addEventListener('submit', function(event)
     event.preventDefault();
 });
 
-// Login menu
 
+// Login menu
 function hideLoginElements(){
     $('.login-container').css("display","none")
 
 }
 
-// Main menu
 
+// Main menu
 function showMainMenu(){
     $('.game-container').css("display","block")
 
 }
+
 
 function hideMainMenu(){
     $('.game-container').css("display","none")
@@ -130,11 +167,10 @@ function hideStoreMenu(){
 }
 
 
-
 fetch('../Assets/main_menu_textures.json')
   .then(response => response.json())
   .then(data => {
-  textureData = data;
+    textureData = data;
 
   // Tässä yhdistyy html id ja kuva json tiedostosta esim. <div id="header" class="texture"></div>
   // Nämä funktio kutsut on täällä juuri json datan hitaan lataamisen takia
@@ -155,7 +191,6 @@ fetch('../Assets/main_menu_textures.json')
 });
 
 
-
 // Pause menu
 $(document).ready(function(){
   $('#menu_button').click(function(){
@@ -168,8 +203,6 @@ $(document).ready(function(){
     hidePauseMenu()
   });
 });
-
-
 
 
 fetch('../Assets/shop_menu_textures.json')
@@ -185,15 +218,16 @@ fetch('../Assets/shop_menu_textures.json')
 
 
 // Store menu
-
 $(document).ready(function(){
   $('#store_button').click(function(){
     hideMainMenu()
     showStoreMenu()
   });
 
+
   $('#store_exit').click(function(){
     showMainMenu()
     hideStoreMenu()
   });
 });
+

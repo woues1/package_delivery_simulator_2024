@@ -66,6 +66,7 @@ $('#mission1').on('click', function() {
         success: function(response) {
             console.log('Mission Completed')
             player_info()
+            current_missions()
         },
         error: function(xhr, status, error) {
             console.error("Error:", error);
@@ -85,6 +86,7 @@ $('#mission2').on('click', function() {
         success: function(response) {
             console.log('Mission Completed')
             player_info()
+            current_missions()
         },
         error: function(xhr, status, error) {
             console.error("Error:", error);
@@ -104,6 +106,7 @@ $('#mission3').on('click', function() {
         success: function(response) {
             console.log('Mission Completed')
             player_info()
+            current_missions()
         },
         error: function(xhr, status, error) {
             console.error("Error:", error);
@@ -129,11 +132,17 @@ function player_info() {
       })
 }
 
-function current_mission(){
+function current_missions(){
     fetch('http://127.0.0.1:3000/get_missions')
       .then(response => response.json())
       .then(values => {
+          let m1 = document.getElementById('m1')
+          let m2 = document.getElementById('m2')
+          let m3 = document.getElementById('m3')
 
+          m1.innerHTML = `${values['mission1'][0]} ${values['mission1'][1]} ${values['mission1'][2]}`
+          m2.innerHTML = `${values['mission2'][0]} ${values['mission2'][1]} ${values['mission2'][2]}`
+          m3.innerHTML = `${values['mission3'][0]} ${values['mission3'][1]} ${values['mission3'][2]}`
       })
 }
 
@@ -160,6 +169,7 @@ document.getElementById('login-form').addEventListener('submit', function(event)
             hideLoginElements();
             showMainMenu();
             player_info()
+            current_missions()
         } else {
             return response.json().then(data => {
                 alert(data.error);

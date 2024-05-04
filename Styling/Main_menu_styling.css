@@ -176,6 +176,7 @@
     transform: translate(5%, 50%);
     font-size: 14px;
     width: 380px;
+    height: 50px;
 }
 
 #menu_button {
@@ -220,6 +221,7 @@
     color: white;
     font-size: 12px;
     transform: translate(2%, 40%);
+    width: 440px ;
 }
 
 #mission1 {

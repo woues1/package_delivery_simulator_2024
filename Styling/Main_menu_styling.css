@@ -291,6 +291,66 @@
 
 }
 
+.store-item-container {
+    position: absolute;
+    transform: translate(3%, 79%);
+    z-index: 2;
+    display: flex;
+}
+
+#buy_item1_button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-295%, -135%);
+    z-index: 2;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+#buy_item2_button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-54%, -135%);
+    z-index: 2;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+#buy_item3_button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(190%, -135%);
+    z-index: 2;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.info-container  {
+    font-family: "CustomFont";
+}
+
+.info-container p {
+    color: white;
+}
+
+#points{
+    transform: translate(58%, 530%);
+    font-size: 20px;
+}
+
+#co2_consumed{
+    transform: translate(76%, 520%);
+    font-size: 14px;
+}
+
+#location {
+    transform: translate(57%, 388%);
+    font-size: 14px;
+}
+
 .login-texture {
     background-repeat: no-repeat;
     background-image: url('../Assets/login_textures.png');

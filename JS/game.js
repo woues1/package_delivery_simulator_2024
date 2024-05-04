@@ -238,12 +238,42 @@ function showItem1Info() {
     $('#item1_info').toggle()
 }
 
+function hideItem1Info() {
+    $('#item1_info').hide()
+}
+
 function showItem2Info() {
     $('#item2_info').toggle()
 }
 
+function hideItem2Info() {
+    $('#item2_info').hide()
+
+}
+
 function showItem3Info() {
     $('#item3_info').toggle()
+}
+
+function hideItem3Info() {
+    $('#item3_info').hide()
+}
+
+function showBuyButton() {
+    $('#buy').toggle()
+}
+
+function hideBuyButton() {
+    $('#buy').hide()
+}
+
+function showCloseInfo() {
+    $('#close-info').toggle()
+}
+
+function hideCloseInfo() {
+    $('#close-info').hide()
+
 }
 
 
@@ -302,6 +332,8 @@ fetch('../Assets/shop_menu_textures.json')
         displayTexture('item1_info', 'hybrid_car_buy_screen.png');
         displayTexture('item2_info', 'plant_trees_buy_screen.png');
         displayTexture('item3_info', 'rahakone_buy_screen.png');
+        displayTexture('buy', 'buy_button_var1.png');
+        displayTexture('close-info', 'close_info_button.png');
     });
 
 
@@ -320,5 +352,26 @@ $('#store_exit').click(function () {
 
 $('#buy_item1_button').click(function () {
     showItem1Info()
+    showBuyButton()
+    showCloseInfo()
 });
 
+$('#buy_item2_button').click(function () {
+    showItem2Info()
+    showBuyButton()
+    showCloseInfo()
+});
+
+$('#buy_item3_button').click(function () {
+    showItem3Info()
+    showBuyButton()
+    showCloseInfo()
+});
+
+$('#close-info').click(function () {
+    hideCloseInfo()
+    hideBuyButton()
+    hideItem1Info()
+    hideItem2Info()
+    hideItem3Info()
+});

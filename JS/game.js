@@ -1,5 +1,5 @@
 'use strict';
-var textureData
+let textureData
 
 
 fetch('../Assets/login_textures.json')
@@ -66,6 +66,7 @@ $(document).ready(function() {
             data: { mission_index: missionIndex },
             success: function(response) {
                 console.log('Mission Completed')
+                player_info()
             },
             error: function(xhr, status, error) {
                 console.error("Error:", error);
@@ -75,6 +76,7 @@ $(document).ready(function() {
 });
 
 
+//
 function player_info() {
       fetch('http://127.0.0.1:3000/player_info')
       .then(response => response.json())
@@ -107,11 +109,9 @@ document.getElementById('login-form').addEventListener('submit', function(event)
     })
     .then(response => {
         if (response.ok) {
-            alert('Login successful');
             hideLoginElements();
             showMainMenu();
             player_info()
-            fetch('http://127.0.0.1:3000/get_missions')
         } else {
             return response.json().then(data => {
                 alert(data.error);

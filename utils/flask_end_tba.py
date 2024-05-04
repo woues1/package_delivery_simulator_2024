@@ -72,7 +72,7 @@ def complete_mission():
         return flask.jsonify({'error': 'Player information not available'}), 404
 
 
-@app.route('/get_missions')
+@app.route('/get_missions_info')
 def get_mission_info():
     return {
         'mission1': [

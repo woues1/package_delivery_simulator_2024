@@ -212,6 +212,35 @@
     transform: translate(68%, 103%);
     z-index: 2;
     cursor: pointer;
+    font-family: "customFont";
+}
+
+.mission-select-container p {
+    color: white;
+    font-size: 12px;
+    transform: translate(2%, 40%);
+}
+
+#mission1 {
+    transform: translate(0%, -70%);
+}
+
+#mission2 {
+    transform: translate(0%, -80%);
+}
+
+#mission3 {
+    transform: translate(0%, -90%);
+}
+
+#m1 {
+    transform: translate(3%, 80%);
+}
+#m2 {
+    transform: translate(3%, 80%);
+}
+#m3 {
+    transform: translate(3%, 80%);
 }
 
 .pause-menu-container {
@@ -404,3 +433,4 @@
     cursor: pointer;
     display: none;
 }
+

@@ -119,9 +119,12 @@ function player_info() {
           let points_info = document.getElementById('points')
           let co2_info = document.getElementById('co2_consumed')
           let location_info = document.getElementById('location')
-          location_info.innerHTML = `${values['location']}`;
+
+          location_info.innerHTML = `${values['location']}, ${values['country']}`;
+
           co2_info.innerHTML = `${values['co2_consumed']}/${values['co2_budget']}`;
-          points_info.innerHTML = `${values['pisteet']}`;
+
+          points_info.innerHTML = `${values['pisteet']}$`;
 
       })
 }

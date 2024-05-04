@@ -101,6 +101,7 @@ def get_player_info():
             'id': pelaaja.id,
             'pisteet': pelaaja.pisteet,
             'location': pelaaja.location,
+            'country' : pelaaja.hae_pelaaja_Maa(),
             'co2_consumed': pelaaja.co2_consumed,
             'tehtava_aktiivinen': pelaaja.tehtava_aktiivinen,
             'current_tehtava': pelaaja.current_tehtava,

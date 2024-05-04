@@ -369,4 +369,22 @@
     display: block;
 }
 
+#item1_info {
+    position: absolute;
+    transform: translate(1%, 25%);
+    z-index: 2;
+    display: none;
+}
 
+#item2_info {
+    position: absolute;
+    transform: translate(1%, 25%);
+    z-index: 2;
+    display: none;
+}
+#item3_info {
+    position: absolute;
+    transform: translate(1%, 25%);
+    z-index: 2;
+    display: none;
+}

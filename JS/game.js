@@ -118,13 +118,21 @@ function player_info() {
       .then(values => {
           let points_info = document.getElementById('points')
           let co2_info = document.getElementById('co2_consumed')
-          let location_info = document.getElementById('player_location')
+          let location_info = document.getElementById('location')
           location_info.innerHTML = `${values['location']}`;
-          co2_info.innerHTML = `${values['co2_consumed']}`;
+          co2_info.innerHTML = `${values['co2_consumed']}/${values['co2_budget']}`;
           points_info.innerHTML = `${values['pisteet']}`;
+
       })
 }
 
+function current_mission(){
+    fetch('http://127.0.0.1:3000/get_missions')
+      .then(response => response.json())
+      .then(values => {
+
+      })
+}
 
 document.getElementById('login-form').addEventListener('submit', function(event) {
 

@@ -16,7 +16,6 @@ fetch('../Assets/login_textures.json')
         displayTexture('log_in_button', 'login_button.png');
         displayTexture('new_game_button', 'new_game_button.png');
         displayTexture('leaderboard_button', 'leaderboard_button.png');
-
     });
 
 
@@ -64,7 +63,8 @@ $('#mission1').on('click', function () {
         type: 'GET',
         data: {mission_index: missionIndex},
         success: function (response) {
-            console.log('Mission Completed')
+            console.log('Mission selected')
+            active_mission('1')
         },
         error: function (xhr, status, error) {
             console.error("Error:", error);
@@ -82,7 +82,8 @@ $('#mission2').on('click', function () {
         type: 'GET',
         data: {mission_index: missionIndex},
         success: function (response) {
-            console.log('Mission Completed')
+            console.log('Mission selected')
+            active_mission('2')
         },
         error: function (xhr, status, error) {
             console.error("Error:", error);
@@ -99,13 +100,15 @@ $('#mission3').on('click', function () {
         type: 'GET',
         data: {mission_index: missionIndex},
         success: function (response) {
-            console.log('Mission Completed')
+            console.log('Mission selected')
+            active_mission('3')
         },
         error: function (xhr, status, error) {
             console.error("Error:", error);
         }
     });
 });
+
 
 $('#deliver_button').on('click', function () {
         $.ajax({
@@ -122,6 +125,7 @@ $('#deliver_button').on('click', function () {
     });
 })
 
+
 function player_info() {
     fetch('http://127.0.0.1:3000/player_info')
         .then(response => response.json())
@@ -130,15 +134,14 @@ function player_info() {
             let co2_info = document.getElementById('co2_consumed')
             let location_info = document.getElementById('location')
 
-
             location_info.innerHTML = `${values['location']}, ${values['country']}`;
-
             co2_info.innerHTML = `${values['co2_consumed']}/${values['co2_budget']}`;
-
             points_info.innerHTML = `${values['pisteet']}$`;
 
         })
 }
+
+
 function current_missions() {
     fetch('http://127.0.0.1:3000/get_missions_info')
         .then(response => response.json())
@@ -153,6 +156,15 @@ function current_missions() {
         })
 }
 
+
+function active_mission(num){
+    fetch('http://127.0.0.1:3000/get_missions_info')
+    .then(response => response.json())
+    .then(values => {
+        let curr_mission = document.getElementById('current_mission')
+        curr_mission.innerHTML = `${values['mission'+num][0]} ${values['mission'+num][1]} ${values['mission'+num][2]}`;
+        })
+}
 
 document.getElementById('login-form').addEventListener('submit', function (event) {
 
@@ -200,6 +212,7 @@ function hideLoginElements() {
 
 
 // Main menu
+
 function showMainMenu() {
     $('.game-container').css("display", "block")
 
@@ -210,6 +223,7 @@ function hideMainMenu() {
     $('.game-container').css("display", "none")
 }
 
+
 // Pause menu
 
 function showPauseMenu() {
@@ -217,10 +231,12 @@ function showPauseMenu() {
 
 }
 
+
 function hidePauseMenu() {
     $('.pause-menu-container').css("display", "none")
 
 }
+
 
 // Store menu
 
@@ -229,47 +245,57 @@ function showStoreMenu() {
 
 }
 
+
 function hideStoreMenu() {
     $('.store-container').css("display", "none")
 
 }
 
+
 function showItem1Info() {
     $('#item1_info').toggle()
 }
+
 
 function hideItem1Info() {
     $('#item1_info').hide()
 }
 
+
 function showItem2Info() {
     $('#item2_info').toggle()
 }
 
+
 function hideItem2Info() {
     $('#item2_info').hide()
-
 }
+
 
 function showItem3Info() {
     $('#item3_info').toggle()
 }
 
+
 function hideItem3Info() {
     $('#item3_info').hide()
 }
+
 
 function showBuyButton() {
     $('#buy').toggle()
 }
 
+
 function hideBuyButton() {
     $('#buy').hide()
 }
 
+
 function showCloseInfo() {
     $('#close-info').toggle()
 }
+
 
 function hideCloseInfo() {
     $('#close-info').hide()
@@ -307,6 +333,7 @@ $('#menu_button').click(function () {
     hideMainMenu()
     showPauseMenu()
 });
+
 
 $('#resume_button').click(function () {
     showMainMenu()
@@ -350,11 +377,13 @@ $('#store_exit').click(function () {
     hideStoreMenu()
 });
 
+
 $('#buy_item1_button').click(function () {
     showItem1Info()
     showBuyButton()
     showCloseInfo()
 });
+
 
 $('#buy_item2_button').click(function () {
     showItem2Info()
@@ -362,11 +391,13 @@ $('#buy_item2_button').click(function () {
     showCloseInfo()
 });
 
+
 $('#buy_item3_button').click(function () {
     showItem3Info()
     showBuyButton()
     showCloseInfo()
 });
+
 
 $('#close-info').click(function () {
     hideCloseInfo()

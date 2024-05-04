@@ -123,6 +123,7 @@ $('#deliver_button').on('click', function () {
             console.error("Error:", error);
         }
     });
+        $('#current_mission').empty()  // Tyhjentää aktiivisen missionin infon VE
 })
 
 

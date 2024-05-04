@@ -262,6 +262,12 @@ fetch('../Assets/shop_menu_textures.json')
   // Nämä funktio kutsut on täällä juuri json datan hitaan lataamisen takia
   displayTexture('store_background', 'shop_menu_background.png');
   displayTexture('store_exit', 'back_button.png');
+  displayTexture('item1', 'hybrid_car_store.png');
+  displayTexture('item2', 'plant_trees_store.png');
+  displayTexture('item3', 'rahakone_store.png');
+  displayTexture('buy_item1_button', 'buy_button.png');
+  displayTexture('buy_item2_button', 'buy_button.png');
+  displayTexture('buy_item3_button', 'buy_button.png');
 });
 
 

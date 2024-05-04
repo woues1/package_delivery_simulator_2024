@@ -60,13 +60,11 @@ $('#mission1').on('click', function () {
     var missionIndex = missionId.charAt(missionId.length - 1);
 
     $.ajax({
-        url: 'http://127.0.0.1:3000/complete_mission',
+        url: 'http://127.0.0.1:3000/set_mission',
         type: 'GET',
         data: {mission_index: missionIndex},
         success: function (response) {
             console.log('Mission Completed')
-            player_info()
-            current_missions()
         },
         error: function (xhr, status, error) {
             console.error("Error:", error);
@@ -80,13 +78,11 @@ $('#mission2').on('click', function () {
     var missionIndex = missionId.charAt(missionId.length - 1);
 
     $.ajax({
-        url: 'http://127.0.0.1:3000/complete_mission',
+        url: 'http://127.0.0.1:3000/set_mission',
         type: 'GET',
         data: {mission_index: missionIndex},
         success: function (response) {
             console.log('Mission Completed')
-            player_info()
-            current_missions()
         },
         error: function (xhr, status, error) {
             console.error("Error:", error);
@@ -98,11 +94,23 @@ $('#mission2').on('click', function () {
 $('#mission3').on('click', function () {
     var missionId = $(this).attr('id');
     var missionIndex = missionId.charAt(missionId.length - 1);
-
     $.ajax({
-        url: 'http://127.0.0.1:3000/complete_mission',
+        url: 'http://127.0.0.1:3000/set_mission',
         type: 'GET',
         data: {mission_index: missionIndex},
+        success: function (response) {
+            console.log('Mission Completed')
+        },
+        error: function (xhr, status, error) {
+            console.error("Error:", error);
+        }
+    });
+});
+
+$('#deliver_button').on('click', function () {
+        $.ajax({
+        url: 'http://127.0.0.1:3000/complete_mission',
+        type: 'GET',
         success: function (response) {
             console.log('Mission Completed')
             player_info()
@@ -112,8 +120,7 @@ $('#mission3').on('click', function () {
             console.error("Error:", error);
         }
     });
-});
-
+})
 
 function player_info() {
     fetch('http://127.0.0.1:3000/player_info')
@@ -122,6 +129,7 @@ function player_info() {
             let points_info = document.getElementById('points')
             let co2_info = document.getElementById('co2_consumed')
             let location_info = document.getElementById('location')
+
 
             location_info.innerHTML = `${values['location']}, ${values['country']}`;
 
@@ -142,17 +150,9 @@ function current_missions() {
             m1.innerHTML = `${values['mission1'][0]} ${values['mission1'][1]} ${values['mission1'][2]}`;
             m2.innerHTML = `${values['mission2'][0]} ${values['mission2'][1]} ${values['mission2'][2]}`;
             m3.innerHTML = `${values['mission3'][0]} ${values['mission3'][1]} ${values['mission3'][2]}`;
-
-
         })
 }
-function current_mission() {
-    fetch('http://127.0.0.1:3000/get_missions')
-        .then(response => response.json())
-        .then(values => {
 
-        })
-}
 
 document.getElementById('login-form').addEventListener('submit', function (event) {
 

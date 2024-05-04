@@ -54,22 +54,27 @@ def login():
     else:
         return flask.jsonify({'error': 'Invalid username or password'}), 401
 
-
-@app.route('/complete_mission', methods=['GET'])
-def complete_mission():
+@app.route('/set_mission', methods=['GET'])
+def set_mission():
     if 'pelaaja' in globals():
         mission_index = int(request.args.get('mission_index'))
         if mission_index:
             pelaaja.aseta_tehtava(missions[mission_index - 1])
-            pelaaja.suorita_tehtava()
-            Tehtava.instance_count -= 3
-            missions.clear()
-            asyncio.run(get_missions())
-            return flask.jsonify({'message': 'Mission completed successfully'})
+            return flask.jsonify({'message': 'Mission set successfully'})
         else:
             return flask.jsonify({'error': 'Invalid mission index'}), 400
+    return flask.jsonify({'error': 'Invalid player session'}), 400
+
+@app.route('/complete_mission')
+def complete_mission():
+    if 'pelaaja' in globals() and pelaaja.tehtava_aktiivinen == True:
+        pelaaja.suorita_tehtava()
+        Tehtava.instance_count -= 3
+        missions.clear()
+        asyncio.run(get_missions())
+        return flask.jsonify({'message': 'Mission completed successfully'})
     else:
-        return flask.jsonify({'error': 'Player information not available'}), 404
+        return flask.jsonify({'error': 'Invalid mission index'}), 400
 
 
 @app.route('/get_missions_info')
@@ -104,7 +109,6 @@ def get_player_info():
             'country' : pelaaja.hae_pelaaja_Maa(),
             'co2_consumed': pelaaja.co2_consumed,
             'tehtava_aktiivinen': pelaaja.tehtava_aktiivinen,
-            'current_tehtava': pelaaja.current_tehtava,
             'co2_budget': pelaaja.co2_budget,
             'co2_kerroin': pelaaja.co2_kerroin,
             'piste_kerroin': pelaaja.piste_kerroin,

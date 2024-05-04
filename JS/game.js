@@ -150,9 +150,9 @@ function current_missions() {
             let m2 = document.getElementById('m2')
             let m3 = document.getElementById('m3')
 
-            m1.innerHTML = `1. ${values['mission1'][0]} ${values['mission1'][1]} ${values['mission1'][2]}`;
-            m2.innerHTML = `2. ${values['mission2'][0]} ${values['mission2'][1]} ${values['mission2'][2]}`;
-            m3.innerHTML = `3. ${values['mission3'][0]} ${values['mission3'][1]} ${values['mission3'][2]}`;
+            m1.innerHTML = `1. ${values['mission1'][1]} ${values['mission1'][2]}, ${values['mission1'][0]} Co2`;
+            m2.innerHTML = `2. ${values['mission2'][1]} ${values['mission2'][2]}, ${values['mission2'][0]} Co2`;
+            m3.innerHTML = `3. ${values['mission3'][1]} ${values['mission3'][2]}, ${values['mission3'][0]} Co2`;
         })
 }
 
@@ -162,7 +162,7 @@ function active_mission(num){
     .then(response => response.json())
     .then(values => {
         let curr_mission = document.getElementById('current_mission')
-        curr_mission.innerHTML = `${values['mission'+num][0]} ${values['mission'+num][1]} ${values['mission'+num][2]}`;
+        curr_mission.innerHTML = `${values['mission'+num][1]} ${values['mission'+num][2]},${values['mission'+num][0]} Co2`;
         })
 }
 
@@ -282,16 +282,6 @@ function hideItem3Info() {
 }
 
 
-function showBuyButton() {
-    $('#buy').toggle()
-}
-
-
-function hideBuyButton() {
-    $('#buy').hide()
-}
-
-
 function showCloseInfo() {
     $('#close-info').toggle()
 }
@@ -301,6 +291,37 @@ function hideCloseInfo() {
     $('#close-info').hide()
 
 }
+
+
+function showBuyButton1() {
+    $('#buy-item-1').toggle()
+}
+
+
+function hideBuyButton1() {
+    $('#buy-item-1').hide()
+}
+
+
+function showBuyButton2() {
+    $('#buy-item-2').toggle()
+}
+
+
+function hideBuyButton2() {
+    $('#buy-item-2').hide()
+}
+
+
+function showBuyButton3() {
+    $('#buy-item-3').toggle()
+}
+
+
+function hideBuyButton3() {
+    $('#buy-item-3').hide()
+}
+
 
 
 fetch('../Assets/main_menu_textures.json')
@@ -359,8 +380,10 @@ fetch('../Assets/shop_menu_textures.json')
         displayTexture('item1_info', 'hybrid_car_buy_screen.png');
         displayTexture('item2_info', 'plant_trees_buy_screen.png');
         displayTexture('item3_info', 'rahakone_buy_screen.png');
-        displayTexture('buy', 'buy_button_var1.png');
         displayTexture('close-info', 'close_info_button.png');
+        displayTexture('buy-item-1', 'buy_button_var1.png');
+        displayTexture('buy-item-2', 'buy_button_var1.png');
+        displayTexture('buy-item-3', 'buy_button_var1.png');
     });
 
 
@@ -380,28 +403,30 @@ $('#store_exit').click(function () {
 
 $('#buy_item1_button').click(function () {
     showItem1Info()
-    showBuyButton()
+    showBuyButton1()
     showCloseInfo()
 });
 
 
 $('#buy_item2_button').click(function () {
     showItem2Info()
-    showBuyButton()
+    showBuyButton2()
     showCloseInfo()
 });
 
 
 $('#buy_item3_button').click(function () {
     showItem3Info()
-    showBuyButton()
+    showBuyButton3()
     showCloseInfo()
 });
 
 
 $('#close-info').click(function () {
     hideCloseInfo()
-    hideBuyButton()
+    hideBuyButton1()
+    hideBuyButton2()
+    hideBuyButton3()
     hideItem1Info()
     hideItem2Info()
     hideItem3Info()

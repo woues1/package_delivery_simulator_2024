@@ -169,12 +169,13 @@
 
 #active_mission {
     position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translate(-52%, -19%);
-    z-index: 2;
-    margin-left: 5px;
-    scale: 95%;
+    transform: translate(95%, 411%);
+}
+
+#current_mission {
+    transform: translate(5%, 50%);
+    font-size: 14px;
+    width: 380px;
 }
 
 #menu_button {
@@ -418,13 +419,6 @@
     display: none;
 }
 
-#buy {
-    position: absolute;
-    transform: translate(530%, 710%);
-    z-index: 2;
-    cursor: pointer;
-    display: none;
-}
 
 #close-info {
     position: absolute;
@@ -434,3 +428,26 @@
     display: none;
 }
 
+#buy-item-1{
+    position: absolute;
+    cursor: pointer;
+    display: none;
+    z-index: 2;
+    transform: translate(530%, 710%);
+}
+
+#buy-item-2{
+    position: absolute;
+    cursor: pointer;
+    display: none;
+    z-index: 2;
+    transform: translate(530%, 710%);
+}
+
+#buy-item-3{
+    position: absolute;
+    cursor: pointer;
+    display: none;
+    z-index: 2;
+    transform: translate(530%, 710%);
+}

@@ -2,15 +2,79 @@
 
 {
 	"filename": "back_button.png",
-	"frame": {"x":0,"y":0,"w":241,"h":57},
+	"frame": {"x":208,"y":0,"w":241,"h":57},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":241,"h":57},
 	"sourceSize": {"w":241,"h":57}
 },
 {
+	"filename": "buy_button.png",
+	"frame": {"x":0,"y":0,"w":104,"h":55},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":55},
+	"sourceSize": {"w":104,"h":55}
+},
+{
+	"filename": "buy_button_var1.png",
+	"frame": {"x":104,"y":0,"w":104,"h":55},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":104,"h":55},
+	"sourceSize": {"w":104,"h":55}
+},
+{
+	"filename": "hybrid_car_buy_screen.png",
+	"frame": {"x":0,"y":177,"w":791,"h":401},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":791,"h":401},
+	"sourceSize": {"w":791,"h":401}
+},
+{
+	"filename": "hybrid_car_store.png",
+	"frame": {"x":449,"y":0,"w":253,"h":177},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":253,"h":177},
+	"sourceSize": {"w":253,"h":177}
+},
+{
+	"filename": "plant_trees_buy_screen.png",
+	"frame": {"x":791,"y":177,"w":791,"h":401},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":791,"h":401},
+	"sourceSize": {"w":791,"h":401}
+},
+{
+	"filename": "plant_trees_store.png",
+	"frame": {"x":702,"y":0,"w":253,"h":177},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":253,"h":177},
+	"sourceSize": {"w":253,"h":177}
+},
+{
+	"filename": "rahakone_buy_screen.png",
+	"frame": {"x":0,"y":578,"w":791,"h":401},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":791,"h":401},
+	"sourceSize": {"w":791,"h":401}
+},
+{
+	"filename": "rahakone_store.png",
+	"frame": {"x":955,"y":0,"w":253,"h":177},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":253,"h":177},
+	"sourceSize": {"w":253,"h":177}
+},
+{
 	"filename": "shop_menu_background.png",
-	"frame": {"x":0,"y":57,"w":800,"h":600},
+	"frame": {"x":791,"y":578,"w":800,"h":600},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":600},
@@ -21,8 +85,8 @@
 	"version": "1.0",
 	"image": "shop_menu_textures.png",
 	"format": "RGBA8888",
-	"size": {"w":800,"h":657},
+	"size": {"w":1591,"h":1178},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:45c4451a8a305c8492f06256134d957b:93234c166ba1e3455e5c3c838e71365f:465489bcf7fc26fa249d30a59818ecc1$"
+	"smartupdate": "$TexturePacker:SmartUpdate:deb57f114f9cfcfa48f38b08c2ed5537:81935dfa8124286895fd32efd769c901:465489bcf7fc26fa249d30a59818ecc1$"
 }
 }

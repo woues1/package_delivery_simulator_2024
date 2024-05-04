@@ -55,36 +55,73 @@ $(document).ready(function(){
 });
 
 
-$(document).ready(function() {
-    $('.main-menu-texture').on('click', function() {
-        var missionId = $(this).attr('id');
-        var missionIndex = missionId.charAt(missionId.length - 1);
+$('#mission1').on('click', function() {
+    var missionId = $(this).attr('id');
+    var missionIndex = missionId.charAt(missionId.length - 1);
 
-        $.ajax({
-            url: 'http://127.0.0.1:3000/complete_mission',
-            type: 'GET',
-            data: { mission_index: missionIndex },
-            success: function(response) {
-                console.log('Mission Completed')
-                player_info()
-            },
-            error: function(xhr, status, error) {
-                console.error("Error:", error);
-            }
-        });
+    $.ajax({
+        url: 'http://127.0.0.1:3000/complete_mission',
+        type: 'GET',
+        data: { mission_index: missionIndex },
+        success: function(response) {
+            console.log('Mission Completed')
+            player_info()
+        },
+        error: function(xhr, status, error) {
+            console.error("Error:", error);
+        }
     });
 });
 
 
-//
+$('#mission2').on('click', function() {
+    var missionId = $(this).attr('id');
+    var missionIndex = missionId.charAt(missionId.length - 1);
+
+    $.ajax({
+        url: 'http://127.0.0.1:3000/complete_mission',
+        type: 'GET',
+        data: { mission_index: missionIndex },
+        success: function(response) {
+            console.log('Mission Completed')
+            player_info()
+        },
+        error: function(xhr, status, error) {
+            console.error("Error:", error);
+        }
+    });
+});
+
+
+$('#mission3').on('click', function() {
+    var missionId = $(this).attr('id');
+    var missionIndex = missionId.charAt(missionId.length - 1);
+
+    $.ajax({
+        url: 'http://127.0.0.1:3000/complete_mission',
+        type: 'GET',
+        data: { mission_index: missionIndex },
+        success: function(response) {
+            console.log('Mission Completed')
+            player_info()
+        },
+        error: function(xhr, status, error) {
+            console.error("Error:", error);
+        }
+    });
+});
+
+
 function player_info() {
       fetch('http://127.0.0.1:3000/player_info')
       .then(response => response.json())
       .then(values => {
-          let location = document.createElement('p')
-          location.innerHTML = `${values['location']}`
-          let p_info = document.getElementById('player_location')
-          p_info.appendChild(location)
+          let points_info = document.getElementById('points')
+          let co2_info = document.getElementById('co2_consumed')
+          let location_info = document.getElementById('player_location')
+          location_info.innerHTML = `${values['location']}`;
+          co2_info.innerHTML = `${values['co2_consumed']}`;
+          points_info.innerHTML = `${values['pisteet']}`;
       })
 }
 
@@ -192,17 +229,17 @@ fetch('../Assets/main_menu_textures.json')
 
 
 // Pause menu
-$(document).ready(function(){
-  $('#menu_button').click(function(){
-    hideMainMenu()
-    showPauseMenu()
-  });
 
-  $('#resume_button').click(function(){
-    showMainMenu()
-    hidePauseMenu()
-  });
+$('#menu_button').click(function(){
+hideMainMenu()
+showPauseMenu()
 });
+
+$('#resume_button').click(function(){
+showMainMenu()
+hidePauseMenu()
+});
+
 
 
 fetch('../Assets/shop_menu_textures.json')
@@ -218,16 +255,16 @@ fetch('../Assets/shop_menu_textures.json')
 
 
 // Store menu
-$(document).ready(function(){
-  $('#store_button').click(function(){
-    hideMainMenu()
-    showStoreMenu()
-  });
 
-
-  $('#store_exit').click(function(){
-    showMainMenu()
-    hideStoreMenu()
-  });
+$('#store_button').click(function(){
+hideMainMenu()
+showStoreMenu()
 });
+
+
+$('#store_exit').click(function(){
+showMainMenu()
+hideStoreMenu()
+});
+
 

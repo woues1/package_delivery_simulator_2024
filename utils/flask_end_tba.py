@@ -23,6 +23,7 @@ def generate_secret_key(length=20):
     return ''.join(secrets.choice(alphabet) for _ in range(length))
 app.secret_key = generate_secret_key()
 
+
 missions = []
 async def get_missions():
     if pelaaja.tehtava_aktiivinen == False and Tehtava.instance_count < 3:
@@ -111,6 +112,7 @@ def get_player_info():
         return flask.jsonify(player_info)
     else:
         return flask.jsonify({'error': 'Player information not available'}), 404
+
 
 @app.route('/leaderboard_info', methods=['GET'])
 def leaderboard_info():

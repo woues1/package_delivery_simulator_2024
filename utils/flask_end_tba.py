@@ -43,6 +43,7 @@ def login():
     username = login_data.get('username')
     password = login_data.get('password')
     user_id = sql_db_lookup_log_in(username, password)
+    session['user_id'] = user_id[0][0]
 
     if user_id:
         global pelaaja
@@ -147,6 +148,13 @@ def leaderboard_info():
     results = sql_db_lookup_screen_names_pisteet()
     return flask.jsonify(results)
 
+@app.route('/reset_game', methods=['GET'])
+def reset_game():
+    if 'pelaaja' in globals():
+        pelaaja.reset_game()
+        return flask.jsonify({'message': 'Game reset successfully'})
+    else:
+        return flask.jsonify({'error': 'Player information not available'}), 404
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True, host='127.0.0.1', port=3000)

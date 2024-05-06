@@ -138,3 +138,4 @@ def sql_db_update_pisteet(pelaaja_id, pisteet):
                     f"SET pisteet = pisteet + {pisteet} "
                     f"WHERE id = '{pelaaja_id}';")
     sql_Execute_Query(update_query)
+

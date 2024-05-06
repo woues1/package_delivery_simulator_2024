@@ -78,9 +78,9 @@ class Pelaaja:
         player_location_print = sql_db_lookup_location_name(self.location)
         return f"{player_location_print[0][0]}"
 
-    def reset_game(self, location):
+    def reset_game(self):
+        self.location = sql_db_reset_game(self.id)
         self.pisteet = 0
-        self.location = location
         self.co2_consumed = 0
         self.tehtava_aktiivinen = False
         self.current_tehtava = None

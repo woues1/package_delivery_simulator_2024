@@ -388,6 +388,24 @@ $('#resume_button').click(function () {
     hidePauseMenu()
 });
 
+$('#new_run').click(function () {
+    showMainMenu()
+    hidePauseMenu()
+    restartGame()
+});
+
+$('#exit_button').click(function () {
+});
+
+function restartGame() {
+    fetch('http://127.0.0.1:3000/reset_game')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            player_info()
+            current_missions()
+        })
+}
 
 fetch('../Assets/shop_menu_textures.json')
     .then(response => response.json())

@@ -156,5 +156,14 @@ def reset_game():
     else:
         return flask.jsonify({'error': 'Player information not available'}), 404
 
+
+@app.route('/exit_game', methods=['GET'])
+def exit_game():
+    if 'pelaaja' in globals():
+        sql_db_update_exit_game(pelaaja.nimi, pelaaja.co2_consumed, pelaaja.location, pelaaja.pisteet)
+        return flask.jsonify({'message': 'Game exited successfully'})
+    else:
+        return flask.jsonify({'error': 'Player information not available'}), 404
+
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True, host='127.0.0.1', port=3000)

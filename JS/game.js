@@ -278,6 +278,11 @@ function hideStoreMenu() {
 
 }
 
+function showLoginElements() {
+    $('.login-container').css("display", "block")
+
+}
+
 
 function showItem1Info() {
     $('#item1_info').toggle()
@@ -395,6 +400,11 @@ $('#new_run').click(function () {
 });
 
 $('#exit_button').click(function () {
+    exitGame()
+    hideMainMenu()
+    hidePauseMenu()
+    location.reload()
+    showLoginElements()
 });
 
 function restartGame() {
@@ -404,6 +414,14 @@ function restartGame() {
             console.log(data)
             player_info()
             current_missions()
+        })
+}
+
+function exitGame() {
+    fetch('http://http://127.0.0.1:3000/reset_game')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
         })
 }
 

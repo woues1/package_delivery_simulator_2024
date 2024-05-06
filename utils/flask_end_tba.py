@@ -180,6 +180,13 @@ def exit_game():
     else:
         return flask.jsonify({'error': 'Player information not available'}), 404
 
+@app.route('/update_leaderboard', methods=['GET'])
+def update_leaderboard():
+    if 'pelaaja' in globals():
+        sql_db_update_leaderboard(pelaaja.nimi, pelaaja.pisteet)
+        return flask.jsonify({'message': 'Leaderboard updated successfully'})
+    else:
+        return flask.jsonify({'error': 'Player information not available'}), 404
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True, host='127.0.0.1', port=3000)

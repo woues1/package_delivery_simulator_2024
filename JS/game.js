@@ -138,8 +138,18 @@ function player_info() {
             location_info.innerHTML = `${values['location']}, ${values['country']}`;
             co2_info.innerHTML = `${values['co2_consumed']}/${values['co2_budget']}`;
             points_info.innerHTML = `${values['pisteet']}$`;
-
-        })
+            console.log(values['co2_consumed'])
+            if (parseInt(values['co2_consumed']) >= parseInt(values['co2_budget'])) {
+                alert('Game over')
+                updateLeaderboard()
+                restartGame()
+                exitGame()
+                hideMainMenu()
+                hidePauseMenu()
+                location.reload()
+                showLoginElements()
+        }
+    })
 }
 
 
@@ -479,6 +489,15 @@ function exitGame() {
         })
 }
 
+function updateLeaderboard() {
+    fetch('http://127.0.0.1:3000/update_leaderboard')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+        })
+}
+
+
 fetch('../Assets/shop_menu_textures.json')
     .then(response => response.json())
     .then(data => {
@@ -548,3 +567,6 @@ $('#close-info').click(function () {
     hideItem2Info()
     hideItem3Info()
 });
+
+
+

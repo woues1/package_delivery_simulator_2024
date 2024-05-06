@@ -239,9 +239,9 @@ $('#buy-item-1').on('click', function () {
     $.ajax({
         url: 'http://127.0.0.1:3000/buy_item',
         type: 'GET',
-        data: {Item_id: ItemIndex},
+        data: {item_id: ItemIndex},
         success: function (response) {
-
+            console.log(response)
         },
         error: function (xhr, status, error) {
             console.error("Error:", error);
@@ -259,7 +259,7 @@ $('#buy-item-2').on('click', function () {
         type: 'GET',
         data: {item_id: ItemIndex},
         success: function (response) {
-
+            console.log(response)
         },
         error: function (xhr, status, error) {
             console.error("Error:", error);
@@ -277,7 +277,7 @@ $('#buy-item-3').on('click', function () {
         type: 'GET',
         data: {item_id: ItemIndex},
         success: function (response) {
-
+            console.log(response)
         },
         error: function (xhr, status, error) {
             console.error("Error:", error);

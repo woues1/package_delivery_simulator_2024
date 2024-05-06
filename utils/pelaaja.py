@@ -107,7 +107,7 @@ class Item:
                 self.purchased = True
                 return True
             else:
-                return f"Ei tarpeeksi pisteitä: {pelaaja.pisteet}/{self.price}"
+                return f"Ei tarpeeksi rahaa: {pelaaja.pisteet}$/{self.price}$"
         else:
             return f"Olet jo ostanut esineen {self.name}"
 

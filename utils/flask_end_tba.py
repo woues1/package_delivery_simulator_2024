@@ -148,10 +148,13 @@ def get_item_info():
 @app.route('/buy_item', methods=['GET'])
 def buy_item():
     if 'pelaaja' in globals():
-        item_index = int(request.args.get('item_id')-1)
-        purchase = items[item_index].purchase(pelaaja)
+        item_index = int(request.args.get('item_id'))
+        purchase = items[item_index - 1].purchase(pelaaja)
         if purchase == True:
-            pelaaja.osta_esine(items[item_index])
+            pelaaja.osta_esine(items[item_index - 1])
+            return flask.jsonify({'message' : 'Item bought successfully'})
+        else:
+            return flask.jsonify({'message': f'{purchase}'})
 
 
 @app.route('/leaderboard_info', methods=['GET'])

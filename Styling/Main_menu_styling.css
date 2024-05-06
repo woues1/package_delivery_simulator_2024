@@ -338,16 +338,17 @@
 
 .store-item-container {
     position: absolute;
-    transform: translate(3%, 79%);
+    transform: translate(3%, 34%);
     z-index: 2;
     display: flex;
+    flex-wrap: wrap;
 }
 
 #buy_item1_button {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-295%, -135%);
+    transform: translate(-295%, -170%);
     z-index: 2;
     margin-left: 5px;
     cursor: pointer;
@@ -357,7 +358,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-54%, -135%);
+    transform: translate(-54%, -170%);
     z-index: 2;
     margin-left: 5px;
     cursor: pointer;
@@ -367,7 +368,17 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(190%, -135%);
+    transform: translate(190%, -170%);
+    z-index: 2;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+#buy_item4_button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-295%, 155%);
     z-index: 2;
     margin-left: 5px;
     cursor: pointer;
@@ -434,6 +445,13 @@
     display: none;
 }
 
+#item4_info {
+    position: absolute;
+    transform: translate(1%, 25%);
+    z-index: 2;
+    display: none;
+}
+
 
 #close-info {
     position: absolute;
@@ -460,6 +478,14 @@
 }
 
 #buy-item-3{
+    position: absolute;
+    cursor: pointer;
+    display: none;
+    z-index: 2;
+    transform: translate(570%, 710%);
+}
+
+#buy-item-4{
     position: absolute;
     cursor: pointer;
     display: none;

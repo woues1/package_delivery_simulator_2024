@@ -49,7 +49,15 @@
 	"sourceSize": {"w":253,"h":177}
 },
 {
-	"filename": "plant_trees_buy_screen.png",
+	"filename": "lock.png",
+	"frame": {"x":0,"y":979,"w":800,"h":600},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":600},
+	"sourceSize": {"w":800,"h":600}
+},
+{
+	"filename": "lockpick_buy_screen.png",
 	"frame": {"x":791,"y":177,"w":791,"h":401},
 	"rotated": false,
 	"trimmed": false,
@@ -57,7 +65,7 @@
 	"sourceSize": {"w":791,"h":401}
 },
 {
-	"filename": "plant_trees_store.png",
+	"filename": "lockpick_store.png",
 	"frame": {"x":806,"y":0,"w":253,"h":177},
 	"rotated": false,
 	"trimmed": false,
@@ -65,7 +73,7 @@
 	"sourceSize": {"w":253,"h":177}
 },
 {
-	"filename": "rahakone_buy_screen.png",
+	"filename": "plant_trees_buy_screen.png",
 	"frame": {"x":0,"y":578,"w":791,"h":401},
 	"rotated": false,
 	"trimmed": false,
@@ -73,7 +81,7 @@
 	"sourceSize": {"w":791,"h":401}
 },
 {
-	"filename": "rahakone_store.png",
+	"filename": "plant_trees_store.png",
 	"frame": {"x":1059,"y":0,"w":253,"h":177},
 	"rotated": false,
 	"trimmed": false,
@@ -81,8 +89,24 @@
 	"sourceSize": {"w":253,"h":177}
 },
 {
+	"filename": "rahakone_buy_screen.png",
+	"frame": {"x":791,"y":578,"w":791,"h":401},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":791,"h":401},
+	"sourceSize": {"w":791,"h":401}
+},
+{
+	"filename": "rahakone_store.png",
+	"frame": {"x":1312,"y":0,"w":253,"h":177},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":253,"h":177},
+	"sourceSize": {"w":253,"h":177}
+},
+{
 	"filename": "shop_menu_background.png",
-	"frame": {"x":791,"y":578,"w":800,"h":600},
+	"frame": {"x":800,"y":979,"w":800,"h":600},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":600},
@@ -93,8 +117,8 @@
 	"version": "1.0",
 	"image": "shop_menu_textures.png",
 	"format": "RGBA8888",
-	"size": {"w":1591,"h":1178},
+	"size": {"w":1600,"h":1579},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:af9a03c415d88ef6524bdf8289e16b9e:6e991c8d859bcf26f2688e555541d576:465489bcf7fc26fa249d30a59818ecc1$"
+	"smartupdate": "$TexturePacker:SmartUpdate:33cfc7980f094fc0821ea326b7e80363:89e6ee28a793597c761ed423e61b49c2:465489bcf7fc26fa249d30a59818ecc1$"
 }
 }

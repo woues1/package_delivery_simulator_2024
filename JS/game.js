@@ -329,6 +329,14 @@ function hideItem3Info() {
     $('#item3_info').hide()
 }
 
+function showItem4Info() {
+    $('#item4_info').toggle()
+}
+
+function hideItem4Info() {
+    $('#item4_info').hide()
+}
+
 
 function showCloseInfo() {
     $('#close-info').toggle()
@@ -370,7 +378,13 @@ function hideBuyButton3() {
     $('#buy-item-3').hide()
 }
 
+function showBuyButton4() {
+    $('#buy-item-4').toggle()
+}
 
+function hideBuyButton4() {
+    $('#buy-item-4').hide()
+}
 
 fetch('../Assets/main_menu_textures.json')
     .then(response => response.json())
@@ -462,16 +476,20 @@ fetch('../Assets/shop_menu_textures.json')
         displayTexture('item1', 'hybrid_car_store.png');
         displayTexture('item2', 'plant_trees_store.png');
         displayTexture('item3', 'rahakone_store.png');
+        displayTexture('item4', 'lockpick_store.png');
         displayTexture('buy_item1_button', 'buy_button.png');
         displayTexture('buy_item2_button', 'buy_button.png');
         displayTexture('buy_item3_button', 'buy_button.png');
+        displayTexture('buy_item4_button', 'buy_button.png');
         displayTexture('item1_info', 'hybrid_car_buy_screen.png');
         displayTexture('item2_info', 'plant_trees_buy_screen.png');
         displayTexture('item3_info', 'rahakone_buy_screen.png');
+        displayTexture('item4_info', 'lockpick_buy_screen.png');
         displayTexture('close-info', 'close_info_button.png');
         displayTexture('buy-item-1', 'buy_button_var1.png');
         displayTexture('buy-item-2', 'buy_button_var1.png');
         displayTexture('buy-item-3', 'buy_button_var1.png');
+        displayTexture('buy-item-4', 'buy_button_var1.png');
     });
 
 
@@ -509,15 +527,24 @@ $('#buy_item3_button').click(function () {
     showCloseInfo()
 });
 
+$('#buy_item4_button').click(function () {
+    showItem4Info()
+    showBuyButton4()
+    showCloseInfo()
+
+});
+
 
 $('#close-info').click(function () {
     hideCloseInfo()
     hideBuyButton1()
     hideBuyButton2()
     hideBuyButton3()
+    hideBuyButton4()
     hideItem1Info()
     hideItem2Info()
     hideItem3Info()
+    hideItem4Info()
 });
 
 

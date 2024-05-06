@@ -62,7 +62,6 @@ function selectMission(missionId, missionNumber) {
         type: 'GET',
         data: {mission_index: missionIndex},
         success: function (response) {
-            console.log('Mission selected');
             active_mission(missionNumber);
         },
         error: function (xhr, status, error) {
@@ -89,7 +88,6 @@ $('#deliver_button').on('click', function () {
         url: 'http://127.0.0.1:3000/complete_mission',
         type: 'GET',
         success: function (response) {
-            console.log('Mission Completed')
             player_info()
             current_missions()
         },
@@ -170,7 +168,6 @@ $('#login-form').submit(function(event) {
         username: username,
         password: password
     };
-    console.log(loginData);
 
     $.ajax({
         url: 'http://127.0.0.1:3000/login',
@@ -200,8 +197,6 @@ $('#new_game_button').click(function(event) {
         username: username,
         password: password
     };
-    console.log(newGameData);
-    console.log('New game button clicked');
 
     $.ajax({
         url: 'http://127.0.0.1:3000/new_game',

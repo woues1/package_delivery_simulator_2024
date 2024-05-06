@@ -16,6 +16,8 @@ import re
 
 app = flask.Flask(__name__)
 CORS(app)
+
+
 def generate_secret_key(length=20):
     alphabet = string.ascii_letters + string.digits + string.punctuation
     return ''.join(secrets.choice(alphabet) for _ in range(length))
@@ -62,6 +64,7 @@ def login():
     else:
         return flask.jsonify({'error': 'Invalid username or password'}), 401
 
+
 @app.route('/new_game', methods=['POST'])
 def new_game():
     new_game_data = request.json
@@ -74,9 +77,9 @@ def new_game():
         return flask.jsonify({'error': 'Invalid character in password'}), 400
     else:
         user_id = sql_db_update_new_game(username, password)
-        sql_db_update_new_player_items(user_id[0][0])
         if user_id:
             session['user_id'] = user_id[0][0]
+            sql_db_update_new_player_items(user_id[0][0])
             global pelaaja
             pelaaja = initialize_player(user_id[0][0])
             init_items = initialize_items(pelaaja)
@@ -89,8 +92,6 @@ def new_game():
             return flask.jsonify({'message': 'Login successful'})
         else:
             return flask.jsonify({'error': 'Invalid username or password'}), 401
-
-
 
 
 @app.route('/set_mission', methods=['GET'])
@@ -184,7 +185,7 @@ def buy_item():
     if 'pelaaja' in globals():
         item_index = int(request.args.get('item_id'))
         purchase = items[item_index - 1].purchase(pelaaja)
-        if purchase:
+        if purchase == True:
             pelaaja.add_item(items[item_index - 1])
             return flask.jsonify({'message': 'Item bought successfully'})
         else:
@@ -222,6 +223,7 @@ def update_leaderboard():
         return flask.jsonify({'message': 'Leaderboard updated successfully'})
     else:
         return flask.jsonify({'error': 'Player information not available'}), 404
+
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True, host='127.0.0.1', port=3000)

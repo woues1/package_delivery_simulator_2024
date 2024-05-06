@@ -240,6 +240,40 @@ document.getElementById('login-form').addEventListener('submit', function (event
     event.preventDefault();
 });
 
+document.getElementById('new_game_button').addEventListener('click', function (event) {
+
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    const NewGameData = {
+        username: username,
+        password: password
+    };
+    console.log(NewGameData)
+    console.log('New game button clicked')
+
+    fetch('http://127.0.0.1:3000/new_game', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(NewGameData)
+    })
+        .then(response => {
+            if (response.ok) {
+                hideLoginElements();
+                showMainMenu();
+                player_info()
+                current_missions()
+            } else {
+                return response.json().then(data => {
+                    alert(data.error);
+                });
+            }
+
+        })
+    event.preventDefault()
+});
 
 $('#buy-item-1').on('click', function () {
     var ItemId = $(this).attr('id');

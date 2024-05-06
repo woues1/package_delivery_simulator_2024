@@ -83,7 +83,20 @@
     height: 80px;
     border: none;
 }
+
+
 #login_submit:hover {
+    cursor: pointer;
+}
+
+#new_game_submit {
+    background: transparent;
+    width: 240px;
+    height: 80px;
+    border: none;
+}
+
+#new_game_submit:hover {
     cursor: pointer;
 }
 

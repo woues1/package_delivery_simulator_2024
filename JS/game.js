@@ -105,26 +105,35 @@ function player_info() {
     fetch('http://127.0.0.1:3000/player_info')
         .then(response => response.json())
         .then(values => {
-            let points_info = document.getElementById('points')
-            let co2_info = document.getElementById('co2_consumed')
-            let location_info = document.getElementById('location')
+            const { location, country, co2_consumed, co2_budget, pisteet } = values;
+            const points_info = $('#points');
+            const co2_info = $('#co2_consumed');
+            const location_info = $('#location');
 
-            location_info.innerHTML = `${values['location']}, ${values['country']}`;
-            co2_info.innerHTML = `${values['co2_consumed']}/${values['co2_budget']}`;
-            points_info.innerHTML = `${values['pisteet']}$`;
-            console.log(values['co2_consumed'])
-            if (parseInt(values['co2_consumed']) >= parseInt(values['co2_budget'])) {
-                alert('Game over')
-                updateLeaderboard()
-                restartGame()
-                exitGame()
-                hideMainMenu()
-                hidePauseMenu()
-                location.reload()
-                showLoginElements()
-        }
-    })
+            location_info.text(`${location}, ${country}`);
+            co2_info.text(`${co2_consumed}/${co2_budget}`);
+            points_info.text(`${pisteet}$`);
+
+            if (parseInt(co2_consumed) >= parseInt(co2_budget)) {
+                gameOverActions();
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching player info:', error);
+        });
 }
+
+function gameOverActions() {
+    alert('Game over');
+    updateLeaderboard();
+    restartGame();
+    exitGame();
+    hideMainMenu();
+    hidePauseMenu();
+    location.reload();
+    showLoginElements();
+}
+
 
 
 function current_missions() {
@@ -152,76 +161,64 @@ function active_mission(num){
 }
 
 
-document.getElementById('login-form').addEventListener('submit', function (event) {
-
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+$('#login-form').submit(function(event) {
+    event.preventDefault();
+    const username = $('#username').val();
+    const password = $('#password').val();
 
     const loginData = {
         username: username,
         password: password
     };
-    console.log(loginData)
+    console.log(loginData);
 
-    fetch('http://127.0.0.1:3000/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
+    $.ajax({
+        url: 'http://127.0.0.1:3000/login',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(loginData),
+        success: function(response) {
+            hideLoginElements();
+            showMainMenu();
+            player_info();
+            current_missions();
         },
-        body: JSON.stringify(loginData)
-    })
-        .then(response => {
-            if (response.ok) {
-                hideLoginElements();
-                showMainMenu();
-                player_info()
-                current_missions()
-            } else {
-                return response.json().then(data => {
-                    alert(data.error);
-                });
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('An error occurred. Please try again later.');
-        });
-    event.preventDefault();
+        error: function(xhr, status, error) {
+            const errorMessage = xhr.responseJSON ? xhr.responseJSON.error : 'An error occurred. Please try again later.';
+            alert(errorMessage);
+        }
+    });
 });
 
 
-document.getElementById('new_game_button').addEventListener('click', function (event) {
-    event.preventDefault()
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+$('#new_game_button').click(function(event) {
+    event.preventDefault();
+    const username = $('#username').val();
+    const password = $('#password').val();
 
-    const NewGameData = {
+    const newGameData = {
         username: username,
         password: password
     };
-    console.log(NewGameData)
-    console.log('New game button clicked')
+    console.log(newGameData);
+    console.log('New game button clicked');
 
-    fetch('http://127.0.0.1:3000/new_game', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
+    $.ajax({
+        url: 'http://127.0.0.1:3000/new_game',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(newGameData),
+        success: function(response) {
+            hideLoginElements();
+            showMainMenu();
+            player_info();
+            current_missions();
         },
-        body: JSON.stringify(NewGameData)
-    })
-        .then(response => {
-            if (response.ok) {
-                hideLoginElements();
-                showMainMenu();
-                player_info()
-                current_missions()
-            } else {
-                return response.json().then(data => {
-                    alert(data.error);
-                });
-            }
-
-        })
+        error: function(xhr, status, error) {
+            const errorMessage = xhr.responseJSON ? xhr.responseJSON.error : 'An error occurred. Please try again later.';
+            alert(errorMessage);
+        }
+    });
 });
 
 
@@ -241,7 +238,6 @@ function buyItem(ItemId) {
         }
     });
 }
-
 
 $('#buy-item-1').on('click', function () {
     buyItem($(this).attr('id'));

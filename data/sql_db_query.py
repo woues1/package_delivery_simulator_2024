@@ -133,6 +133,7 @@ def sql_db_lookup_screen_names(screen_name):
     tulos1 = sql_Execute_Query(tulos)
     return tulos1
 
+
 def sql_db_update_pisteet(pelaaja_id, pisteet):
     update_query = (f"UPDATE game "
                     f"SET pisteet = pisteet + {pisteet} "

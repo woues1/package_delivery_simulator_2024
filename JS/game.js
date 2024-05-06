@@ -232,7 +232,62 @@ document.getElementById('login-form').addEventListener('submit', function (event
 });
 
 
+$('#buy-item-1').on('click', function () {
+    var ItemId = $(this).attr('id');
+    var missionIndex = ItemId.charAt(ItemId.length - 1);
+
+    $.ajax({
+        url: 'http://127.0.0.1:3000/buy_item',
+        type: 'GET',
+        data: {mission_index: missionIndex},
+        success: function (response) {
+
+        },
+        error: function (xhr, status, error) {
+            console.error("Error:", error);
+        }
+    });
+});
+
+
+$('#buy-item-2').on('click', function () {
+    var ItemId = $(this).attr('id');
+    var missionIndex = ItemId.charAt(ItemId.length - 1);
+
+    $.ajax({
+        url: 'http://127.0.0.1:3000/buy_item',
+        type: 'GET',
+        data: {mission_index: missionIndex},
+        success: function (response) {
+
+        },
+        error: function (xhr, status, error) {
+            console.error("Error:", error);
+        }
+    });
+});
+
+
+$('#buy-item-3').on('click', function () {
+    var ItemId = $(this).attr('id');
+    var missionIndex = ItemId.charAt(ItemId.length - 1);
+
+    $.ajax({
+        url: 'http://127.0.0.1:3000/buy_item',
+        type: 'GET',
+        data: {mission_index: missionIndex},
+        success: function (response) {
+
+        },
+        error: function (xhr, status, error) {
+            console.error("Error:", error);
+        }
+    });
+});
+
+
 // Login menu
+
 function hideLoginElements() {
     $('.login-container').css("display", "none")
 

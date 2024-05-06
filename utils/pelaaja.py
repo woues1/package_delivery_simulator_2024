@@ -118,6 +118,7 @@ class Item:
     def attribute_info(self):
         return self.attribute
 
+
 class Tehtava:
     instance_count = 0
 

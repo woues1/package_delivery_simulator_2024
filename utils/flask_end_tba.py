@@ -23,6 +23,7 @@ app.secret_key = generate_secret_key()
 
 
 missions = []
+
 async def get_missions():
     if pelaaja.tehtava_aktiivinen == False and Tehtava.instance_count < 3:
         tasks = [
@@ -36,6 +37,7 @@ async def get_missions():
 
 
 items = []
+
 @app.route('/login', methods=['POST'])
 def login():
     login_data = request.json
@@ -143,10 +145,20 @@ def get_item_info():
         return flask.jsonify({'error': 'Player information not available'}), 404
 
 
+@app.route('/buy_item', methods=['GET'])
+def buy_item():
+    if 'pelaaja' in globals():
+        item_index = int(request.args.get('item_id')-1)
+        purchase = items[item_index].purchase(pelaaja)
+        if purchase == True:
+            pelaaja.osta_esine(items[item_index])
+
+
 @app.route('/leaderboard_info', methods=['GET'])
 def leaderboard_info():
     results = sql_db_lookup_screen_names_pisteet()
     return flask.jsonify(results)
+
 
 @app.route('/reset_game', methods=['GET'])
 def reset_game():
@@ -164,6 +176,7 @@ def exit_game():
         return flask.jsonify({'message': 'Game exited successfully'})
     else:
         return flask.jsonify({'error': 'Player information not available'}), 404
+
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True, host='127.0.0.1', port=3000)

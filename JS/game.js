@@ -234,12 +234,12 @@ document.getElementById('login-form').addEventListener('submit', function (event
 
 $('#buy-item-1').on('click', function () {
     var ItemId = $(this).attr('id');
-    var missionIndex = ItemId.charAt(ItemId.length - 1);
+    var ItemIndex = ItemId.charAt(ItemId.length - 1);
 
     $.ajax({
         url: 'http://127.0.0.1:3000/buy_item',
         type: 'GET',
-        data: {mission_index: missionIndex},
+        data: {Item_id: ItemIndex},
         success: function (response) {
 
         },
@@ -252,12 +252,12 @@ $('#buy-item-1').on('click', function () {
 
 $('#buy-item-2').on('click', function () {
     var ItemId = $(this).attr('id');
-    var missionIndex = ItemId.charAt(ItemId.length - 1);
+    var ItemIndex = ItemId.charAt(ItemId.length - 1);
 
     $.ajax({
         url: 'http://127.0.0.1:3000/buy_item',
         type: 'GET',
-        data: {mission_index: missionIndex},
+        data: {item_id: ItemIndex},
         success: function (response) {
 
         },
@@ -270,12 +270,12 @@ $('#buy-item-2').on('click', function () {
 
 $('#buy-item-3').on('click', function () {
     var ItemId = $(this).attr('id');
-    var missionIndex = ItemId.charAt(ItemId.length - 1);
+    var ItemIndex = ItemId.charAt(ItemId.length - 1);
 
     $.ajax({
         url: 'http://127.0.0.1:3000/buy_item',
         type: 'GET',
-        data: {mission_index: missionIndex},
+        data: {item_id: ItemIndex},
         success: function (response) {
 
         },

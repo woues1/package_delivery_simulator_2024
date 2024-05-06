@@ -424,7 +424,7 @@
 
 #close-info {
     position: absolute;
-    transform: translate(637%, 710%);
+    transform: translate(460%, 710%);
     z-index: 2;
     cursor: pointer;
     display: none;
@@ -435,7 +435,7 @@
     cursor: pointer;
     display: none;
     z-index: 2;
-    transform: translate(530%, 710%);
+    transform: translate(570%, 710%);
 }
 
 #buy-item-2{
@@ -443,7 +443,7 @@
     cursor: pointer;
     display: none;
     z-index: 2;
-    transform: translate(530%, 710%);
+    transform: translate(570%, 710%);
 }
 
 #buy-item-3{
@@ -451,5 +451,5 @@
     cursor: pointer;
     display: none;
     z-index: 2;
-    transform: translate(530%, 710%);
+    transform: translate(570%, 710%);
 }

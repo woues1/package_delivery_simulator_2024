@@ -248,16 +248,17 @@ $('#buy-item-1').on('click', function () {
     $.ajax({
         url: 'http://127.0.0.1:3000/buy_item',
         type: 'GET',
-        data: {item_id: ItemIndex},
+        data: {item_id: ItemIndex}, // Corrected parameter name
         success: function (response) {
             console.log(response)
-            console.log('asd')
+            player_info()
         },
         error: function (xhr, status, error) {
             console.error("Error:", error);
         }
     });
 });
+
 
 
 $('#buy-item-2').on('click', function () {
@@ -270,6 +271,7 @@ $('#buy-item-2').on('click', function () {
         data: {item_id: ItemIndex},
         success: function (response) {
             console.log(response)
+            player_info()
         },
         error: function (xhr, status, error) {
             console.error("Error:", error);
@@ -288,6 +290,7 @@ $('#buy-item-3').on('click', function () {
         data: {item_id: ItemIndex},
         success: function (response) {
             console.log(response)
+            player_info()
         },
         error: function (xhr, status, error) {
             console.error("Error:", error);

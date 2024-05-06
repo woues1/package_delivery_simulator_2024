@@ -84,7 +84,6 @@ class Pelaaja:
         self.co2_consumed = 0
         self.tehtava_aktiivinen = False
         self.current_tehtava = None
-        self.Items = initialize_items(self)
         self.co2_budget = 10000
         self.co2_kerroin = 1.0
         self.piste_kerroin = 1.0

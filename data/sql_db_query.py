@@ -125,6 +125,7 @@ def sql_db_reset_game(pelaaja_id):
                    f"SET purchased = 0 "
                    f"WHERE player_id = {pelaaja_id};")
     sql_Execute_Query(reset_items)
+    return starting_location
 
 
 def sql_db_lookup_screen_names(screen_name):

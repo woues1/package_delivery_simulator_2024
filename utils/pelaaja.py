@@ -78,6 +78,18 @@ class Pelaaja:
         player_location_print = sql_db_lookup_location_name(self.location)
         return f"{player_location_print[0][0]}"
 
+    def reset_game(self, location):
+        self.pisteet = 0
+        self.location = location
+        self.co2_consumed = 0
+        self.tehtava_aktiivinen = False
+        self.current_tehtava = None
+        self.Items = initialize_items(self)
+        self.co2_budget = 10000
+        self.co2_kerroin = 1.0
+        self.piste_kerroin = 1.0
+        self.tiirikka = 1
+
 
 class Item:
     def __init__(self, id, name, price, attribute, purchased):

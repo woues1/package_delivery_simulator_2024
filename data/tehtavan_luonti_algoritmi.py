@@ -30,15 +30,15 @@ async def co2_consumed_distance(location, curr_location):
 def kerroin_maarittaja(co2_consumed):
     kerroin = 0
     if co2_consumed < 50:  # if distance > 500
-        kerroin += 1  # kerroin =+2
+        kerroin += 2  # kerroin =+2
     elif co2_consumed > 100 and co2_consumed < 200:
-        kerroin += 2
-    elif co2_consumed > 200 and co2_consumed < 400:
         kerroin += 4
+    elif co2_consumed > 200 and co2_consumed < 400:
+        kerroin += 6
     elif co2_consumed > 400 and co2_consumed < 800:
-        kerroin += 8
+        kerroin += 10
     elif co2_consumed > 800:
-        kerroin += 16
+        kerroin += 14
     else:
         kerroin += 16
     return kerroin
@@ -47,16 +47,16 @@ def kerroin_maarittaja(co2_consumed):
 def piste_maarittaja(location):
     continent = sql_db_lookup_continent_in_location(location)
     if continent[0][0] == "EU":
-        return 10
+        return 20
     elif continent[0][0] == "AF":
-        return 40
-    elif continent[0][0] == "AS":
-        return 30
-    elif continent[0][0] == "NA":
-        return 10
-    elif continent[0][0] == "OC":
-        return 50
-    elif continent[0][0] == "SA":
-        return 40
-    else:
         return 60
+    elif continent[0][0] == "AS":
+        return 40
+    elif continent[0][0] == "NA":
+        return 20
+    elif continent[0][0] == "OC":
+        return 70
+    elif continent[0][0] == "SA":
+        return 60
+    else:
+        return 70

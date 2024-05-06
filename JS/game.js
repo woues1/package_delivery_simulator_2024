@@ -138,7 +138,6 @@ function player_info() {
             location_info.innerHTML = `${values['location']}, ${values['country']}`;
             co2_info.innerHTML = `${values['co2_consumed']}/${values['co2_budget']}`;
             points_info.innerHTML = `${values['pisteet']}$`;
-            console.log(item_info())
 
         })
 }

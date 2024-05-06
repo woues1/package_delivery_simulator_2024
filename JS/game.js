@@ -251,6 +251,7 @@ $('#buy-item-1').on('click', function () {
         data: {item_id: ItemIndex},
         success: function (response) {
             console.log(response)
+            console.log('asd')
         },
         error: function (xhr, status, error) {
             console.error("Error:", error);

@@ -16,8 +16,6 @@ import asyncio
 
 app = flask.Flask(__name__)
 CORS(app)
-
-
 def generate_secret_key(length=20):
     alphabet = string.ascii_letters + string.digits + string.punctuation
     return ''.join(secrets.choice(alphabet) for _ in range(length))
@@ -37,6 +35,7 @@ async def get_missions():
     return missions
 
 
+items = []
 @app.route('/login', methods=['POST'])
 def login():
     login_data = request.json
@@ -48,11 +47,14 @@ def login():
     if user_id:
         global pelaaja
         pelaaja = initialize_player(user_id[0][0])
-        initialize_items(pelaaja)
+        init_items = initialize_items(pelaaja)
+        list = [*init_items]
+        items.extend(list)
         asyncio.run(get_missions())
         return flask.jsonify({'message': 'Login successful'})
     else:
         return flask.jsonify({'error': 'Invalid username or password'}), 401
+
 
 @app.route('/set_mission', methods=['GET'])
 def set_mission():
@@ -65,10 +67,12 @@ def set_mission():
             return flask.jsonify({'error': 'Invalid mission index'}), 400
     return flask.jsonify({'error': 'Invalid player session'}), 400
 
+
 @app.route('/complete_mission')
 def complete_mission():
     if 'pelaaja' in globals() and pelaaja.tehtava_aktiivinen == True:
         pelaaja.suorita_tehtava()
+        sql_db_update_exit_game(pelaaja.nimi, pelaaja.co2_consumed, pelaaja.location, pelaaja.pisteet)
         Tehtava.instance_count -= 3
         missions.clear()
         asyncio.run(get_missions())
@@ -115,6 +119,25 @@ def get_player_info():
             'tiirikka': pelaaja.tiirikka
         }
         return flask.jsonify(player_info)
+    else:
+        return flask.jsonify({'error': 'Player information not available'}), 404
+
+
+@app.route('/item_info', methods=['GET'])
+def get_item_info():
+    if 'pelaaja' in globals():
+        item_info = []
+
+        for item in items:
+            item_data = {
+                'id': item.id,
+                'name': item.name,
+                'price': item.price,
+                'attribute': item.attribute,
+                'purchased': item.purchased
+            }
+            item_info.append(item_data)
+        return flask.jsonify(item_info)
     else:
         return flask.jsonify({'error': 'Player information not available'}), 404
 

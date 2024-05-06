@@ -137,10 +137,37 @@ function player_info() {
             location_info.innerHTML = `${values['location']}, ${values['country']}`;
             co2_info.innerHTML = `${values['co2_consumed']}/${values['co2_budget']}`;
             points_info.innerHTML = `${values['pisteet']}$`;
+            console.log(item_info())
 
         })
 }
 
+
+function item_info(){
+fetch('http://127.0.0.1:3000/item_info')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Player information not available');
+    }
+    return response.json();
+  })
+  .then(data => {
+    // Update each div with item information
+    data.forEach((item, index) => {
+      const itemDiv = document.getElementById(`item${index + 1}_info`);
+      itemDiv.innerHTML = `
+        <p>ID: ${item.id}</p>
+        <p>Name: ${item.name}</p>
+        <p>Price: ${item.price}</p>
+        <p>Attribute: ${item.attribute}</p>
+        <p>Purchased: ${item.purchased}</p>
+      `;
+    });
+  })
+  .catch(error => {
+    console.error('Error:', error.message);
+  });
+}
 
 function current_missions() {
     fetch('http://127.0.0.1:3000/get_missions_info')
@@ -242,7 +269,6 @@ function hidePauseMenu() {
 
 function showStoreMenu() {
     $('.store-container').css("display", "block")
-
 }
 
 

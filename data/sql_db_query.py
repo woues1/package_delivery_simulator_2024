@@ -86,8 +86,7 @@ def sql_db_update_new_game(screen_name, player_password):  # HUOM!!!!älä kutsu
     starting_location = sql_db_lookup_random_location()
     update_query = (f"INSERT INTO game (co2_consumed, co2_budget, location, screen_name, password, pisteet) "
                     f"VALUES (0, 10000, '{starting_location}', '{screen_name}', '{player_password}', 0);")  # <---- Default starting location EFHK(Helsinki Vantaa),
-    sql_Execute_Query(
-        update_query)  # Game ID poistaminen jää haahuilee uudet game id tulee isomalla numerolla vaikka vanhat olis poistettu
+    sql_Execute_Query(update_query)  # Game ID poistaminen jää haahuilee uudet game id tulee isomalla numerolla vaikka vanhat olis poistettu
     tulos = sql_db_lookup_log_in(screen_name, player_password)
     return tulos
 

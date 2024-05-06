@@ -2,11 +2,11 @@
 
 {
 	"filename": "active_mission_box.png",
-	"frame": {"x":544,"y":80,"w":800,"h":600},
+	"frame": {"x":544,"y":80,"w":408,"h":117},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":600},
-	"sourceSize": {"w":800,"h":600}
+	"spriteSourceSize": {"x":0,"y":0,"w":408,"h":117},
+	"sourceSize": {"w":408,"h":117}
 },
 {
 	"filename": "back_button.png",
@@ -42,7 +42,7 @@
 },
 {
 	"filename": "location_text_box.png",
-	"frame": {"x":0,"y":680,"w":800,"h":600},
+	"frame": {"x":0,"y":197,"w":800,"h":600},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":600},
@@ -50,7 +50,7 @@
 },
 {
 	"filename": "main_menu.png",
-	"frame": {"x":800,"y":680,"w":800,"h":600},
+	"frame": {"x":800,"y":197,"w":800,"h":600},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":600},
@@ -74,7 +74,7 @@
 },
 {
 	"filename": "money_co2_text_box.png",
-	"frame": {"x":0,"y":1280,"w":800,"h":600},
+	"frame": {"x":0,"y":797,"w":800,"h":600},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":600},
@@ -90,7 +90,7 @@
 },
 {
 	"filename": "pause_menu_background.png",
-	"frame": {"x":800,"y":1280,"w":800,"h":600},
+	"frame": {"x":800,"y":797,"w":800,"h":600},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":600},
@@ -109,8 +109,8 @@
 	"version": "1.0",
 	"image": "main_menu_textures.png",
 	"format": "RGBA8888",
-	"size": {"w":1600,"h":1880},
+	"size": {"w":1600,"h":1397},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:957b89d1fd7a39482da50a5ae2009967:5e7e6d2f774019e6433206248d2f3556:8e0d77704f2d3f15c95cd2c1c90a5cca$"
+	"smartupdate": "$TexturePacker:SmartUpdate:b979ee24ff2478bc35f695827ee5564c:f1982dacc25c2c203f612b017e6f1a28:8e0d77704f2d3f15c95cd2c1c90a5cca$"
 }
 }

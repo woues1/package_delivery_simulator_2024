@@ -54,8 +54,7 @@ $(document).ready(function () {
 });
 
 
-$('#mission1').on('click', function () {
-    var missionId = $(this).attr('id');
+function selectMission(missionId, missionNumber) {
     var missionIndex = missionId.charAt(missionId.length - 1);
 
     $.ajax({
@@ -63,50 +62,25 @@ $('#mission1').on('click', function () {
         type: 'GET',
         data: {mission_index: missionIndex},
         success: function (response) {
-            console.log('Mission selected')
-            active_mission('1')
+            console.log('Mission selected');
+            active_mission(missionNumber);
         },
         error: function (xhr, status, error) {
             console.error("Error:", error);
         }
     });
-});
+}
 
+$('#mission1').on('click', function () {
+    selectMission($(this).attr('id'), '1');
+});
 
 $('#mission2').on('click', function () {
-    var missionId = $(this).attr('id');
-    var missionIndex = missionId.charAt(missionId.length - 1);
-
-    $.ajax({
-        url: 'http://127.0.0.1:3000/set_mission',
-        type: 'GET',
-        data: {mission_index: missionIndex},
-        success: function (response) {
-            console.log('Mission selected')
-            active_mission('2')
-        },
-        error: function (xhr, status, error) {
-            console.error("Error:", error);
-        }
-    });
+    selectMission($(this).attr('id'), '2');
 });
 
-
 $('#mission3').on('click', function () {
-    var missionId = $(this).attr('id');
-    var missionIndex = missionId.charAt(missionId.length - 1);
-    $.ajax({
-        url: 'http://127.0.0.1:3000/set_mission',
-        type: 'GET',
-        data: {mission_index: missionIndex},
-        success: function (response) {
-            console.log('Mission selected')
-            active_mission('3')
-        },
-        error: function (xhr, status, error) {
-            console.error("Error:", error);
-        }
-    });
+    selectMission($(this).attr('id'), '3');
 });
 
 
@@ -153,32 +127,6 @@ function player_info() {
 }
 
 
-function item_info(){
-fetch('http://127.0.0.1:3000/item_info')
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Player information not available');
-    }
-    return response.json();
-  })
-  .then(data => {
-    // Update each div with item information
-    data.forEach((item, index) => {
-      const itemDiv = document.getElementById(`item${index + 1}_info`);
-      itemDiv.innerHTML = `
-        <p>ID: ${item.id}</p>
-        <p>Name: ${item.name}</p>
-        <p>Price: ${item.price}</p>
-        <p>Attribute: ${item.attribute}</p>
-        <p>Purchased: ${item.purchased}</p>
-      `;
-    });
-  })
-  .catch(error => {
-    console.error('Error:', error.message);
-  });
-}
-
 function current_missions() {
     fetch('http://127.0.0.1:3000/get_missions_info')
         .then(response => response.json())
@@ -202,6 +150,7 @@ function active_mission(num){
         curr_mission.innerHTML = `${values['mission'+num][1]} ${values['mission'+num][2]},${values['mission'+num][0]} Co2`;
         })
 }
+
 
 document.getElementById('login-form').addEventListener('submit', function (event) {
 
@@ -240,6 +189,7 @@ document.getElementById('login-form').addEventListener('submit', function (event
     event.preventDefault();
 });
 
+
 document.getElementById('new_game_button').addEventListener('click', function (event) {
     event.preventDefault()
     const username = document.getElementById('username').value;
@@ -274,61 +224,35 @@ document.getElementById('new_game_button').addEventListener('click', function (e
         })
 });
 
-$('#buy-item-1').on('click', function () {
-    var ItemId = $(this).attr('id');
+
+function buyItem(ItemId) {
     var ItemIndex = ItemId.charAt(ItemId.length - 1);
 
     $.ajax({
         url: 'http://127.0.0.1:3000/buy_item',
         type: 'GET',
-        data: {item_id: ItemIndex}, // Corrected parameter name
+        data: {item_id: ItemIndex},
         success: function (response) {
-            console.log(response)
-            player_info()
+            console.log(response);
+            player_info();
         },
         error: function (xhr, status, error) {
             console.error("Error:", error);
         }
     });
+}
+
+
+$('#buy-item-1').on('click', function () {
+    buyItem($(this).attr('id'));
 });
-
-
 
 $('#buy-item-2').on('click', function () {
-    var ItemId = $(this).attr('id');
-    var ItemIndex = ItemId.charAt(ItemId.length - 1);
-
-    $.ajax({
-        url: 'http://127.0.0.1:3000/buy_item',
-        type: 'GET',
-        data: {item_id: ItemIndex},
-        success: function (response) {
-            console.log(response)
-            player_info()
-        },
-        error: function (xhr, status, error) {
-            console.error("Error:", error);
-        }
-    });
+    buyItem($(this).attr('id'));
 });
 
-
 $('#buy-item-3').on('click', function () {
-    var ItemId = $(this).attr('id');
-    var ItemIndex = ItemId.charAt(ItemId.length - 1);
-
-    $.ajax({
-        url: 'http://127.0.0.1:3000/buy_item',
-        type: 'GET',
-        data: {item_id: ItemIndex},
-        success: function (response) {
-            console.log(response)
-            player_info()
-        },
-        error: function (xhr, status, error) {
-            console.error("Error:", error);
-        }
-    });
+    buyItem($(this).attr('id'));
 });
 
 

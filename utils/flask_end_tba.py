@@ -150,7 +150,7 @@ def buy_item():
     if 'pelaaja' in globals():
         item_index = int(request.args.get('item_id'))
         purchase = items[item_index - 1].purchase(pelaaja)
-        if purchase:
+        if purchase == True:
             pelaaja.add_item(items[item_index - 1])
             return flask.jsonify({'message' : 'Item bought successfully'})
         else:

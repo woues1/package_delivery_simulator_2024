@@ -100,7 +100,7 @@ class Item:
         self.purchased: bool = purchased
 
     def purchase(self, pelaaja):
-        if self.purchased == True:
+        if not self.purchased:
             if pelaaja.pisteet >= self.price:
                 pelaaja.osta_esine(self.price)
                 sql_db_update_purchased_items(self.id, pelaaja.id)

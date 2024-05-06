@@ -241,7 +241,7 @@ document.getElementById('login-form').addEventListener('submit', function (event
 });
 
 document.getElementById('new_game_button').addEventListener('click', function (event) {
-
+    event.preventDefault()
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
@@ -272,7 +272,6 @@ document.getElementById('new_game_button').addEventListener('click', function (e
             }
 
         })
-    event.preventDefault()
 });
 
 $('#buy-item-1').on('click', function () {

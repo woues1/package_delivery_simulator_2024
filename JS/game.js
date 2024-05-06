@@ -16,6 +16,9 @@ fetch('../Assets/login_textures.json')
         displayTexture('log_in_button', 'login_button.png');
         displayTexture('new_game_button', 'new_game_button.png');
         displayTexture('leaderboard_button', 'leaderboard_button.png');
+        displayTexture('pause_leaderboard_button', 'leaderboard_button.png');
+        displayTexture('pause_leaderboard', 'leaderboard_text_background.png');
+        displayTexture('pause_leaderboard_close', 'back_button.png');
     });
 
 
@@ -435,6 +438,30 @@ $('#exit_button').click(function () {
     hidePauseMenu()
     location.reload()
     showLoginElements()
+});
+
+
+$(document).ready(function () {
+    $('#pause_leaderboard_button').click(function () {
+        $('#pause_leaderboard').toggle();
+        $('#pause_leaderboard_close').toggle()
+        fetch('http://127.0.0.1:3000/leaderboard_info')
+            .then(response => response.json())
+            .then(values => {
+                const leaderboard = document.getElementById('pause_leaderboard')
+                leaderboard.innerHTML = '';
+                values.forEach((value, index) => {
+                    const placement = index + 1
+                    const p = document.createElement('p')
+                    p.innerHTML = `${placement}.${value[0]} || Score: ${value[1]}`
+                    leaderboard.appendChild(p)
+                })
+            })
+    });
+    $('#pause_leaderboard_close').click(function () {
+        $('#pause_leaderboard').hide();
+        $('#pause_leaderboard_close').hide()
+    });
 });
 
 function restartGame() {

@@ -40,6 +40,7 @@ items = []
 
 @app.route('/login', methods=['POST'])
 def login():
+
     login_data = request.json
 
     username = login_data.get('username')
@@ -51,8 +52,11 @@ def login():
         global pelaaja
         pelaaja = initialize_player(user_id[0][0])
         init_items = initialize_items(pelaaja)
+        if len(items) > 0:
+            items.clear()
         list = [*init_items]
         items.extend(list)
+        list.clear()
         asyncio.run(get_missions())
         return flask.jsonify({'message': 'Login successful'})
     else:

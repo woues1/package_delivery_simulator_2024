@@ -335,14 +335,12 @@ function hideLoginElements() {
 
 }
 
-
 // Main menu
 
 function showMainMenu() {
     $('.game-container').css("display", "block")
 
 }
-
 
 function hideMainMenu() {
     $('.game-container').css("display", "none")

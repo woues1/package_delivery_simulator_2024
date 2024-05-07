@@ -319,6 +319,7 @@ $('#new_game_button').click(function(event) {
             showMainMenu();
             player_info();
             current_missions();
+            sessionStorage.setItem('user_id', response['user_id'])
         },
         error: function(xhr, status, error) {
             const errorMessage = xhr.responseJSON ? xhr.responseJSON.error : 'An error occurred. Please try again later.';

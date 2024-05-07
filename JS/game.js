@@ -609,6 +609,11 @@ $('#close-info').click(function () {
     hideItem4Info()
 });
 
+$('#test_button').click(function () {
+    showMinigameMenu()
+    hideMainMenu()
+});
+
 const right = document.getElementById('right')
 const left = document.getElementById('left')
 const yrita = document.getElementById('yrita')

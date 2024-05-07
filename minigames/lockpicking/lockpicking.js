@@ -20,12 +20,20 @@ function lockpickingStart() {
 }
 
 right.addEventListener('click', function()  {
-    x += 1
+    if (x + 5 <= 90) {
+        x = 90
+    } else {
+        x += 5
+    }
     document.getElementById('number').innerText = x
 })
 
 left.addEventListener('click', function() {
-    x -= 1
+    if (x - 5 <= -90) {
+        x = -90
+    } else {
+        x -= 5
+    }
     document.getElementById('number').innerText = x
 })
 

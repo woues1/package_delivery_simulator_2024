@@ -106,11 +106,10 @@ def sql_db_update_purchased_items(item_id, player_id):
 
 
 def sql_db_update_new_player_items(id):
-    item_count = sql_Execute_Query(f"SELECT COUNT(*) FROM item")
-    for i in range(item_count):
-        item_num = 0;
-        sql_Execute_Query(f"INSERT INTO PlayerItem(player_id, item_id, purchased) VALUES({id}, {item_num}, FALSE);")
-        item_num += 1
+    sql_Execute_Query(f"INSERT INTO PlayerItem(player_id, item_id, purchased) VALUES({id}, 1, FALSE);")
+    sql_Execute_Query(f"INSERT INTO PlayerItem(player_id, item_id, purchased) VALUES({id}, 2, FALSE);")
+    sql_Execute_Query(f"INSERT INTO PlayerItem(player_id, item_id, purchased) VALUES({id}, 3, FALSE);")
+    sql_Execute_Query(f"INSERT INTO PlayerItem(player_id, item_id, purchased) VALUES({id}, 4, FALSE);")
 
 
 # <<RESET GAME VALUE's>>

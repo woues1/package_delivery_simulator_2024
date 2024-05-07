@@ -20,7 +20,67 @@ fetch('../Assets/login_textures.json')
         displayTexture('pause_leaderboard', 'leaderboard_text_background.png');
         displayTexture('pause_leaderboard_close', 'back_button.png');
     });
+fetch('../Assets/main_menu_textures.json')
+    .then(response => response.json())
+    .then(data => {
+        textureData = data;
 
+        // Tässä yhdistyy html id ja kuva json tiedostosta esim. <div id="header" class="texture"></div>
+        // Nämä funktio kutsut on täällä juuri json datan hitaan lataamisen takia
+        displayTexture('mission3', 'mission_select_box.png');
+        displayTexture('mission2', 'mission_select_box.png');
+        displayTexture('mission1', 'mission_select_box.png');
+        displayTexture('deliver_button', 'deliver_button.png');
+        displayTexture('store_button', 'store_button.png');
+        displayTexture('menu_button', 'menu_button.png');
+        displayTexture('active_mission', 'active_mission_box.png');
+        displayTexture('player_location', 'money_co2_text_box.png');
+        displayTexture('player_info', 'location_text_box.png');
+        displayTexture('main_menu_background', 'main_menu.png');
+        displayTexture('pause_background', 'pause_menu_background.png');
+        displayTexture('resume_button', 'back_button.png');
+        displayTexture('new_run', 'new_game_button_blue.png');
+        displayTexture('exit_button', 'exit_game_button_blue.png');
+        displayTexture('lockpicking_background', 'pause_menu_background.png');
+    });
+
+fetch('../Assets/shop_menu_textures.json')
+    .then(response => response.json())
+    .then(data => {
+        textureData = data;
+
+        // Tässä yhdistyy html id ja kuva json tiedostosta esim. <div id="header" class="texture"></div>
+        // Nämä funktio kutsut on täällä juuri json datan hitaan lataamisen takia
+        displayTexture('store_background', 'shop_menu_background.png');
+        displayTexture('store_exit', 'back_button.png');
+        displayTexture('item1', 'hybrid_car_store.png');
+        displayTexture('item2', 'plant_trees_store.png');
+        displayTexture('item3', 'rahakone_store.png');
+        displayTexture('item4', 'lockpick_store.png');
+        displayTexture('buy_item1_button', 'buy_button.png');
+        displayTexture('buy_item2_button', 'buy_button.png');
+        displayTexture('buy_item3_button', 'buy_button.png');
+        displayTexture('buy_item4_button', 'buy_button.png');
+        displayTexture('item1_info', 'hybrid_car_buy_screen.png');
+        displayTexture('item2_info', 'plant_trees_buy_screen.png');
+        displayTexture('item3_info', 'rahakone_buy_screen.png');
+        displayTexture('item4_info', 'lockpick_buy_screen.png');
+        displayTexture('close-info', 'close_info_button.png');
+        displayTexture('buy-item-1', 'buy_button_var1.png');
+        displayTexture('buy-item-2', 'buy_button_var1.png');
+        displayTexture('buy-item-3', 'buy_button_var1.png');
+        displayTexture('buy-item-4', 'buy_button_var1.png');
+    });
+
+fetch('../Assets/lockpick_textures.json')
+    .then(response => response.json())
+    .then(data => {
+        textureData = data;
+
+        // Tässä yhdistyy html id ja kuva json tiedostosta esim. <div id="header" class="texture"></div>
+        // Nämä funktio kutsut on täällä juuri json datan hitaan lataamisen takia
+        displayTexture('lockpicking_background', 'lockpicking_background.png');
+    });
 
 // Funktio joka piirtää näytölle kuvan, ja lisää niihin koon ja position.
 function displayTexture(elementId, textureName) {
@@ -270,6 +330,15 @@ function hideMainMenu() {
     $('.game-container').css("display", "none")
 }
 
+// Minigame menu
+
+function showMinigameMenu() {
+    $('.lockpicking-game-container').css("display", "block")
+}
+
+function hideMinigameMenu() {
+    $('.lockpicking-game-container').css("display", "none")
+}
 
 // Pause menu
 
@@ -389,28 +458,6 @@ function hideBuyButton4() {
     $('#buy-item-4').hide()
 }
 
-fetch('../Assets/main_menu_textures.json')
-    .then(response => response.json())
-    .then(data => {
-        textureData = data;
-
-        // Tässä yhdistyy html id ja kuva json tiedostosta esim. <div id="header" class="texture"></div>
-        // Nämä funktio kutsut on täällä juuri json datan hitaan lataamisen takia
-        displayTexture('mission3', 'mission_select_box.png');
-        displayTexture('mission2', 'mission_select_box.png');
-        displayTexture('mission1', 'mission_select_box.png');
-        displayTexture('deliver_button', 'deliver_button.png');
-        displayTexture('store_button', 'store_button.png');
-        displayTexture('menu_button', 'menu_button.png');
-        displayTexture('active_mission', 'active_mission_box.png');
-        displayTexture('player_location', 'money_co2_text_box.png');
-        displayTexture('player_info', 'location_text_box.png');
-        displayTexture('main_menu_background', 'main_menu.png');
-        displayTexture('pause_background', 'pause_menu_background.png');
-        displayTexture('resume_button', 'back_button.png');
-        displayTexture('new_run', 'new_game_button_blue.png');
-        displayTexture('exit_button', 'exit_game_button_blue.png');
-    });
 
 
 // Pause menu
@@ -491,33 +538,7 @@ function updateLeaderboard() {
 }
 
 
-fetch('../Assets/shop_menu_textures.json')
-    .then(response => response.json())
-    .then(data => {
-        textureData = data;
 
-        // Tässä yhdistyy html id ja kuva json tiedostosta esim. <div id="header" class="texture"></div>
-        // Nämä funktio kutsut on täällä juuri json datan hitaan lataamisen takia
-        displayTexture('store_background', 'shop_menu_background.png');
-        displayTexture('store_exit', 'back_button.png');
-        displayTexture('item1', 'hybrid_car_store.png');
-        displayTexture('item2', 'plant_trees_store.png');
-        displayTexture('item3', 'rahakone_store.png');
-        displayTexture('item4', 'lockpick_store.png');
-        displayTexture('buy_item1_button', 'buy_button.png');
-        displayTexture('buy_item2_button', 'buy_button.png');
-        displayTexture('buy_item3_button', 'buy_button.png');
-        displayTexture('buy_item4_button', 'buy_button.png');
-        displayTexture('item1_info', 'hybrid_car_buy_screen.png');
-        displayTexture('item2_info', 'plant_trees_buy_screen.png');
-        displayTexture('item3_info', 'rahakone_buy_screen.png');
-        displayTexture('item4_info', 'lockpick_buy_screen.png');
-        displayTexture('close-info', 'close_info_button.png');
-        displayTexture('buy-item-1', 'buy_button_var1.png');
-        displayTexture('buy-item-2', 'buy_button_var1.png');
-        displayTexture('buy-item-3', 'buy_button_var1.png');
-        displayTexture('buy-item-4', 'buy_button_var1.png');
-    });
 
 
 // Store menu
@@ -574,5 +595,9 @@ $('#close-info').click(function () {
     hideItem4Info()
 });
 
+$('#test_button').click(function () {
+    showMinigameMenu()
+    hideMainMenu()
+});
 
 

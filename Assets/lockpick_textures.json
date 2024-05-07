@@ -1,0 +1,28 @@
+{"frames": [
+
+{
+	"filename": "lock.png",
+	"frame": {"x":0,"y":0,"w":800,"h":600},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":600},
+	"sourceSize": {"w":800,"h":600}
+},
+{
+	"filename": "lockpicking_background.png",
+	"frame": {"x":800,"y":0,"w":800,"h":600},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":600},
+	"sourceSize": {"w":800,"h":600}
+}],
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "lockpick_textures.png",
+	"format": "RGBA8888",
+	"size": {"w":1600,"h":600},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:b88f17e53ad7f39ac92e8a28637e42ba:26b71c3366193159303c51539c76676d:64fb62cea8a812453df68011690a1c1c$"
+}
+}

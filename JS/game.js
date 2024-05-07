@@ -2,6 +2,14 @@
 let textureData
 let mySession;
 
+// lockpicking minigame
+let randomNumber = 0
+let x = 0
+let y = 0
+let z = 0
+let lockpick = false
+let userid;
+
 
 class Session {
   constructor(sessionId) {
@@ -278,7 +286,8 @@ $('#login-form').submit(function(event) {
             player_info();
             current_missions();
             mySession = new Session(`${response['user_id']}`);
-        },
+            userid = mySession.sessionId
+            },
         error: function(xhr, status, error) {
             const errorMessage = xhr.responseJSON ? xhr.responseJSON.error : 'An error occurred. Please try again later.';
             alert(errorMessage);
@@ -614,16 +623,11 @@ $('#test_button').click(function () {
     hideMainMenu()
 });
 
+
 const right = document.getElementById('right')
 const left = document.getElementById('left')
 const yrita = document.getElementById('yrita')
 
-let randomNumber = 0
-let x = 0
-let y = 0
-let z = 0
-let lockpick = false
-let userid = mySession.sessionId
 
 function lockpickingStart() {
     fetch('http://127.0.0.1:3000/random_number')

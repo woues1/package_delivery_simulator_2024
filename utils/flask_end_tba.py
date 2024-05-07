@@ -48,9 +48,9 @@ def login():
     username = login_data.get('username')
     password = login_data.get('password')
     user_id = sql_db_lookup_log_in(username, password)
-    session['user_id'] = user_id[0][0]
 
     if user_id:
+        session.clear()
         global pelaaja
         pelaaja = initialize_player(user_id[0][0])
         init_items = initialize_items(pelaaja)
@@ -59,8 +59,9 @@ def login():
         list = [*init_items]
         items.extend(list)
         list.clear()
+        session['user_id'] = user_id[0][0]
         asyncio.run(get_missions())
-        return flask.jsonify({'message': 'Login successful'})
+        return flask.jsonify({'message': 'Login successful', 'user_id': user_id[0][0]})
     else:
         return flask.jsonify({'error': 'Invalid username or password'}), 401
 
@@ -78,7 +79,7 @@ def new_game():
     else:
         user_id = sql_db_update_new_game(username, password)
         if user_id:
-            session['user_id'] = user_id[0][0]
+            session.clear()
             sql_db_update_new_player_items(user_id[0][0])
             global pelaaja
             pelaaja = initialize_player(user_id[0][0])
@@ -88,8 +89,9 @@ def new_game():
             list = [*init_items]
             items.extend(list)
             list.clear()
+            session['user_id'] = user_id[0][0]
             asyncio.run(get_missions())
-            return flask.jsonify({'message': 'Login successful'})
+            return flask.jsonify({'message': 'Login successful', 'user_id': user_id[0][0]})
         else:
             return flask.jsonify({'error': 'Invalid username or password'}), 401
 

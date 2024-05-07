@@ -1,6 +1,14 @@
 'use strict';
 let textureData
 
+class Session {
+  constructor(sessionId) {
+    this.sessionId = sessionId;
+
+  }
+}
+
+let mySession;
 
 fetch('../Assets/login_textures.json')
     .then(response => response.json())
@@ -182,6 +190,7 @@ $('#login-form').submit(function(event) {
             showMainMenu();
             player_info();
             current_missions();
+            mySession = new Session(`${response['user_id']}`);
         },
         error: function(xhr, status, error) {
             const errorMessage = xhr.responseJSON ? xhr.responseJSON.error : 'An error occurred. Please try again later.';
@@ -211,6 +220,7 @@ $('#new_game_button').click(function(event) {
             showMainMenu();
             player_info();
             current_missions();
+            mySession = new Session(`${response['user_id']}`);
         },
         error: function(xhr, status, error) {
             const errorMessage = xhr.responseJSON ? xhr.responseJSON.error : 'An error occurred. Please try again later.';
@@ -246,6 +256,10 @@ $('#buy-item-2').on('click', function () {
 });
 
 $('#buy-item-3').on('click', function () {
+    buyItem($(this).attr('id'));
+});
+
+$('#buy-item-4').on('click', function () {
     buyItem($(this).attr('id'));
 });
 
@@ -573,6 +587,3 @@ $('#close-info').click(function () {
     hideItem3Info()
     hideItem4Info()
 });
-
-
-

@@ -70,6 +70,7 @@ fetch('../Assets/lockpick_textures.json')
         // Tässä yhdistyy html id ja kuva json tiedostosta esim. <div id="header" class="texture"></div>
         // Nämä funktio kutsut on täällä juuri json datan hitaan lataamisen takia
         displayTexture('lockpicking_background', 'lockpicking_background.png');
+        displayTexture('lock', 'lock.png');
     });
 
 

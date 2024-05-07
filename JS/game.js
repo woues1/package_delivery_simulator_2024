@@ -54,6 +54,16 @@ fetch('../Assets/main_menu_textures.json')
         displayTexture('exit_button', 'exit_game_button_blue.png');
     });
 
+fetch('../Assets/lockpick_textures.json')
+    .then(response => response.json())
+    .then(data => {
+        textureData = data;
+
+        // Tässä yhdistyy html id ja kuva json tiedostosta esim. <div id="header" class="texture"></div>
+        // Nämä funktio kutsut on täällä juuri json datan hitaan lataamisen takia
+        displayTexture('lockpicking_background', 'lockpicking_background.png');
+    });
+
 
 fetch('../Assets/shop_menu_textures.json')
     .then(response => response.json())

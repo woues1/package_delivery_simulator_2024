@@ -643,7 +643,7 @@ function lockpickingStart() {
 }
 
 right.addEventListener('click', function()  {
-    if (x + 5 <= 90) {
+    if (x + 5 >= 90) {
         x = 90
     } else {
         x += 5
@@ -672,18 +672,18 @@ yrita.addEventListener('click', function() {
         z = 5
     }
     if (x <= randomNumber + z && x >= randomNumber - z) {
-        document.getElementById('result').innerText = 'Onnistuit'
+        document.getElementById('lockpick_result').innerText = 'Onnistuit'
         sendResult(true)
     } else if (x < randomNumber - z || x > randomNumber + z) {
         y++
         if (x < randomNumber) {
-            document.getElementById('result').innerText = 'Epaonnistuit yrita uudelleen, "kaanna enemman oikealle"'
+            document.getElementById('lockpick_result').innerText = 'Epaonnistuit yrita uudelleen, "kaanna enemman oikealle"'
         } else if (x > randomNumber) {
-            document.getElementById('result').innerText = 'Epaonnistuit yrita uudelleen, "kaanna enemman vasemmalle"'
+            document.getElementById('lockpick_result').innerText = 'Epaonnistuit yrita uudelleen, "kaanna enemman vasemmalle"'
         }
     }
-    if (y >= 5) {
-        document.getElementById('result').innerText = 'Tiirikka rikkoutui'
+    if (y >= 500000000000000000) {
+        document.getElementById('lockpick_result').innerText = 'Tiirikka rikkoutui'
         sendResult(false)
     }
 })

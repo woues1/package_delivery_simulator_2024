@@ -9,8 +9,16 @@
 	"sourceSize": {"w":800,"h":600}
 },
 {
+	"filename": "lock_unlocked.png",
+	"frame": {"x":0,"y":600,"w":800,"h":600},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":600},
+	"sourceSize": {"w":800,"h":600}
+},
+{
 	"filename": "lockpicking_background.png",
-	"frame": {"x":800,"y":0,"w":800,"h":600},
+	"frame": {"x":0,"y":1200,"w":800,"h":600},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":600},
@@ -21,8 +29,8 @@
 	"version": "1.0",
 	"image": "lockpick_textures.png",
 	"format": "RGBA8888",
-	"size": {"w":1600,"h":600},
+	"size": {"w":800,"h":1800},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:b88f17e53ad7f39ac92e8a28637e42ba:26b71c3366193159303c51539c76676d:64fb62cea8a812453df68011690a1c1c$"
+	"smartupdate": "$TexturePacker:SmartUpdate:550cd37045bf177363feb487e493ed92:08649a513f71294298e868893fc88394:64fb62cea8a812453df68011690a1c1c$"
 }
 }

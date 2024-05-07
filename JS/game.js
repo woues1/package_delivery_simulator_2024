@@ -74,6 +74,7 @@ fetch('../Assets/lockpick_textures.json')
         // Nämä funktio kutsut on täällä juuri json datan hitaan lataamisen takia
         displayTexture('lockpicking_background', 'lockpicking_background.png');
         displayTexture('lock', 'lock.png');
+        displayTexture('lock_unlocked', 'lock_unlocked.png');
     });
 
 
@@ -162,7 +163,7 @@ $('#mission1').on('click', function () {
 });
 
 $('#mission2').on('click', function () {
-    selectMission($(this).attr('id'), '2');
+    selectMission($(this).attr('id'), '2');h
 });
 
 $('#mission3').on('click', function () {
@@ -475,6 +476,13 @@ function hideBuyButton4() {
     $('#buy-item-4').hide()
 }
 
+// Minigame menu
+
+function lockUnlock() {
+    $('#lock').toggle()
+    $('#lock_unlocked').toggle()
+
+}
 
 // Pause menu
 
@@ -502,6 +510,8 @@ $('#exit_button').click(function () {
     location.reload()
     showLoginElements()
 });
+
+
 
 
 $(document).ready(function () {
@@ -673,6 +683,7 @@ yrita.addEventListener('click', function() {
     if (x <= randomNumber + z && x >= randomNumber - z) {
         document.getElementById('lockpick_result').innerText = 'Onnistuit'
         sendResult(true)
+        lockUnlock()
     } else if (x < randomNumber - z || x > randomNumber + z) {
         y++
         if (x < randomNumber) {

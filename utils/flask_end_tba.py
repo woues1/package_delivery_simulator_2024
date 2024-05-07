@@ -227,5 +227,37 @@ def update_leaderboard():
         return flask.jsonify({'error': 'Player information not available'}), 404
 
 
+@app.route('/update_points/<int:userid>', methods=['POST'])
+def update_points(userid):
+    x = random.choice([50, 100, 150])
+    sql_db_update_pisteet(userid, x)
+    return flask.Response(status=200)
+
+
+@app.route('/value', methods=['GET'])
+def value():
+    x = random.choice([True, False])
+    result = {
+        'value' : x
+    }
+    return result
+
+
+@app.route('/random_number', methods=['GET'])
+def lockpicking_start():
+    x = random.randint(-90, 90)
+    result = {
+        'value' : x
+    }
+    return result
+
+
+@app.route('/result', methods=['POST'])
+def post_result():
+    result = request.json
+    print(result)
+    return flask.Response(status=200)
+
+
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True, host='127.0.0.1', port=3000)

@@ -1,5 +1,14 @@
 'use strict';
 let textureData
+let mySession;
+
+
+class Session {
+  constructor(sessionId) {
+    this.sessionId = sessionId;
+
+  }
+}
 
 
 fetch('../Assets/login_textures.json')
@@ -20,6 +29,8 @@ fetch('../Assets/login_textures.json')
         displayTexture('pause_leaderboard', 'leaderboard_text_background.png');
         displayTexture('pause_leaderboard_close', 'back_button.png');
     });
+
+
 fetch('../Assets/main_menu_textures.json')
     .then(response => response.json())
     .then(data => {
@@ -41,8 +52,8 @@ fetch('../Assets/main_menu_textures.json')
         displayTexture('resume_button', 'back_button.png');
         displayTexture('new_run', 'new_game_button_blue.png');
         displayTexture('exit_button', 'exit_game_button_blue.png');
-        displayTexture('lockpicking_background', 'pause_menu_background.png');
     });
+
 
 fetch('../Assets/shop_menu_textures.json')
     .then(response => response.json())
@@ -72,15 +83,6 @@ fetch('../Assets/shop_menu_textures.json')
         displayTexture('buy-item-4', 'buy_button_var1.png');
     });
 
-fetch('../Assets/lockpick_textures.json')
-    .then(response => response.json())
-    .then(data => {
-        textureData = data;
-
-        // Tässä yhdistyy html id ja kuva json tiedostosta esim. <div id="header" class="texture"></div>
-        // Nämä funktio kutsut on täällä juuri json datan hitaan lataamisen takia
-        displayTexture('lockpicking_background', 'lockpicking_background.png');
-    });
 
 // Funktio joka piirtää näytölle kuvan, ja lisää niihin koon ja position.
 function displayTexture(elementId, textureName) {
@@ -153,6 +155,7 @@ $('#deliver_button').on('click', function () {
         success: function (response) {
             player_info()
             current_missions()
+            lockpickingStart()
         },
         error: function (xhr, status, error) {
             console.error("Error:", error);
@@ -184,18 +187,6 @@ function player_info() {
         });
 }
 
-function gameOverActions() {
-    alert('Game over');
-    updateLeaderboard();
-    restartGame();
-    exitGame();
-    hideMainMenu();
-    hidePauseMenu();
-    location.reload();
-    showLoginElements();
-}
-
-
 
 function current_missions() {
     fetch('http://127.0.0.1:3000/get_missions_info')
@@ -220,64 +211,6 @@ function active_mission(num){
         curr_mission.innerHTML = `${values['mission'+num][1]} ${values['mission'+num][2]},${values['mission'+num][0]} Co2`;
         })
 }
-
-
-$('#login-form').submit(function(event) {
-    event.preventDefault();
-    const username = $('#username').val();
-    const password = $('#password').val();
-
-    const loginData = {
-        username: username,
-        password: password
-    };
-
-    $.ajax({
-        url: 'http://127.0.0.1:3000/login',
-        type: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify(loginData),
-        success: function(response) {
-            hideLoginElements();
-            showMainMenu();
-            player_info();
-            current_missions();
-        },
-        error: function(xhr, status, error) {
-            const errorMessage = xhr.responseJSON ? xhr.responseJSON.error : 'An error occurred. Please try again later.';
-            alert(errorMessage);
-        }
-    });
-});
-
-
-$('#new_game_button').click(function(event) {
-    event.preventDefault();
-    const username = $('#username').val();
-    const password = $('#password').val();
-
-    const newGameData = {
-        username: username,
-        password: password
-    };
-
-    $.ajax({
-        url: 'http://127.0.0.1:3000/new_game',
-        type: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify(newGameData),
-        success: function(response) {
-            hideLoginElements();
-            showMainMenu();
-            player_info();
-            current_missions();
-        },
-        error: function(xhr, status, error) {
-            const errorMessage = xhr.responseJSON ? xhr.responseJSON.error : 'An error occurred. Please try again later.';
-            alert(errorMessage);
-        }
-    });
-});
 
 
 function buyItem(ItemId) {
@@ -307,6 +240,70 @@ $('#buy-item-2').on('click', function () {
 
 $('#buy-item-3').on('click', function () {
     buyItem($(this).attr('id'));
+});
+
+$('#buy-item-4').on('click', function () {
+    buyItem($(this).attr('id'));
+});
+
+
+$('#login-form').submit(function(event) {
+    event.preventDefault();
+    const username = $('#username').val();
+    const password = $('#password').val();
+
+    const loginData = {
+        username: username,
+        password: password
+    };
+
+    $.ajax({
+        url: 'http://127.0.0.1:3000/login',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(loginData),
+        success: function(response) {
+            hideLoginElements();
+            showMainMenu();
+            player_info();
+            current_missions();
+            mySession = new Session(`${response['user_id']}`);
+        },
+        error: function(xhr, status, error) {
+            const errorMessage = xhr.responseJSON ? xhr.responseJSON.error : 'An error occurred. Please try again later.';
+            alert(errorMessage);
+        }
+    });
+});
+
+
+$('#new_game_button').click(function(event) {
+    event.preventDefault();
+    const username = $('#username').val();
+    const password = $('#password').val();
+
+    const newGameData = {
+        username: username,
+        password: password
+    };
+
+    $.ajax({
+        url: 'http://127.0.0.1:3000/new_game',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(newGameData),
+        success: function(response) {
+            hideLoginElements();
+            showMainMenu();
+            player_info();
+            current_missions();
+            mySession = new Session(`${response['user_id']}`);
+        },
+        error: function(xhr, status, error) {
+            const errorMessage = xhr.responseJSON ? xhr.responseJSON.error : 'An error occurred. Please try again later.';
+            alert(errorMessage);
+        }
+    });
 });
 
 
@@ -459,7 +456,6 @@ function hideBuyButton4() {
 }
 
 
-
 // Pause menu
 
 $('#menu_button').click(function () {
@@ -537,8 +533,16 @@ function updateLeaderboard() {
         })
 }
 
-
-
+function gameOverActions() {
+    alert('Game over');
+    updateLeaderboard();
+    restartGame();
+    exitGame();
+    hideMainMenu();
+    hidePauseMenu();
+    location.reload();
+    showLoginElements();
+}
 
 
 // Store menu
@@ -595,9 +599,87 @@ $('#close-info').click(function () {
     hideItem4Info()
 });
 
-$('#test_button').click(function () {
-    showMinigameMenu()
-    hideMainMenu()
-});
+const right = document.getElementById('right')
+const left = document.getElementById('left')
+const yrita = document.getElementById('yrita')
 
+let randomNumber = 0
+let x = 0
+let y = 0
+let z = 0
+let lockpick = false
+let userid = mySession.sessionId
 
+function lockpickingStart() {
+    fetch('http://127.0.0.1:3000/random_number')
+        .then(response => response.json())
+        .then(data => {
+            randomNumber = data.value
+            document.getElementById('test').innerText = randomNumber
+        })
+    document.getElementById('test').innerText = randomNumber
+}
+
+right.addEventListener('click', function()  {
+    if (x + 5 <= 90) {
+        x = 90
+    } else {
+        x += 5
+    }
+    document.getElementById('number').innerText = x
+})
+
+left.addEventListener('click', function() {
+    if (x - 5 <= -90) {
+        x = -90
+    } else {
+        x -= 5
+    }
+    document.getElementById('number').innerText = x
+})
+
+yrita.addEventListener('click', function() {
+    fetch('http://127.0.0.1:3000/value')
+        .then(response => response.json())
+        .then(data => {
+            lockpick = data.value
+        })
+    if (lockpick == true) {
+        z = 15
+    } else {
+        z = 5
+    }
+    if (x <= randomNumber + z && x >= randomNumber - z) {
+        document.getElementById('result').innerText = 'Onnistuit'
+        sendResult(true)
+    } else if (x < randomNumber - z || x > randomNumber + z) {
+        y++
+        if (x < randomNumber) {
+            document.getElementById('result').innerText = 'Epaonnistuit yrita uudelleen, "kaanna enemman oikealle"'
+        } else if (x > randomNumber) {
+            document.getElementById('result').innerText = 'Epaonnistuit yrita uudelleen, "kaanna enemman vasemmalle"'
+        }
+    }
+    if (y >= 5) {
+        document.getElementById('result').innerText = 'Tiirikka rikkoutui'
+        sendResult(false)
+    }
+})
+
+function sendResult(success) {
+    fetch('http://127.0.0.1:3000/result', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ success: success })
+    })
+    fetch(`http://127.0.0.1:3000/update_points/${userid}`, {
+    method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ success: success })
+
+    })
+}

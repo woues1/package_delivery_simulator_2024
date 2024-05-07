@@ -21,7 +21,7 @@ def value():
 
 @app.route('/random_number', methods=['GET'])
 def lockpicking_start():
-    x = random.randint(-90, 90)
+    x = random.randint(-75, 75)
     result = {
         'value' : x
     }

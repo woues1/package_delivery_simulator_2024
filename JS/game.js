@@ -11,12 +11,15 @@ let lockpick = false
 let userid;
 
 
-class Session {
-  constructor(sessionId) {
-    this.sessionId = sessionId;
-
-  }
-}
+// check if user already has a session, and redirect to game.
+document.addEventListener('DOMContentLoaded', function() {
+    if (sessionStorage.getItem('user_id')) {
+        hideLoginElements();
+        showMainMenu();
+        player_info();
+        current_missions();
+    }
+});
 
 
 fetch('../Assets/login_textures.json')
@@ -286,8 +289,7 @@ $('#login-form').submit(function(event) {
             showMainMenu();
             player_info();
             current_missions();
-            mySession = new Session(`${response['user_id']}`);
-            userid = mySession.sessionId
+            sessionStorage.setItem('user_id', response['user_id'])
             },
         error: function(xhr, status, error) {
             const errorMessage = xhr.responseJSON ? xhr.responseJSON.error : 'An error occurred. Please try again later.';
@@ -317,7 +319,6 @@ $('#new_game_button').click(function(event) {
             showMainMenu();
             player_info();
             current_missions();
-            mySession = new Session(`${response['user_id']}`);
         },
         error: function(xhr, status, error) {
             const errorMessage = xhr.responseJSON ? xhr.responseJSON.error : 'An error occurred. Please try again later.';
@@ -538,6 +539,7 @@ function restartGame() {
 }
 
 function exitGame() {
+    sessionStorage.clear()
     fetch('http://http://127.0.0.1:3000/reset_game')
         .then(response => response.json())
         .then(data => {

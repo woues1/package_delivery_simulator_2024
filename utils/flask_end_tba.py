@@ -12,7 +12,7 @@ from utils.valikko import valikko
 from Assets.ASCII_art import game_over
 from Assets.animaatio import *
 import asyncio
-
+import re
 
 app = flask.Flask(__name__)
 CORS(app)
@@ -25,6 +25,7 @@ app.secret_key = generate_secret_key()
 
 
 missions = []
+
 async def get_missions():
     if pelaaja.tehtava_aktiivinen == False and Tehtava.instance_count < 3:
         tasks = [
@@ -37,8 +38,11 @@ async def get_missions():
     return missions
 
 
+items = []
+
 @app.route('/login', methods=['POST'])
 def login():
+
     login_data = request.json
 
     username = login_data.get('username')
@@ -46,13 +50,51 @@ def login():
     user_id = sql_db_lookup_log_in(username, password)
 
     if user_id:
+        session.clear()
         global pelaaja
         pelaaja = initialize_player(user_id[0][0])
-        initialize_items(pelaaja)
+        init_items = initialize_items(pelaaja)
+        if len(items) > 0:
+            items.clear()
+        list = [*init_items]
+        items.extend(list)
+        list.clear()
+        session['user_id'] = user_id[0][0]
         asyncio.run(get_missions())
-        return flask.jsonify({'message': 'Login successful'})
+        return flask.jsonify({'message': 'Login successful', 'user_id': user_id[0][0]})
     else:
         return flask.jsonify({'error': 'Invalid username or password'}), 401
+
+
+@app.route('/new_game', methods=['POST'])
+def new_game():
+    new_game_data = request.json
+    username = new_game_data.get('username')
+    password = new_game_data.get('password')
+    screen_names = sql_db_lookup_screen_names(username)
+    if screen_names:
+        return flask.jsonify({'error': 'Username is already in use'}), 400
+    if re.search(r'[\'\"]', password):
+        return flask.jsonify({'error': 'Invalid character in password'}), 400
+    else:
+        user_id = sql_db_update_new_game(username, password)
+        if user_id:
+            session.clear()
+            sql_db_update_new_player_items(user_id[0][0])
+            global pelaaja
+            pelaaja = initialize_player(user_id[0][0])
+            init_items = initialize_items(pelaaja)
+            if len(items) > 0:
+                items.clear()
+            list = [*init_items]
+            items.extend(list)
+            list.clear()
+            session['user_id'] = user_id[0][0]
+            asyncio.run(get_missions())
+            return flask.jsonify({'message': 'Login successful', 'user_id': user_id[0][0]})
+        else:
+            return flask.jsonify({'error': 'Invalid username or password'}), 401
+
 
 @app.route('/set_mission', methods=['GET'])
 def set_mission():
@@ -65,10 +107,12 @@ def set_mission():
             return flask.jsonify({'error': 'Invalid mission index'}), 400
     return flask.jsonify({'error': 'Invalid player session'}), 400
 
+
 @app.route('/complete_mission')
 def complete_mission():
     if 'pelaaja' in globals() and pelaaja.tehtava_aktiivinen == True:
         pelaaja.suorita_tehtava()
+        sql_db_update_exit_game(pelaaja.nimi, pelaaja.co2_consumed, pelaaja.location, pelaaja.pisteet)
         Tehtava.instance_count -= 3
         missions.clear()
         asyncio.run(get_missions())
@@ -119,10 +163,68 @@ def get_player_info():
         return flask.jsonify({'error': 'Player information not available'}), 404
 
 
+@app.route('/item_info', methods=['GET'])
+def get_item_info():
+    if 'pelaaja' in globals():
+        item_info = []
+
+        for item in items:
+            item_data = {
+                'id': item.id,
+                'name': item.name,
+                'price': item.price,
+                'attribute': item.attribute,
+                'purchased': item.purchased
+            }
+            item_info.append(item_data)
+        return flask.jsonify(item_info)
+    else:
+        return flask.jsonify({'error': 'Player information not available'}), 404
+
+
+@app.route('/buy_item', methods=['GET'])
+def buy_item():
+    if 'pelaaja' in globals():
+        item_index = int(request.args.get('item_id'))
+        purchase = items[item_index - 1].purchase(pelaaja)
+        if purchase == True:
+            pelaaja.add_item(items[item_index - 1])
+            return flask.jsonify({'message': 'Item bought successfully'})
+        else:
+            return flask.jsonify({'message': f'{purchase}'})
+
+
 @app.route('/leaderboard_info', methods=['GET'])
 def leaderboard_info():
     results = sql_db_lookup_screen_names_pisteet()
     return flask.jsonify(results)
+
+
+@app.route('/reset_game', methods=['GET'])
+def reset_game():
+    if 'pelaaja' in globals():
+        pelaaja.reset_game()
+        return flask.jsonify({'message': 'Game reset successfully'})
+    else:
+        return flask.jsonify({'error': 'Player information not available'}), 404
+
+
+@app.route('/exit_game', methods=['GET'])
+def exit_game():
+    if 'pelaaja' in globals():
+        sql_db_update_exit_game(pelaaja.nimi, pelaaja.co2_consumed, pelaaja.location, pelaaja.pisteet)
+        return flask.jsonify({'message': 'Game exited successfully'})
+    else:
+        return flask.jsonify({'error': 'Player information not available'}), 404
+
+
+@app.route('/update_leaderboard', methods=['GET'])
+def update_leaderboard():
+    if 'pelaaja' in globals():
+        sql_db_update_leaderboard(pelaaja.nimi, pelaaja.pisteet)
+        return flask.jsonify({'message': 'Leaderboard updated successfully'})
+    else:
+        return flask.jsonify({'error': 'Player information not available'}), 404
 
 
 if __name__ == '__main__':

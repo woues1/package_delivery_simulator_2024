@@ -1,6 +1,14 @@
 'use strict';
 let textureData
 
+class Session {
+  constructor(sessionId) {
+    this.sessionId = sessionId;
+
+  }
+}
+
+let mySession;
 
 fetch('../Assets/login_textures.json')
     .then(response => response.json())
@@ -16,6 +24,9 @@ fetch('../Assets/login_textures.json')
         displayTexture('log_in_button', 'login_button.png');
         displayTexture('new_game_button', 'new_game_button.png');
         displayTexture('leaderboard_button', 'leaderboard_button.png');
+        displayTexture('pause_leaderboard_button', 'leaderboard_button.png');
+        displayTexture('pause_leaderboard', 'leaderboard_text_background.png');
+        displayTexture('pause_leaderboard_close', 'back_button.png');
     });
 
 
@@ -54,8 +65,7 @@ $(document).ready(function () {
 });
 
 
-$('#mission1').on('click', function () {
-    var missionId = $(this).attr('id');
+function selectMission(missionId, missionNumber) {
     var missionIndex = missionId.charAt(missionId.length - 1);
 
     $.ajax({
@@ -63,50 +73,24 @@ $('#mission1').on('click', function () {
         type: 'GET',
         data: {mission_index: missionIndex},
         success: function (response) {
-            console.log('Mission selected')
-            active_mission('1')
+            active_mission(missionNumber);
         },
         error: function (xhr, status, error) {
             console.error("Error:", error);
         }
     });
-});
+}
 
+$('#mission1').on('click', function () {
+    selectMission($(this).attr('id'), '1');
+});
 
 $('#mission2').on('click', function () {
-    var missionId = $(this).attr('id');
-    var missionIndex = missionId.charAt(missionId.length - 1);
-
-    $.ajax({
-        url: 'http://127.0.0.1:3000/set_mission',
-        type: 'GET',
-        data: {mission_index: missionIndex},
-        success: function (response) {
-            console.log('Mission selected')
-            active_mission('2')
-        },
-        error: function (xhr, status, error) {
-            console.error("Error:", error);
-        }
-    });
+    selectMission($(this).attr('id'), '2');
 });
 
-
 $('#mission3').on('click', function () {
-    var missionId = $(this).attr('id');
-    var missionIndex = missionId.charAt(missionId.length - 1);
-    $.ajax({
-        url: 'http://127.0.0.1:3000/set_mission',
-        type: 'GET',
-        data: {mission_index: missionIndex},
-        success: function (response) {
-            console.log('Mission selected')
-            active_mission('3')
-        },
-        error: function (xhr, status, error) {
-            console.error("Error:", error);
-        }
-    });
+    selectMission($(this).attr('id'), '3');
 });
 
 
@@ -115,7 +99,6 @@ $('#deliver_button').on('click', function () {
         url: 'http://127.0.0.1:3000/complete_mission',
         type: 'GET',
         success: function (response) {
-            console.log('Mission Completed')
             player_info()
             current_missions()
         },
@@ -131,16 +114,35 @@ function player_info() {
     fetch('http://127.0.0.1:3000/player_info')
         .then(response => response.json())
         .then(values => {
-            let points_info = document.getElementById('points')
-            let co2_info = document.getElementById('co2_consumed')
-            let location_info = document.getElementById('location')
+            const { location, country, co2_consumed, co2_budget, pisteet } = values;
+            const points_info = $('#points');
+            const co2_info = $('#co2_consumed');
+            const location_info = $('#location');
 
-            location_info.innerHTML = `${values['location']}, ${values['country']}`;
-            co2_info.innerHTML = `${values['co2_consumed']}/${values['co2_budget']}`;
-            points_info.innerHTML = `${values['pisteet']}$`;
+            location_info.text(`${location}, ${country}`);
+            co2_info.text(`${co2_consumed}/${co2_budget}`);
+            points_info.text(`${pisteet}$`);
 
+            if (parseInt(co2_consumed) >= parseInt(co2_budget)) {
+                gameOverActions();
+            }
         })
+        .catch(error => {
+            console.error('Error fetching player info:', error);
+        });
 }
+
+function gameOverActions() {
+    alert('Game over');
+    updateLeaderboard();
+    restartGame();
+    exitGame();
+    hideMainMenu();
+    hidePauseMenu();
+    location.reload();
+    showLoginElements();
+}
+
 
 
 function current_missions() {
@@ -167,45 +169,103 @@ function active_mission(num){
         })
 }
 
-document.getElementById('login-form').addEventListener('submit', function (event) {
 
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+$('#login-form').submit(function(event) {
+    event.preventDefault();
+    const username = $('#username').val();
+    const password = $('#password').val();
 
     const loginData = {
         username: username,
         password: password
     };
-    console.log(loginData)
 
-    fetch('http://127.0.0.1:3000/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
+    $.ajax({
+        url: 'http://127.0.0.1:3000/login',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(loginData),
+        success: function(response) {
+            hideLoginElements();
+            showMainMenu();
+            player_info();
+            current_missions();
+            mySession = new Session(`${response['user_id']}`);
         },
-        body: JSON.stringify(loginData)
-    })
-        .then(response => {
-            if (response.ok) {
-                hideLoginElements();
-                showMainMenu();
-                player_info()
-                current_missions()
-            } else {
-                return response.json().then(data => {
-                    alert(data.error);
-                });
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('An error occurred. Please try again later.');
-        });
+        error: function(xhr, status, error) {
+            const errorMessage = xhr.responseJSON ? xhr.responseJSON.error : 'An error occurred. Please try again later.';
+            alert(errorMessage);
+        }
+    });
+});
+
+
+$('#new_game_button').click(function(event) {
     event.preventDefault();
+    const username = $('#username').val();
+    const password = $('#password').val();
+
+    const newGameData = {
+        username: username,
+        password: password
+    };
+
+    $.ajax({
+        url: 'http://127.0.0.1:3000/new_game',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(newGameData),
+        success: function(response) {
+            hideLoginElements();
+            showMainMenu();
+            player_info();
+            current_missions();
+            mySession = new Session(`${response['user_id']}`);
+        },
+        error: function(xhr, status, error) {
+            const errorMessage = xhr.responseJSON ? xhr.responseJSON.error : 'An error occurred. Please try again later.';
+            alert(errorMessage);
+        }
+    });
+});
+
+
+function buyItem(ItemId) {
+    var ItemIndex = ItemId.charAt(ItemId.length - 1);
+
+    $.ajax({
+        url: 'http://127.0.0.1:3000/buy_item',
+        type: 'GET',
+        data: {item_id: ItemIndex},
+        success: function (response) {
+            console.log(response);
+            player_info();
+        },
+        error: function (xhr, status, error) {
+            console.error("Error:", error);
+        }
+    });
+}
+
+$('#buy-item-1').on('click', function () {
+    buyItem($(this).attr('id'));
+});
+
+$('#buy-item-2').on('click', function () {
+    buyItem($(this).attr('id'));
+});
+
+$('#buy-item-3').on('click', function () {
+    buyItem($(this).attr('id'));
+});
+
+$('#buy-item-4').on('click', function () {
+    buyItem($(this).attr('id'));
 });
 
 
 // Login menu
+
 function hideLoginElements() {
     $('.login-container').css("display", "none")
 
@@ -243,12 +303,16 @@ function hidePauseMenu() {
 
 function showStoreMenu() {
     $('.store-container').css("display", "block")
-
 }
 
 
 function hideStoreMenu() {
     $('.store-container').css("display", "none")
+
+}
+
+function showLoginElements() {
+    $('.login-container').css("display", "block")
 
 }
 
@@ -280,6 +344,14 @@ function showItem3Info() {
 
 function hideItem3Info() {
     $('#item3_info').hide()
+}
+
+function showItem4Info() {
+    $('#item4_info').toggle()
+}
+
+function hideItem4Info() {
+    $('#item4_info').hide()
 }
 
 
@@ -323,7 +395,13 @@ function hideBuyButton3() {
     $('#buy-item-3').hide()
 }
 
+function showBuyButton4() {
+    $('#buy-item-4').toggle()
+}
 
+function hideBuyButton4() {
+    $('#buy-item-4').hide()
+}
 
 fetch('../Assets/main_menu_textures.json')
     .then(response => response.json())
@@ -362,6 +440,70 @@ $('#resume_button').click(function () {
     hidePauseMenu()
 });
 
+$('#new_run').click(function () {
+    showMainMenu()
+    hidePauseMenu()
+    restartGame()
+});
+
+$('#exit_button').click(function () {
+    exitGame()
+    hideMainMenu()
+    hidePauseMenu()
+    location.reload()
+    showLoginElements()
+});
+
+
+$(document).ready(function () {
+    $('#pause_leaderboard_button').click(function () {
+        $('#pause_leaderboard').toggle();
+        $('#pause_leaderboard_close').toggle()
+        fetch('http://127.0.0.1:3000/leaderboard_info')
+            .then(response => response.json())
+            .then(values => {
+                const leaderboard = document.getElementById('pause_leaderboard')
+                leaderboard.innerHTML = '';
+                values.forEach((value, index) => {
+                    const placement = index + 1
+                    const p = document.createElement('p')
+                    p.innerHTML = `${placement}.${value[0]} || Score: ${value[1]}`
+                    leaderboard.appendChild(p)
+                })
+            })
+    });
+    $('#pause_leaderboard_close').click(function () {
+        $('#pause_leaderboard').hide();
+        $('#pause_leaderboard_close').hide()
+    });
+});
+
+function restartGame() {
+    fetch('http://127.0.0.1:3000/reset_game')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            player_info()
+            current_missions()
+        })
+}
+
+function exitGame() {
+    fetch('http://http://127.0.0.1:3000/reset_game')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+        })
+}
+
+function updateLeaderboard() {
+    fetch('http://127.0.0.1:3000/update_leaderboard')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+        })
+}
+
 
 fetch('../Assets/shop_menu_textures.json')
     .then(response => response.json())
@@ -375,16 +517,20 @@ fetch('../Assets/shop_menu_textures.json')
         displayTexture('item1', 'hybrid_car_store.png');
         displayTexture('item2', 'plant_trees_store.png');
         displayTexture('item3', 'rahakone_store.png');
+        displayTexture('item4', 'lockpick_store.png');
         displayTexture('buy_item1_button', 'buy_button.png');
         displayTexture('buy_item2_button', 'buy_button.png');
         displayTexture('buy_item3_button', 'buy_button.png');
+        displayTexture('buy_item4_button', 'buy_button.png');
         displayTexture('item1_info', 'hybrid_car_buy_screen.png');
         displayTexture('item2_info', 'plant_trees_buy_screen.png');
         displayTexture('item3_info', 'rahakone_buy_screen.png');
+        displayTexture('item4_info', 'lockpick_buy_screen.png');
         displayTexture('close-info', 'close_info_button.png');
         displayTexture('buy-item-1', 'buy_button_var1.png');
         displayTexture('buy-item-2', 'buy_button_var1.png');
         displayTexture('buy-item-3', 'buy_button_var1.png');
+        displayTexture('buy-item-4', 'buy_button_var1.png');
     });
 
 
@@ -422,13 +568,22 @@ $('#buy_item3_button').click(function () {
     showCloseInfo()
 });
 
+$('#buy_item4_button').click(function () {
+    showItem4Info()
+    showBuyButton4()
+    showCloseInfo()
+
+});
+
 
 $('#close-info').click(function () {
     hideCloseInfo()
     hideBuyButton1()
     hideBuyButton2()
     hideBuyButton3()
+    hideBuyButton4()
     hideItem1Info()
     hideItem2Info()
     hideItem3Info()
+    hideItem4Info()
 });

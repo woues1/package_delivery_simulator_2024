@@ -78,6 +78,17 @@ class Pelaaja:
         player_location_print = sql_db_lookup_location_name(self.location)
         return f"{player_location_print[0][0]}"
 
+    def reset_game(self):
+        self.location = sql_db_reset_game(self.id)
+        self.pisteet = 0
+        self.co2_consumed = 0
+        self.tehtava_aktiivinen = False
+        self.current_tehtava = None
+        self.co2_budget = 10000
+        self.co2_kerroin = 1.0
+        self.piste_kerroin = 1.0
+        self.tiirikka = 1
+
 
 class Item:
     def __init__(self, id, name, price, attribute, purchased):
@@ -88,14 +99,14 @@ class Item:
         self.purchased: bool = purchased
 
     def purchase(self, pelaaja):
-        if self.purchased == 0:
+        if not self.purchased:
             if pelaaja.pisteet >= self.price:
                 pelaaja.osta_esine(self.price)
                 sql_db_update_purchased_items(self.id, pelaaja.id)
                 self.purchased = True
                 return True
             else:
-                return f"Ei tarpeeksi pisteitä: {pelaaja.pisteet}/{self.price}"
+                return f"Ei tarpeeksi rahaa: {pelaaja.pisteet}$/{self.price}$"
         else:
             return f"Olet jo ostanut esineen {self.name}"
 
@@ -105,6 +116,7 @@ class Item:
 
     def attribute_info(self):
         return self.attribute
+
 
 class Tehtava:
     instance_count = 0

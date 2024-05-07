@@ -18,14 +18,16 @@
       </div>
 
       <form class="login-form" id="login-form">
-          <input type="text" id="username" name="username" placeholder="username" class="text">
-          <input type="text" id="password" name="password" placeholder="password" class="text">
+          <input type="text" id="username" name="username" placeholder="username" class="text" autocomplete="off">
+          <input type="text" id="password" name="password" placeholder="password" class="text" autocomplete="off">
 
           <div id="log_in_button" class="login-texture">
               <button type="submit" id="login_submit"></button>
           </div>
 
-          <div id="new_game_button" class="login-texture"></div>
+          <div id="new_game_button" class="login-texture">
+                <button type="submit" id="new_game_submit"></button>
+          </div>
       </form>
       <form>
           <div id="leaderboard_button" class="login-texture"></div>
@@ -77,6 +79,9 @@
             <div id="resume_button" class="main-menu-texture"></div>
             <div id="new_run" class="main-menu-texture"></div>
             <div id="exit_button" class="main-menu-texture"></div>
+            <div id="pause_leaderboard_button" class="login-texture"></div>
+            <div id="pause_leaderboard" class="login-texture"></div>
+            <div id="pause_leaderboard_close" class="login-texture"></div>
         </div>
   </div>
     <div id="store" class="store-container">
@@ -87,23 +92,27 @@
             <div id="item1" class="shop-menu-texture"></div>
             <div id="item2" class="shop-menu-texture"></div>
             <div id="item3" class="shop-menu-texture"></div>
+            <div id="item4" class="shop-menu-texture"></div>
         </div>
         <div class="button-container">
             <div id="store_exit" class="shop-menu-texture"></div>
             <div id="buy_item1_button" class="shop-menu-texture"></div>
             <div id="buy_item2_button" class="shop-menu-texture"></div>
             <div id="buy_item3_button" class="shop-menu-texture"></div>
+            <div id="buy_item4_button" class="shop-menu-texture"></div>
         </div>
         <div class="store-item-info">
             <div id="item1_info" class="shop-menu-texture"></div>
             <div id="item2_info" class="shop-menu-texture"></div>
             <div id="item3_info" class="shop-menu-texture"></div>
+            <div id="item4_info" class="shop-menu-texture"></div>
         </div>
         <div class="store-item-info-button-container">
             <div id="close-info" class="shop-menu-texture"></div>
             <div id="buy-item-1" class="shop-menu-texture"></div>
             <div id="buy-item-2" class="shop-menu-texture"></div>
             <div id="buy-item-3" class="shop-menu-texture"></div>
+            <div id="buy-item-4" class="shop-menu-texture"></div>
     </div>
 </div>
 </body>

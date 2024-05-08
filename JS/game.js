@@ -56,6 +56,8 @@ fetch('../Assets/login_textures.json')
         displayTexture('pause_leaderboard_button', 'leaderboard_button.png');
         displayTexture('pause_leaderboard', 'leaderboard_text_background.png');
         displayTexture('pause_leaderboard_close', 'back_button.png');
+        displayTexture('tutorial', 'leaderboard_text_background.png');
+        displayTexture('tutorial_close', 'back_button.png');
     });
 
 
@@ -96,6 +98,7 @@ fetch('../Assets/lockpick_textures.json')
         displayTexture('lockpicking_background', 'lockpicking_background.png');
         displayTexture('lock', 'lock.png');
         displayTexture('lock_unlocked', 'lock_unlocked.png');
+        displayTexture('tutorial_button', 'tutorial_button.png');
     });
 
 
@@ -161,6 +164,32 @@ $(document).ready(function () {
         $('#leaderboard_close').hide()
     });
 });
+
+// Tutorial data ja nappi.
+$(document).ready(function () {
+    $('#tutorial_button').click(function () {
+        $('#tutorial').toggle();
+        $('#tutorial_close').toggle()
+        const tutorial = document.getElementById('tutorial')
+        tutorial.innerHTML = '';
+        const p = document.createElement('p')
+        const p1 = document.createElement('p')
+        const p2 = document.createElement('p')
+        p.innerHTML = 'Welcome to the Package Delivery Simulator 2024! '
+        p1.innerHTML = 'You can do this by completing missions and buying items from the store.Watch out though, ' +
+            'you need to do this while keeping your Co2 usage to a minimum. ' +
+            'Your goal is to make as much money as possible by delivering packages.'
+        p2.innerHTML = 'Good luck!'
+        tutorial.appendChild(p)
+        tutorial.appendChild(p1)
+        tutorial.appendChild(p2)
+    });
+    $('#tutorial_close').click(function () {
+        $('#tutorial').hide();
+        $('#tutorial_close').hide()
+    });
+});
+
 
 
 function selectMission(missionId, missionNumber) {

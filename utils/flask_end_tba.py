@@ -244,7 +244,7 @@ def update_leaderboard():
         return flask.jsonify({'error': 'Player information not available'}), 404
 
 
-@app.route('/update_points', methods=['GET'])
+@app.route('/update_points', methods=['POST'])
 def update_points():
     x = random.choice([50, 100, 150])
     if 'pelaaja' in globals():

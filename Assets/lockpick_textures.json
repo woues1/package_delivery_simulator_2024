@@ -23,14 +23,22 @@
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":600},
 	"sourceSize": {"w":800,"h":600}
+},
+{
+	"filename": "tutorial_button.png",
+	"frame": {"x":800,"y":1200,"w":173,"h":68},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":173,"h":68},
+	"sourceSize": {"w":173,"h":68}
 }],
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "lockpick_textures.png",
 	"format": "RGBA8888",
-	"size": {"w":800,"h":1800},
+	"size": {"w":973,"h":1800},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:550cd37045bf177363feb487e493ed92:08649a513f71294298e868893fc88394:64fb62cea8a812453df68011690a1c1c$"
+	"smartupdate": "$TexturePacker:SmartUpdate:56a33270d28997de0d4bcf2a4f3d5f6b:a44d982dc722e8ffac533a797547e9cb:64fb62cea8a812453df68011690a1c1c$"
 }
 }

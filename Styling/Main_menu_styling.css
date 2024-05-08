@@ -185,6 +185,49 @@
     transform: translate(130%, 480%);
 }
 
+#tutorial_button {
+    width: 400px;
+    height: 60px;
+    cursor: pointer;
+    position: absolute;
+    top: 90%;
+    left: 65%;
+    transform: translate(-268%, -153%);
+    z-index: 2;
+    padding: 0px;
+}
+
+#tutorial {
+    display: none;
+    transform: translate(-0%, -5%);
+    position: absolute;
+    z-index: 3;
+    text-align: center;
+    font-family: "CustomFont";
+    font-size: 18px;
+}
+
+#tutorial p {
+    color: white;
+    border: #98235c;
+    border-style: solid;
+    border-radius: 10px;
+    background: #fc7991;
+    width: 60%;
+    height: auto;
+    padding: 10px;
+    transform: translate(30%, 0%);
+    margin-top: 9%;
+
+}
+
+#tutorial_close {
+    display: none;
+    position: absolute;
+    z-index: 3;
+    cursor: pointer;
+    transform: translate(130%, 480%);
+}
 .game-container {
     position: relative;
     width: 800px;
@@ -219,6 +262,27 @@
     left: 50%;
     transform: translate(-52%, -23%);
     z-index: 2;
+    margin-left: 5px;
+    scale: 95%;
+}
+
+.time-container {
+    position: absolute;
+    transform: translate(590%, 130%);
+    z-index: 2;
+    cursor: pointer;
+    font-family: "customFont";
+    height: 20px;
+    width: 110px;
+    text-align: left;
+}
+
+
+#current-time {
+    color: white;
+    top: 20%;
+    left: 50%;
+    z-index: 3;
     margin-left: 5px;
     scale: 95%;
 }

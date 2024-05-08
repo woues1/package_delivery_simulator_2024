@@ -88,6 +88,8 @@ class Pelaaja:
         self.co2_kerroin = 1.0
         self.piste_kerroin = 1.0
         self.tiirikka = 1
+        for item in self.Items:
+            item.purchased = False
 
 
 class Item:

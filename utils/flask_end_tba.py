@@ -199,6 +199,7 @@ def leaderboard_info():
 def reset_game():
     if 'pelaaja' in globals():
         pelaaja.reset_game()
+
         return flask.jsonify({'message': 'Game reset successfully'})
     else:
         return flask.jsonify({'error': 'Player information not available'}), 404

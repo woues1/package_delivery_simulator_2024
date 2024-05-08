@@ -10,7 +10,7 @@ let z = 0
 let lockpick = false
 
 
-function get_time(country) {
+function get_time() {
     const url = `http://127.0.0.1:3000/get_public_ip?country=${country}`;
     fetch(url)
         .then(response => response.json())
@@ -227,7 +227,7 @@ function player_info() {
             location_info.text(`${location}, ${country}`);
             co2_info.text(`${co2_consumed}/${co2_budget}`);
             points_info.text(`${pisteet}$`);
-            get_time(country)
+            get_time()
 
             if (parseInt(co2_consumed) >= parseInt(co2_budget)) {
                 gameOverActions();

@@ -182,7 +182,7 @@ $('#deliver_button').on('click', function () {
         success: function (response) {
             player_info()
             current_missions()
-
+            lockpickingStart()
         },
         error: function (xhr, status, error) {
             console.error("Error:", error);
@@ -683,7 +683,6 @@ function lockpickingStart() {
             randomNumber = data.value
             document.getElementById('test').innerText = randomNumber
         })
-    document.getElementById('test').innerText = randomNumber
 }
 
 right.addEventListener('click', function()  {
@@ -712,13 +711,12 @@ yrita.addEventListener('click', function() {
         })
     if (lockpick == true) {
         z = 15
-    } else {
+    } else if (lockpick == false) {
         z = 5
     }
     if (x <= randomNumber + z && x >= randomNumber - z) {
-        document.getElementById('lockpick_result').innerText = 'Onnistuit'
-        sendResult(true)
         lockUnlock()
+        sendResult(true)
     } else if (x < randomNumber - z || x > randomNumber + z) {
         y++
         if (x < randomNumber) {
@@ -727,11 +725,23 @@ yrita.addEventListener('click', function() {
             document.getElementById('lockpick_result').innerText = 'Epaonnistuit yrita uudelleen, "kaanna enemman vasemmalle"'
         }
     }
-    if (y >= 500000000000000000) {
-        document.getElementById('lockpick_result').innerText = 'Tiirikka rikkoutui'
+    if (y >= 5) {
         sendResult(false)
     }
 })
+
+
+// turha?
+function getResult(result) {
+    hideMinigameMenu()
+    showMainMenu()
+    $('#lockpick_result').style.display= 'none'
+    if (result == true) {
+        sendResult(true)
+    } else if (result == false) {
+        sendResult(false)
+    }
+}
 
 function sendResult(success) {
     fetch('http://127.0.0.1:3000/result', {
@@ -749,6 +759,16 @@ function sendResult(success) {
         body: JSON.stringify({ success: success })
 
     })
-    showMainMenu()
-    hideMinigameMenu()
+    setTimeout(() => {
+        x = 0
+        document.getElementById('number').innerText = x
+        if (success == true) {
+            alert('Onnistuit')
+        } else if (success == false) {
+            alert('Epäonnistuit tiirikka rikkoutui')
+        }
+        lockUnlock()
+        showMainMenu()
+        hideMinigameMenu()
+    }, 1)
 }

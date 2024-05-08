@@ -261,22 +261,24 @@ function checkItems() {
     fetch('http://127.0.0.1:3000/item_info')
         .then(response => response.json())
         .then(values => {
+
             const items = values.map(item => item.id);
             const item1 = $('#item1_icon');
             const item2 = $('#item2_icon');
             const item3 = $('#item3_icon');
             const item4 = $('#item4_icon');
 
-            if (items.includes(1)) {
+            
+            if (values[0]['purchased'] === true) {
                 item1.toggle();
             }
-            if (items.includes(2)) {
+            if (values[1]['purchased'] === true) {
                 item2.toggle();
             }
-            if (items.includes(3)) {
+            if (values[2]['purchased'] === true) {
                 item3.toggle();
             }
-            if (items.includes(4)) {
+            if (values[3]['purchased'] === true) {
                 item4.toggle();
             }
         })

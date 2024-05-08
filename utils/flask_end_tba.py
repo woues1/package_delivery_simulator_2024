@@ -6,11 +6,6 @@ from utils.pelaaja import *
 import secrets
 import string
 from data.tehtavan_luonti_algoritmi import luo_tehtava
-from utils.easter_eggs import *
-from utils.kauppa_valikko import *
-from utils.valikko import valikko
-from Assets.ASCII_art import game_over
-from Assets.animaatio import *
 import asyncio
 import re
 

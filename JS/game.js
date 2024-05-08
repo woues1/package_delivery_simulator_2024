@@ -544,8 +544,6 @@ $('#exit_button').click(function () {
 });
 
 
-
-
 $(document).ready(function () {
     $('#pause_leaderboard_button').click(function () {
         $('#pause_leaderboard').toggle();
@@ -581,7 +579,7 @@ function restartGame() {
 
 function exitGame() {
     sessionStorage.clear()
-    fetch('http://http://127.0.0.1:3000/reset_game')
+    fetch('http://http://127.0.0.1:3000/exit_game')
         .then(response => response.json())
         .then(data => {
             console.log(data)

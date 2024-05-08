@@ -199,7 +199,9 @@ def leaderboard_info():
 def reset_game():
     if 'pelaaja' in globals():
         pelaaja.reset_game()
-
+        items.clear()
+        list = [*pelaaja.Items]
+        items.append(list)
         return flask.jsonify({'message': 'Game reset successfully'})
     else:
         return flask.jsonify({'error': 'Player information not available'}), 404
@@ -209,6 +211,9 @@ def reset_game():
 def exit_game():
     if 'pelaaja' in globals():
         sql_db_update_exit_game(pelaaja.nimi, pelaaja.co2_consumed, pelaaja.location, pelaaja.pisteet)
+        items.clear()
+        missions.clear()
+        session.clear()
         return flask.jsonify({'message': 'Game exited successfully'})
     else:
         return flask.jsonify({'error': 'Player information not available'}), 404

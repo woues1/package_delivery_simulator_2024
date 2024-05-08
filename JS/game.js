@@ -271,7 +271,7 @@ function checkItems() {
             const items = values.map(item => item.id);
             for (let i = 0; i < values.length; ++i) {
                 if (values[i].purchased) {
-                    $(`#item${i + 1}_icon`).toggle();
+                    $(`#item${i + 1}_icon`).css('display', 'block');
                 }
             }
         })
@@ -316,6 +316,7 @@ $('#login-form').submit(function(event) {
         success: function(response) {
             hideLoginElements();
             showMainMenu();
+            checkItems();
             player_info();
             current_missions();
             sessionStorage.setItem('user_id', response['user_id'])
@@ -526,9 +527,14 @@ $('#resume_button').click(function () {
 });
 
 $('#new_run').click(function () {
+    restartGame()
     showMainMenu()
     hidePauseMenu()
-    restartGame()
+    $('#item1_icon').css("display", "none")
+    $('#item2_icon').css("display", "none")
+    $('#item3_icon').css("display", "none")
+    $('#item4_icon').css("display", "none")
+
 });
 
 $('#exit_button').click(function () {
@@ -768,6 +774,7 @@ function sendResult(success) {
             alert('Epäonnistuit tiirikka rikkoutui')
         }
         document.getElementById('lockpick_result').innerText = ''
+        player_info()
         showMainMenu()
         hideMinigameMenu()
     }, 1)

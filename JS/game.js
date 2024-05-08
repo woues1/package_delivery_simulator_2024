@@ -11,7 +11,7 @@ let lockpick = false
 
 
 function get_time() {
-    const url = `http://127.0.0.1:3000/get_public_ip?country=${country}`;
+    const url = `http://127.0.0.1:3000/get_public_ip`;
     fetch(url)
         .then(response => response.json())
         .then(data => {

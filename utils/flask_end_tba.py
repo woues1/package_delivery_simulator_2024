@@ -1,4 +1,5 @@
 import flask
+import requests
 from flask import request
 from flask_cors import CORS
 from flask import session
@@ -33,8 +34,32 @@ async def get_missions():
     return missions
 
 
-items = []
+@app.route('/get_public_ip', methods=['GET'])
+def get_public_ip():
+    try:
+        # Fetch public IP
+        response = requests.get('https://api64.ipify.org/?format=json')
+        if response.ok:
+            ip_data = response.json()
+            public_ip = ip_data['ip']
 
+            # Fetch current time using WorldTimeAPI
+            world_time_response = requests.get(f'https://worldtimeapi.org/api/ip?{public_ip}')
+            if world_time_response.ok:
+                world_time_data = world_time_response.json()
+                current_time = world_time_data['datetime']
+
+                # Return both public IP and current time
+                return flask.jsonify({'public_ip': public_ip, 'current_time': current_time}), 200
+            else:
+                return flask.jsonify({'error': 'Failed to fetch current time'}), world_time_response.status_code
+        else:
+            return flask.jsonify({'error': 'Failed to fetch public IP'}), response.status_code
+    except Exception as e:
+        return flask.jsonify({'error': str(e)}), 500
+
+
+items = []
 @app.route('/login', methods=['POST'])
 def login():
 

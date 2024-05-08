@@ -8,7 +8,24 @@ let x = 0
 let y = 0
 let z = 0
 let lockpick = false
-let userid;
+
+
+function get_time(country) {
+    const url = `http://127.0.0.1:3000/get_public_ip?country=${country}`;
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            const datetimeString = data.current_time;
+            const timePattern = /\d{2}:\d{2}:\d{2}/;
+            const match = datetimeString.match(timePattern);
+            if (match) {
+                const time = match[0];
+                console.log(`Current time in ${country}: ${time}`);
+            } else {
+                console.log("Time not found in the datetime string.");
+            }
+        })
+}
 
 
 // check if user already has a session, and redirect to game.
@@ -209,6 +226,7 @@ function player_info() {
             location_info.text(`${location}, ${country}`);
             co2_info.text(`${co2_consumed}/${co2_budget}`);
             points_info.text(`${pisteet}$`);
+            get_time(country)
 
             if (parseInt(co2_consumed) >= parseInt(co2_budget)) {
                 gameOverActions();

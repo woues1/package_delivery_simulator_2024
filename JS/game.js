@@ -185,6 +185,9 @@ $('#deliver_button').on('click', function () {
             const chanceforlockpick = Math.floor(Math.random() * 5) + 1
             if (chanceforlockpick === 2)
                 lockpickingStart()
+            else {
+                lockpickingStart()
+            }
         },
         error: function (xhr, status, error) {
             console.error("Error:", error);

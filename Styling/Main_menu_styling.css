@@ -599,6 +599,7 @@
 .minigame-container {
     position: absolute;
     text-align: center;
+    width: 100%;
     top: 58%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -610,7 +611,7 @@
     width: 100%;
     height: 100%;
     position: absolute;
-    top: -15%;
+    top: -18%;
     left: 5%;
     z-index: 1;
     border-radius: 5px;
@@ -621,7 +622,7 @@
     width: 100%;
     height: 100%;
     position: absolute;
-    top: -15%;
+    top: -18%;
     left: 5%;
     z-index: 1;
     border-radius: 5px;
@@ -631,12 +632,54 @@
 
 #lockpick_result {
     display: block;
+    width: 100%;
     position: absolute;
     text-align: center;
     top: 90%;
-    left: 0;
 }
 
 #test {
     display: none;
+}
+
+.minigame-container {
+    font-family: 'CustomFont';
+    color: white;
+    top: 55%;
+}
+
+#right {
+    color: white;
+    border: #98235c;
+    border-style: solid;
+    border-radius: 10px;
+    background: #fc7991;
+    width: 15%;
+    height: auto;
+    padding: 3px;
+    margin: 10px;
+}
+
+#left {
+    color: white;
+    border: #98235c;
+    border-style: solid;
+    border-radius: 10px;
+    background: #fc7991;
+    width: 15%;
+    height: auto;
+    padding: 3px;
+    margin: 10px;
+}
+
+#yrita {
+    color: white;
+    border: #98235c;
+    border-style: solid;
+    border-radius: 10px;
+    background: #fc7991;
+    width: 15%;
+    height: auto;
+    padding: 3px;
+    margin: 10px;
 }

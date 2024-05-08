@@ -167,7 +167,7 @@ $('#mission1').on('click', function () {
 });
 
 $('#mission2').on('click', function () {
-    selectMission($(this).attr('id'), '2');h
+    selectMission($(this).attr('id'), '2');
 });
 
 $('#mission3').on('click', function () {

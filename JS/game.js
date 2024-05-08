@@ -20,12 +20,13 @@ function get_time(country) {
             const match = datetimeString.match(timePattern);
             if (match) {
                 const time = match[0];
-                console.log(`Current time in ${country}: ${time}`);
+                $('#current-time').text(`Current time in ${country}: ${time}`);
             } else {
-                console.log("Time not found in the datetime string.");
+                $('#current-time').text("Time not found in the datetime string.");
             }
         })
 }
+
 
 
 // check if user already has a session, and redirect to game.

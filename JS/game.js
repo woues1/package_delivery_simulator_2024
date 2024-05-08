@@ -8,6 +8,21 @@ let y = 0
 let z = 0
 let lockpick = false
 
+$(document).ready(function() {
+    $('.button').on('mousedown', function() {
+        $(this).css({
+            'opacity': '0.1',
+            'transition':  'opacity 0.2s ease'
+        });
+    });
+
+    $('.button').on('mouseup', function() {
+        $(this).css({
+            'opacity': '1',
+            'transition': 'opacity 0.2s ease'
+        });
+    });
+});
 
 function get_time() {
     const url = `http://127.0.0.1:3000/get_public_ip`;

@@ -182,7 +182,9 @@ $('#deliver_button').on('click', function () {
         success: function (response) {
             player_info()
             current_missions()
-            lockpickingStart()
+            const chanceforlockpick = Math.floor(Math.random() * 5) + 1
+            if (chanceforlockpick === 2)
+                lockpickingStart()
         },
         error: function (xhr, status, error) {
             console.error("Error:", error);
@@ -268,7 +270,7 @@ function checkItems() {
             const item3 = $('#item3_icon');
             const item4 = $('#item4_icon');
 
-            
+
             if (values[0]['purchased'] === true) {
                 item1.toggle();
             }
@@ -544,6 +546,8 @@ $('#exit_button').click(function () {
     location.reload()
     showLoginElements()
 });
+
+
 
 
 $(document).ready(function () {

@@ -178,7 +178,7 @@ $('#deliver_button').on('click', function () {
         success: function (response) {
             player_info()
             current_missions()
-            lockpickingStart()
+
         },
         error: function (xhr, status, error) {
             console.error("Error:", error);
@@ -587,6 +587,7 @@ $('#store_button').click(function () {
 $('#store_exit').click(function () {
     showMainMenu()
     hideStoreMenu()
+    // Check items
 });
 
 
@@ -642,6 +643,8 @@ const yrita = document.getElementById('yrita')
 
 
 function lockpickingStart() {
+    showMinigameMenu()
+    hideMainMenu()
     fetch('http://127.0.0.1:3000/random_number')
         .then(response => response.json())
         .then(data => {
@@ -706,7 +709,7 @@ function sendResult(success) {
         },
         body: JSON.stringify({ success: success })
     })
-    fetch(`http://127.0.0.1:3000/update_points/${userid}`, {
+    fetch(`http://127.0.0.1:3000/update_points`, {
     method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -714,4 +717,6 @@ function sendResult(success) {
         body: JSON.stringify({ success: success })
 
     })
+    showMainMenu()
+    hideMinigameMenu()
 }

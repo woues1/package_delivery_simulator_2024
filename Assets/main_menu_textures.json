@@ -2,7 +2,7 @@
 
 {
 	"filename": "active_mission_box.png",
-	"frame": {"x":544,"y":80,"w":408,"h":117},
+	"frame": {"x":784,"y":75,"w":408,"h":117},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":408,"h":117},
@@ -10,15 +10,23 @@
 },
 {
 	"filename": "back_button.png",
-	"frame": {"x":381,"y":0,"w":241,"h":57},
+	"frame": {"x":542,"y":0,"w":241,"h":57},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":241,"h":57},
 	"sourceSize": {"w":241,"h":57}
 },
 {
+	"filename": "car_icon.png",
+	"frame": {"x":73,"y":0,"w":50,"h":33},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":50,"h":33},
+	"sourceSize": {"w":50,"h":33}
+},
+{
 	"filename": "deliver_button.png",
-	"frame": {"x":0,"y":0,"w":381,"h":55},
+	"frame": {"x":161,"y":0,"w":381,"h":55},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":381,"h":55},
@@ -26,7 +34,7 @@
 },
 {
 	"filename": "exit_button.png",
-	"frame": {"x":1266,"y":0,"w":240,"h":80},
+	"frame": {"x":0,"y":75,"w":240,"h":80},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":240,"h":80},
@@ -34,7 +42,7 @@
 },
 {
 	"filename": "exit_game_button_blue.png",
-	"frame": {"x":182,"y":80,"w":181,"h":92},
+	"frame": {"x":422,"y":75,"w":181,"h":92},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":181,"h":92},
@@ -42,15 +50,23 @@
 },
 {
 	"filename": "location_text_box.png",
-	"frame": {"x":0,"y":197,"w":800,"h":600},
+	"frame": {"x":0,"y":192,"w":800,"h":600},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":600},
 	"sourceSize": {"w":800,"h":600}
 },
 {
+	"filename": "lockpick_icon.png",
+	"frame": {"x":0,"y":0,"w":41,"h":26},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":41,"h":26},
+	"sourceSize": {"w":41,"h":26}
+},
+{
 	"filename": "main_menu.png",
-	"frame": {"x":800,"y":197,"w":800,"h":600},
+	"frame": {"x":800,"y":192,"w":800,"h":600},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":600},
@@ -58,7 +74,7 @@
 },
 {
 	"filename": "menu_button.png",
-	"frame": {"x":622,"y":0,"w":182,"h":74},
+	"frame": {"x":783,"y":0,"w":182,"h":74},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":182,"h":74},
@@ -66,7 +82,7 @@
 },
 {
 	"filename": "mission_select_box.png",
-	"frame": {"x":804,"y":0,"w":462,"h":75},
+	"frame": {"x":965,"y":0,"w":462,"h":75},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":462,"h":75},
@@ -74,7 +90,7 @@
 },
 {
 	"filename": "money_co2_text_box.png",
-	"frame": {"x":0,"y":797,"w":800,"h":600},
+	"frame": {"x":0,"y":792,"w":800,"h":600},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":600},
@@ -82,7 +98,7 @@
 },
 {
 	"filename": "new_game_button_blue.png",
-	"frame": {"x":363,"y":80,"w":181,"h":92},
+	"frame": {"x":603,"y":75,"w":181,"h":92},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":181,"h":92},
@@ -90,15 +106,31 @@
 },
 {
 	"filename": "pause_menu_background.png",
-	"frame": {"x":800,"y":797,"w":800,"h":600},
+	"frame": {"x":800,"y":792,"w":800,"h":600},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":800,"h":600},
 	"sourceSize": {"w":800,"h":600}
 },
 {
+	"filename": "plant_trees_icon.png",
+	"frame": {"x":41,"y":0,"w":32,"h":30},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":32,"h":30},
+	"sourceSize": {"w":32,"h":30}
+},
+{
+	"filename": "rahakone_icon.png",
+	"frame": {"x":123,"y":0,"w":38,"h":33},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":38,"h":33},
+	"sourceSize": {"w":38,"h":33}
+},
+{
 	"filename": "store_button.png",
-	"frame": {"x":0,"y":80,"w":182,"h":84},
+	"frame": {"x":240,"y":75,"w":182,"h":84},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":182,"h":84},
@@ -109,8 +141,8 @@
 	"version": "1.0",
 	"image": "main_menu_textures.png",
 	"format": "RGBA8888",
-	"size": {"w":1600,"h":1397},
+	"size": {"w":1600,"h":1392},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:b979ee24ff2478bc35f695827ee5564c:f1982dacc25c2c203f612b017e6f1a28:8e0d77704f2d3f15c95cd2c1c90a5cca$"
+	"smartupdate": "$TexturePacker:SmartUpdate:64719a0c6bc276f71d0f41d3e97a2a02:248ecbd1e3ee90d3d6ec6da9441619d3:8e0d77704f2d3f15c95cd2c1c90a5cca$"
 }
 }

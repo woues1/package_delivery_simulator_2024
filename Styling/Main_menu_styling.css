@@ -207,7 +207,7 @@
     position: absolute;
     top: 20%;
     left: 50%;
-    transform: translate(-52%, -24%);
+    transform: translate(-52%, -23%);
     z-index: 2;
     margin-left: 5px;
     scale: 95%;
@@ -217,7 +217,7 @@
     position: absolute;
     top: 20%;
     left: 50%;
-    transform: translate(-52%, -25%);
+    transform: translate(-52%, -23%);
     z-index: 2;
     margin-left: 5px;
     scale: 95%;
@@ -540,6 +540,40 @@
     display: none;
     z-index: 2;
     transform: translate(570%, 710%);
+}
+
+.icon-container {
+    position: absolute;
+    z-index: 2;
+    flex-wrap: wrap;
+}
+
+#item1_icon {
+    position: absolute;
+    z-index: 2;
+    transform: translate(807%, 63%);
+    display: none;
+}
+
+#item2_icon {
+    position: absolute;
+    z-index: 2;
+    transform: translate(1430%, 62%);
+    display: none;
+}
+
+#item3_icon {
+    position: absolute;
+    z-index: 2;
+    transform: translate(1310%, 60%);
+    display: none;
+}
+
+#item4_icon {
+    position: absolute;
+    z-index: 2;
+    transform: translate(1322%, 90%);
+    display: none;
 }
 
 /* Minigame */

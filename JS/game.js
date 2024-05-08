@@ -202,9 +202,7 @@ $('#deliver_button').on('click', function () {
             const chanceforlockpick = Math.floor(Math.random() * 5) + 1
             if (chanceforlockpick === 2)
                 lockpickingStart()
-            else {
-                lockpickingStart()
-            }
+
         },
         error: function (xhr, status, error) {
             console.error("Error:", error);
@@ -340,6 +338,7 @@ $('#login-form').submit(function(event) {
             checkItems();
             player_info();
             current_missions();
+            get_time()
             sessionStorage.setItem('user_id', response['user_id'])
             },
         error: function(xhr, status, error) {

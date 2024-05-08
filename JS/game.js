@@ -1,6 +1,5 @@
 'use strict';
 let textureData
-let mySession;
 
 // lockpicking minigame
 let randomNumber = 0

@@ -20,7 +20,7 @@ function get_time() {
             const match = datetimeString.match(timePattern);
             if (match) {
                 const time = match[0];
-                $('#current-time').text(`Current time in ${country}: ${time}`);
+                $('#current-time').text(`${time}`);
             } else {
                 $('#current-time').text("Time not found in the datetime string.");
             }

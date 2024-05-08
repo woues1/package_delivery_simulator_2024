@@ -757,13 +757,17 @@ function sendResult(success) {
     })
     setTimeout(() => {
         x = 0
+        y = 0
+        if (success == true) {
+            lockUnlock()
+        }
         document.getElementById('number').innerText = x
         if (success == true) {
             alert('Onnistuit')
         } else if (success == false) {
             alert('Epäonnistuit tiirikka rikkoutui')
         }
-        lockUnlock()
+        document.getElementById('lockpick_result').innerText = ''
         showMainMenu()
         hideMinigameMenu()
     }, 1)

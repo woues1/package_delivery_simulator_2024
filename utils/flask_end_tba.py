@@ -240,9 +240,9 @@ def update_points():
 
 @app.route('/value', methods=['GET'])
 def value():
-    x = random.choice([True, False])
+    lockpick_check = items[3].purchased
     result = {
-        'value' : x
+        'value' : lockpick_check
     }
     return result
 

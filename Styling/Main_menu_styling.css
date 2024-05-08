@@ -213,12 +213,12 @@
     border-style: solid;
     border-radius: 10px;
     background: #fc7991;
-    width: 60%;
-    height: auto;
+    width: 65%;
+    height: 250px;
     padding: 10px;
-    transform: translate(30%, 0%);
-    margin-top: 9%;
-
+    transform: translate(25%, 40%);
+    letter-spacing: 2px;
+    line-height: 1.5;
 }
 
 #tutorial_close {

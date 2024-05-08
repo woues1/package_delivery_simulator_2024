@@ -173,16 +173,12 @@ $(document).ready(function () {
         const tutorial = document.getElementById('tutorial')
         tutorial.innerHTML = '';
         const p = document.createElement('p')
-        const p1 = document.createElement('p')
-        const p2 = document.createElement('p')
-        p.innerHTML = 'Welcome to the Package Delivery Simulator 2024! '
-        p1.innerHTML = 'You can do this by completing missions and buying items from the store.Watch out though, ' +
+        p.innerHTML = 'Welcome to the Package Delivery Simulator 2024! ' +
+            'Your goal is to make as much money as possible by delivering packages. ' +
+            'You can do this by completing missions and buying items from the store. Watch out though, ' +
             'you need to do this while keeping your Co2 usage to a minimum. ' +
-            'Your goal is to make as much money as possible by delivering packages.'
-        p2.innerHTML = 'Good luck!'
+            'Good luck!'
         tutorial.appendChild(p)
-        tutorial.appendChild(p1)
-        tutorial.appendChild(p2)
     });
     $('#tutorial_close').click(function () {
         $('#tutorial').hide();
@@ -228,7 +224,7 @@ $('#deliver_button').on('click', function () {
         success: function (response) {
             player_info()
             current_missions()
-            const chanceforlockpick = Math.floor(Math.random() * 5) + 1
+            const chanceforlockpick = Math.floor(Math.random() * 6) + 1
             if (chanceforlockpick === 2)
                 lockpickingStart()
 

@@ -142,16 +142,11 @@ def get_player_info():
     if 'pelaaja' in globals():
         player_info = {
             'nimi': pelaaja.nimi,
-            'id': pelaaja.id,
             'pisteet': pelaaja.pisteet,
             'location': pelaaja.location,
             'country' : pelaaja.hae_pelaaja_Maa(),
             'co2_consumed': pelaaja.co2_consumed,
-            'tehtava_aktiivinen': pelaaja.tehtava_aktiivinen,
-            'co2_budget': pelaaja.co2_budget,
-            'co2_kerroin': pelaaja.co2_kerroin,
-            'piste_kerroin': pelaaja.piste_kerroin,
-            'tiirikka': pelaaja.tiirikka
+            'co2_budget': pelaaja.co2_budget
         }
         return flask.jsonify(player_info)
     else:

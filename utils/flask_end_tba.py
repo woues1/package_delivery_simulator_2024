@@ -227,11 +227,15 @@ def update_leaderboard():
         return flask.jsonify({'error': 'Player information not available'}), 404
 
 
-@app.route('/update_points/<int:userid>', methods=['POST'])
-def update_points(userid):
+@app.route('/update_points', methods=['GET'])
+def update_points():
     x = random.choice([50, 100, 150])
-    sql_db_update_pisteet(userid, x)
-    return flask.Response(status=200)
+    if 'pelaaja' in globals():
+        sql_db_update_pisteet(pelaaja.id, x)
+        return flask.jsonify({'message': 'Points updated successfully'})
+    else:
+        return flask.jsonify({'error': 'Player information not available'}), 404
+
 
 
 @app.route('/value', methods=['GET'])

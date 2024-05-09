@@ -423,6 +423,8 @@ $('#new_game_button').click(function(event) {
 
 function hideLoginElements() {
     $('.login-container').css("display", "none")
+    $('#username').val('');
+    $('#password').val('');
 
 }
 
@@ -601,7 +603,6 @@ $('#exit_button').click(function () {
     exitGame()
     hideMainMenu()
     hidePauseMenu()
-    location.reload()
     showLoginElements()
 });
 
@@ -665,7 +666,6 @@ function gameOverActions() {
     exitGame();
     hideMainMenu();
     hidePauseMenu();
-    location.reload();
     showLoginElements();
 }
 

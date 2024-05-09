@@ -2,6 +2,12 @@
     font-family: 'CustomFont';
     src: url('../Assets/AniMeMatrix-MB_EN.ttf') format('truetype');
 }
+body {
+    background-color: #ffffff;
+    margin: 0;
+    padding: 5%;
+    scale: 125%;
+}
 
 .login-container {
     position: relative;

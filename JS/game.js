@@ -654,12 +654,12 @@ function restartGame() {
 }
 
 function exitGame() {
-    sessionStorage.clear()
-    fetch('http://http://127.0.0.1:3000/exit_game')
+    fetch('http://127.0.0.1:3000/exit_game')
         .then(response => response.json())
         .then(data => {
             console.log(data)
         })
+    sessionStorage.clear()
 }
 
 function updateLeaderboard() {

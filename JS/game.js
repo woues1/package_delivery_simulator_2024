@@ -30,7 +30,7 @@ function get_time() {
         .then(response => response.json())
         .then(data => {
             const datetimeString = data.current_time;
-            const timePattern = /\d{2}:\d{2}:\d{2}/;
+            const timePattern = /\d{2}:\d{2}/;
             const match = datetimeString.match(timePattern);
             if (match) {
                 const time = match[0];
@@ -40,6 +40,8 @@ function get_time() {
             }
         })
 }
+// Change timeout to lower for more precision
+setInterval(get_time, 60000);
 
 
 
@@ -264,7 +266,6 @@ function player_info() {
             location_info.text(`${location}, ${country}`);
             co2_info.text(`${co2_consumed}/${co2_budget}`);
             points_info.text(`${pisteet}$`);
-            get_time()
 
             if (parseInt(co2_consumed) >= parseInt(co2_budget)) {
                 gameOverActions();

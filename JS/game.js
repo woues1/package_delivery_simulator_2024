@@ -8,6 +8,10 @@ let y = 0
 let z = 0
 let lockpick = false
 
+let check_co2_budget;
+let check_co2_consumed;
+
+
 $(document).ready(function() {
     $('.button').on('mousedown', function() {
         $(this).css({
@@ -247,7 +251,7 @@ $('#deliver_button').on('click', function () {
             player_info();
             current_missions();
             const chanceforlockpick = Math.floor(Math.random() * 6) + 1;
-            if (chanceforlockpick === 2)
+            if (chanceforlockpick === 2 && check_co2_consumed < check_co2_budget - 1500)
                 lockpickingStart();
         },
         error: function (xhr, status, error) {
@@ -270,6 +274,8 @@ function player_info() {
             location_info.text(`${location}, ${country}`);
             co2_info.text(`${co2_consumed}/${co2_budget}`);
             points_info.text(`${pisteet}$`);
+            check_co2_budget = {co2_consumed}
+            check_co2_consumed = co2_budget
 
             if (parseInt(co2_consumed) >= parseInt(co2_budget)) {
                 gameOverActions();

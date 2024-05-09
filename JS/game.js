@@ -235,23 +235,27 @@ $('#mission3').on('click', function () {
 
 
 $('#deliver_button').on('click', function () {
-        $.ajax({
+    if ($('#current_mission').is(':empty')) {
+        console.log("No current mission available.");
+        return; // Exit the function if there's no current mission
+    }
+
+    $.ajax({
         url: 'http://127.0.0.1:3000/complete_mission',
         type: 'GET',
         success: function (response) {
-            player_info()
-            current_missions()
-            const chanceforlockpick = Math.floor(Math.random() * 6) + 1
+            player_info();
+            current_missions();
+            const chanceforlockpick = Math.floor(Math.random() * 6) + 1;
             if (chanceforlockpick === 2)
-                lockpickingStart()
-
+                lockpickingStart();
         },
         error: function (xhr, status, error) {
             console.error("Error:", error);
         }
     });
-        $('#current_mission').empty()  // Tyhjentää aktiivisen missionin infon VE
-})
+    $('#current_mission').empty(); // Tyhjentää aktiivisen missionin infon VE
+});
 
 
 function player_info() {

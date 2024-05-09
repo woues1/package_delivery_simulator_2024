@@ -133,10 +133,10 @@ def set_mission():
 def complete_mission():
     if 'pelaaja' in globals() and pelaaja.tehtava_aktiivinen == True:
         pelaaja.suorita_tehtava()
-        sql_db_update_exit_game(pelaaja.nimi, pelaaja.co2_consumed, pelaaja.location, pelaaja.pisteet)
         Tehtava.instance_count -= 3
         missions.clear()
         asyncio.run(get_missions())
+        sql_db_update_exit_game(pelaaja.nimi, pelaaja.co2_consumed, pelaaja.location, pelaaja.pisteet)
         return flask.jsonify({'message': 'Mission completed successfully'})
     else:
         return flask.jsonify({'error': 'Invalid mission index'}), 400

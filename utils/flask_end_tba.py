@@ -13,6 +13,7 @@ import re
 app = flask.Flask(__name__)
 CORS(app)
 
+app.config['PERMANENT_SESSION_LIFETIME'] = 86400
 
 def generate_secret_key(length=20):
     alphabet = string.ascii_letters + string.digits + string.punctuation
@@ -64,7 +65,6 @@ items = []
 def login():
 
     login_data = request.json
-
     username = login_data.get('username')
     password = login_data.get('password')
     user_id = sql_db_lookup_log_in(username, password)
@@ -79,7 +79,7 @@ def login():
         list = [*init_items]
         items.extend(list)
         list.clear()
-        session['user_id'] = user_id[0][0]
+        session.permanent = True
         asyncio.run(get_missions())
         return flask.jsonify({'message': 'Login successful', 'user_id': user_id[0][0]})
     else:
@@ -92,6 +92,7 @@ def new_game():
     username = new_game_data.get('username')
     password = new_game_data.get('password')
     screen_names = sql_db_lookup_screen_names(username)
+
     if screen_names:
         return flask.jsonify({'error': 'Username is already in use'}), 400
     if re.search(r'[\'\"]', password):
@@ -109,7 +110,7 @@ def new_game():
             list = [*init_items]
             items.extend(list)
             list.clear()
-            session['user_id'] = user_id[0][0]
+            session.permanent = True
             asyncio.run(get_missions())
             return flask.jsonify({'message': 'Login successful', 'user_id': user_id[0][0]})
         else:
